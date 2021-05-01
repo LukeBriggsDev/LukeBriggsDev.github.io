@@ -1,0 +1,374 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Project Release - Category - Luke Briggs</title>
+        <link>https://codeluke.github.io/categories/project-release/</link>
+        <description>Project Release - Category - Luke Briggs</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@lukebriggs.dev (Luke Briggs)</managingEditor>
+            <webMaster>contact@lukebriggs.dev (Luke Briggs)</webMaster><lastBuildDate>Fri, 05 Mar 2021 12:11:40 &#43;0000</lastBuildDate><atom:link href="https://codeluke.github.io/categories/project-release/" rel="self" type="application/rss+xml" /><item>
+    <title>Inspection and Dissection: Type or Die</title>
+    <link>https://codeluke.github.io/inspection-and-dissection-type-or-die/</link>
+    <pubDate>Fri, 05 Mar 2021 12:11:40 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://codeluke.github.io/inspection-and-dissection-type-or-die/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/static/postimages/21/cover.png" referrerpolicy="no-referrer">
+            </div><blockquote>
+<p><a href="https://lukebriggs.itch.io/type-or-die" target="_blank" rel="noopener noreffer">Itch.io Link</a></p>
+</blockquote>
+<p>For the past 5 days I have done what I have failed to do many times before,
+complete the process of making a game.</p>
+<p>The game was for the NUCATS Game Jam. NUCATS is the Newcastle University Computing
+and Technology Society. It was made in Unity (with great help from <a href="https://www.youtube.com/channel/UCYbK_tjZ2OrIZFBvU6CCMiA" target="_blank" rel="noopener noreffer">Brackeys</a>),
+and it was really the first reasonably sized game I&rsquo;ve made. The only other thing I&rsquo;ve ever made in Unity was <a href="/8" rel="">Ping</a>
+which, as the name suggests, was a pong clone.</p>
+<p>Type or Die is a top-down zombie shooter where it is not about how good
+your aim is, but how fast you can type. Waves of zombies come at you in all directions, with the direction
+they come from determining what key to press to shoot at them (e.g a zombie coming from the top right would be shot at
+using the &lsquo;p&rsquo; key).</p>
+<p></p>
+<p>The game jam has come in a time between some pretty busy weeks so I have surprised myself by actually getting a
+finished game out. I even contemplated not taking part at all after the first day because I felt I just wouldn&rsquo;t be able to do it.
+I started off (as optimistic idiots often do) full of goals with zero plans. Every step of the way I was decreasing scope
+to match my skill and enthusiasm, and its where those paths crossed that the game was made. I knew that the most complex
+thing I could make in the time with limited skill was a 2d, single-screen game. Guns are an easy way to make the mundane exciting,
+so the game became a shooter, and wanting to have the computer do all the work for you meant that it became a wave shooter for
+replayability.</p>
+<p>Every waking moment from Monday to Thursday was spent either watching <a href="https://www.imdb.com/title/tt1632701/?ref_=fn_al_tt_1" target="_blank" rel="noopener noreffer">Suits</a>
+or making this game, and the sheer intensity of such an endeavour in the middle of some pretty hectic University team projects
+made me realise one thing, I will probably not make another game for a very long time. If you have a gander at my <a href="/projects" rel="">projects</a> page
+you will see that all of them are game, so you may think that I really enjoy game-making. But in retrospect I think I only made games as
+an outlet for programming rather than an outlet for artistic ideas. Creation is a painful process, so you have to see the purpose in it.
+As much as I am proud of what I achieved with each of the games I made, I can&rsquo;t see them as providing a service.</p>
+<p>My perspective on games has completely changed in the past year, I place a huge value on the incredible narrative experiences offered by the likes of &lsquo;God of War&rsquo; or
+&lsquo;The Beginners Guide&rsquo;, these are games made by people with something to say and the skill to say it. There is certainly a place for arcade
+shooters, but if I don&rsquo;t feel passionate about the things I create then I will never see them as worth the time I put into them.</p>
+<p>Type or Die marks the end of the 4-year-long adventure that started this whole blog off, I suppose it is fitting that it should end with another
+top down arcade shooter. The game is pretty fun, the zombie death animations are my favourite part (also an original theme made by my musically inept hand).</p>
+<p>More projects lie on the horizon, and the times they are a changin'.</p>
+]]></description>
+</item><item>
+    <title>Inspection &amp; Dissection: This Site!</title>
+    <link>https://codeluke.github.io/inspection-and-dissection-this-site/</link>
+    <pubDate>Wed, 03 Feb 2021 16:39:25 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://codeluke.github.io/inspection-and-dissection-this-site/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/static/postimages/12/index.png" referrerpolicy="no-referrer">
+            </div><p>Look at me with a fancy website. We&rsquo;re about to get meta as we discuss how this site you&rsquo;re exploring right now came to be.</p>
+<h1 id="why-have-a-website">Why have a website?</h1>
+<p>I want something to point to when someone asks &lsquo;so what have you done?&rsquo;. I also need it for when I ask myself the same thing. Sometimes I wonder how much I have actually done in my spare time, and a site like this helps me to remember that I haven&rsquo;t wasted <em>all</em> of my spare time on Minecraft.</p>
+<h1 id="why-make-your-own-website">Why make your own website?</h1>
+<p>Here in Computer Science land: men are real men, women are real women, and small furry creatures from Alpha Centauri are real small furry creatures from Alpha Centauri; thanks to these huge revelations in the field of existentialism we take it upon ourselves to walk the road already taken.</p>
+<p>The real reason is I ought to have side-projects, more than I used to. I have more time, not just because of COVID but also because Computer Science is now the only academic subject I have to pay attention to, whereas most of my time in Sixth Form was spent on Maths and Further Maths. It made reasonable sense for the first project to be a platform for my other projects and this is that platform.</p>
+<h1 id="where-did-you-start">Where did you start?</h1>
+<p>I knew I wanted to make a website with a Flask back end for 2 reasons:</p>
+<ol>
+<li>
+<p>I wanted a back-end that could enable things like logging in and writing blog posts all within the site.</p>
+</li>
+<li>
+<p>I vehemently hate JavaScript and would prefer to do as much with python as possible. In fact this whole site doesn&rsquo;t have any JavaScript. You can inspect element and see that everything front end is done through CSS and HTML; this is certain to change but I will hold out for as long as I can.</p>
+</li>
+</ol>
+<p>For the uninitiated, websites have 2 parts: A front end and a back end. In a simple form, the front end is everything you see (HTML, CSS, JS) and the backend is everything you don&rsquo;t (Databases, Form requests, etc). Flask is a python framework that allows the said language to be used to serve all your requests.</p>
+<p>I had used Flask in the past whilst following the <a href="https://cs50.harvard.edu/x/2021/" target="_blank" rel="noopener noreffer">Harvard CS50x</a> course back in 2019 to make a fake stocks app (💎👐). This time round, to re-familiarise myself I followed <a href="https://flask.palletsprojects.com/en/1.1.x/tutorial/" target="_blank" rel="noopener noreffer">this excellent tutorial</a>.</p>
+<p>After you are let loose on your own (especially in web dev) I found you have to have goals and a purpose to what you are doing otherwise it&rsquo;ll never happened. I persevered through the trial-and-error process that is CSS</p>
+<p>I used a couple of sites for reference when I was making the design for the sight. These were the sights of: my new friend <a href="https://gwood.dev" target="_blank" rel="noopener noreffer">George Wood</a>, the blog of <a href="https://www.caseyliss.com/" target="_blank" rel="noopener noreffer">Casey Liss</a>, the blog of <a href="https://marco.org" target="_blank" rel="noopener noreffer">Marco Arment</a>, and <a href="https://hypercritical.co" target="_blank" rel="noopener noreffer">Hypercritical</a> (No prizes for guessing which podcast I listen to).</p>
+<h1 id="what-extra-things-have-you-done">What extra things have you done?</h1>
+<p>I&rsquo;m honoured at your presumption that I go above and beyond in the call of duty. The main thing I have done is make all my posts in markdown. Yes, all my posts are entirely written in markdown which makes me able to write nicely structured documents quickly. The raw text of the markdown is stored as a regular text field in the sqlite database but at the stage when the backend grabs the field from the database, jinja parses it as html using the python module <a href="https://mistune.readthedocs.io/en/latest/intro.html" target="_blank" rel="noopener noreffer">mistune</a>. To spice the formatting up even further, since I will be probably be using code snippets, I added the syntax highlighter <a href="https://pygments.org/" target="_blank" rel="noopener noreffer">pygments</a>. In fact here is the code for the highlight renderer being rendered in it:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">mistune</span>
+<span class="kn">from</span> <span class="nn">pygments</span> <span class="kn">import</span> <span class="n">highlight</span>
+<span class="kn">from</span> <span class="nn">pygments.lexers</span> <span class="kn">import</span> <span class="n">get_lexer_by_name</span>
+<span class="kn">from</span> <span class="nn">pygments.formatters</span> <span class="kn">import</span> <span class="n">html</span>
+
+
+<span class="k">class</span> <span class="nc">HighlightRenderer</span><span class="p">(</span><span class="n">mistune</span><span class="o">.</span><span class="n">Renderer</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">block_code</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">lang</span><span class="p">:</span>
+            <span class="n">lexer</span> <span class="o">=</span> <span class="n">get_lexer_by_name</span><span class="p">(</span><span class="n">lang</span><span class="p">,</span> <span class="n">stripall</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+            <span class="n">formatter</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">HtmlFormatter</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;monokai&#39;</span><span class="p">,</span> <span class="n">noclasses</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">highlight</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">lexer</span><span class="p">,</span> <span class="n">formatter</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s1">&#39;&lt;pre&gt;&lt;code&gt;&#39;</span> <span class="o">+</span> <span class="n">mistune</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">code</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&lt;/code&gt;&lt;/pre&gt;&#39;</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>It goes without saying that this website will continue to be updated as I change my mind on a few things and wish to add more functionality. On my list of todos are:</p>
+<ul>
+<li>A switch between light mode and dark mode</li>
+<li>A way for people to follow the blog (maybe through RSS)</li>
+<li>A way to better list out blog posts (currently all are listed on one page which will probably become cumbersome when they grow in number)</li>
+</ul>
+<p>In the meantime I hope you come back and see if I can offer you any informative content.</p>
+]]></description>
+</item><item>
+    <title>Inspection &amp; Dissection: Dice-Jack</title>
+    <link>https://codeluke.github.io/inspection-and-dissection-dice-jack/</link>
+    <pubDate>Tue, 24 Sep 2019 21:06:18 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://codeluke.github.io/inspection-and-dissection-dice-jack/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/static/postimages/10/dicejack1.png" referrerpolicy="no-referrer">
+            </div><p>As part of a course we had to make a game in 2 days that involved random dice and be made as a Windows forms application with Visual Basic. So we had to make a game in something that was the furthest you could get from a game engine with a language I had never used before. But hey, <a href="https://en.wikipedia.org/wiki/Rogue_%28video_game%29" target="_blank" rel="noopener noreffer">Rogue</a> was made in 1980 and the graphics had to be ASCII so it could be worse.</p>
+<p>The rest of the class generally stuck to the brief with 3 dice that you rolled and you got points for each dot.</p>
+<p></p>
+<p>As you can see, its rather simple. Theres 4 picture boxes, 4 labels, 2 buttons and a listbox. Dice are rolled, the dots are added up and the score is added to the listbox. After 5 rolls the game ends and the player is given their total score. But to know how I added further features we need to look at how this prototype was made.</p>
+<h1 id="behind-the-prototype">Behind the prototype</h1>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-vbnet" data-lang="vbnet">
+<span class="k">Dim</span> <span class="n">Die1</span><span class="p">,</span> <span class="n">Die2</span><span class="p">,</span> <span class="n">Die3</span> <span class="ow">As</span> <span class="kt">Integer</span>
+<span class="k">Dim</span> <span class="n">DicePoints</span> <span class="ow">As</span> <span class="kt">Integer</span>
+<span class="k">Dim</span> <span class="n">random</span> <span class="ow">As</span> <span class="n">Random</span>
+<span class="k">Dim</span> <span class="n">RollCount</span> <span class="ow">As</span> <span class="kt">Integer</span> <span class="o">=</span> <span class="n">0</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>So we have our variables declared in the convoluted VB way. Die1, Die2, and Die3 and the scores for the corresponding dice. DicePoints is the total of those 3 scores and rollcount keeps track of how many times the dice were rolled. Random is just an object we use to generate random numbers</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="k">Private</span> <span class="k">Sub</span> <span class="nf">tmrTimer_Tick</span><span class="p">(</span><span class="n">sender</span> <span class="ow">As</span> <span class="kt">Object</span><span class="p">,</span> <span class="n">e</span> <span class="ow">As</span> <span class="n">EventArgs</span><span class="p">)</span> <span class="k">Handles</span> <span class="n">tmrTimer</span><span class="p">.</span><span class="n">Tick</span>
+        <span class="c">&#39;Increments the load bar every tick
+</span><span class="c"></span>        <span class="n">random</span> <span class="o">=</span> <span class="k">New</span> <span class="n">Random</span>
+        <span class="n">prbLoad</span><span class="p">.</span><span class="n">Increment</span><span class="p">(</span><span class="n">4</span><span class="p">)</span>
+        <span class="k">If</span> <span class="n">prbLoad</span><span class="p">.</span><span class="n">Value</span> <span class="o">=</span> <span class="n">100</span> <span class="k">Then</span>
+        <span class="p">...</span>
+        <span class="k">Else</span>
+            <span class="c">&#39;Sets dice to random number when the timer ticks before the load is full
+</span><span class="c"></span>            <span class="n">Die1</span> <span class="o">=</span> <span class="n">random</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="n">1</span><span class="p">,</span> <span class="n">7</span><span class="p">)</span>
+            <span class="n">Die2</span> <span class="o">=</span> <span class="n">random</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="n">1</span><span class="p">,</span> <span class="n">7</span><span class="p">)</span>
+            <span class="n">Die3</span> <span class="o">=</span> <span class="n">random</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="n">1</span><span class="p">,</span> <span class="n">7</span><span class="p">)</span>
+ 
+            <span class="n">MatchImage</span><span class="p">(</span><span class="n">Die1</span><span class="p">,</span> <span class="n">pbxDie1</span><span class="p">)</span>
+            <span class="n">MatchImage</span><span class="p">(</span><span class="n">Die2</span><span class="p">,</span> <span class="n">pbxDie2</span><span class="p">)</span>
+            <span class="n">MatchImage</span><span class="p">(</span><span class="n">Die3</span><span class="p">,</span> <span class="n">pbxDie3</span><span class="p">)</span>
+ 
+        <span class="k">End</span> <span class="k">If</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>On the board is a timer (inventfully called tmrTimer), it tick every 0.1s. Each tick it adds a bit onto the load bar at the bottom and randomizes the images on the dice. MatchImage is my own subroutine but all it does is take an integer and applies the correct face for it to whichever picture box I pass it.</p>
+<p>Once the bar gets to 100, the fun begins.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="k">If</span> <span class="n">prbLoad</span><span class="p">.</span><span class="n">Value</span> <span class="o">=</span> <span class="n">100</span> <span class="k">Then</span>
+            <span class="c">&#39;Adds the necessary points on the random dice when the load bar 
+</span><span class="c"></span>            <span class="c">&#39;reaches 100
+</span><span class="c"></span>            <span class="n">tmrTimer</span><span class="p">.</span><span class="n">Stop</span><span class="p">()</span>
+            <span class="n">prbLoad</span><span class="p">.</span><span class="n">Value</span> <span class="o">=</span> <span class="n">0</span>
+            <span class="n">RollCount</span> <span class="o">+=</span> <span class="n">1</span>
+            <span class="n">DicePoints</span> <span class="o">=</span> <span class="n">Die1</span> <span class="o">+</span> <span class="n">Die2</span> <span class="o">+</span> <span class="n">Die3</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>We stop the timer ticking, we empty the load bar and we increment our roll counter before adding up all the spots on the dice, pretty simple.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="c">&#39;Adds Score to list
+</span><span class="c"></span><span class="n">lstScore</span><span class="p">.</span><span class="n">Items</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&#34;Roll &#34;</span> <span class="o">&amp;</span> <span class="n">RollCount</span> <span class="o">&amp;</span> <span class="s">&#34;: &#34;</span> <span class="o">&amp;</span> <span class="n">DicePoints</span><span class="p">)</span>
+<span class="n">GameScore</span> <span class="o">+=</span> <span class="n">DicePoints</span>
+<span class="n">DicePoints</span> <span class="o">=</span> <span class="n">0</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Almost done, we add our points to the listbox with some formatting. Add the points to the total score for the game and then set it back to 0.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="k">If</span> <span class="n">RollCount</span> <span class="o">&gt;=</span> <span class="n">5</span> <span class="k">Then</span>
+    <span class="n">MsgBox</span><span class="p">(</span><span class="s">&#34;Your game score was &#34;</span> <span class="o">&amp;</span> <span class="n">GameScore</span><span class="p">,,</span> <span class="s">&#34;Game Over&#34;</span><span class="p">)</span>
+    <span class="n">tmrTimer</span><span class="p">.</span><span class="n">Stop</span><span class="p">()</span>
+    <span class="n">btnStart</span><span class="p">.</span><span class="n">Enabled</span> <span class="o">=</span> <span class="k">False</span>
+    <span class="n">btnReset</span><span class="p">.</span><span class="n">Enabled</span> <span class="o">=</span> <span class="k">True</span>
+ 
+<span class="k">End</span> <span class="k">If</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Then we check whether they have reached the magic 5 rolls, if so we tell them their score and let them reset the game</p>
+<p>There is also some initialisation code that assigns images and there are event handlers that make the buttons work but this is the main logic. If you would like to see how that stuff works, you can find it at the <a href="https://github.com/CodeLuke/Dice-Alpha" target="_blank" rel="noopener noreffer">github repo</a></p>
+<h1 id="the-evolution">The Evolution</h1>
+<p>The following won’t include too many code snippets since it is slightly more extensive (the rushed deadline also means it resembles a tin of Heinz spaghetti in a tumble dryer but we’ll keep that between us)</p>
+<p></p>
+<p>Lets break this down.</p>
+<p>First we have a background that was shamelessly made in powerpoint.</p>
+<p></p>
+<p>The rules, scores, and title are all labels. The bar on the right is made up of the same button and listbox items as before but with its properties edited to change colour, font and border style.</p>
+<p><strong>The Rules have been changed to the following:</strong></p>
+<ul>
+<li>The goal is to get as close to 21 points without going over</li>
+<li>There is a Player and a Dealer</li>
+<li>Each contestant has 2 dice</li>
+<li>The player goes first</li>
+<li>Each dice spot is worth 2 points</li>
+<li>If either the player or dealer goes over 21, they lose the game</li>
+<li>After the first roll, if the player has not gone bust, they can choose to ‘stand’ or ‘hit’</li>
+<li>If they ‘hit’, the dice are rolled again and the player can choose to add the points of either die or the total of both dice</li>
+<li>The player must add a score after hitting, even if it means they will go ‘bust’</li>
+<li>In the event of a tie, the game goes to the dealer</li>
+</ul>
+<p>The rules are based on those by <a href="http://www.chessandpoker.com/dice_blackjack.html" target="_blank" rel="noopener noreffer">James Yates</a></p>
+<p>Instead of a big chunk of code I’m going to show you the process of a turn through our good old friend the flow chart. They can be intimidating but I’ve tried to make it in a way that is easy to follow and you should be ale to get a grasp of what the code is doing behind the scenes.</p>
+<p></p>
+<p>There you go, who needs a hundred lines of bolognese when you can have pastel shapes?</p>
+<p>Those who played the game may also notice this is the first time I’ve included a computer-controlled opponent, ‘The Dealer’. The dealer is like the player but has the advantages of being able to go second and win in the result of a draw. The dealer’s choice code is as follows:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="k">If</span> <span class="n">DealerCanChoose1</span> <span class="ow">And</span> <span class="k">Not</span> <span class="p">(</span><span class="n">DealerCanChoose2</span> <span class="ow">Or</span> <span class="n">DealerCanChooseBoth</span><span class="p">)</span> <span class="k">Then</span>
+    <span class="n">DealerScore</span> <span class="o">+=</span> <span class="n">Die1</span> <span class="o">*</span> <span class="n">2</span>
+ 
+<span class="k">ElseIf</span> <span class="n">DealerCanChoose2</span> <span class="ow">And</span> <span class="k">Not</span> <span class="p">(</span><span class="n">DealerCanChoose1</span> <span class="ow">Or</span> <span class="n">DealerCanChooseBoth</span><span class="p">)</span> <span class="k">Then</span>
+    <span class="n">DealerScore</span> <span class="o">+=</span> <span class="n">Die2</span> <span class="o">*</span> <span class="n">2</span>
+ 
+<span class="k">ElseIf</span> <span class="n">DealerCanChooseBoth</span> <span class="k">Then</span>
+    <span class="n">DealerScore</span> <span class="o">+=</span> <span class="p">(</span><span class="n">Die1</span> <span class="o">+</span> <span class="n">Die2</span><span class="p">)</span> <span class="o">*</span> <span class="n">2</span>
+ 
+<span class="k">ElseIf</span> <span class="n">DealerCanChoose1</span> <span class="ow">And</span> <span class="n">DealerCanChoose2</span> <span class="k">Then</span>
+    <span class="k">If</span> <span class="n">Die1</span> <span class="o">&gt;</span> <span class="n">Die2</span> <span class="k">Then</span>
+        <span class="n">DealerScore</span> <span class="o">+=</span> <span class="n">Die1</span> <span class="o">*</span> <span class="n">2</span>
+    <span class="k">Else</span>
+        <span class="n">DealerScore</span> <span class="o">+=</span> <span class="n">Die2</span> <span class="o">*</span> <span class="n">2</span>
+    <span class="k">End</span> <span class="k">If</span>
+<span class="k">End</span> <span class="k">If</span>
+ 
+<span class="k">If</span> <span class="k">Not</span> <span class="p">(</span><span class="n">DealerCanChoose1</span> <span class="ow">Or</span> <span class="n">DealerCanChoose2</span> <span class="ow">Or</span> <span class="n">DealerCanChooseBoth</span><span class="p">)</span> <span class="k">Then</span>
+    <span class="c">&#39;Dealer goes bust if no options are available
+</span><span class="c"></span>    <span class="k">If</span> <span class="n">Die1</span> <span class="o">&lt;</span> <span class="n">Die2</span> <span class="k">Then</span>
+        <span class="n">DealerScore</span> <span class="o">+=</span> <span class="n">Die1</span> <span class="o">*</span> <span class="n">2</span>
+    <span class="k">Else</span>
+        <span class="n">DealerScore</span> <span class="o">+=</span> <span class="n">Die2</span> <span class="o">*</span> <span class="n">2</span>
+    <span class="k">End</span> <span class="k">If</span>
+    <span class="n">DealerStand</span><span class="p">()</span>
+    <span class="n">tmrDealer</span><span class="p">.</span><span class="n">Stop</span><span class="p">()</span>
+ 
+<span class="k">ElseIf</span> <span class="n">DealerScore</span> <span class="o">&gt;</span> <span class="n">GameScore</span> <span class="k">Then</span>
+    <span class="c">&#39;Dealer stands if their score is more than the player&#39;s
+</span><span class="c"></span>    <span class="n">DealerStand</span><span class="p">()</span>
+<span class="k">Else</span>
+    <span class="n">DealerRoll</span><span class="p">()</span>
+<span class="k">End</span> <span class="k">If</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Before this code I run checks that see which options are available after a dealer rolls (these are the DealerCanChoose variables). Here there is a series of conditionals that look at the options and picks the best one for the dealer.</p>
+<p>If there is only one option available, then the dealer will pick that one. If there is more than one option available then the dealer will pick whichever will get them the highest score that turn. If there are no options available then the dealer is bust and they will stand. The dealer will also stand if they have a score higher than that of the player. The dealer will continue to roll as long as they are lower than the player and their current score is under 17.</p>
+<p>And thats the game! The quickest project I’ve ever done and although its rough around the edges the gameplay is solid and I got to grips with windows form’s implementation of an event-driven program. You can find the full source code <a href="https://github.com/CodeLuke/Dice-Jack" target="_blank" rel="noopener noreffer">here</a></p>
+]]></description>
+</item><item>
+    <title>Inspection &amp; Dissection: Ping! – My First Game in Unity</title>
+    <link>https://codeluke.github.io/inspection-and-dissection-ping/</link>
+    <pubDate>Sat, 23 Jun 2018 17:52:33 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://codeluke.github.io/inspection-and-dissection-ping/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/static/postimages/3/unity.jpg" referrerpolicy="no-referrer">
+            </div><blockquote>
+<p>“Human beings, who are almost unique in having the ability to learn from the &gt; experience of others, are also remarkable for their apparent disinclination to
+do so.”</p>
+<p>Douglas Adams</p>
+</blockquote>
+<p>Available at my <a href="/projects" rel="">project</a> page</p>
+<p><strong>Why Such a Simple Game?</strong></p>
+<p>Because I wouldn’t have made a game otherwise. You need to affirm any skills in the most basic of games. Even if it kills you making a game so boring, at least you’ve made a game and proved that you can do it. It is an important lesson to learn that you will lose interest in a project and you will have to force yourself to carry on through the mid-development slog. To get around this you have to break a project into stages and set small goals. For instance, while making pong you may set yourself the goal of making a paddle that moves with keyboard inputs and can collide with things, next you might set the goal of making a ball that can bounce off of walls, next a working scoring system and so on. Another important thing to remember is you are almost definitely doing this as a hobby so don’t spend hours forcing yourself to do something you don’t want to do. Sometimes you do have to face it but it is almost always better leaving it and waiting until the next day to finish it when you have a clear head and can be bothered to continue. Burnout can often strike.</p>
+<p><strong>Where did you start?</strong></p>
+<p>First I only had the idea of making a game in unity, that’s it, so I watched a series by the excellent YouTube channel <a href="https://www.youtube.com/watch?v=j48LtUkZRjU&amp;list=PLPV2KyIb3jR53Jce9hP7G5xC4O9AgnOuL" target="_blank" rel="noopener noreffer">Brackeys</a> that put me on the first step to knowing what I would have to do to make a game. I then decided on pong due to the reasons answered in the previous question. If I got stuck, I consulted the Incredible <a href="https://docs.unity3d.com/Manual/index.html" target="_blank" rel="noopener noreffer">Unity Documentation</a>,  Google or follow a guide by <a href="https://www.awesomeincu.com/tutorials/unity-pong/" target="_blank" rel="noopener noreffer">Awesome Inc</a>. Whilst the guide was necessary for some parts, specifically the ball bouncing, I made sure I did as much as I could with only the Unity documentation and Google searches as I often found on previous years of false starts I would just copy code and not learn anything whereas figuring out these things yourself means you are much more engaged and likely to remember it.</p>
+<p><strong>How do you think the game turned out?</strong></p>
+<p>As my first serious game, I am pleased. The game could be made more fun with more sporadic ball movements and a single player A.I. The paddle also glitches out slightly if you keep hitting into walls but it was meant to be nothing more than proving to myself that I can make a game in Unity. It has taught me the necessary skills and I have learned from the experience enough to move onto a slightly bigger project (not much bigger). Game development is a game in itself, you start off with a tutorial then make your way up increasingly difficult stages,  you wouldn’t jump into a level 50 area when your only level 5 and you wouldn’t go straight to the glowing sea in fallout 4 when all you’ve got is a is vault jumpsuit and a baseball bat.</p>
+]]></description>
+</item></channel>
+</rss>

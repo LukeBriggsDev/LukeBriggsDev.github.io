@@ -1,0 +1,148 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Personal History - Category - Luke Briggs</title>
+        <link>https://codeluke.github.io/categories/personal-history/</link>
+        <description>Personal History - Category - Luke Briggs</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@lukebriggs.dev (Luke Briggs)</managingEditor>
+            <webMaster>contact@lukebriggs.dev (Luke Briggs)</webMaster><lastBuildDate>Sat, 01 May 2021 21:25:15 &#43;0000</lastBuildDate><atom:link href="https://codeluke.github.io/categories/personal-history/" rel="self" type="application/rss+xml" /><item>
+    <title>Goodbye Windows, I Hardly GNU ya</title>
+    <link>https://codeluke.github.io/goodbye-windows-i-hardly-gnu-ya/</link>
+    <pubDate>Sat, 01 May 2021 21:25:15 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://codeluke.github.io/goodbye-windows-i-hardly-gnu-ya/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/static/postimages/13/desktop.png" referrerpolicy="no-referrer">
+            </div><p><strong>Preface: I should state that this is not an evangelical sermon, Linux isn&rsquo;t for everyone but it is for me. This is merely a detailing of why I have chosen to switch Operating System</strong></p>
+<p>I have, over the course of the past year, consumed pretty much every interpretation and adaptation of Sherlock Holmes out there, from the original works to tangentially linked shows such as the excellent House MD; one thing I have come to understand is that you can only deduce correctly if your initial assumptions are correct. Logic is useless if its underlying axioms are unstable.</p>
+<p>So we turn to my current assumption when I use computers &ldquo;Everything must be done in Windows&rdquo;. I have used Windows all my life, all the software I need is on Windows, and all other operating systems are either anaemic in their UX and feature set or are incapable of running on my hardware. It just stands to reason, or does it?</p>
+<p>Lets look at that first point, &lsquo;I have used Windows all my life&rsquo;. That is not a very good reason, and the weakest of all. It is indeed true but it shouldn&rsquo;t have any bearing on choice of Operating System, it is an unquestioned ideology rather than any valid argument.</p>
+<p>The second axiom, &lsquo;all the software I need is on windows&rsquo;, was probably true for quite a long time. For instance, if I wanted to play any windows games I would have been bang out of luck in days gone by, but tools such as <a href="https://lutris.net/" target="_blank" rel="noopener noreffer">Lutris</a> and the strides made in <a href="https://www.winehq.org/" target="_blank" rel="noopener noreffer">WINE</a> have made that side of things perfectly capable for my needs. Needless to say Mac is straying further away at this point with their move to ARM so the assumption still holds true for them. Outside of gaming, all the apps I <em>need</em> are actually available on Linux. My academic work in Computer Science lends itself perfectly to Linux. All the IDEs I use (the JetBrains suite) are available and the terminal is actually more conducive to my studies compared to the limited Unix-like aliases in the Windows Powershell. The only notable exception on Linux is the lack of the Microsoft Office Suite, but I was quite staggered when I realised that I don&rsquo;t actually have any need for it. My long form writing is now done in LaTeX (<a href="https://www.lukebriggs.dev/17" target="_blank" rel="noopener noreffer">see my reasons for that here</a>), and I don&rsquo;t use Excel or PowerPoint. Should the need ever arise, there is the native <a href="https://www.libreoffice.org/" target="_blank" rel="noopener noreffer">LibreOffice</a> suite, and the cross platform <a href="https://docs.google.com" target="_blank" rel="noopener noreffer">Google Docs</a>. And if compatibility is a necessity then Microsoft also now offers a web app version of the suite.</p>
+<p>The second point links to the third, that other operating systems have terrible UX. The king of UX is obviously MacOS, but that obviously doesn&rsquo;t support my hardware or the ability to run the occasional windows game. I had always perceived Linux as having terrible UX because I always just viewed through the lens of someone who has used Windows their whole life. I always just assumed (once again question your assumptions) that how a Linux distro shipped was how it was. I thought I would have to be stuck with the bland, Ubuntu default GNOME desktop and icons with their washed out colours and pre-iOS 6 style realism. I was completely wrong about this and now we are going to look at where Linux, my new Operating System, is actually better for my needs.</p>
+<h1 id="the-linux-way-of-thinking">The Linux way of thinking</h1>
+<p>Linux is about what Computers were built to do, and it is about the things that us Computer people love. GNU/Linux is a whole software ecosystem that is far greater than what Windows could ever hope for and only rivaled by what Apple has cultivated on its platforms. Unlike Apple, however, GNU/Linux also offers the user complete freedom in every aspect, and there are levels to this. Yes there are demigods that are compiling their own kernels but because there is such a community driven approach, other people have performed every possible layer of abstraction. Over the decades other people have been putting rungs at all levels of the ladder for other people to step on. Because Linux is built for the community by the community, it doesn&rsquo;t fight me.</p>
+<p>If I wanted to change the interface on windows, I would need to install several third party apps, each using their own design language and frameworks all while eating up huge amounts of RAM as they do so. In Linux its as easy as choosing an overall desktop environment you like and customisation is welcomed with open arms as a basic human right. Surprisingly, Linux also has an incredibly consistent design language because of how its built. In Windows you have all sorts of frameworks from many decades that all conflict. You&rsquo;ll go from a UWP app with its tile based design ideas, and then open a WPF app that has a reasonable flat aesthetic and some okay ideas, before finally finding one of your applications uses WinForms with all of its tabs and ugly green loading bars. Almost everything on Linux using either the Gtk or Qt GUI libraries, and because of this everything looks consistent. Most Desktop Environments also let you either make or download your own themes for these graphics libraries. As a result you can make all the colours, buttons and menus in the ENTIRE Linux ecosystem look how you want.</p>
+<p>The Linux way is for people who care about these things. If you care about things like the same apps using the same frameworks, or the fact that you can use package managers to allow apps to auto-update and avoid redundant dependencies, or how you have a whole community of people who&rsquo;s only incentive is to make good software.</p>
+<h1 id="technical-details">Technical Details</h1>
+<p><strong>Distribution</strong>: <a href="https://manjaro.org/" target="_blank" rel="noopener noreffer">Manjaro</a></p>
+<p><strong>Desktop Environment</strong>: <a href="https://kde.org/plasma-desktop/" target="_blank" rel="noopener noreffer">KDE Plasma</a></p>
+<p><strong>Theme</strong>: Breeze Dark</p>
+<p><strong>Icon Set</strong>: <a href="https://github.com/yeyushengfan258/Reversal-icon-theme" target="_blank" rel="noopener noreffer">Reversal</a></p>
+<p><strong>Background</strong>: (<a href="https://i.imgur.com/DUXXqM2.jpg" target="_blank" rel="noopener noreffer">Imgur</a>) (<a href="/static/postimages/13/themagichour.png" rel="">Mirror</a>)</p>
+<h2 id="why-manjaro">Why Manjaro?</h2>
+<p>I chose Manjaro, at first by design and then retroactively I realised that I would have had to go with something like it anyway. I wanted a distribution that didn&rsquo;t come with the usual GNOME look, something that either looked excellent at first glance or had extensive customisation capabilities, and something that was pretty light on what it came with. I ended up narrowing it down to <a href="https://manjaro.org/" target="_blank" rel="noopener noreffer">Manjaro</a> and <a href="https://elementary.io/" target="_blank" rel="noopener noreffer">Elementary OS</a>. In the end I chose Manjaro between the two because Elementary seemed slightly far behind in its update cycle compared to the Ubuntu it is based off and its never fun to start off with something knowing there is a major version incredibly close. It turned out in the end that Manjaro was really my best choice between the two anyway thanks to its easy switching between Kernels. I currently need to be running the latest experimental kernel for my touch pad to work.</p>
+]]></description>
+</item><item>
+    <title>Probably</title>
+    <link>https://codeluke.github.io/probably/</link>
+    <pubDate>Sat, 17 Aug 2019 20:49:25 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://codeluke.github.io/probably/</guid>
+    <description><![CDATA[<p>We are currently in a scholarly purgatory. The time between July and
+September where you are attached to no institution, have no motivation and
+spend months fretting over how your past self will affect your future self
+(neither of which do anything for your current self)</p>
+<p>At 11 am I received my AS results via e-mail (how modern) and received AAB
++ Distinction. I am happy with this. It’s literally the second-best results I
+could have achieved at this point, but there is still an unsettling feeling around
+me. Something is gnawing away at me that prevents me from enjoying this now.</p>
+<p>During the summer months there isn’t a clear track to follow. No daily
+lessons, no scheduled assignments. Any events just seem to be smeared across
+what could possibly be discerned to be a date on close inspection. Nothing
+tangible appears to be happening in terms of progress for long term goals and
+as such there is no certainty.</p>
+<p>The longer the time between terms, the more in flux my future appears to be.
+I could always fall back on the ‘everything is fine’ mantra but then it feels
+as if I’m not striving towards what I want, or that I’m setting myself up for
+future regret about not putting in the effort where it needed to be. My mind
+runs through permutations of events, “someone probably got 3 As, they’re
+the ones who are going to receive your university offer” I feel myself
+fretting. I shouldn’t fret, but I do. I know people who failed they’re exams
+and they have to repeat a year of their life, they would kill to be in my
+situation. There are also people who seem like demigods to me who always get
+perfect scores along with having elaborate and incredible side projects. To
+some my worries will seem preposterous, to others I will seem I don’t know how
+lucky I am. Perhaps I’m both these things and perhaps I’m neither.</p>
+<p>But I’m not in their situation, I’m in my situation and can only act within
+the context of it. I want to achieve the best possible results I can, and I
+didn’t. I wasn’t far off; in fact, I was damn close but it doesn’t matter the distance.
+Out of the 216 combinations, I have satisfied 215, and the person inside me
+that wanted that last one remains dissatisfied.</p>
+<p>Will 1 mark affect whether I get an offer from my preferred university?
+Probably not. <em>Probably</em> not. Probably is the most terrifying
+word in the English language. There are no certainties in life, everything can
+be prefixed with the word probably. Yet we feel the need to stick it
+before only a few things, I presume this is to deliberately remind us of the
+very large improbability of the task we about to undertake and then
+what is the point of even specifying a chance in the first place? Perhaps a
+wandering mind is a good sign. I’m not struggling to finance my education
+through a side job or agonizing over planning to resist a year, I have a
+supportive family and am grateful to my past self for not screwing everything
+up terrible.</p>
+<p>So. Is everything fine?</p>
+<p>Probably.</p>
+]]></description>
+</item><item>
+    <title>Where I Began</title>
+    <link>https://codeluke.github.io/where-i-began/</link>
+    <pubDate>Wed, 27 Jun 2018 18:40:06 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://codeluke.github.io/where-i-began/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/static/postimages/4/code.jpg" referrerpolicy="no-referrer">
+            </div><blockquote>
+<p>“It can be very dangerous to see things from somebody else’s point of view
+without the proper training.”</p>
+<p>Douglas Adams</p>
+</blockquote>
+<p>As I have said before, my first outreach into programming began with  a GCSE Computer Science course which was cancelled after 7 months for various reasons. Those 7 months were possibly the best way to get a strong foundation of how programming languages work and the general structure in which they follow. The lessons consisted of us being taught a feature (how to do ‘if’ statements, how to call functions, how to cycle through array, etc) and then being given a series of tasks that we had to create a program to complete. The first and simplest of these tasks was Bob’s Change:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="s2">&#34;&#34;&#34;Problem:
+</span><span class="s2">Bob would like to buy some sweets, which cost 50p.
+</span><span class="s2">Bob has some money but, unfortunately, Bob is only 3
+</span><span class="s2">and has no concept of money yet. Bob’s solution to this
+</span><span class="s2">is to just hand over the whole of his change and hope the
+</span><span class="s2">shopkeeper will sort it out for him.
+</span><span class="s2">The function bobs_change takes in a number representing
+</span><span class="s2">how much money Bob has handed over (in pence). It should print
+</span><span class="s2">the amount of change owed if he has enough, or
+</span><span class="s2">“Sorry Bob, you don’t have enough” if he is short.&#34;&#34;&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>The program would then consist of if statements returning an answer after comparing the money Bob has to the price of a product. For those starting out programming, tests of these kind are a rewarding and fun way of practicing and reinforcing skills that you have learned. When learning a programming language I would strongly suggest using these sorts of tests after learning something new to ensure you both remember that skill better and to also give you a sense of progression as a new programming language can be hard to remember if it goes unused. The rest of the tasks we went through in that course can be downloaded <a href="https://github.com/CodeLuke/GCSE-Code-Tasks" target="_blank" rel="noopener noreffer">here</a>. And an entire assortment of more advanced tasks in many different languages can be found at <a href="https://www.codewars.com" target="_blank" rel="noopener noreffer">codewars.com</a>.</p>
+<p>Really learning a skill and then practicing it is all you need to further your knowledge of programming. Once you have a grasp of basic features, you can then start to make more advanced programs using numerous packages and modules that give you the tools to create graphics and deeper features.</p>
+<p>This was how I learned to program. It broke the stages up so I wasn’t daunted by the fact I only knew what for loops were and there was so much more in the language, I only focused on the task and I found with every task I got closer to an understanding where I could begin to realise what could be done and put me on good footing for future projects.</p>
+]]></description>
+</item><item>
+    <title>The First Line of Code</title>
+    <link>https://codeluke.github.io/the-first-line-of-code/</link>
+    <pubDate>Sat, 23 Jun 2018 16:42:40 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://codeluke.github.io/the-first-line-of-code/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/static/postimages/1/code.png" referrerpolicy="no-referrer">
+            </div><blockquote>
+<p>“The Guide says there is an art to flying”, said Ford, “or
+rather a knack. The knack lies in learning how to throw
+yourself at the ground and miss.”</p>
+<p>-Douglas Adams</p>
+</blockquote>
+<p>I always had a desire to look under the hood of the video games and software I spent so much time on growing up but I was greeted with a rainbow of semi-colons and syntax before immediately closing the lid of my laptop and retiring back to being merely an end-user.</p>
+<p>It took until a computer science course at age 14 in my school before I was finally able to understand just the basics of what I could do with a keyboard. The language was python and the atmosphere wasn’t me alone in a bedroom at a monitor scratching my head in fury, it was a class effort. None of us understood what was going on and it made it all the more accessible.</p>
+<p>In my current exploration of programming languages I see far too many people telling those learning to code of how you ‘must’ do this and I watch videos of monotonous commentators who half explain some concepts that fly over newcomers heads. I feel the steep learning curve that programming has is a mighty feat without an actual teacher or a series of quality YouTube videos that only come around once in a blue moon.</p>
+<p>This blog will be a documentation of my journey from having basic grasps of a few programming languages through a higher education computer science course and my video-game creating antics on the side. It will detail my learning experiences and may help anyone else wanting to learn what the pathway is like.</p>
+]]></description>
+</item></channel>
+</rss>

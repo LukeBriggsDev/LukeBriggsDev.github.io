@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Making a Mobile App – Chapter 5: Go Your Own Way - Luke Briggs</title><meta name="Description" content="Luke Briggs"><meta property="og:title" content="Making a Mobile App – Chapter 5: Go Your Own Way" />
+<meta property="og:description" content="“Real programmers set the universal constants at the start such that the &gt;universe evolves to contain the disk with the data they want .”
+xkcd 378
+ I wanted to add a gallery for users to be able to scroll through a variety of images so I did a quick google search about how I was going to go about it and I found react-native-image-view. In 6 lines of code and an array of Imgur links you can have a decent and working image gallery, job sorted!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://codeluke.github.io/making-a-mobile-app-chapter-5/" />
+<meta property="og:image" content="https://codeluke.github.io/lukelogowhitebgsmall.png"/>
+<meta property="article:published_time" content="2019-03-09T20:47:46+00:00" />
+<meta property="article:modified_time" content="2019-03-09T20:47:46+00:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://codeluke.github.io/lukelogowhitebgsmall.png"/>
+
+<meta name="twitter:title" content="Making a Mobile App – Chapter 5: Go Your Own Way"/>
+<meta name="twitter:description" content="“Real programmers set the universal constants at the start such that the &gt;universe evolves to contain the disk with the data they want .”
+xkcd 378
+ I wanted to add a gallery for users to be able to scroll through a variety of images so I did a quick google search about how I was going to go about it and I found react-native-image-view. In 6 lines of code and an array of Imgur links you can have a decent and working image gallery, job sorted!"/>
+<meta name="application-name" content="Luke Briggs">
+<meta name="apple-mobile-web-app-title" content="Luke Briggs"><meta name="theme-color" content="#4b4b4b"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://codeluke.github.io/making-a-mobile-app-chapter-5/" /><link rel="prev" href="https://codeluke.github.io/making-a-mobile-app-chapter-3/" /><link rel="next" href="https://codeluke.github.io/probably/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Making a Mobile App – Chapter 5: Go Your Own Way",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/codeluke.github.io\/making-a-mobile-app-chapter-5\/"
+        },"genre": "posts","wordcount":  467 ,
+        "url": "https:\/\/codeluke.github.io\/making-a-mobile-app-chapter-5\/","datePublished": "2019-03-09T20:47:46+00:00","dateModified": "2019-03-09T20:47:46+00:00","publisher": {
+            "@type": "Organization",
+            "name": "Luke Briggs","logo": "https:\/\/codeluke.github.io\/logo.png"},"author": {
+                "@type": "Person",
+                "name": "Luke Briggs"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Luke Briggs">Luke Briggs</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/projects/"> Projects </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Luke Briggs">Luke Briggs</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/projects/" title="">Projects</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Making a Mobile App – Chapter 5: Go Your Own Way</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Luke Briggs</a></span>&nbsp;<span class="post-category">included in <a href="/categories/software-development/"><i class="far fa-folder fa-fw"></i>Software Development</a>&nbsp;<a href="/categories/making-a-mobile-app/"><i class="far fa-folder fa-fw"></i>Making a Mobile App</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2019-03-09">2019-03-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;467 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/static/postimages/9/xkcd378.png"
+        data-srcset="/static/postimages/9/xkcd378.png, /static/postimages/9/xkcd378.png 1.5x, /static/postimages/9/xkcd378.png 2x"
+        data-sizes="auto"
+        alt="/static/postimages/9/xkcd378.png"
+        title="/static/postimages/9/xkcd378.png" /></div><div class="details toc" id="toc-static"  kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+            </div><div class="content" id="content"><blockquote>
+<p>“Real programmers set the universal constants at the start such that the &gt;universe evolves to contain the disk with the data they want .”</p>
+<p>xkcd 378</p>
+</blockquote>
+<p>I wanted to add a gallery for users to be able to scroll through a variety of images so I did a quick google search about how I was going to go about it and I found <a href="https://www.npmjs.com/package/react-native-image-view" target="_blank" rel="noopener noreffer">react-native-image-view</a>. In 6 lines of code and an array of Imgur links you can have a decent and working image gallery, job sorted! Right?</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/static/postimages/9/gallery.webp"
+        data-srcset="/static/postimages/9/gallery.webp, /static/postimages/9/gallery.webp 1.5x, /static/postimages/9/gallery.webp 2x"
+        data-sizes="auto"
+        alt="/static/postimages/9/gallery.webp"
+        title="gallery" /></p>
+<p>In truth, it unsettled me. Was this cheating? Should I have created my own gallery? This package was better than anything I could come up with and something I wasn’t prepared to spend time on but I still felt like a part of the app was no longer mine.</p>
+<p>These sorts of ideas are things I have seen keep cropping up across everything I have done. I see other people’s enemy movement packages in Unity and magic code on StackOverflow that does everything you need, but are these a step to far? Are you losing what it means to actuallly create something? I’ve had all these questions and I think I will always question myself about the balance between hard coding everything from scratch and using magic boxes that do the gruntwork for you, but for now I have decided it’s about scope. It is not within the scope of this project to make an image gallery, it is just a small feature in an app that is for doing something else. The amount of time it would take to create something like this is time that could be spent doing something else that is specific to this app and does require the time spent on it.</p>
+<p>The way I intend to go about my projects is to learn what I need out of it and the crucial elements of it. If I’m making a game in Unity I would feel uncomfortable using someone else’s movement package, movement is such a core aspect of a game’s feel that I think I should have control over its nuance. Equally, I am ok with using an image viewer package as it means I can spend more time on bigger features and I will write my own image viewer if this one is no longer fit for purpose. This is a pet project and so it is really only my own motivation that is going to get it finished. The more time I spend on a time consuming feature, the less likely it is that the project will get finished. What I want out of this app is to come out the other side of it with something that is complete and to achieve this I need to pick and choose my battles.</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2019-03-09</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/making-a-mobile-app-chapter-5/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://codeluke.github.io/making-a-mobile-app-chapter-5/" data-title="Making a Mobile App – Chapter 5: Go Your Own Way" data-via="_lukebriggs"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://codeluke.github.io/making-a-mobile-app-chapter-5/"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://codeluke.github.io/making-a-mobile-app-chapter-5/" data-title="Making a Mobile App – Chapter 5: Go Your Own Way" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://codeluke.github.io/making-a-mobile-app-chapter-5/" data-title="Making a Mobile App – Chapter 5: Go Your Own Way"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://codeluke.github.io/making-a-mobile-app-chapter-5/" data-title="Making a Mobile App – Chapter 5: Go Your Own Way" data-image="/static/postimages/9/xkcd378.png"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="https://codeluke.github.io/making-a-mobile-app-chapter-5/" data-title="Making a Mobile App – Chapter 5: Go Your Own Way" data-description=""><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://codeluke.github.io/making-a-mobile-app-chapter-5/" data-title="Making a Mobile App – Chapter 5: Go Your Own Way" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="https://codeluke.github.io/making-a-mobile-app-chapter-5/" data-title="Making a Mobile App – Chapter 5: Go Your Own Way"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/making-a-mobile-app-chapter-3/" class="prev" rel="prev" title="Making a Mobile App – Chapter 3: The Setup"><i class="fas fa-angle-left fa-fw"></i>Making a Mobile App – Chapter 3: The Setup</a>
+            <a href="/probably/" class="next" rel="next" title="Probably">Probably<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.80.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Luke Briggs</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
