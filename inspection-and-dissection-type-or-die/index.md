@@ -16,7 +16,7 @@ your aim is, but how fast you can type. Waves of zombies come at you in all dire
 they come from determining what key to press to shoot at them (e.g a zombie coming from the top right would be shot at
 using the 'p' key).
 
-![Type or Die game image](static/postimages/21/fight.png)
+![Type or Die game image](/static/postimages/21/fight.png)
 
 The game jam has come in a time between some pretty busy weeks so I have surprised myself by actually getting a
 finished game out. I even contemplated not taking part at all after the first day because I felt I just wouldn't be able to do it.
