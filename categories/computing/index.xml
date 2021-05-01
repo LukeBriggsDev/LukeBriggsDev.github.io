@@ -4,10 +4,19 @@
         <link>https://codeluke.github.io/categories/computing/</link>
         <description>Computing - Category - Luke Briggs</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@lukebriggs.dev (Luke Briggs)</managingEditor>
-            <webMaster>contact@lukebriggs.dev (Luke Briggs)</webMaster><lastBuildDate>Sat, 01 May 2021 21:25:15 &#43;0000</lastBuildDate><atom:link href="https://codeluke.github.io/categories/computing/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>contact@lukebriggs.dev (Luke Briggs)</webMaster><lastBuildDate>Thu, 18 Feb 2021 20:52:00 &#43;0000</lastBuildDate><atom:link href="https://codeluke.github.io/categories/computing/" rel="self" type="application/rss+xml" /><item>
+    <title>You Can Now Follow Me on RSS!</title>
+    <link>https://codeluke.github.io/you-can-now-follow-me-on-rss/</link>
+    <pubDate>Thu, 18 Feb 2021 20:52:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://codeluke.github.io/you-can-now-follow-me-on-rss/</guid>
+    <description><![CDATA[<p>I had a bit of time today and I wanted to do something so here we are.
+Thanks to the incredible <a href="https://feedgen.kiesow.be/" target="_blank" rel="noopener noreffer">FeedGen</a> python library, you can now point your RSS reader to <a href="/index.xml" rel="">here</a> and get updates on when I write a new post.</p>
+]]></description>
+</item><item>
     <title>Goodbye Windows, I Hardly GNU ya</title>
     <link>https://codeluke.github.io/goodbye-windows-i-hardly-gnu-ya/</link>
-    <pubDate>Sat, 01 May 2021 21:25:15 &#43;0000</pubDate>
+    <pubDate>Sun, 07 Feb 2021 21:12:30 &#43;0000</pubDate>
     <author>Author</author>
     <guid>https://codeluke.github.io/goodbye-windows-i-hardly-gnu-ya/</guid>
     <description><![CDATA[<div class="featured-image">
@@ -30,15 +39,6 @@
 <p><strong>Background</strong>: (<a href="https://i.imgur.com/DUXXqM2.jpg" target="_blank" rel="noopener noreffer">Imgur</a>) (<a href="/static/postimages/13/themagichour.png" rel="">Mirror</a>)</p>
 <h2 id="why-manjaro">Why Manjaro?</h2>
 <p>I chose Manjaro, at first by design and then retroactively I realised that I would have had to go with something like it anyway. I wanted a distribution that didn&rsquo;t come with the usual GNOME look, something that either looked excellent at first glance or had extensive customisation capabilities, and something that was pretty light on what it came with. I ended up narrowing it down to <a href="https://manjaro.org/" target="_blank" rel="noopener noreffer">Manjaro</a> and <a href="https://elementary.io/" target="_blank" rel="noopener noreffer">Elementary OS</a>. In the end I chose Manjaro between the two because Elementary seemed slightly far behind in its update cycle compared to the Ubuntu it is based off and its never fun to start off with something knowing there is a major version incredibly close. It turned out in the end that Manjaro was really my best choice between the two anyway thanks to its easy switching between Kernels. I currently need to be running the latest experimental kernel for my touch pad to work.</p>
-]]></description>
-</item><item>
-    <title>You Can Now Follow Me on RSS!</title>
-    <link>https://codeluke.github.io/you-can-now-follow-me-on-rss/</link>
-    <pubDate>Thu, 18 Feb 2021 20:52:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://codeluke.github.io/you-can-now-follow-me-on-rss/</guid>
-    <description><![CDATA[<p>I had a bit of time today and I wanted to do something so here we are.
-Thanks to the incredible <a href="https://feedgen.kiesow.be/" target="_blank" rel="noopener noreffer">FeedGen</a> python library, you can now point your RSS reader to <a href="/index.xml" rel="">here</a> and get updates on when I write a new post.</p>
 ]]></description>
 </item><item>
     <title>The Layperson’s Guide to LaTeX</title>
