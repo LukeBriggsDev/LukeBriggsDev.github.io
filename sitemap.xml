@@ -2,6 +2,7 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
+            <loc>https://www.lukebriggs.dev/about/</loc><lastmod>2021-05-03T22:34:46&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.lukebriggs.dev/categories/</loc><lastmod>2021-05-03T20:06:07&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.lukebriggs.dev/categories/computing/</loc><lastmod>2021-05-03T20:06:07&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://www.lukebriggs.dev/</loc><lastmod>2021-05-03T20:06:07&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
