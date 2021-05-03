@@ -4,9 +4,27 @@
         <link>https://codeluke.github.io/</link>
         <description>Luke Briggs</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@lukebriggs.dev (Luke Briggs)</managingEditor>
-            <webMaster>contact@lukebriggs.dev (Luke Briggs)</webMaster><lastBuildDate>Fri, 05 Mar 2021 12:11:40 &#43;0000</lastBuildDate>
+            <webMaster>contact@lukebriggs.dev (Luke Briggs)</webMaster><lastBuildDate>Mon, 03 May 2021 20:06:07 &#43;0100</lastBuildDate>
             <atom:link href="https://codeluke.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Where Hugo I Go</title>
+    <link>https://codeluke.github.io/where-hugo-i-go/</link>
+    <pubDate>Mon, 03 May 2021 20:06:07 &#43;0100</pubDate>
+    <author>Author</author>
+    <guid>https://codeluke.github.io/where-hugo-i-go/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/static/postimages/where-hugo-i-go/banner.png" referrerpolicy="no-referrer">
+            </div><p>As you are probably aware, I have redecorated. I said in a <a href="/inspection-and-dissection-this-site" rel="">previous post</a> that my reason for making my own site in the first place was as a central hub to point people to all the things that I do. Despite the fact that from the outside it looks like I haven&rsquo;t done a whole lot since, behind the scenes I have my biggest project yet in development (check out my <a href="https://github.com/lukebriggsdev" target="_blank" rel="noopener noreffer">GitHub</a> if you want a sneak preview of that). It was while working on my project that I realised that I should have a site that requires my to ssh into a VPS and pull a git repository every time I want to add a post.</p>
+<h2 id="technology">Technology</h2>
+<p>Behind the scenes, the site is hosted on GitHub Pages. The site is generated using a static site generator called <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer">Hugo</a> with a <em>slightly</em> tweaked version of the <a href="https://themes.gohugo.io/loveit/" target="_blank" rel="noopener noreffer">LoveIt</a>.</p>
+<p>With a static site I can remove server costs completely, have a better looking site, and make it easier to add new posts.</p>
+<p>Because each post is now a document rather than a database field, you can also stick <code>index.md</code> at the end of any post to get the raw markdown for that post. You are also able to view the source for the site at <a href="https://github.com/lukebriggsdev/lukebriggsdev.github.io" target="_blank" rel="noopener noreffer">my GitHub</a></p>
+<h2 id="new-logo">New Logo</h2>
+<p></p>
+<p>Along with the revamped site, I have created a new logo to go with it; it is probably the best looking thing I have ever drawn. The logo takes inspiration from the IBM PCJr with a few more rounded corners, thinner bezels, and a more minimalist feel.</p>
+<p>It was made in <a href="https://inkscape.org" target="_blank" rel="noopener noreffer">Inkscape</a> with the basic shapes and the font is Roboto Mono.</p>
+]]></description>
+</item><item>
     <title>Inspection and Dissection: Type or Die</title>
     <link>https://codeluke.github.io/inspection-and-dissection-type-or-die/</link>
     <pubDate>Fri, 05 Mar 2021 12:11:40 &#43;0000</pubDate>
@@ -610,52 +628,6 @@ completely foolproof is to underestimate the ingenuity of complete fools.”</p>
 <h4 id="foolproofness-and-expandability">Foolproofness and Expandability</h4>
 <p>To make your app accessible you have to ensure it is something easy to navigate and intuitive to use. Since this is my first mobile app I felt it was more of a case of making sure it doesn’t look out of place compared to the modern selection of mobile apps that supermarkets and resteraunts have on offer. It uses clear icons and a navigation bar at the bottom which is the current style. I wanted the user to not be confused upon opening the app but feel comfortable in using it and having a smooth experience.</p>
 <p>One of the brilliant things about React Native is the modules are not only easy to use but also offer a great deal of wiggle room to do what you want. For example, creating new screens is as easy as adding a function to that screens javascript add sticking a call to it in a main navigator script; this allows the room to expand quite quickly once you’ve got a baseline set giving scalability without what some projects have which is a feeling of trying to balance on one leg while trying to solve a rubik’s cube.</p>
-]]></description>
-</item><item>
-    <title>Making a Mobile App – Chapter 3: The Setup</title>
-    <link>https://codeluke.github.io/making-a-mobile-app-chapter-3/</link>
-    <pubDate>Mon, 10 Dec 2018 20:14:17 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://codeluke.github.io/making-a-mobile-app-chapter-3/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/static/postimages/7/drawingboard.jpg" referrerpolicy="no-referrer">
-            </div><blockquote>
-<p>“He attacked everything in life with a mix of extraordinary genius and naive &gt;incompetence, and it was often difficult to tell which was which.”</p>
-<p>Douglas Adams</p>
-</blockquote>
-<p>Setting up your React/Expo app is fairly straightforward but does require using the command line and some basic knowledge. You can find further detail <a href="https://expo.io/learn" target="_blank" rel="noopener noreffer">here</a> but I’ll summarise it now.</p>
-<p>Firstly you will need to download and install <a href="https://nodejs.org/en/" target="_blank" rel="noopener noreffer">Node.js</a> This is quite self explanatory as it has an actual wizard thus not requiring any command line interaction. Node is necessary for almost anything running local javascript. Next you’ll need to open the command line (found on windows by typing ‘cmd’ into the start menu) and run this command:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">npm install expo-cli --global
-</code></pre></td></tr></table>
-</div>
-</div><p>You will then be asked to create an Expo account. Next you want no navigate to the directory where you want to store your app, this is done in windows by typing ‘cd’ followed by the directory. For example :</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">cd C:\Users\&lt;Your Username&gt;\Documents\app
-</code></pre></td></tr></table>
-</div>
-</div><p>Then run the commands:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">expo init my-new-project
-cd my-new-project
-expo start
-</code></pre></td></tr></table>
-</div>
-</div><p>‘expo start’ will be the command you run in the directory whenever you want to run your Expo app. I would also recommend starting with the ‘tabs’ template as it places some very useful files and means you don’t need to set up your own navigation bars. After you have ran the start command your browser will open up with a QR code. Scan the QR code in the Expo app (<a href="https://play.google.com/store/apps/details?id=host.exp.exponent&amp;hl=en_GB" target="_blank" rel="noopener noreffer">Google Play</a> and <a href="https://itunes.apple.com/us/app/expo-client/id982107779?mt=8" target="_blank" rel="noopener noreffer">iOS</a>) and behold your first expo app. If you have experience in ReactJS, you can dive into the files with your text editor of choice (I prefer <a href="https://code.visualstudio.com/" target="_blank" rel="noopener noreffer">VS Code</a>) and follow the instructions both in the app and consulting the <a href="https://docs.expo.io/versions/v31.0.0/workflow/up-and-running" target="_blank" rel="noopener noreffer">documentation</a>.  If you don’t have experience, I would recommend using the <a href="https://www.codecademy.com/learn" target="_blank" rel="noopener noreffer">Codeacademy</a> course on ReactJS and Javascript. Also remember Google is your best friend, if you don’t know something don’t be afraid to google it.</p>
 ]]></description>
 </item></channel>
 </rss>
