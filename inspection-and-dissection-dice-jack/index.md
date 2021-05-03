@@ -77,7 +77,7 @@ End If
 
 Then we check whether they have reached the magic 5 rolls, if so we tell them their score and let them reset the game
 
-There is also some initialisation code that assigns images and there are event handlers that make the buttons work but this is the main logic. If you would like to see how that stuff works, you can find it at the [github repo](https://github.com/CodeLuke/Dice-Alpha)
+There is also some initialisation code that assigns images and there are event handlers that make the buttons work but this is the main logic. If you would like to see how that stuff works, you can find it at the [github repo](https://github.com/LukeBriggsDev/Dice-Alpha)
 
 # The Evolution
 
@@ -156,5 +156,5 @@ Before this code I run checks that see which options are available after a deale
 
 If there is only one option available, then the dealer will pick that one. If there is more than one option available then the dealer will pick whichever will get them the highest score that turn. If there are no options available then the dealer is bust and they will stand. The dealer will also stand if they have a score higher than that of the player. The dealer will continue to roll as long as they are lower than the player and their current score is under 17.
 
-And thats the game! The quickest project I’ve ever done and although its rough around the edges the gameplay is solid and I got to grips with windows form’s implementation of an event-driven program. You can find the full source code [here](https://github.com/CodeLuke/Dice-Jack)
+And thats the game! The quickest project I’ve ever done and although its rough around the edges the gameplay is solid and I got to grips with windows form’s implementation of an event-driven program. You can find the full source code [here](https://github.com/LukeBriggsDev/Dice-Jack)
 

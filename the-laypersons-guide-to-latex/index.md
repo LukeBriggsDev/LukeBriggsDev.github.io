@@ -102,6 +102,6 @@ LaTeX isn’t perfect in its implementation, only its possible output. For insta
 
 # Further Notes
 
-If you are writing your reports in LaTeX like me then you will need the correct bibliography formatting. LaTeX offers a few styles by default but I have learned there is no such thing as a standard and my University (Newcastle) uses [its own guidelines](https://libguides.ncl.ac.uk/managing/harvard). The process for creating your own style involves both a command line tool and further tweaking using a bespoke programming language using REVERSE POLISH NOTATION, which is what happens if Christopher Nolan got his hands on a compiler. To save my fellow students time, I created a style for Newcastle’s bibliography style and [it is hosted on GitHub](https://github.com/CodeLuke/Newcastle-BibTeX).
+If you are writing your reports in LaTeX like me then you will need the correct bibliography formatting. LaTeX offers a few styles by default but I have learned there is no such thing as a standard and my University (Newcastle) uses [its own guidelines](https://libguides.ncl.ac.uk/managing/harvard). The process for creating your own style involves both a command line tool and further tweaking using a bespoke programming language using REVERSE POLISH NOTATION, which is what happens if Christopher Nolan got his hands on a compiler. To save my fellow students time, I created a style for Newcastle’s bibliography style and [it is hosted on GitHub](https://github.com/LukeBriggsDev/Newcastle-BibTeX).
 
 

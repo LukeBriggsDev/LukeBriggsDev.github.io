@@ -247,7 +247,7 @@ top down arcade shooter. The game is pretty fun, the zombie death animations are
 </code></pre></td></tr></table>
 </div>
 </div><p>Then we check whether they have reached the magic 5 rolls, if so we tell them their score and let them reset the game</p>
-<p>There is also some initialisation code that assigns images and there are event handlers that make the buttons work but this is the main logic. If you would like to see how that stuff works, you can find it at the <a href="https://github.com/CodeLuke/Dice-Alpha" target="_blank" rel="noopener noreffer">github repo</a></p>
+<p>There is also some initialisation code that assigns images and there are event handlers that make the buttons work but this is the main logic. If you would like to see how that stuff works, you can find it at the <a href="https://github.com/LukeBriggsDev/Dice-Alpha" target="_blank" rel="noopener noreffer">github repo</a></p>
 <h1 id="the-evolution">The Evolution</h1>
 <p>The following won’t include too many code snippets since it is slightly more extensive (the rushed deadline also means it resembles a tin of Heinz spaghetti in a tumble dryer but we’ll keep that between us)</p>
 <p></p>
@@ -347,7 +347,7 @@ top down arcade shooter. The game is pretty fun, the zombie death animations are
 </div>
 </div><p>Before this code I run checks that see which options are available after a dealer rolls (these are the DealerCanChoose variables). Here there is a series of conditionals that look at the options and picks the best one for the dealer.</p>
 <p>If there is only one option available, then the dealer will pick that one. If there is more than one option available then the dealer will pick whichever will get them the highest score that turn. If there are no options available then the dealer is bust and they will stand. The dealer will also stand if they have a score higher than that of the player. The dealer will continue to roll as long as they are lower than the player and their current score is under 17.</p>
-<p>And thats the game! The quickest project I’ve ever done and although its rough around the edges the gameplay is solid and I got to grips with windows form’s implementation of an event-driven program. You can find the full source code <a href="https://github.com/CodeLuke/Dice-Jack" target="_blank" rel="noopener noreffer">here</a></p>
+<p>And thats the game! The quickest project I’ve ever done and although its rough around the edges the gameplay is solid and I got to grips with windows form’s implementation of an event-driven program. You can find the full source code <a href="https://github.com/LukeBriggsDev/Dice-Jack" target="_blank" rel="noopener noreffer">here</a></p>
 ]]></description>
 </item><item>
     <title>Inspection &amp; Dissection: Ping! – My First Game in Unity</title>
