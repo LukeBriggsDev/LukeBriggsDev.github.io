@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Software Development - Category - Luke Briggs</title>
-        <link>https://codeluke.github.io/categories/software-development/</link>
+        <link>https://www.lukebriggs.dev/categories/software-development/</link>
         <description>Software Development - Category - Luke Briggs</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@lukebriggs.dev (Luke Briggs)</managingEditor>
-            <webMaster>contact@lukebriggs.dev (Luke Briggs)</webMaster><lastBuildDate>Sat, 09 Mar 2019 20:47:46 &#43;0000</lastBuildDate><atom:link href="https://codeluke.github.io/categories/software-development/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>contact@lukebriggs.dev (Luke Briggs)</webMaster><lastBuildDate>Sat, 09 Mar 2019 20:47:46 &#43;0000</lastBuildDate><atom:link href="https://www.lukebriggs.dev/categories/software-development/" rel="self" type="application/rss+xml" /><item>
     <title>Making a Mobile App – Chapter 5: Go Your Own Way</title>
-    <link>https://codeluke.github.io/making-a-mobile-app-chapter-5/</link>
+    <link>https://www.lukebriggs.dev/making-a-mobile-app-chapter-5/</link>
     <pubDate>Sat, 09 Mar 2019 20:47:46 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://codeluke.github.io/making-a-mobile-app-chapter-5/</guid>
+    <guid>https://www.lukebriggs.dev/making-a-mobile-app-chapter-5/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/static/postimages/9/xkcd378.png" referrerpolicy="no-referrer">
             </div><blockquote>
@@ -24,10 +24,10 @@
 ]]></description>
 </item><item>
     <title>Making a Mobile App – Chapter 4: Fast and Flash</title>
-    <link>https://codeluke.github.io/making-a-mobile-app-chapter-4/</link>
+    <link>https://www.lukebriggs.dev/making-a-mobile-app-chapter-4/</link>
     <pubDate>Mon, 10 Dec 2018 21:57:21 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://codeluke.github.io/making-a-mobile-app-chapter-4/</guid>
+    <guid>https://www.lukebriggs.dev/making-a-mobile-app-chapter-4/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/static/postimages/8/desk.jpg" referrerpolicy="no-referrer">
             </div><blockquote>
@@ -53,10 +53,10 @@ completely foolproof is to underestimate the ingenuity of complete fools.”</p>
 ]]></description>
 </item><item>
     <title>Making a Mobile App – Chapter 3: The Setup</title>
-    <link>https://codeluke.github.io/making-a-mobile-app-chapter-3/</link>
+    <link>https://www.lukebriggs.dev/making-a-mobile-app-chapter-3/</link>
     <pubDate>Mon, 10 Dec 2018 20:14:17 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://codeluke.github.io/making-a-mobile-app-chapter-3/</guid>
+    <guid>https://www.lukebriggs.dev/making-a-mobile-app-chapter-3/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/static/postimages/7/drawingboard.jpg" referrerpolicy="no-referrer">
             </div><blockquote>
@@ -99,10 +99,10 @@ expo start
 ]]></description>
 </item><item>
     <title>Making a Mobile App – Chapter 2: A Bad Worker Blames His Tools</title>
-    <link>https://codeluke.github.io/making-a-mobile-app-chapter-2/</link>
+    <link>https://www.lukebriggs.dev/making-a-mobile-app-chapter-2/</link>
     <pubDate>Sun, 09 Dec 2018 20:07:21 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://codeluke.github.io/making-a-mobile-app-chapter-2/</guid>
+    <guid>https://www.lukebriggs.dev/making-a-mobile-app-chapter-2/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/static/postimages/6/phone.jpg" referrerpolicy="no-referrer">
             </div><blockquote>
@@ -135,10 +135,10 @@ you can’t just leave me here!”</p>
 ]]></description>
 </item><item>
     <title>Making a Mobile App – Chapter 1: A Few False Starts</title>
-    <link>https://codeluke.github.io/making-a-mobile-app-chapter-1/</link>
+    <link>https://www.lukebriggs.dev/making-a-mobile-app-chapter-1/</link>
     <pubDate>Sun, 09 Dec 2018 19:57:21 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://codeluke.github.io/making-a-mobile-app-chapter-1/</guid>
+    <guid>https://www.lukebriggs.dev/making-a-mobile-app-chapter-1/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/static/postimages/5/phone.jpg" referrerpolicy="no-referrer">
             </div><blockquote>

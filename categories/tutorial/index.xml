@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Tutorial - Category - Luke Briggs</title>
-        <link>https://codeluke.github.io/categories/tutorial/</link>
+        <link>https://www.lukebriggs.dev/categories/tutorial/</link>
         <description>Tutorial - Category - Luke Briggs</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@lukebriggs.dev (Luke Briggs)</managingEditor>
-            <webMaster>contact@lukebriggs.dev (Luke Briggs)</webMaster><lastBuildDate>Wed, 06 Jan 2021 22:06:22 &#43;0000</lastBuildDate><atom:link href="https://codeluke.github.io/categories/tutorial/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>contact@lukebriggs.dev (Luke Briggs)</webMaster><lastBuildDate>Wed, 06 Jan 2021 22:06:22 &#43;0000</lastBuildDate><atom:link href="https://www.lukebriggs.dev/categories/tutorial/" rel="self" type="application/rss+xml" /><item>
     <title>The Layperson’s Guide to LaTeX</title>
-    <link>https://codeluke.github.io/the-laypersons-guide-to-latex/</link>
+    <link>https://www.lukebriggs.dev/the-laypersons-guide-to-latex/</link>
     <pubDate>Wed, 06 Jan 2021 22:06:22 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://codeluke.github.io/the-laypersons-guide-to-latex/</guid>
+    <guid>https://www.lukebriggs.dev/the-laypersons-guide-to-latex/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/static/postimages/11/rainbow.jpg" referrerpolicy="no-referrer">
             </div><p>As part of my degree I will have to write many words into many documents and submit them all as part of assignments.</p>

@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>All Posts - Luke Briggs</title>
-        <link>https://codeluke.github.io/posts/</link>
+        <link>https://www.lukebriggs.dev/posts/</link>
         <description>All Posts | Luke Briggs</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@lukebriggs.dev (Luke Briggs)</managingEditor>
-            <webMaster>contact@lukebriggs.dev (Luke Briggs)</webMaster><lastBuildDate>Mon, 03 May 2021 20:06:07 &#43;0100</lastBuildDate><atom:link href="https://codeluke.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>contact@lukebriggs.dev (Luke Briggs)</webMaster><lastBuildDate>Mon, 03 May 2021 20:06:07 &#43;0100</lastBuildDate><atom:link href="https://www.lukebriggs.dev/posts/" rel="self" type="application/rss+xml" /><item>
     <title>Where Hugo I Go</title>
-    <link>https://codeluke.github.io/where-hugo-i-go/</link>
+    <link>https://www.lukebriggs.dev/where-hugo-i-go/</link>
     <pubDate>Mon, 03 May 2021 20:06:07 &#43;0100</pubDate>
     <author>Author</author>
-    <guid>https://codeluke.github.io/where-hugo-i-go/</guid>
+    <guid>https://www.lukebriggs.dev/where-hugo-i-go/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/static/postimages/where-hugo-i-go/banner.png" referrerpolicy="no-referrer">
             </div><p>As you are probably aware, I have redecorated. I said in a <a href="/inspection-and-dissection-this-site" rel="">previous post</a> that my reason for making my own site in the first place was as a central hub to point people to all the things that I do. Despite the fact that from the outside it looks like I haven&rsquo;t done a whole lot since, behind the scenes I have my biggest project yet in development (check out my <a href="https://github.com/lukebriggsdev" target="_blank" rel="noopener noreffer">GitHub</a> if you want a sneak preview of that). It was while working on my project that I realised that I should have a site that requires my to ssh into a VPS and pull a git repository every time I want to add a post.</p>
@@ -24,10 +24,10 @@
 ]]></description>
 </item><item>
     <title>Inspection and Dissection: Type or Die</title>
-    <link>https://codeluke.github.io/inspection-and-dissection-type-or-die/</link>
+    <link>https://www.lukebriggs.dev/inspection-and-dissection-type-or-die/</link>
     <pubDate>Fri, 05 Mar 2021 12:11:40 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://codeluke.github.io/inspection-and-dissection-type-or-die/</guid>
+    <guid>https://www.lukebriggs.dev/inspection-and-dissection-type-or-die/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/static/postimages/21/cover.png" referrerpolicy="no-referrer">
             </div><blockquote>
@@ -66,19 +66,19 @@ top down arcade shooter. The game is pretty fun, the zombie death animations are
 ]]></description>
 </item><item>
     <title>You Can Now Follow Me on RSS!</title>
-    <link>https://codeluke.github.io/you-can-now-follow-me-on-rss/</link>
+    <link>https://www.lukebriggs.dev/you-can-now-follow-me-on-rss/</link>
     <pubDate>Thu, 18 Feb 2021 20:52:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://codeluke.github.io/you-can-now-follow-me-on-rss/</guid>
+    <guid>https://www.lukebriggs.dev/you-can-now-follow-me-on-rss/</guid>
     <description><![CDATA[<p>I had a bit of time today and I wanted to do something so here we are.
 Thanks to the incredible <a href="https://feedgen.kiesow.be/" target="_blank" rel="noopener noreffer">FeedGen</a> python library, you can now point your RSS reader to <a href="/index.xml" rel="">here</a> and get updates on when I write a new post.</p>
 ]]></description>
 </item><item>
     <title>Goodbye Windows, I Hardly GNU ya</title>
-    <link>https://codeluke.github.io/goodbye-windows-i-hardly-gnu-ya/</link>
+    <link>https://www.lukebriggs.dev/goodbye-windows-i-hardly-gnu-ya/</link>
     <pubDate>Sun, 07 Feb 2021 21:12:30 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://codeluke.github.io/goodbye-windows-i-hardly-gnu-ya/</guid>
+    <guid>https://www.lukebriggs.dev/goodbye-windows-i-hardly-gnu-ya/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/static/postimages/13/desktop.png" referrerpolicy="no-referrer">
             </div><p><strong>Preface: I should state that this is not an evangelical sermon, Linux isn&rsquo;t for everyone but it is for me. This is merely a detailing of why I have chosen to switch Operating System</strong></p>
@@ -102,10 +102,10 @@ Thanks to the incredible <a href="https://feedgen.kiesow.be/" target="_blank" re
 ]]></description>
 </item><item>
     <title>Inspection &amp; Dissection: This Site!</title>
-    <link>https://codeluke.github.io/inspection-and-dissection-this-site/</link>
+    <link>https://www.lukebriggs.dev/inspection-and-dissection-this-site/</link>
     <pubDate>Wed, 03 Feb 2021 16:39:25 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://codeluke.github.io/inspection-and-dissection-this-site/</guid>
+    <guid>https://www.lukebriggs.dev/inspection-and-dissection-this-site/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/static/postimages/12/index.png" referrerpolicy="no-referrer">
             </div><p>Look at me with a fancy website. We&rsquo;re about to get meta as we discuss how this site you&rsquo;re exploring right now came to be.</p>
@@ -174,10 +174,10 @@ Thanks to the incredible <a href="https://feedgen.kiesow.be/" target="_blank" re
 ]]></description>
 </item><item>
     <title>The Layperson’s Guide to LaTeX</title>
-    <link>https://codeluke.github.io/the-laypersons-guide-to-latex/</link>
+    <link>https://www.lukebriggs.dev/the-laypersons-guide-to-latex/</link>
     <pubDate>Wed, 06 Jan 2021 22:06:22 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://codeluke.github.io/the-laypersons-guide-to-latex/</guid>
+    <guid>https://www.lukebriggs.dev/the-laypersons-guide-to-latex/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/static/postimages/11/rainbow.jpg" referrerpolicy="no-referrer">
             </div><p>As part of my degree I will have to write many words into many documents and submit them all as part of assignments.</p>
@@ -301,10 +301,10 @@ I just add another section tag and it will become the second section in the docu
 ]]></description>
 </item><item>
     <title>Inspection &amp; Dissection: Dice-Jack</title>
-    <link>https://codeluke.github.io/inspection-and-dissection-dice-jack/</link>
+    <link>https://www.lukebriggs.dev/inspection-and-dissection-dice-jack/</link>
     <pubDate>Tue, 24 Sep 2019 21:06:18 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://codeluke.github.io/inspection-and-dissection-dice-jack/</guid>
+    <guid>https://www.lukebriggs.dev/inspection-and-dissection-dice-jack/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/static/postimages/10/dicejack1.png" referrerpolicy="no-referrer">
             </div><p>As part of a course we had to make a game in 2 days that involved random dice and be made as a Windows forms application with Visual Basic. So we had to make a game in something that was the furthest you could get from a game engine with a language I had never used before. But hey, <a href="https://en.wikipedia.org/wiki/Rogue_%28video_game%29" target="_blank" rel="noopener noreffer">Rogue</a> was made in 1980 and the graphics had to be ASCII so it could be worse.</p>
@@ -532,10 +532,10 @@ I just add another section tag and it will become the second section in the docu
 ]]></description>
 </item><item>
     <title>Probably</title>
-    <link>https://codeluke.github.io/probably/</link>
+    <link>https://www.lukebriggs.dev/probably/</link>
     <pubDate>Sat, 17 Aug 2019 20:49:25 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://codeluke.github.io/probably/</guid>
+    <guid>https://www.lukebriggs.dev/probably/</guid>
     <description><![CDATA[<p>We are currently in a scholarly purgatory. The time between July and
 September where you are attached to no institution, have no motivation and
 spend months fretting over how your past self will affect your future self
@@ -582,10 +582,10 @@ up terrible.</p>
 ]]></description>
 </item><item>
     <title>Making a Mobile App – Chapter 5: Go Your Own Way</title>
-    <link>https://codeluke.github.io/making-a-mobile-app-chapter-5/</link>
+    <link>https://www.lukebriggs.dev/making-a-mobile-app-chapter-5/</link>
     <pubDate>Sat, 09 Mar 2019 20:47:46 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://codeluke.github.io/making-a-mobile-app-chapter-5/</guid>
+    <guid>https://www.lukebriggs.dev/making-a-mobile-app-chapter-5/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/static/postimages/9/xkcd378.png" referrerpolicy="no-referrer">
             </div><blockquote>
@@ -600,10 +600,10 @@ up terrible.</p>
 ]]></description>
 </item><item>
     <title>Making a Mobile App – Chapter 4: Fast and Flash</title>
-    <link>https://codeluke.github.io/making-a-mobile-app-chapter-4/</link>
+    <link>https://www.lukebriggs.dev/making-a-mobile-app-chapter-4/</link>
     <pubDate>Mon, 10 Dec 2018 21:57:21 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://codeluke.github.io/making-a-mobile-app-chapter-4/</guid>
+    <guid>https://www.lukebriggs.dev/making-a-mobile-app-chapter-4/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/static/postimages/8/desk.jpg" referrerpolicy="no-referrer">
             </div><blockquote>

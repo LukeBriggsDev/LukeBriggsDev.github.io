@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Game Development - Category - Luke Briggs</title>
-        <link>https://codeluke.github.io/categories/game-development/</link>
+        <link>https://www.lukebriggs.dev/categories/game-development/</link>
         <description>Game Development - Category - Luke Briggs</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@lukebriggs.dev (Luke Briggs)</managingEditor>
-            <webMaster>contact@lukebriggs.dev (Luke Briggs)</webMaster><lastBuildDate>Fri, 05 Mar 2021 12:11:40 &#43;0000</lastBuildDate><atom:link href="https://codeluke.github.io/categories/game-development/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>contact@lukebriggs.dev (Luke Briggs)</webMaster><lastBuildDate>Fri, 05 Mar 2021 12:11:40 &#43;0000</lastBuildDate><atom:link href="https://www.lukebriggs.dev/categories/game-development/" rel="self" type="application/rss+xml" /><item>
     <title>Inspection and Dissection: Type or Die</title>
-    <link>https://codeluke.github.io/inspection-and-dissection-type-or-die/</link>
+    <link>https://www.lukebriggs.dev/inspection-and-dissection-type-or-die/</link>
     <pubDate>Fri, 05 Mar 2021 12:11:40 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://codeluke.github.io/inspection-and-dissection-type-or-die/</guid>
+    <guid>https://www.lukebriggs.dev/inspection-and-dissection-type-or-die/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/static/postimages/21/cover.png" referrerpolicy="no-referrer">
             </div><blockquote>
@@ -48,10 +48,10 @@ top down arcade shooter. The game is pretty fun, the zombie death animations are
 ]]></description>
 </item><item>
     <title>Inspection &amp; Dissection: Dice-Jack</title>
-    <link>https://codeluke.github.io/inspection-and-dissection-dice-jack/</link>
+    <link>https://www.lukebriggs.dev/inspection-and-dissection-dice-jack/</link>
     <pubDate>Tue, 24 Sep 2019 21:06:18 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://codeluke.github.io/inspection-and-dissection-dice-jack/</guid>
+    <guid>https://www.lukebriggs.dev/inspection-and-dissection-dice-jack/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/static/postimages/10/dicejack1.png" referrerpolicy="no-referrer">
             </div><p>As part of a course we had to make a game in 2 days that involved random dice and be made as a Windows forms application with Visual Basic. So we had to make a game in something that was the furthest you could get from a game engine with a language I had never used before. But hey, <a href="https://en.wikipedia.org/wiki/Rogue_%28video_game%29" target="_blank" rel="noopener noreffer">Rogue</a> was made in 1980 and the graphics had to be ASCII so it could be worse.</p>
@@ -279,10 +279,10 @@ top down arcade shooter. The game is pretty fun, the zombie death animations are
 ]]></description>
 </item><item>
     <title>Inspection &amp; Dissection: Ping! – My First Game in Unity</title>
-    <link>https://codeluke.github.io/inspection-and-dissection-ping/</link>
+    <link>https://www.lukebriggs.dev/inspection-and-dissection-ping/</link>
     <pubDate>Sat, 23 Jun 2018 17:52:33 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://codeluke.github.io/inspection-and-dissection-ping/</guid>
+    <guid>https://www.lukebriggs.dev/inspection-and-dissection-ping/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/static/postimages/3/unity.jpg" referrerpolicy="no-referrer">
             </div><blockquote>
@@ -300,10 +300,10 @@ do so.”</p>
 ]]></description>
 </item><item>
     <title>A Game of Two Halves</title>
-    <link>https://codeluke.github.io/a-game-of-two-halves/</link>
+    <link>https://www.lukebriggs.dev/a-game-of-two-halves/</link>
     <pubDate>Sat, 23 Jun 2018 17:20:33 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://codeluke.github.io/a-game-of-two-halves/</guid>
+    <guid>https://www.lukebriggs.dev/a-game-of-two-halves/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/static/postimages/2/construct2.jpg" referrerpolicy="no-referrer">
             </div><blockquote>

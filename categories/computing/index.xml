@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Computing - Category - Luke Briggs</title>
-        <link>https://codeluke.github.io/categories/computing/</link>
+        <link>https://www.lukebriggs.dev/categories/computing/</link>
         <description>Computing - Category - Luke Briggs</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@lukebriggs.dev (Luke Briggs)</managingEditor>
-            <webMaster>contact@lukebriggs.dev (Luke Briggs)</webMaster><lastBuildDate>Mon, 03 May 2021 20:06:07 &#43;0100</lastBuildDate><atom:link href="https://codeluke.github.io/categories/computing/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>contact@lukebriggs.dev (Luke Briggs)</webMaster><lastBuildDate>Mon, 03 May 2021 20:06:07 &#43;0100</lastBuildDate><atom:link href="https://www.lukebriggs.dev/categories/computing/" rel="self" type="application/rss+xml" /><item>
     <title>Where Hugo I Go</title>
-    <link>https://codeluke.github.io/where-hugo-i-go/</link>
+    <link>https://www.lukebriggs.dev/where-hugo-i-go/</link>
     <pubDate>Mon, 03 May 2021 20:06:07 &#43;0100</pubDate>
     <author>Author</author>
-    <guid>https://codeluke.github.io/where-hugo-i-go/</guid>
+    <guid>https://www.lukebriggs.dev/where-hugo-i-go/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/static/postimages/where-hugo-i-go/banner.png" referrerpolicy="no-referrer">
             </div><p>As you are probably aware, I have redecorated. I said in a <a href="/inspection-and-dissection-this-site" rel="">previous post</a> that my reason for making my own site in the first place was as a central hub to point people to all the things that I do. Despite the fact that from the outside it looks like I haven&rsquo;t done a whole lot since, behind the scenes I have my biggest project yet in development (check out my <a href="https://github.com/lukebriggsdev" target="_blank" rel="noopener noreffer">GitHub</a> if you want a sneak preview of that). It was while working on my project that I realised that I should have a site that requires my to ssh into a VPS and pull a git repository every time I want to add a post.</p>
@@ -24,19 +24,19 @@
 ]]></description>
 </item><item>
     <title>You Can Now Follow Me on RSS!</title>
-    <link>https://codeluke.github.io/you-can-now-follow-me-on-rss/</link>
+    <link>https://www.lukebriggs.dev/you-can-now-follow-me-on-rss/</link>
     <pubDate>Thu, 18 Feb 2021 20:52:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://codeluke.github.io/you-can-now-follow-me-on-rss/</guid>
+    <guid>https://www.lukebriggs.dev/you-can-now-follow-me-on-rss/</guid>
     <description><![CDATA[<p>I had a bit of time today and I wanted to do something so here we are.
 Thanks to the incredible <a href="https://feedgen.kiesow.be/" target="_blank" rel="noopener noreffer">FeedGen</a> python library, you can now point your RSS reader to <a href="/index.xml" rel="">here</a> and get updates on when I write a new post.</p>
 ]]></description>
 </item><item>
     <title>Goodbye Windows, I Hardly GNU ya</title>
-    <link>https://codeluke.github.io/goodbye-windows-i-hardly-gnu-ya/</link>
+    <link>https://www.lukebriggs.dev/goodbye-windows-i-hardly-gnu-ya/</link>
     <pubDate>Sun, 07 Feb 2021 21:12:30 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://codeluke.github.io/goodbye-windows-i-hardly-gnu-ya/</guid>
+    <guid>https://www.lukebriggs.dev/goodbye-windows-i-hardly-gnu-ya/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/static/postimages/13/desktop.png" referrerpolicy="no-referrer">
             </div><p><strong>Preface: I should state that this is not an evangelical sermon, Linux isn&rsquo;t for everyone but it is for me. This is merely a detailing of why I have chosen to switch Operating System</strong></p>
@@ -60,10 +60,10 @@ Thanks to the incredible <a href="https://feedgen.kiesow.be/" target="_blank" re
 ]]></description>
 </item><item>
     <title>The Layperson’s Guide to LaTeX</title>
-    <link>https://codeluke.github.io/the-laypersons-guide-to-latex/</link>
+    <link>https://www.lukebriggs.dev/the-laypersons-guide-to-latex/</link>
     <pubDate>Wed, 06 Jan 2021 22:06:22 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://codeluke.github.io/the-laypersons-guide-to-latex/</guid>
+    <guid>https://www.lukebriggs.dev/the-laypersons-guide-to-latex/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/static/postimages/11/rainbow.jpg" referrerpolicy="no-referrer">
             </div><p>As part of my degree I will have to write many words into many documents and submit them all as part of assignments.</p>
