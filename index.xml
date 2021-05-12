@@ -2,7 +2,7 @@
     <channel>
         <title>Luke Briggs</title>
         <link>https://www.lukebriggs.dev/</link>
-        <description>I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University. Briggs</description>
+        <description>I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University.</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@lukebriggs.dev (Luke Briggs)</managingEditor>
             <webMaster>contact@lukebriggs.dev (Luke Briggs)</webMaster><lastBuildDate>Mon, 03 May 2021 20:06:07 &#43;0100</lastBuildDate>
             <atom:link href="https://www.lukebriggs.dev/index.xml" rel="self" type="application/rss+xml" />
