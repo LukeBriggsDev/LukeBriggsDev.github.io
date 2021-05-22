@@ -284,9 +284,9 @@ is a pointer to a file actually containing all pip dependencies
 }
 ```
 
-You'll notice that there is no mention of PySide or Qt. The *key* module that the app depends so heavily is not there, why? Well because both Qt python dependencies are not available as source files from pip. Pip hosts source files and wheels. All the above are source files. These are tar balls that pip will compile and build from source. Wheels are, once again, pre-built binaries. Flatpak doesn't include wheels by default since it once everything to be as cross platform and cross architecture as possible.
+You'll notice that there is no mention of PySide or Qt. The *key* module that the app depends so heavily is not there, why? Well because both Qt python dependencies are not available as source files from pip. Pip hosts source files and wheels. All the above are source files. These are tar balls that pip will compile and build from source. Wheels are, once again, pre-built binaries. Flatpak doesn't include wheels by default since it wants everything to be as cross platform and cross architecture as possible.
 
-I also wanted to be as platform agnostic as possible so I attempted to build my python bindings from source in the flatpak. Flatpak did not like this. Neither PySide nor PyQt would build and each through different error during the compilation process. My best guess would by the sandbox does not contain some required system libraries but I am at a loss to know which ones. And C compiler's are not the most helpful thing as your only point of reference for a system error.
+I also wanted to be as platform agnostic as possible so I attempted to build my python bindings from source in the flatpak. Flatpak did not like this. Neither PySide nor PyQt would build and each threw different error during the compilation process. My best guess would by the sandbox does not contain some required system libraries but I am at a loss to know which ones. And C compilers are not the most helpful thing as your only point of reference for a system error.
 
 ### Lasers to the rescue
 At this stage, I didn't actually know what python wheels were, I just assumed everything had to be built from source. I was desperate for answers after 3 days of debugging and staring at config files. I did something I very rarely do, I used the GitHub search function. To my amazement I found a solution.
@@ -313,7 +313,7 @@ I looked at there yaml, and I knew then and there that they had found a solution
 
 They had obviously also faced similar Qt-based problems. Their YAML led to me finding out about python wheels, how I could get PyQt in a flatpak, and how I could tell pip the right directory for a python installation (I had no idea what `--target` would do before this).
 
-Thanks to some German physicists, my next project is back on track. Beady eyed people may notice some information in some of the config files I've posted that hints to what it could be. I did try and use PySide using the same wheel method but I got into some strange cyclical versioning thing since it required PySide an Shiboken2 to be installed at the same time. All that means is that my application will be open source out of a legal obligation, as well as an civil one.
+Thanks to some German physicists, my next project is back on track. Beady eyed people may notice some information in some of the config files I've posted that hint to what it could be. I did try and use PySide using the same wheel method but I got into some strange cyclical versioning thing since it required PySide an Shiboken2 to be installed at the same time. All that means is that my application will be open source out of a legal obligation, as well as an civil one.
 
 *SIDE:* kerberos is also a requirement for PyQt to work in a flatpak, I have no idea why but it may have something to do with certain networking modules.
 
