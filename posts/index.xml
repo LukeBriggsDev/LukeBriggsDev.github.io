@@ -4,7 +4,575 @@
         <link>https://www.lukebriggs.dev/posts/</link>
         <description>All Posts | Luke Briggs</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@lukebriggs.dev (Luke Briggs)</managingEditor>
-            <webMaster>contact@lukebriggs.dev (Luke Briggs)</webMaster><lastBuildDate>Mon, 03 May 2021 20:06:07 &#43;0100</lastBuildDate><atom:link href="https://www.lukebriggs.dev/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>contact@lukebriggs.dev (Luke Briggs)</webMaster><lastBuildDate>Sat, 22 May 2021 19:08:56 &#43;0100</lastBuildDate><atom:link href="https://www.lukebriggs.dev/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Flatpak - Instructions Not Included: How German Laser Beams Fixed My App</title>
+    <link>https://www.lukebriggs.dev/flatpak-instructions-not-included/</link>
+    <pubDate>Sat, 22 May 2021 19:08:56 &#43;0100</pubDate>
+    <author>Author</author>
+    <guid>https://www.lukebriggs.dev/flatpak-instructions-not-included/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/static/postimages/flatpak-instructions-not-included/flatpak.svg" referrerpolicy="no-referrer">
+            </div><p>There is a very peculiar thing I have found in software development, it is incredibly difficult to actually get software on other people&rsquo;s machines. Even compiled languages can have difficulty.</p>
+<h2 id="context">Context</h2>
+<p>I am elbow deep in a very large personal project at the moment (all will be revealed soon) that has so far taken a month. The project is getting to a stage now where deployment methods have to be evaluated. From the beginning I wanted the project to be fully cross platform across Windows, Linux, Mac with a singular codebase. Because of these specific requirements, I went with the <a href="https://www.qt.io/product/framework" target="_blank" rel="noopener noreffer">Qt GUI framework</a>, it is cross platform, runs natively on each platform, and has bindings for Python (my preferred language).</p>
+<p>Because nothing is ever easy, there are actually two different python bindings for Qt. There is <a href="https://en.wikipedia.org/wiki/PySide" target="_blank" rel="noopener noreffer">PySide</a> which was created by the Qt Company themselves. It has a less restrictive license, but seems to have less of a community around it due to it being the newer of the two bindings. The other binding is called <a href="https://en.wikipedia.org/wiki/PyQt" target="_blank" rel="noopener noreffer">PyQt</a> and came first, even being called <code>python3-qt</code> in the fedora package manager. When it comes down to coding, there is pretty much no difference between them since they are all just pythonic fronts for the same C++ back-end. For the whole project up until recently I was using PySide since it is the same in every way except for a better license.</p>
+<h2 id="python-deployment">Python Deployment</h2>
+<p>Python, as it is shipped as CPython, does not (by default) compile to machine code. You&rsquo;ll notice a parenthetical and a subordinate clause in the previous sentence, that&rsquo;s how windy this road goes.</p>
+<p>There are systems that will turn your python code into binary executables, I was using <a href="https://www.pyinstaller.org/" target="_blank" rel="noopener noreffer">PyInstaller</a> to get the job done for me. I&rsquo;d run it on Linux, Windows, MacOS and all my code would be packaged in to binary form; there was the issue of non-python dependencies I had but I could find ways around that. So there I was with all my binaries in a row and feeling confident about how I&rsquo;m going to deploy my application.</p>
+<h2 id="linux-binary-woes">Linux Binary Woes</h2>
+<p>My current main machine runs Fedora Linux, this is a distribution that is kept reasonably up to date and, at the time of writing, has a new desktop environment and newer kernel than other non-Arch distros. All of this meant that when I tried to run my Linux compiled program on Ubuntu (A major distro I want to support), I get thrown an error that Ubuntu doesn&rsquo;t have the correct version of glibc (the dynamically linked C libraries). Sticking with the standard glibc versions that come with each distro, GNU/Linux is backwards compatible but not forwards compatible. That is to say that a program compiled on an older distro will run on a newer distro but not vice-versa. The solution to this seems straightforward doesn&rsquo;t it? Compile the program on an older version. So I loaded up an Ubuntu LTS VM, compile the program, works like a charm. I try to run that same executable on my main Fedora machine and I get an error message:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cmd" data-lang="cmd">Settings schema &#39;org.gnome.settings-daemon.plugins.xsettings&#39;
+does not contain a key named &#39;antialiasing&#39;
+</code></pre></td></tr></table>
+</div>
+</div><p>The program does not run. This is without doubt a bug in Gnome 40. But it is a bug that happens 100% of the time, it may get fixed, it may not. My application is either incompatible with anything other than my own machine, or compatible with everything <em>except</em> my own machine. Of course I could have two separate binaries, but that would be a bit of a hassle to maintain. In comes what I thought would be my saviour, Flatpak.</p>
+<h3 id="build-systems">Build Systems</h3>
+<p>Linux has 3 main methods of deploying applications. Shipping binaries, making per distribution packages, and containers (of which flatpak is one). Binaries are, as we&rsquo;ve seen, version dependent, packages are distribution dependent, and containers run across all machines but have extra bulk since they package there own dependencies rather than relying on system libraries.</p>
+<p>Throughout my exploration of deployment options, I have made all three. I have documented my results of binaries, and I also went on to make an RPM package (the packaging system that Fedora uses).</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">Name:           Pepys
+Version:        0.3.0
+Release:        8%<span class="o">{</span>?dist<span class="o">}</span>
+Summary:        A straightforward markdown journal
+
+License:        GPLv3
+URL:            https://www.lukebriggs.dev/pepys
+Source0:        pepys.tar.gz
+
+Requires:       python3, python3-wheel, python3-pip, pandoc, enchant, wkhtmltopdf, python3-qt5, python3-qt5-webengine, python3-regex, python3-num2words, python3-pypandoc, python3-enchant, python3-setproctitle, texlive-mdwtools
+BuildRequires:  python3-pip
+%description
+
+%build
+<span class="nv">MAIN_DIR</span><span class="o">=</span>%<span class="o">{</span>buildroot<span class="o">}</span>/usr/share/pepys
+<span class="nv">APP_DIR</span><span class="o">=</span>%<span class="o">{</span>buildroot<span class="o">}</span>/usr/local/share/applications
+mkdir -p <span class="si">${</span><span class="nv">MAIN_DIR</span><span class="si">}</span>/temp
+mkdir -p <span class="si">${</span><span class="nv">APP_DIR</span><span class="si">}</span>
+
+tar -xzvf %<span class="o">{</span>SOURCE0<span class="o">}</span> -C <span class="si">${</span><span class="nv">MAIN_DIR</span><span class="si">}</span>/temp
+<span class="k">if</span> <span class="nb">test</span> -f <span class="si">${</span><span class="nv">MAIN_DIR</span><span class="si">}</span>/temp/src/resources/base/config.json<span class="p">;</span> <span class="k">then</span>
+rm <span class="si">${</span><span class="nv">MAIN_DIR</span><span class="si">}</span>/temp/src/resources/base/config.json
+<span class="k">fi</span>
+<span class="k">if</span> <span class="nb">test</span> -f <span class="si">${</span><span class="nv">MAIN_DIR</span><span class="si">}</span>/temp/src/resources/base/wordlist.txt<span class="p">;</span> <span class="k">then</span>
+rm <span class="si">${</span><span class="nv">MAIN_DIR</span><span class="si">}</span>/temp/src/resources/base/wordlist.txt<span class="p">;</span>
+<span class="k">fi</span>
+
+cp -r <span class="si">${</span><span class="nv">MAIN_DIR</span><span class="si">}</span>/temp/* <span class="si">${</span><span class="nv">MAIN_DIR</span><span class="si">}</span>
+rm -rf <span class="si">${</span><span class="nv">MAIN_DIR</span><span class="si">}</span>/temp
+
+
+<span class="nb">printf</span> <span class="s2">&#34;[Desktop Entry]\n \
+</span><span class="s2">Type=Application\n \
+</span><span class="s2">Name=Pepys\n \
+</span><span class="s2">Categories=Office;\n \
+</span><span class="s2">X-GNOME-FullName=Pepys\n \
+</span><span class="s2">Comment=A straightforward markdown journal\n \
+</span><span class="s2">Icon=%s/src/main/resources/base/icons/appicons/icon.svg\n \
+</span><span class="s2">NoDisplay=false\n \
+</span><span class="s2">Exec= python3 %s/src/main/python/main.py\n \
+</span><span class="s2">Path=\n \
+</span><span class="s2">Terminal=false\n \
+</span><span class="s2">X-GNOME-UsesNotifications=false\n \
+</span><span class="s2">StartupWMClass=Pepys&#34;</span> <span class="s2">&#34;/usr/share/pepys&#34;</span> <span class="s2">&#34;/usr/share/pepys&#34;</span> &gt; <span class="nv">$APP_DIR</span>/Pepys.desktop
+pip3 install PyPDF4
+
+
+%files
+/*
+
+%post
+chmod -R <span class="m">777</span> /usr/share/pepys
+
+<span class="c1">#%license add-license-file-here</span>
+<span class="c1">#%doc add-docs-here</span>
+
+
+
+%changelog
+* Sat May <span class="m">15</span> <span class="m">2021</span> Luke Briggs &lt;lukebriggs02@gmail.com&gt;
+- 
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>NOTICE: The above is a script used for testing, it is mostly functional but don&rsquo;t use it as a guide for how to do things properly</strong></p>
+<p>The above is a script you feed into <code>rpmbuild</code> and it will generate a .rpm file which Fedora users can use to install your software. You can see that all it really is is some metadata listing app information, dependencies (these dependencies are ones that are inside the fedora packaging system), and a shell script to say what gets installed and how. Because all the dependencies are listed, and are all from the the distros package manager, the file size of an rpm only consists of the files that you supply. In my case it was some python source files and some vector icons, totalling 1.2MB. Of course the full size of the app still needs to be downloaded but the other 150MB or so come in the form of system libraries that other apps can also use. This is the classic Linux method of software deployment, it is lean, and ensures compatibility with a particular distro. The problem comes when looking at other distributions. Some distributions also use RPM (CentOS, RHEL, OpenSUSE) but have different packages, and so need special cases in the file. Other distributions use a different package management system, Debian and derivatives use .deb files for instance.</p>
+<h3 id="flatpak">Flatpak</h3>
+<p><a href="https://en.wikipedia.org/wiki/Flatpak" target="_blank" rel="noopener noreffer">Flatpak</a> and it&rsquo;s rival [Snap](<a href="https://en.wikipedia.org/wiki/Snap_(package_manager)">https://en.wikipedia.org/wiki/Snap_(package_manager)</a> aim to solve the dependency hell by shipping everything together in one big package. You avoid incompatibility at the cost of redundancy. The cover image of this post is my flatpak spec file that gets fed into <code>flatpak-builder</code>. And you may notice that it works in a similar way to a distribution&rsquo;s own package manager.</p>
+<p>We have metadata along with base dependencies</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">app-id</span><span class="p">:</span><span class="w"> </span><span class="l">dev.lukebriggs.pepys</span><span class="w">
+</span><span class="w"></span><span class="nt">runtime</span><span class="p">:</span><span class="w"> </span><span class="l">org.kde.Platform</span><span class="w">
+</span><span class="w"></span><span class="nt">runtime-version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;5.15&#39;</span><span class="w">
+</span><span class="w"></span><span class="nt">sdk</span><span class="p">:</span><span class="w"> </span><span class="l">org.kde.Sdk</span><span class="w">
+</span><span class="w"></span><span class="nt">add-extensions</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">org.freedesktop.Sdk.Extension.texlive</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">directory</span><span class="p">:</span><span class="w"> </span><span class="l">texlive</span><span class="w">
+</span><span class="w">    </span><span class="nt">subdirectories</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">    </span><span class="nt">autodelete</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;20.08&#39;</span><span class="w">
+</span><span class="w"></span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l">runner.sh</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>Because everything is in a sandbox, we have to declare what parts of the host system we have to use</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">finish-args</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- --<span class="l">share=ipc</span><span class="w">
+</span><span class="w">  </span>- --<span class="l">socket=x11</span><span class="w">
+</span><span class="w">  </span>- --<span class="l">socket=wayland</span><span class="w">
+</span><span class="w">  </span>- --<span class="l">socket=pulseaudio</span><span class="w">
+</span><span class="w">  </span>- --<span class="l">device=dri</span><span class="w">
+</span><span class="w">  </span>- --<span class="l">filesystem=home</span><span class="w">
+</span><span class="w">  </span>- --<span class="l">share=network</span><span class="w">
+</span><span class="w">  </span>- --<span class="l">env=PATH=/usr/bin:/app/bin:/app/texlive/bin:/app/texlive/bin/x86_64-linux:/app/texlive/bin/aarch64-linux</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>And then comes the rest of our dependencies which have to be files we supply, along with the build script we use to actually do what we want with the files.</p>
+<h4 id="the-trouble-with-python-qt-and-flatpak">The Trouble with Python, Qt and Flatpak</h4>
+<p>All was going swimmingly until I had to get my Qt app in flatpak.
+2 of my app dependencies are installed by effectively copying the prebuild binaries into the flatpak sandbox.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">pandoc</span><span class="w">
+</span><span class="w">    </span><span class="nt">buildsystem</span><span class="p">:</span><span class="w"> </span><span class="l">simple</span><span class="w">
+</span><span class="w">    </span><span class="nt">build-commands</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">ls</span><span class="w">
+</span><span class="w">      </span>- <span class="l">install -D bin/pandoc /app/bin/pandoc</span><span class="w">
+</span><span class="w">    </span><span class="nt">sources</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">archive</span><span class="w">
+</span><span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">https://github.com/jgm/pandoc/releases/download/2.13/pandoc-2.13-linux-amd64.tar.gz</span><span class="w">
+</span><span class="w">        </span><span class="nt">sha256</span><span class="p">:</span><span class="w"> </span><span class="l">7404aa88a6eb9fbb99d9803b80170a3a546f51959230cc529c66a2ce6b950d4c</span><span class="w">
+</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">wkhtmltopdf</span><span class="w">
+</span><span class="w">    </span><span class="nt">buildsystem</span><span class="p">:</span><span class="w"> </span><span class="l">simple</span><span class="w">
+</span><span class="w">    </span><span class="nt">build-commands</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">cp -r local/* /app/</span><span class="w">
+</span><span class="w">      </span>- <span class="l">ls lib</span><span class="w">
+</span><span class="w">    </span><span class="nt">sources</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">archive</span><span class="w">
+</span><span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox-0.12.6-1.centos8.x86_64.rpm</span><span class="w">
+</span><span class="w">        </span><span class="nt">sha256</span><span class="p">:</span><span class="w"> </span><span class="l">5cc267d54fe3f144729f31432a165e028b689583c53cfee0a01d52644ab280d9</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>One of my dependencies is actually built and compiled within the flatpak container. (Given no <code>buildsystem</code> option on archives with makefiles in them, flatpak will automatically compile and install them)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">  - name: enchant
+    sources:
+      - type: archive
+        url: https://github.com/AbiWord/enchant/releases/download/v2.2.15/enchant-2.2.15.tar.gz
+        sha256: 3b0f2215578115f28e2a6aa549b35128600394304bd79d6f28b0d3b3d6f46c03
+</code></pre></td></tr></table>
+</div>
+</div><p>So we are back to the dilemma of using source files or prebuilt binaries, you&rsquo;ll see later that the solution is a mix of both.</p>
+<p>One option is just shipping a compiled version of my program in a flatpak. The issue is that flatpak&rsquo;s glibc is once again older than my main machine so <em>all</em> flatpak builds would have to be done in an Ubuntu VM, not ideal. Next up comes building from source in the flatpak. My plan for the process was this:</p>
+<ol>
+<li>Get python and resource files in the flatpak</li>
+<li><code>pip install</code> all dependencies</li>
+</ol>
+<p>Sounds simple enough, but flatpak didn&rsquo;t like me communicating with the internet while installing (I tried <code>share=network</code> on individual modules and it didn&rsquo;t work)
+So, each python library had to be down as it&rsquo;s own python module with a link to the tar balls on pypi. Flatpak has a tool for such an occasion called <a href="https://github.com/flatpak/flatpak-builder-tools/tree/master/pip" target="_blank" rel="noopener noreffer">flatpak-pip-generator</a>
+so the line in the flatpak yml</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">- <span class="l">python3-requirements.json</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>is a pointer to a file actually containing all pip dependencies</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;python3-requirements&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;buildsystem&#34;</span><span class="p">:</span> <span class="s2">&#34;simple&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;build-commands&#34;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="nt">&#34;modules&#34;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;python3-regex&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;buildsystem&#34;</span><span class="p">:</span> <span class="s2">&#34;simple&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;build-commands&#34;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&#34;pip3 install --verbose --exists-action=i --no-index --find-links=\&#34;file://${PWD}\&#34; --prefix=${FLATPAK_DEST} \&#34;regex\&#34; --no-build-isolation&#34;</span>
+            <span class="p">],</span>
+            <span class="nt">&#34;sources&#34;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;file&#34;</span><span class="p">,</span>
+                    <span class="nt">&#34;url&#34;</span><span class="p">:</span> <span class="s2">&#34;https://files.pythonhosted.org/packages/38/3f/4c42a98c9ad7d08c16e7d23b2194a0e4f3b2914662da8bc88986e4e6de1f/regex-2021.4.4.tar.gz&#34;</span><span class="p">,</span>
+                    <span class="nt">&#34;sha256&#34;</span><span class="p">:</span> <span class="s2">&#34;52ba3d3f9b942c49d7e4bc105bb28551c44065f139a65062ab7912bef10c9afb&#34;</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;python3-num2words&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;buildsystem&#34;</span><span class="p">:</span> <span class="s2">&#34;simple&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;build-commands&#34;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&#34;pip3 install --verbose --exists-action=i --no-index --find-links=\&#34;file://${PWD}\&#34; --prefix=${FLATPAK_DEST} \&#34;num2words\&#34; --no-build-isolation&#34;</span>
+            <span class="p">],</span>
+            <span class="nt">&#34;sources&#34;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;file&#34;</span><span class="p">,</span>
+                    <span class="nt">&#34;url&#34;</span><span class="p">:</span> <span class="s2">&#34;https://files.pythonhosted.org/packages/a2/55/8f8cab2afd404cf578136ef2cc5dfb50baa1761b68c9da1fb1e4eed343c9/docopt-0.6.2.tar.gz&#34;</span><span class="p">,</span>
+                    <span class="nt">&#34;sha256&#34;</span><span class="p">:</span> <span class="s2">&#34;49b3a825280bd66b3aa83585ef59c4a8c82f2c8a522dbe754a8bc8d08c85c491&#34;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;file&#34;</span><span class="p">,</span>
+                    <span class="nt">&#34;url&#34;</span><span class="p">:</span> <span class="s2">&#34;https://files.pythonhosted.org/packages/33/db/76f1151a1b0cfad532d41021b77cd231495bf72c47618166f92dcdff2ebe/num2words-0.5.10.tar.gz&#34;</span><span class="p">,</span>
+                    <span class="nt">&#34;sha256&#34;</span><span class="p">:</span> <span class="s2">&#34;37cd4f60678f7e1045cdc3adf6acf93c8b41bf732da860f97d301f04e611cc57&#34;</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;python3-pypandoc&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;buildsystem&#34;</span><span class="p">:</span> <span class="s2">&#34;simple&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;build-commands&#34;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&#34;pip3 install --verbose --exists-action=i --no-index --find-links=\&#34;file://${PWD}\&#34; --prefix=${FLATPAK_DEST} \&#34;wheel\&#34; --no-build-isolation&#34;</span><span class="p">,</span>
+                <span class="s2">&#34;pip3 install --verbose --exists-action=i --no-index --find-links=\&#34;file://${PWD}\&#34; --prefix=${FLATPAK_DEST} \&#34;pypandoc\&#34; --no-build-isolation&#34;</span>
+            <span class="p">],</span>
+            <span class="nt">&#34;sources&#34;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;file&#34;</span><span class="p">,</span>
+                    <span class="nt">&#34;url&#34;</span><span class="p">:</span> <span class="s2">&#34;https://files.pythonhosted.org/packages/ed/46/e298a50dde405e1c202e316fa6a3015ff9288423661d7ea5e8f22f589071/wheel-0.36.2.tar.gz&#34;</span><span class="p">,</span>
+                    <span class="nt">&#34;sha256&#34;</span><span class="p">:</span> <span class="s2">&#34;e11eefd162658ea59a60a0f6c7d493a7190ea4b9a85e335b33489d9f17e0245e&#34;</span>
+                <span class="p">},</span>
+
+                <span class="p">{</span>
+                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;file&#34;</span><span class="p">,</span>
+                    <span class="nt">&#34;url&#34;</span><span class="p">:</span> <span class="s2">&#34;https://files.pythonhosted.org/packages/d6/b7/5050dc1769c8a93d3ec7c4bd55be161991c94b8b235f88bf7c764449e708/pypandoc-1.5.tar.gz&#34;</span><span class="p">,</span>
+                    <span class="nt">&#34;sha256&#34;</span><span class="p">:</span> <span class="s2">&#34;14a49977ab1fbc9b14ef3087dcb101f336851837fca55ca79cf33846cc4976ff&#34;</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;python3-pyenchant&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;buildsystem&#34;</span><span class="p">:</span> <span class="s2">&#34;simple&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;build-commands&#34;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&#34;pip3 install --verbose --exists-action=i --no-index --find-links=\&#34;file://${PWD}\&#34; --prefix=${FLATPAK_DEST} \&#34;pyenchant\&#34; --no-build-isolation&#34;</span>
+            <span class="p">],</span>
+            <span class="nt">&#34;sources&#34;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;file&#34;</span><span class="p">,</span>
+                    <span class="nt">&#34;url&#34;</span><span class="p">:</span> <span class="s2">&#34;https://files.pythonhosted.org/packages/1f/d4/52869fe4ed24e373694c116adc00c82e5d92c747be4cbc97b24af43807f6/pyenchant-3.2.0.tar.gz&#34;</span><span class="p">,</span>
+                    <span class="nt">&#34;sha256&#34;</span><span class="p">:</span> <span class="s2">&#34;6b97e9a9f132fa7c9029a6635d821ccad67d4980e68186d02c765b4256b6f152&#34;</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;python3-PyPDF4&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;buildsystem&#34;</span><span class="p">:</span> <span class="s2">&#34;simple&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;build-commands&#34;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&#34;pip3 install --verbose --exists-action=i --no-index --find-links=\&#34;file://${PWD}\&#34; --prefix=${FLATPAK_DEST} \&#34;PyPDF4\&#34; --no-build-isolation&#34;</span>
+            <span class="p">],</span>
+            <span class="nt">&#34;sources&#34;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;file&#34;</span><span class="p">,</span>
+                    <span class="nt">&#34;url&#34;</span><span class="p">:</span> <span class="s2">&#34;https://files.pythonhosted.org/packages/4f/1f/509b44850c475c101aa5b5c9b81755cedd363389d6fbb5c53be6fa915a61/PyPDF4-1.27.0.tar.gz&#34;</span><span class="p">,</span>
+                    <span class="nt">&#34;sha256&#34;</span><span class="p">:</span> <span class="s2">&#34;7c932441146d205572f96254d53c79ea2c30c9e11df55a5cf87e056c7b3d7f89&#34;</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;python3-setproctitle&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;buildsystem&#34;</span><span class="p">:</span> <span class="s2">&#34;simple&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;build-commands&#34;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&#34;pip3 install --verbose --exists-action=i --no-index --find-links=\&#34;file://${PWD}\&#34; --prefix=${FLATPAK_DEST} \&#34;setproctitle\&#34; --no-build-isolation&#34;</span>
+            <span class="p">],</span>
+            <span class="nt">&#34;sources&#34;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;file&#34;</span><span class="p">,</span>
+                    <span class="nt">&#34;url&#34;</span><span class="p">:</span> <span class="s2">&#34;https://files.pythonhosted.org/packages/a1/7f/a1d4f4c7b66f0fc02f35dc5c85f45a8b4e4a7988357a29e61c14e725ef86/setproctitle-1.2.2.tar.gz&#34;</span><span class="p">,</span>
+                    <span class="nt">&#34;sha256&#34;</span><span class="p">:</span> <span class="s2">&#34;7dfb472c8852403d34007e01d6e3c68c57eb66433fb8a5c77b13b89a160d97df&#34;</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>You&rsquo;ll notice that there is no mention of PySide or Qt. The <em>key</em> module that the app depends so heavily is not there, why? Well because both Qt python dependencies are not available as source files from pip. Pip hosts source files and wheels. All the above are source files. These are tar balls that pip will compile and build from source. Wheels are, once again, pre-built binaries. Flatpak doesn&rsquo;t include wheels by default since it once everything to be as cross platform and cross architecture as possible.</p>
+<p>I also wanted to be as platform agnostic as possible so I attempted to build my python bindings from source in the flatpak. Flatpak did not like this. Neither PySide nor PyQt would build and each through different error during the compilation process. My best guess would by the sandbox does not contain some required system libraries but I am at a loss to know which ones. And C compiler&rsquo;s are not the most helpful thing as your only point of reference for a system error.</p>
+<h3 id="lasers-to-the-rescue">Lasers to the rescue</h3>
+<p>At this stage, I didn&rsquo;t actually know what python wheels were, I just assumed everything had to be built from source. I was desperate for answers after 3 days of debugging and staring at config files. I did something I very rarely do, I used the GitHub search function. To my amazement I found a solution.</p>
+<p>The <a href="https://www.physics.hu-berlin.de/en/qom" target="_blank" rel="noopener noreffer">Optical Metrology Group</a> in the Physics department of Humboldt University Berlin <a href="https://github.com/hermitdemschoenenleben/linien" target="_blank" rel="noopener noreffer">created a Linux application for locking onto spectroscopy lines</a>. Guess what, they made a flatpak!</p>
+<p>I looked at there yaml, and I knew then and there that they had found a solution.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="w">  </span><span class="c"># we used to build pyqt on our own here, but this build caused trouble with the pyqtgraph widget being transparent on some systems.</span><span class="w">
+</span><span class="w">  </span><span class="c"># Therefore, we just use the x86_64 wheel here...</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">pyqt-x86_64</span><span class="w">
+</span><span class="w">    </span><span class="nt">buildsystem</span><span class="p">:</span><span class="w"> </span><span class="l">simple</span><span class="w">
+</span><span class="w">    </span><span class="nt">sources</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">file</span><span class="w">
+</span><span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">https://files.pythonhosted.org/packages/4c/bb/7fce18fbe0275d7a3e069a306d8f4662c77eda30ec6780634fd4a7ee50ce/PyQt5-5.15.1-5.15.1-cp35.cp36.cp37.cp38.cp39-abi3-manylinux2014_x86_64.whl</span><span class="w">
+</span><span class="w">        </span><span class="nt">sha256</span><span class="p">:</span><span class="w"> </span><span class="l">b1ea7e82004dc7b311d1e29df2f276461016e2d180e10c73805ace4376125ed9</span><span class="w">
+</span><span class="w">      </span>- <span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">file</span><span class="w">
+</span><span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">https://files.pythonhosted.org/packages/31/24/f887203677955ba4d5d4efe9176ac7ed2bf84efce8c243ab91e63183ad9e/PyQt5_sip-12.8.1-cp37-cp37m-manylinux1_x86_64.whl</span><span class="w">
+</span><span class="w">        </span><span class="nt">sha256</span><span class="p">:</span><span class="w"> </span><span class="l">a1b8ef013086e224b8e86c93f880f776d01b59195bdfa2a8e0b23f0480678fec</span><span class="w">
+</span><span class="w">    </span><span class="nt">build-commands</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">pip3 install PyQt*.whl --target=/app/lib/python3.7/site-packages</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>They had obviously also faced similar Qt-based problems. Their YAML led to me finding out about python wheels, how I could get PyQt in a flatpak, and how I could tell pip the right directory for a python installation (I had no idea what <code>--target</code> would do before this).</p>
+<p>Thanks to some German physicists, my next project is back on track. Beady eyed people may notice some information in some of the config files I&rsquo;ve posted that hints to what it could be. I did try and use PySide using the same wheel method but I got into some strange cyclical versioning thing since it required PySide an Shiboken2 to be installed at the same time. All that means is that my application will be open source out of a legal obligation, as well as an civil one.</p>
+<p><em>SIDE:</em> kerberos is also a requirement for PyQt to work in a flatpak, I have no idea why but it may have something to do with certain networking modules.</p>
+<h2 id="further-reading">Further Reading</h2>
+<p>Here are some useful sources of information I turned to while interacting with packaging systems on Linux</p>
+<dl>
+<dt><a href="https://www.loganasherjones.com/2018/05/using-flatpak-with-python/">https://www.loganasherjones.com/2018/05/using-flatpak-with-python/</a></dt>
+<dd>An excellent and succinct guide that covers making non-qt python apps work in a flatpak</dd>
+<dt><a href="https://docs.flatpak.org/en/latest/getting-started.html">https://docs.flatpak.org/en/latest/getting-started.html</a></dt>
+<dd>Information on what a flatpak is and what its parts consist of.</dd>
+<dt><a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html">https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html</a></dt>
+<dd>A good reference for what commands can be used in flatpak YAML</dd>
+<dt><a href="https://github.com/flathub/io.github.hermitdemschoenenleben.linien/blob/8d89b1c7193602f0696f134e92ac1eba39986303/io.github.hermitdemschoenenleben.linien.yml#L18">https://github.com/flathub/io.github.hermitdemschoenenleben.linien/blob/8d89b1c7193602f0696f134e92ac1eba39986303/io.github.hermitdemschoenenleben.linien.yml#L18</a></dt>
+<dd>The Humboldt University Berlin YAML</dd>
+<dt><a href="https://opensource.com/article/18/9/how-build-rpm-packages">https://opensource.com/article/18/9/how-build-rpm-packages</a></dt>
+<dd>A straightforward guide on how to make RPM packages</dd>
+</dl>
+]]></description>
+</item><item>
     <title>Where Hugo I Go</title>
     <link>https://www.lukebriggs.dev/where-hugo-i-go/</link>
     <pubDate>Mon, 03 May 2021 20:06:07 &#43;0100</pubDate>
@@ -597,35 +1165,6 @@ up terrible.</p>
 <p>In truth, it unsettled me. Was this cheating? Should I have created my own gallery? This package was better than anything I could come up with and something I wasn’t prepared to spend time on but I still felt like a part of the app was no longer mine.</p>
 <p>These sorts of ideas are things I have seen keep cropping up across everything I have done. I see other people’s enemy movement packages in Unity and magic code on StackOverflow that does everything you need, but are these a step to far? Are you losing what it means to actuallly create something? I’ve had all these questions and I think I will always question myself about the balance between hard coding everything from scratch and using magic boxes that do the gruntwork for you, but for now I have decided it’s about scope. It is not within the scope of this project to make an image gallery, it is just a small feature in an app that is for doing something else. The amount of time it would take to create something like this is time that could be spent doing something else that is specific to this app and does require the time spent on it.</p>
 <p>The way I intend to go about my projects is to learn what I need out of it and the crucial elements of it. If I’m making a game in Unity I would feel uncomfortable using someone else’s movement package, movement is such a core aspect of a game’s feel that I think I should have control over its nuance. Equally, I am ok with using an image viewer package as it means I can spend more time on bigger features and I will write my own image viewer if this one is no longer fit for purpose. This is a pet project and so it is really only my own motivation that is going to get it finished. The more time I spend on a time consuming feature, the less likely it is that the project will get finished. What I want out of this app is to come out the other side of it with something that is complete and to achieve this I need to pick and choose my battles.</p>
-]]></description>
-</item><item>
-    <title>Making a Mobile App – Chapter 4: Fast and Flash</title>
-    <link>https://www.lukebriggs.dev/making-a-mobile-app-chapter-4/</link>
-    <pubDate>Mon, 10 Dec 2018 21:57:21 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://www.lukebriggs.dev/making-a-mobile-app-chapter-4/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/static/postimages/8/desk.jpg" referrerpolicy="no-referrer">
-            </div><blockquote>
-<p>“A common mistake that people make when trying to design something
-completely foolproof is to underestimate the ingenuity of complete fools.”</p>
-<p>Douglas Adams</p>
-</blockquote>
-<p>As this app will be for a business, it has to serve some purposes. First it has to present the company as a professional entity and also fit with its branding to provide not only a consistent experience but to also strengthen that companies place in your head, making them more likely to go to them rather than anyone else. Next it has to serve a point, it’s all well and good having some fancy spiel about company ethos and dedication to the craft but you want the user to have a reason to not only to install your app but to also keep using it. Finally, it has to be straightforward to use and foolproof. Well, nothing is foolproof proof. Well, nothing is foolproof.</p>
-<h4 id="branding">Branding</h4>
-<p>The company colours were red, dark grey and white. It therefore makes sense for the app to only use the colours red dark grey and white, seems simple enough.</p>
-<p></p>
-<p>Eww, a red pastel background with black text and mismatch white buttons and icons. It looks like a tomato soup can just exploded in the microwave. It’s all about complimentary colours and keeping things clean. The main colour of any app or website shouldn’t be something outrageous or garish, you want to present professionalism and minimalism. It’s good to have an accent colour that pops and has your brand stand out but if you end up with too much it is both nauseating and ugly.</p>
-<p></p>
-<p>Ahh Much better. Character is nice but flamboyance is very easily annoying</p>
-<h4 id="purpose">Purpose</h4>
-<p>Like I say, your app needs a purpose otherwise what’s the point?</p>
-<p>
-</p>
-<p>As you can see the app act doesn’t revolutionise e-commerce but what it does do is act as a hub for everything involved with this company. You can click a button and google maps opens up with the locations for shops and restaurants already plugged in and ready to plan a route. You can call to book a table for a restaurant and there are galleries of menus and images to see what products and dishes are on offer (As a side note if you are making a ReactJS app in Expo then <a href="https://www.npmjs.com/package/react-native-image-view" target="_blank" rel="noopener noreffer">react-native-image-view</a> is a godsend, it is a bit fiddly to get working but it means you can keep using Expo without having to delve into Android files and java SDKs).</p>
-<h4 id="foolproofness-and-expandability">Foolproofness and Expandability</h4>
-<p>To make your app accessible you have to ensure it is something easy to navigate and intuitive to use. Since this is my first mobile app I felt it was more of a case of making sure it doesn’t look out of place compared to the modern selection of mobile apps that supermarkets and resteraunts have on offer. It uses clear icons and a navigation bar at the bottom which is the current style. I wanted the user to not be confused upon opening the app but feel comfortable in using it and having a smooth experience.</p>
-<p>One of the brilliant things about React Native is the modules are not only easy to use but also offer a great deal of wiggle room to do what you want. For example, creating new screens is as easy as adding a function to that screens javascript add sticking a call to it in a main navigator script; this allows the room to expand quite quickly once you’ve got a baseline set giving scalability without what some projects have which is a feeling of trying to balance on one leg while trying to solve a rubik’s cube.</p>
 ]]></description>
 </item></channel>
 </rss>
