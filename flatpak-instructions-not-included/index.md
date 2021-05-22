@@ -1,4 +1,4 @@
-# Flatpak - Instructions Not Included: How German Laser Beams Fixed My App
+# Flatpak: Instructions Not Included
 
 
 There is a very peculiar thing I have found in software development, it is incredibly difficult to actually get software on other people's machines. Even compiled languages can have difficulty.
