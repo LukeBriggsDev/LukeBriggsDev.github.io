@@ -1,0 +1,57 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Software Release - Category - Luke Briggs</title>
+        <link>https://www.lukebriggs.dev/categories/software-release/</link>
+        <description>Software Release - Category - Luke Briggs</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@lukebriggs.dev (Luke Briggs)</managingEditor>
+            <webMaster>contact@lukebriggs.dev (Luke Briggs)</webMaster><lastBuildDate>Sat, 29 May 2021 21:08:53 &#43;0100</lastBuildDate><atom:link href="https://www.lukebriggs.dev/categories/software-release/" rel="self" type="application/rss+xml" /><item>
+    <title>Introducing Pepys: A straightforward markdown journal</title>
+    <link>https://www.lukebriggs.dev/pepys/</link>
+    <pubDate>Sat, 29 May 2021 21:08:53 &#43;0100</pubDate>
+    <author>Author</author>
+    <guid>https://www.lukebriggs.dev/pepys/</guid>
+    <description><![CDATA[
+<p>Pepys is a journaling application that utilises markdown for writing and storing the journal entries</p>
+<ul>
+<li><a href="#features" rel="">Features</a>
+<ul>
+<li><a href="#markdown-highlighting" rel="">Markdown Highlighting</a></li>
+<li><a href="#inbuilt-html-preview" rel="">Inbuilt HTML Preview</a></li>
+<li><a href="#markdown-shortcuts" rel="">Markdown Shortcuts</a></li>
+<li><a href="#date-oriented" rel="">Date Oriented</a></li>
+<li><a href="#dark-theme" rel="">Dark Theme</a></li>
+<li><a href="#dark-theme" rel="">Future Proof</a></li>
+</ul>
+</li>
+<li><a href="#downloads" rel="">Downloads</a></li>
+<li><a href="#source-code" rel="">Source Code</a></li>
+</ul>
+<h1 id="features">Features</h1>
+<h2 id="markdown-highlighting">Markdown Highlighting</h2>
+
+<p>Pepys provides highlighting for key Markdown syntax in a clean and focus-driven design. Bold is bold, code is clear from text, and tags and urls don&rsquo;t clutter your view.</p>
+<h2 id="inbuilt-html-preview">Inbuilt HTML Preview</h2>
+<p></p>
+<p>With a click of a button your markdown is rendered with links all clickable, images viewable, and even iframes are interactable.</p>
+<h2 id="markdown-shortcuts">Markdown Shortcuts</h2>
+<p></p>
+<p>Pepys features tools to add tables and images quickly and easily. No more fiddling with alignment or hassles with relative directories.</p>
+<h2 id="date-oriented">Date Oriented</h2>
+<p></p>
+<p>Pepys is for making journal writing simple. Organising your entries into dates is automatic. There is no file selector, instead you pick a date and write the entry for that date. Clicking a date with an existing entry will show that entry.</p>
+<p>You also have the ability to favourite specific dates and add tags.</p>
+<h2 id="dark-theme">Dark Theme</h2>
+<p></p>
+<p>Whether you write in day or night, Pepys will make sure that it is as comfortable as possible</p>
+<h2 id="future-proof">Future Proof</h2>
+<p></p>
+<p>Pepys stores all your entries as plain text files in a YYYY/MM folder structure with a YYYY-MM-DD.md name format. This means that all your entries themselves will be viewable forever in any text editor that will come along.</p>
+<p>Pepys also uses pandoc syntax, with support for pandoc conversions to other formats. This means that all your entries can be converted completely to HTML, PDF, LaTeX, Microsoft Word, EPUB, and more!</p>
+<h1 id="downloads">Downloads</h1>
+<p>Linux - TBD</p>
+<p>Windows - TBD</p>
+<h1 id="source-code">Source Code</h1>
+<p>The source code is available on <a href="https://github.com/LukeBriggsDev/Pepys" target="_blank" rel="noopener noreffer">Github</a></p>
+]]></description>
+</item></channel>
+</rss>
