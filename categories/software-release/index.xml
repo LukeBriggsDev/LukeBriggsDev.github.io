@@ -49,7 +49,7 @@
 <p>Pepys also uses pandoc syntax, with support for pandoc conversions to other formats. This means that all your entries can be converted completely to HTML, PDF, LaTeX, Microsoft Word, EPUB, and more!</p>
 <h1 id="downloads">Downloads</h1>
 <p>Linux - TBD</p>
-<p>Windows - TBD</p>
+<p><a href="https://github.com/LukeBriggsDev/Pepys/releases/download/v1.0.1/pepys_install.exe" target="_blank" rel="noopener noreffer">Windows</a></p>
 <h1 id="source-code">Source Code</h1>
 <p>The source code is available on <a href="https://github.com/LukeBriggsDev/Pepys" target="_blank" rel="noopener noreffer">Github</a></p>
 ]]></description>
