@@ -2,19 +2,20 @@
 
 # Introducing Pepys: A straightforward markdown journal
 
-<img alt="pepys" src="https://lukebriggs.dev/static/pepys/icon.svg" style="display: block; margin-left: auto; margin-right: auto; width: 50%">
+![Pepys](/static/postimages/inspection-and-dissection-pepys/BookLogoLargeWhite.svg)
 
 Pepys is a journaling application that utilises markdown for writing and storing the journal entries
 
-* [Features](#features)
-  * [Markdown Highlighting](#markdown-highlighting)
-  * [Inbuilt HTML Preview](#inbuilt-html-preview)
-  * [Markdown Shortcuts](#markdown-shortcuts)
-  * [Date Oriented](#date-oriented)
-  * [Dark Theme](#dark-theme)
-  * [Future Proof](#dark-theme)
-* [Downloads](#downloads)
-* [Source Code](#source-code)
+- [Introducing Pepys: A straightforward markdown journal](#introducing-pepys-a-straightforward-markdown-journal)
+- [Features](#features)
+  - [Markdown Highlighting](#markdown-highlighting)
+  - [Inbuilt HTML Preview](#inbuilt-html-preview)
+  - [Markdown Shortcuts](#markdown-shortcuts)
+  - [Date Oriented](#date-oriented)
+  - [Dark Theme](#dark-theme)
+  - [Future Proof](#future-proof)
+- [Downloads](#downloads)
+- [Source Code](#source-code)
 # Features
 ## Markdown Highlighting
 <img alt="syntax highlighting" src="https://lukebriggs.dev/static/pepys/pepys_editpane.png" width="100%"/>

@@ -4,7 +4,148 @@
         <link>https://www.lukebriggs.dev/categories/project-release/</link>
         <description>Project Release - Category - Luke Briggs</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@lukebriggs.dev (Luke Briggs)</managingEditor>
-            <webMaster>contact@lukebriggs.dev (Luke Briggs)</webMaster><lastBuildDate>Mon, 03 May 2021 20:06:07 &#43;0100</lastBuildDate><atom:link href="https://www.lukebriggs.dev/categories/project-release/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>contact@lukebriggs.dev (Luke Briggs)</webMaster><lastBuildDate>Mon, 31 May 2021 16:47:38 &#43;0100</lastBuildDate><atom:link href="https://www.lukebriggs.dev/categories/project-release/" rel="self" type="application/rss+xml" /><item>
+    <title>Inspection and Dissection: Pepys - A Straightforward Markdown Editor</title>
+    <link>https://www.lukebriggs.dev/inspection-and-dissection-pepys/</link>
+    <pubDate>Mon, 31 May 2021 16:47:38 &#43;0100</pubDate>
+    <author>Author</author>
+    <guid>https://www.lukebriggs.dev/inspection-and-dissection-pepys/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/static/postimages/inspection-and-dissection-pepys/BookLogoLargeWhite.svg" referrerpolicy="no-referrer">
+            </div><blockquote>
+<p>The product page is available <a href="/pepys" rel="">here</a></p>
+</blockquote>
+<h1 id="brief-description">Brief Description</h1>
+<p>Pepys is a GUI journaling application built using Python bindings for the Qt framework.
+It is available as an installer for Windows and a Flatpak on Linux.</p>
+<h1 id="background">Background</h1>
+<p>I started journaling around February last year, it was probably the most prescient thing I have ever done.
+It wasn&rsquo;t long before we all went into self-imposed isolation and journaling provided a good way to express my thoughts.</p>
+<p>My first posts were made in one big Word document.
+Journals need to be as future-proof as possible, and I thought at the time that since entire governments are probably reliant on MS Word that it won&rsquo;t be going away any time soon.
+It wasn&rsquo;t a good experience though.
+Having to type the date each time was tiresome, and I thought it would be a formatting mess should I use an Operating System without MS Word (something which would later happen when I spent several months using Linux).</p>
+<p>I next moved on to <a href="https://notion.so" target="_blank" rel="noopener noreffer">Notion</a>.
+An excellent productivity application that can be used to do all sorts from notes to spreadsheets to databases.
+It&rsquo;s template, tagging and calendar features made it a great prospect for writing my journal in.
+The entries were made in Markdown so would be viewable on any computer for as long as we still used ASCII and Unicode, seems pretty future proof.
+The trouble was, it made journal writing a chore.
+To write an entry I&rsquo;d have to open up this electron application that took an <em>age</em> to open and slowly click through web links, waiting for pages to load, before I could get to writing entries.
+I wanted a native application that would allow me to write journal entries in markdown, with a date-based file chooser.
+I found no application that fitted all this criteria that worked on Linux and Windows, they all seemed Mac only (I am envious of the great ecosystem Apple cultivates among its development community).
+So I took it upon myself to write my own.</p>
+<h1 id="a-rocky-start">A Rocky Start</h1>
+<p>The first idea for a Journal application first came to me in June 2020 but it would take nearly a year before I would find the time and the courage to actually start it.</p>
+<p>My only experience with a GUI application that wasn&rsquo;t made in a dedicated game engine was <a href="/inspection-and-dissection-dice-jack" rel="">Dice-Jack</a> which was a version of blackjack that used Dice instead of cards and was made over a few days for an assignment as part of my Sixth Form Computing course.
+I knew I couldn&rsquo;t use dotNet since I wanted it to be able to run on Linux as well as Windows.
+My next thought was Java, since that was the language I was learning at University at the time and seemed to fit all my requirements.</p>
+<p>I managed to get a very early text editor working in Java.
+At that point, the idea was to have all the styling done in real time as you typed.
+For example, if I typed a <code>#</code> then I would set the font size you type in to that of a title.</p>
+<p>I was running into issues that were perfectly fixable but I was never truly comfortable in Java.
+I will absolutely use Java in the future but it just didn&rsquo;t seem right with this project.
+With Java I had the choice between the ancient swing and JavaFX.
+I have never got to grasps with the whole split GUI framework where some bits are in code and some bits are in XML files.
+All the GUI frameworks are going this way so I will have to get my head around it eventually but this was not the project for this.</p>
+<h1 id="a-walk-in-the-dark">A Walk in the Dark</h1>
+<p>After bouncing of Java frameworks I had to go with what I know, Python.
+Python was the first language I learned and I&rsquo;ve been using it for coming up 4 years now.
+The big players in the Python GUI game is Gtk, Qt, wxWidgets, and Tkinter.
+Tkinter and wxWidgets are the more simple of the four with the majority of applications being built in either Gtk or Qt.
+In the end I settled with Qt because it seemed to have better look and feel across different systems, and Gtk seemed to want me to use build systems that I was unfamiliar with.
+I first broke ground with the first <a href="https://github.com/LukeBriggsDev/Pepys/commit/66f42549e53db7a43224d317be2191b2000e0d94" target="_blank" rel="noopener noreffer">git commit</a> being pushed at 20:29 BST on April 1st.
+This was the first commit to the repo that would become the final release, this came at the end of several weeks of the aforementioned bouncing around.</p>
+<h2 id="syntax-highlighting">Syntax Highlighting</h2>
+<figure>
+
+<figcaption>An early version of the edit pane</figcaption>
+</figure>
+My primary focus was in getting markdown source highlighting in the text window.
+Things like bold, italic, and strike-through came rather quickly but became incredibly slow with large amounts of text.
+My initial solution to the syntax highlighting was a naive one.
+I would be performing regex searches and applying text character formatting across the document on each key press.
+The approach was okay on small documents, but the larger the document the more text would be searched through and it would become impossible to type.
+The first breakthrough came when I discovered a Qt widget called QSyntaxHighlighter which provided methods that would allow text to be broken up into 'blocks'.
+I put all my regular expressions into a QSyntaxHighlighter and used its blocking mechanism to allow for typing to not be slowed down on large documents.
+<h2 id="html-preview">HTML Preview</h2>
+<figure>
+
+<figcaption>An early version of the view pane</figcaption>
+</figure>
+Alot of the early work went into refining my markdown regular expressions, making sure they formatted the correct parts and matched the output reasonably.
+It wasn't long before I had to turn my attention to the HTML preview.
+The preview pane was initially just a QTextBrowser that supported a limited subset of HTML.
+When the preview button was clicked the markdown would be converted to html using [mistune](https://mistune.readthedocs.io/en/latest/).
+I had used mistune previously on the [first iteration of this website](/inspection-and-dissection-this-site) so a lot of that could be copied and pasted from my work there.
+<p>The fact that only a subset of HTML was supported soon became an issue and I had to switch the preview to a full on web engine (the reason why the application is so large).
+The web engine was such a double edged sword.
+Without it: previews wouldn&rsquo;t match exports, math equations wouldn&rsquo;t be supported, many markdown elements couldn&rsquo;t be rendered properly (tables, inline html).
+But with it, the application swells in size to over 100MB download and even larger when fully installed.
+I wish I could resolve this alas I am too tired and too unskilled to be able to implement a solution.</p>
+<h2 id="the-killer-feature">The Killer Feature</h2>
+<p>It was around this time that I went into exploring <a href="https://pandoc.org/" target="_blank" rel="noopener noreffer">pandoc</a>.
+I was amazed by its power and I will undoubtedly utilise it in many future projects.
+Pandoc is a program written in haskell that uses its own flavour of markdown to provide a <em>huge</em> amount of outputs for document conversion.
+I knew I had to implement this in some way to provide some way of providing a wide range of export option.
+Then I will have truly realised my need of having entries been in a future proof format, why have 1 future proof format when you can have every format under the Sun?</p>
+<h2 id="calendar-file-selector">Calendar File Selector</h2>
+<p>I knew that my main method of interacting with files should be through a calendar.
+Qt provides a reasonably good calendar widget that saved alot of time.
+The way I keep track of the files in a user&rsquo;s journal is by having a very rigid folder structure which Pepys gets pointed to.
+The journal directory has a structure of <code>YYYY\MM\DD\YYYY-MM-DD\YYYY-MM-DD.md</code> This makes it very easy to search for all the entries by date.</p>
+<h2 id="release">Release</h2>
+<figure>
+<table>
+<tr>
+<th>
+
+</th>
+<th>
+
+</th>
+<th>
+
+</th>
+</tr>
+</table>
+<figcaption>A comparison of different logos I went through</figcaption>
+</figure>
+<p>I have went into my woes over releasing software <a href="/flatpak-instructions-not-included" rel="">here</a> but it is safe to say that this is an are where I learned an awful lot.
+In the end Pepys was released on Linux via flatpak and on Windows via an NSIS installer <a href="https://github.com/LukeBriggsDev/Pepys/releases/" target="_blank" rel="noopener noreffer">available to download on GitHub</a>.
+There was no Mac release because I do not own a Mac no have sufficient experience with Macs to be comfortable with creating installers and sufficiently testing them for correctness.</p>
+<h1 id="a-retrospective">A Retrospective</h1>
+<p>This whole process has been the longest I have ever spent on a project, it was probably the largest project I have ever made, and there were alot of firsts.
+It was the first application I made that wasn&rsquo;t a game, it was the first proper GUI application I have made, and it was the first time I had to make installers by hand.
+The process was arduous at times and I felt like giving up at some points.</p>
+<p>I sit here now after releasing it and I think &ldquo;if I&rsquo;d only done this&rdquo; or &ldquo;it would be so much better if&hellip;&rdquo; but I can&rsquo;t think like that.
+If I had spent as long as possible on each feature till it was perfect then the software would never be released.
+I have learned that software development is an iterative process in 2 ways.
+The first way is in relation to an individual piece of software.
+You develop the software over time, slowly improving and adding until a finished product stumbles over the finish line.
+The second way is at a macroscopic level.
+Each huge project your begin, each journey you embark on, brings a new iteration on what went before.
+The next GUI project I make <em>will</em> be better.
+The next installer I make <em>will</em> be better.
+And this excites me.</p>
+<p>I suppose it has taken me until the end of my first year of University to understand what learning is really about.
+Learning isn&rsquo;t about passing tests, although schools may tell you otherwise.
+Learning isn&rsquo;t even about knowing stuff, that is just a by-product.
+Learning is about being better, about knowing you <em>will</em> be better, and about being excited about that.
+I am excited about what I will create next, how I will iterate on what I have learned, and how I can surprise myself.</p>
+<h1 id="special-thanks">Special Thanks</h1>
+<p>All of this took an awful lot of effort so I would like to give special thanks to the following people and projects for there valuable insights.</p>
+<dl>
+<dt><a href="https://gitlab.gnome.org/World/apostrophe" target="_blank" rel="noopener noreffer">Apostrophe</a></dt>
+<dd>An excellent markdown editor that shows how to make a properly good writing experience and led me down the Pandoc path. Also inspired some of the regex used.</dd>
+<dt><a href="https://github.com/hermitdemschoenenleben/linien" target="_blank" rel="noopener noreffer">Humboldt University Optical Metrology Group</a></dt>
+<dd>Without whom I&rsquo;d still be wrestling with compilers in Flatpak</dd>
+<dt><a href="https://akaru.me/" target="_blank" rel="noopener noreffer">Lucy Marsten</a> (<a href="https://github.com/noneuclideanmotion" target="_blank" rel="noopener noreffer">Github</a>)</dt>
+<dd>Who provided a second set of eyes and motivated me to actually get stuff done.</dd>
+<dt><a href="https://github.com/FedoraQt/adwaita-qt" target="_blank" rel="noopener noreffer">Jan Grulich</a></dt>
+<dd>For showing how to implement Adwaita colours in Qt</dd>
+</dl>
+]]></description>
+</item><item>
     <title>Where Hugo I Go</title>
     <link>https://www.lukebriggs.dev/where-hugo-i-go/</link>
     <pubDate>Mon, 03 May 2021 20:06:07 &#43;0100</pubDate>
