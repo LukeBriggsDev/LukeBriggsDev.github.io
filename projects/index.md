@@ -2,6 +2,21 @@
 
 Here is a list of all my projects that are available on the internet
 
+# Pepys
+------------------
+### *Release Date: 30th May 2021"
+
+Pepys is a journaling application that utilises markdown for writing and storing the journal entries. It supports a variety of export formats.
+The biggest project I had released at the time one of my biggest learning experiences.
+
+![Pepys](/static/pepys/pepys_editpane.png)
+
+[Windows](https://github.com/LukeBriggsDev/Pepys/releases)
+
+[Linux](https://flathub.org/apps/details/dev.lukebriggs.pepys)
+
+[Source Code](https://github.com/LukeBriggsDev/Pepys)
+
 # Type or Die
 ------------------
 ### *Release Date: 5th March 2021*
@@ -9,8 +24,8 @@ Here is a list of all my projects that are available on the internet
 Made in 5 days for the Newcastle University Computing and Technology Society (NUCATS) Game Jam, in which it received 3rd place.
 It is a top-down zombie wave shooter where it's not your aim that matters but how fast you can type.
 
-![Type or Die](/static/projects/typeordie.png)
-<iframe src="https://itch.io/embed/945130?dark=true" width="552" height="167" frameborder="0"><a href="https://lukebriggs.itch.io/type-or-die">Type or Die by lukebriggs</a></iframe>
+<img src="/static/projects/typeordie.png" alt="Type or die" width="100%">
+<iframe src="https://itch.io/embed/945130?dark=true" width="552" frameborder="0"><a href="https://lukebriggs.itch.io/type-or-die">Type or Die by lukebriggs</a></iframe>
 
 # Dice-Jack
 -------------------
@@ -19,7 +34,7 @@ It is a top-down zombie wave shooter where it's not your aim that matters but ho
 Made in 2 days as a mini-project for a course. Used as a way to get to grips with windows forms and learn some Visual
 Basic .NET. Just so happens to also be the first game of mine with a computer controlled player.
 
-![Dice Jack](/static/projects/dicejack.gif)
+<img src="/static/projects/dicejack.gif" alt="Dice Jack" width="100%">
 
 [Source Code](https://github.com/CodeLuke/Dice-Jack)
 
@@ -31,9 +46,9 @@ A remake of the classic Pong game. This was the first game I programed in Unity 
 isn’t very fleshed out but a vital learning experience in how to make a video-game as well as the the nuances and
 functions of the Unity Editor.
 
-![Ping](/static/projects/ping.gif)
+<img src="/static/projects/ping.gif" alt="Ping" width="100%">
 
-<iframe src="https://widgets.gamejolt.com/package/v1?key=diPkrZ8S" frameborder="0" width="500" height="245"></iframe>
+<iframe src="https://widgets.gamejolt.com/package/v1?key=diPkrZ8S" frameborder="0" width="500"></iframe>
 
 # Fallen Stars
 ------------------------
@@ -47,6 +62,6 @@ source of assets for those who are more focused on programming than art.
 The game itself is an asteroids clone with a cartoon atmosphere and explosion animations that I was far too proud of at
 the time. It even has a (barely) working high score system.
 
-![Fallen Stars](/static/projects/fallenstars.gif)
+<img src="/static/projects/fallenstars.gif" alt="Fallen Stars" width="100%">
 
-<iframe src="https://widgets.gamejolt.com/package/v1?key=AtyaAixk" frameborder="0" width="500" height="245"></iframe>
+<iframe src="https://widgets.gamejolt.com/package/v1?key=AtyaAixk" frameborder="0" width="500"></iframe>
