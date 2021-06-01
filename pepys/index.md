@@ -1,12 +1,10 @@
-# 
-
 # Introducing Pepys: A straightforward markdown journal
+
 
 ![Pepys](/static/postimages/inspection-and-dissection-pepys/BookLogoLargeWhite.svg)
 
 Pepys is a journaling application that utilises markdown for writing and storing the journal entries
 
-- [Introducing Pepys: A straightforward markdown journal](#introducing-pepys-a-straightforward-markdown-journal)
 - [Features](#features)
   - [Markdown Highlighting](#markdown-highlighting)
   - [Inbuilt HTML Preview](#inbuilt-html-preview)
