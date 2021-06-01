@@ -11,6 +11,6 @@ be a reference to which I will point to on occasion.
 
 The full story of how this site was created can be found [here](/where-hugo-i-go).
 
-- PGP public Key ID - `0xD5C4BCB42FA1C339`
+- PGP public Key ID - `0x37B9B28811BBE231`
 - PGP public key asc - [public.asc](/public.asc)
 
