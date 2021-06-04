@@ -156,7 +156,7 @@ All of this took an awful lot of effort so I would like to give special thanks t
 [Humboldt University Optical Metrology Group](https://github.com/hermitdemschoenenleben/linien)
 : Without whom I'd still be wrestling with compilers in Flatpak
 
-[Lucy Marsten](https://akaru.me/) ([Github](https://github.com/noneuclideanmotion))
+[Lucy Marsden](https://akaru.me/) ([Github](https://github.com/noneuclideanmotion))
 : Who provided a second set of eyes and motivated me to actually get stuff done.
 
 [Jan Grulich](https://github.com/FedoraQt/adwaita-qt)
