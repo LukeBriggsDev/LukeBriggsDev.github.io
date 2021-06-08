@@ -4,7 +4,7 @@ Here is a list of all my projects that are available on the internet
 
 # Pepys
 ------------------
-### *Release Date: 30th May 2021"
+### *Release Date: 30th May 2021*
 
 Pepys is a journaling application that utilises markdown for writing and storing the journal entries. It supports a variety of export formats.
 The biggest project I had released at the time one of my biggest learning experiences.
