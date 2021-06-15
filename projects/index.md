@@ -6,6 +6,9 @@ Here is a list of all my projects that are available on the internet
 ------------------
 ### *Release Date: 30th May 2021*
 
+> "It is rightly made for those who love to document their daily life events"
+><br> [- FOSSBytes](https://fossbytes.com/document-activity-pepys-journal-app-linux)
+
 Pepys is a journaling application that utilises markdown for writing and storing the journal entries. It supports a variety of export formats.
 The biggest project I had released at the time one of my biggest learning experiences.
 
