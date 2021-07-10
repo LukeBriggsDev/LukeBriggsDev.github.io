@@ -4,7 +4,59 @@
         <link>https://www.lukebriggs.dev/categories/project-release/</link>
         <description>Project Release - Category - Luke Briggs</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@lukebriggs.dev (Luke Briggs)</managingEditor>
-            <webMaster>contact@lukebriggs.dev (Luke Briggs)</webMaster><lastBuildDate>Mon, 31 May 2021 16:47:38 &#43;0100</lastBuildDate><atom:link href="https://www.lukebriggs.dev/categories/project-release/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>contact@lukebriggs.dev (Luke Briggs)</webMaster><lastBuildDate>Sat, 10 Jul 2021 10:33:04 &#43;0100</lastBuildDate><atom:link href="https://www.lukebriggs.dev/categories/project-release/" rel="self" type="application/rss+xml" /><item>
+    <title>Full Release: newcastle-bst - Harvard referencing style as recommended by Newcastle University</title>
+    <link>https://www.lukebriggs.dev/full-release-newcastle-bst/</link>
+    <pubDate>Sat, 10 Jul 2021 10:33:04 &#43;0100</pubDate>
+    <author>Author</author>
+    <guid>https://www.lukebriggs.dev/full-release-newcastle-bst/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/static/postimages/full-release-newcastle-bst/bibtex.png" referrerpolicy="no-referrer">
+            </div><p>A couple of months ago I released <a href="/the-laypersons-guide-to-latex" rel="">a blog post about LateX</a>.
+At the bottom of the post I made quick reference to a BibTeX style I had created for the referencing used by Newcastle University.
+The style had a few bugs and was quite hard to find it but it was left dormant while I made some other software and focused on work.</p>
+<p>I am now pleased to say that I have spent some work polishing it up, fixing some issues, and giving it a proper release.
+It&rsquo;s even on <a href="https://ctan.org/pkg/newcastle-bst" target="_blank" rel="noopener noreffer">CTAN!</a>.
+If you are a student and notice any issues, please report them on <a href="https://github.com/LukeBriggsDev/Newcastle-BibTeX/issues" target="_blank" rel="noopener noreffer">GitHub</a></p>
+<h1 id="release-notes">Release Notes</h1>
+<h2 id="newcastle-bst-harvard-referencing-style-as-recommended-by-newcastle-university">newcastle-bst: Harvard referencing style as recommended by Newcastle University</h2>
+<p>This package provides a <a href="https://ctan.org/pkg/BibTeX" target="_blank" rel="noopener noreffer">BibTeX</a> style to format reference lists in the <a href="https://libguides.ncl.ac.uk/managing/harvard" target="_blank" rel="noopener noreffer">Harvard at Newcastle</a> style recommended by Newcastle University. It should be used alongside <a href="https://ctan.org/pkg/natbib" target="_blank" rel="noopener noreffer">natbib</a> for citations.</p>
+<h3 id="installation">Installation</h3>
+<p>The required style file is available from <a href="https://github.com/LukeBriggsDev/Newcastle-BibTeX" target="_blank" rel="noopener noreffer">GitHub</a> and <a href="https://ctan.org/pkg/newcastle-bst" target="_blank" rel="noopener noreffer">CTAN</a>. You can use the style by copying it into your working directory containing your <code>.tex</code> file. You can also add it to your bst directory in your tex path to use it without having to copy it over each time.</p>
+<h3 id="using-the-style">Using the style</h3>
+<p>To use the style include this in your preamble:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\usepackage</span><span class="nb">{</span>natbib<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="na">[UKenglish]</span><span class="nb">{</span>isodate<span class="nb">}</span>
+<span class="k">\bibliographystyle</span><span class="nb">{</span>newcastle<span class="nb">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Also remember to specify your <code>.bib</code> file at the end of the document:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\bibliography</span><span class="nb">{</span>file<span class="nb">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>The easiest way to create .bib files for this style is through exporting entries from a reference manager such as <a href="https://www.mendeley.com/" target="_blank" rel="noopener noreffer">Mendeley</a>.
+However, some parts are not available through this (such as titleaddon for computer programs).
+If you notice any discrepancies between generated references and the recommended styles then please raise this on <a href="https://github.com/LukeBriggsDev/Newcastle-BibTeX/issues" target="_blank" rel="noopener noreffer">GitHub</a></p>
+<h3 id="license">License</h3>
+<p>Copyright 2021 Luke Briggs
+This work consists of the documented <code>newcastle.bst</code> file.</p>
+<p>The text files contained in this work may be distributed and/or modified under the conditions of the LATEX Project Public License (LPPL), either version 1.3c of this license or (at your option) any later version.</p>
+<p>This work has had no input from Newcastle University and is done entirely in order to help other students create bibliography quicker.</p>
+<p>This work is ‘maintained’ (as per LPPL maintenance status) by Luke Briggs.</p>
+]]></description>
+</item><item>
     <title>Inspection and Dissection: Pepys - A Straightforward Markdown Editor</title>
     <link>https://www.lukebriggs.dev/inspection-and-dissection-pepys/</link>
     <pubDate>Mon, 31 May 2021 16:47:38 &#43;0100</pubDate>

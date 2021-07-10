@@ -4,9 +4,61 @@
         <link>https://www.lukebriggs.dev/</link>
         <description>I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University.</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@lukebriggs.dev (Luke Briggs)</managingEditor>
-            <webMaster>contact@lukebriggs.dev (Luke Briggs)</webMaster><lastBuildDate>Mon, 31 May 2021 16:47:38 &#43;0100</lastBuildDate>
+            <webMaster>contact@lukebriggs.dev (Luke Briggs)</webMaster><lastBuildDate>Sat, 10 Jul 2021 10:33:04 &#43;0100</lastBuildDate>
             <atom:link href="https://www.lukebriggs.dev/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Full Release: newcastle-bst - Harvard referencing style as recommended by Newcastle University</title>
+    <link>https://www.lukebriggs.dev/full-release-newcastle-bst/</link>
+    <pubDate>Sat, 10 Jul 2021 10:33:04 &#43;0100</pubDate>
+    <author>Author</author>
+    <guid>https://www.lukebriggs.dev/full-release-newcastle-bst/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/static/postimages/full-release-newcastle-bst/bibtex.png" referrerpolicy="no-referrer">
+            </div><p>A couple of months ago I released <a href="/the-laypersons-guide-to-latex" rel="">a blog post about LateX</a>.
+At the bottom of the post I made quick reference to a BibTeX style I had created for the referencing used by Newcastle University.
+The style had a few bugs and was quite hard to find it but it was left dormant while I made some other software and focused on work.</p>
+<p>I am now pleased to say that I have spent some work polishing it up, fixing some issues, and giving it a proper release.
+It&rsquo;s even on <a href="https://ctan.org/pkg/newcastle-bst" target="_blank" rel="noopener noreffer">CTAN!</a>.
+If you are a student and notice any issues, please report them on <a href="https://github.com/LukeBriggsDev/Newcastle-BibTeX/issues" target="_blank" rel="noopener noreffer">GitHub</a></p>
+<h1 id="release-notes">Release Notes</h1>
+<h2 id="newcastle-bst-harvard-referencing-style-as-recommended-by-newcastle-university">newcastle-bst: Harvard referencing style as recommended by Newcastle University</h2>
+<p>This package provides a <a href="https://ctan.org/pkg/BibTeX" target="_blank" rel="noopener noreffer">BibTeX</a> style to format reference lists in the <a href="https://libguides.ncl.ac.uk/managing/harvard" target="_blank" rel="noopener noreffer">Harvard at Newcastle</a> style recommended by Newcastle University. It should be used alongside <a href="https://ctan.org/pkg/natbib" target="_blank" rel="noopener noreffer">natbib</a> for citations.</p>
+<h3 id="installation">Installation</h3>
+<p>The required style file is available from <a href="https://github.com/LukeBriggsDev/Newcastle-BibTeX" target="_blank" rel="noopener noreffer">GitHub</a> and <a href="https://ctan.org/pkg/newcastle-bst" target="_blank" rel="noopener noreffer">CTAN</a>. You can use the style by copying it into your working directory containing your <code>.tex</code> file. You can also add it to your bst directory in your tex path to use it without having to copy it over each time.</p>
+<h3 id="using-the-style">Using the style</h3>
+<p>To use the style include this in your preamble:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\usepackage</span><span class="nb">{</span>natbib<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="na">[UKenglish]</span><span class="nb">{</span>isodate<span class="nb">}</span>
+<span class="k">\bibliographystyle</span><span class="nb">{</span>newcastle<span class="nb">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Also remember to specify your <code>.bib</code> file at the end of the document:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\bibliography</span><span class="nb">{</span>file<span class="nb">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>The easiest way to create .bib files for this style is through exporting entries from a reference manager such as <a href="https://www.mendeley.com/" target="_blank" rel="noopener noreffer">Mendeley</a>.
+However, some parts are not available through this (such as titleaddon for computer programs).
+If you notice any discrepancies between generated references and the recommended styles then please raise this on <a href="https://github.com/LukeBriggsDev/Newcastle-BibTeX/issues" target="_blank" rel="noopener noreffer">GitHub</a></p>
+<h3 id="license">License</h3>
+<p>Copyright 2021 Luke Briggs
+This work consists of the documented <code>newcastle.bst</code> file.</p>
+<p>The text files contained in this work may be distributed and/or modified under the conditions of the LATEX Project Public License (LPPL), either version 1.3c of this license or (at your option) any later version.</p>
+<p>This work has had no input from Newcastle University and is done entirely in order to help other students create bibliography quicker.</p>
+<p>This work is ‘maintained’ (as per LPPL maintenance status) by Luke Briggs.</p>
+]]></description>
+</item><item>
     <title>Inspection and Dissection: Pepys - A Straightforward Markdown Editor</title>
     <link>https://www.lukebriggs.dev/inspection-and-dissection-pepys/</link>
     <pubDate>Mon, 31 May 2021 16:47:38 &#43;0100</pubDate>
@@ -1240,56 +1292,6 @@ I just add another section tag and it will become the second section in the docu
 </div><p>Before this code I run checks that see which options are available after a dealer rolls (these are the DealerCanChoose variables). Here there is a series of conditionals that look at the options and picks the best one for the dealer.</p>
 <p>If there is only one option available, then the dealer will pick that one. If there is more than one option available then the dealer will pick whichever will get them the highest score that turn. If there are no options available then the dealer is bust and they will stand. The dealer will also stand if they have a score higher than that of the player. The dealer will continue to roll as long as they are lower than the player and their current score is under 17.</p>
 <p>And thats the game! The quickest project I’ve ever done and although its rough around the edges the gameplay is solid and I got to grips with windows form’s implementation of an event-driven program. You can find the full source code <a href="https://github.com/LukeBriggsDev/Dice-Jack" target="_blank" rel="noopener noreffer">here</a></p>
-]]></description>
-</item><item>
-    <title>Probably</title>
-    <link>https://www.lukebriggs.dev/probably/</link>
-    <pubDate>Sat, 17 Aug 2019 20:49:25 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://www.lukebriggs.dev/probably/</guid>
-    <description><![CDATA[<p>We are currently in a scholarly purgatory. The time between July and
-September where you are attached to no institution, have no motivation and
-spend months fretting over how your past self will affect your future self
-(neither of which do anything for your current self)</p>
-<p>At 11 am I received my AS results via e-mail (how modern) and received AAB
-+ Distinction. I am happy with this. It’s literally the second-best results I
-could have achieved at this point, but there is still an unsettling feeling around
-me. Something is gnawing away at me that prevents me from enjoying this now.</p>
-<p>During the summer months there isn’t a clear track to follow. No daily
-lessons, no scheduled assignments. Any events just seem to be smeared across
-what could possibly be discerned to be a date on close inspection. Nothing
-tangible appears to be happening in terms of progress for long term goals and
-as such there is no certainty.</p>
-<p>The longer the time between terms, the more in flux my future appears to be.
-I could always fall back on the ‘everything is fine’ mantra but then it feels
-as if I’m not striving towards what I want, or that I’m setting myself up for
-future regret about not putting in the effort where it needed to be. My mind
-runs through permutations of events, “someone probably got 3 As, they’re
-the ones who are going to receive your university offer” I feel myself
-fretting. I shouldn’t fret, but I do. I know people who failed they’re exams
-and they have to repeat a year of their life, they would kill to be in my
-situation. There are also people who seem like demigods to me who always get
-perfect scores along with having elaborate and incredible side projects. To
-some my worries will seem preposterous, to others I will seem I don’t know how
-lucky I am. Perhaps I’m both these things and perhaps I’m neither.</p>
-<p>But I’m not in their situation, I’m in my situation and can only act within
-the context of it. I want to achieve the best possible results I can, and I
-didn’t. I wasn’t far off; in fact, I was damn close but it doesn’t matter the distance.
-Out of the 216 combinations, I have satisfied 215, and the person inside me
-that wanted that last one remains dissatisfied.</p>
-<p>Will 1 mark affect whether I get an offer from my preferred university?
-Probably not. <em>Probably</em> not. Probably is the most terrifying
-word in the English language. There are no certainties in life, everything can
-be prefixed with the word probably. Yet we feel the need to stick it
-before only a few things, I presume this is to deliberately remind us of the
-very large improbability of the task we about to undertake and then
-what is the point of even specifying a chance in the first place? Perhaps a
-wandering mind is a good sign. I’m not struggling to finance my education
-through a side job or agonizing over planning to resist a year, I have a
-supportive family and am grateful to my past self for not screwing everything
-up terrible.</p>
-<p>So. Is everything fine?</p>
-<p>Probably.</p>
 ]]></description>
 </item></channel>
 </rss>
