@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   width="2763"
-   height="1038"
-   viewBox="0 0 731.04092 274.63781"
+   width="2791.4268"
+   height="1077.1429"
+   viewBox="0 0 738.56214 284.99439"
    version="1.1"
    id="svg8"
    inkscape:version="1.1 (c68e22c387, 2021-05-23)"
@@ -222,11 +222,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.35"
-     inkscape:cx="1687.1429"
-     inkscape:cy="590"
+     inkscape:zoom="0.175"
+     inkscape:cx="-180"
+     inkscape:cy="842.85714"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer6"
+     inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      showgrid="false"
      units="px"
@@ -237,7 +237,11 @@
      inkscape:window-maximized="1"
      inkscape:pagecheckerboard="0"
      width="2216px"
-     inkscape:snap-global="false" />
+     inkscape:snap-global="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -254,13 +258,14 @@
      inkscape:groupmode="layer"
      id="layer1">
     <rect
-       style="fill:#ffffff;stroke-width:0.298879"
+       style="fill:#ffffff;fill-opacity:1;stroke-width:0.298879"
        id="rect9322"
-       width="738.56628"
+       width="738.56586"
        height="284.99438"
        x="-0.0018275901"
        y="1.8073864e-08"
-       ry="0" />
+       ry="25.400028"
+       rx="25.400028" />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -445,9 +450,7 @@
          x="227.54166"
          y="69.547623" /></text>
     <g
-       aria-label="Pepys:
-A Straightforward
-Markdown Journal"
+       aria-label="Pepys: A Straightforward Markdown Journal"
        id="text1593"
        style="font-size:50.8px;line-height:1.25;font-family:'EB Garamond';-inkscape-font-specification:'EB Garamond';stroke-width:0.264583">
       <path
