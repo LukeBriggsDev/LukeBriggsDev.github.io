@@ -4,7 +4,45 @@
         <link>https://www.lukebriggs.dev/categories/software-development/</link>
         <description>Software Development - Category - Luke Briggs</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@lukebriggs.dev (Luke Briggs)</managingEditor>
-            <webMaster>contact@lukebriggs.dev (Luke Briggs)</webMaster><lastBuildDate>Mon, 31 May 2021 16:47:38 &#43;0100</lastBuildDate><atom:link href="https://www.lukebriggs.dev/categories/software-development/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>contact@lukebriggs.dev (Luke Briggs)</webMaster><lastBuildDate>Sun, 15 Aug 2021 15:46:07 &#43;0100</lastBuildDate><atom:link href="https://www.lukebriggs.dev/categories/software-development/" rel="self" type="application/rss+xml" /><item>
+    <title>Calmer Internet</title>
+    <link>https://www.lukebriggs.dev/calmer-internet/</link>
+    <pubDate>Sun, 15 Aug 2021 15:46:07 &#43;0100</pubDate>
+    <author>Author</author>
+    <guid>https://www.lukebriggs.dev/calmer-internet/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/static/calmer-internet/banner.svg" referrerpolicy="no-referrer">
+            </div>
+<p>A web extension that hides the elements of web pages that are best off hidden.
+Many sites are designed to suck time away from you by showing you things that are interesting enough to keep you scrolling but offers no value.</p>
+<p>This extension strips away all these comments, recommendations and promotions leaving you with just the content you have specifically asked to receive.</p>
+<h2 id="youtube-elements">Youtube elements:</h2>
+<ul>
+<li>Home links</li>
+<li>Explore links</li>
+<li>Trending link (mobile)</li>
+<li>Comments</li>
+<li>Redirect home page to subscriptions</li>
+<li>Watch next section</li>
+<li>Live Chat</li>
+</ul>
+<h2 id="twitter-elements">Twitter elements:</h2>
+<ul>
+<li>Trending bar</li>
+<li>Explore link</li>
+<li>&lsquo;Who to Follow&rsquo; bar</li>
+<li>Topics bar</li>
+</ul>
+<h2 id="instagram-elements">Instagram elements:</h2>
+<ul>
+<li>Explore links</li>
+<li>Explore people links</li>
+<li>Comments below posts in feed</li>
+<li>Comments in posts</li>
+</ul>
+<p><a href="https://github.com/LukeBriggsDev/calmer-internet" target="_blank" rel="noopener noreffer">Github Link</a></p>
+]]></description>
+</item><item>
     <title>Inspection and Dissection: Pepys - A Straightforward Markdown Editor</title>
     <link>https://www.lukebriggs.dev/inspection-and-dissection-pepys/</link>
     <pubDate>Mon, 31 May 2021 16:47:38 &#43;0100</pubDate>
