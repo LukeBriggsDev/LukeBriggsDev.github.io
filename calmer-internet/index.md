@@ -29,4 +29,8 @@ This extension strips away all these comments, recommendations and promotions le
 - Comments below posts in feed
 - Comments in posts
 
-[Github Link](https://github.com/LukeBriggsDev/calmer-internet)
+<a href="https://github.com/LukeBriggsDev/calmer-interne"><img src="/GitHub-Mark.svg" alt="github" style="width: 10%;" /></a>
+<a href="https://chrome.google.com/webstore/detail/calmer-internet/eafehkefjngkemmnfplgddemgpcjlldb"><img src="/chrome_web_store.png" alt="chrome" style="width: 30%;" /></a>
+<a href="https://addons.mozilla.org/firefox/addon/calmer-internet/"><img src="/firefox_addon.svg" alt="firefox" style="width: 30%;" /></a>
+
+
