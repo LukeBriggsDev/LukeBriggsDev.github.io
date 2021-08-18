@@ -4,9 +4,296 @@
         <link>https://www.lukebriggs.dev/</link>
         <description>I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University.</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@lukebriggs.dev (Luke Briggs)</managingEditor>
-            <webMaster>contact@lukebriggs.dev (Luke Briggs)</webMaster><lastBuildDate>Sun, 15 Aug 2021 15:46:07 &#43;0100</lastBuildDate>
+            <webMaster>contact@lukebriggs.dev (Luke Briggs)</webMaster><lastBuildDate>Wed, 18 Aug 2021 15:18:16 &#43;0100</lastBuildDate>
             <atom:link href="https://www.lukebriggs.dev/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Inspection and Dissection: Calmer Internet - My First Web Extension</title>
+    <link>https://www.lukebriggs.dev/inspection-and-dissection-calmer-internet/</link>
+    <pubDate>Wed, 18 Aug 2021 15:18:16 &#43;0100</pubDate>
+    <author>Author</author>
+    <guid>https://www.lukebriggs.dev/inspection-and-dissection-calmer-internet/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/static/calmer-internet/banner_1920x960.png" referrerpolicy="no-referrer">
+            </div><blockquote>
+<p>The product page is available <a href="/calmer-internet" rel="">here</a></p>
+</blockquote>
+<h1 id="brief-description">Brief Description</h1>
+<p><em>Calmer Internet</em> is a web extension for Chrome, Firefox, and Edge that makes the internet a less infuriating place to be.
+It removes comments, recommended content and various trending pages from Twitter, YouTube, and Instagram to try and relieve that doom-scrolling.</p>
+<h1 id="rationale">Rationale</h1>
+<p>Since I finished stage 1 of University in June, I had a considerable amount of time off.
+A lot of that time was spent in a state of not quite working and not quite relaxing.
+I was stuck in a cycle of following the YouTube sidebar of bland content before going to Twitter and scrolling down the trending hashtags and comments, getting annoyed at every step.</p>
+<p>Many social media platforms just throw various things at you in an attempt to just keep scrolling and clicking and engaging, before you know it you&rsquo;ve spent an hour of your life on a soul-sucking site.</p>
+<p>I didn&rsquo;t want to quit these sites entirely.
+There are truly incredible and insightful people on there like <a href="https://www.youtube.com/user/enyay" target="_blank" rel="noopener noreffer">Tom Scott</a>, <a href="https://www.youtube.com/c/Exurb1a" target="_blank" rel="noopener noreffer">exurb1a</a>, and <a href="https://www.youtube.com/channel/UCE1jXbVAGJQEORz9nZqb5bQ" target="_blank" rel="noopener noreffer">Ahoy</a>.
+Twitter is also good as a micro-blog feed for people I want to follow in the tech sector.
+The conclusion I came to is that I need to take control of what I see.
+I should only be consuming things I have actively sought out, because those are the things that I enjoy the most.
+It also means that I can&rsquo;t just keep scrolling and watching forever, I will run out of content because I only see what I have subscribed to.
+There is no &lsquo;one more click&rsquo;</p>
+<p>My initial solution was to have everything go to an RSS reader but most social media platforms don&rsquo;t play nicely with rss feeds and feed readers don&rsquo;t really play nicely with conveying threads, retweets and video content.
+As a result, I turned to editing the sites themselves to provide a more focused experience.</p>
+<h1 id="how-its-made">How it&rsquo;s made</h1>
+<p>This extension didn&rsquo;t start out as an extension. It started out as a set of rules for my ad-blocker.
+I&rsquo;d use the eyedropper tool to select the <em>Trending</em> bar on Twitter just so I wouldn&rsquo;t be tempted to click it.
+I did similar things with the trending tab on YouTube.
+It then got to a point where I wanted to do more like remove the recommended sidebar and the video-wall end screens, so I decided I needed a web extension.</p>
+<p>I have never made a web extension before, but I do have some experience in HTML and JavaScript so it wasn&rsquo;t too troublesome to get used to.
+Most of what my extension does takes place in a &lsquo;content script&rsquo;.
+This is a javascript file that just loaded alongside the current page at load time.
+The file then looks at the current URL and checks the page for any elements I&rsquo;ve told it to remove.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// Adding Twitter elements to a list of elements to remove
+</span><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">hostname</span> <span class="o">===</span> <span class="s2">&#34;twitter.com&#34;</span> <span class="o">||</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">hostname</span> <span class="o">===</span> <span class="s2">&#34;mobile.twitter.com&#34;</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">settings</span><span class="p">[</span><span class="s2">&#34;TwitterTrendingBar&#34;</span><span class="p">]){</span>
+            <span class="nx">elementsToRemove</span><span class="p">[</span><span class="s2">&#34;trendingBar&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">&#34;div[aria-label=&#39;Timeline: Trending now&#39;]&#34;</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">settings</span><span class="p">[</span><span class="s2">&#34;TwitterExploreLinks&#34;</span><span class="p">]){</span>
+            <span class="nx">elementsToRemove</span><span class="p">[</span><span class="s2">&#34;exploreLinks&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">&#34;a[href=&#39;https://www.lukebriggs.dev/explore&#39;]&#34;</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">settings</span><span class="p">[</span><span class="s2">&#34;TwitterWhoToFollow&#34;</span><span class="p">]){</span>
+            <span class="nx">elementsToRemove</span><span class="p">[</span><span class="s2">&#34;miscStyling&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="s2">&#34;css-1dbjc4n r-1867qdf r-1phboty r-rs99b7 r-1ifxtd0 r-1bro5k0 r-1udh08x&#34;</span><span class="p">)</span>
+            <span class="nx">elementsToRemove</span><span class="p">[</span><span class="s2">&#34;whoToFollow&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">&#34;aside[aria-label=&#39;Who to follow&#39;]&#34;</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">settings</span><span class="p">[</span><span class="s2">&#34;TwitterTopics&#34;</span><span class="p">]){</span>
+            <span class="nx">elementsToRemove</span><span class="p">[</span><span class="s2">&#34;topics&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">&#34;div[aria-label=&#39;Timeline: &#39;]&#34;</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>The script then attaches a listener that causes new checks every time the webpage is updated</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="kd">function</span> <span class="nx">observeBodyRemove</span><span class="p">(){</span>
+        <span class="c1">// Select the node that will be observed for mutations
+</span><span class="c1"></span>        <span class="kd">var</span> <span class="nx">targetNode</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">);</span>
+
+        <span class="c1">// Options for the observer (which mutations to observe)
+</span><span class="c1"></span>        <span class="kr">const</span> <span class="nx">config</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">attributes</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">childList</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">subtree</span><span class="o">:</span> <span class="kc">true</span> <span class="p">};</span>
+
+        <span class="c1">// Callback function to execute when mutations are observed
+</span><span class="c1"></span>        <span class="kr">const</span> <span class="nx">callback</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">mutationsList</span><span class="p">,</span> <span class="nx">observer</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">elementsToRemove</span> <span class="o">=</span> <span class="nx">getElementsToRemove</span><span class="p">();</span>
+            <span class="k">for</span><span class="p">(</span><span class="nx">key</span> <span class="k">in</span> <span class="nx">elementsToRemove</span><span class="p">){</span>
+                <span class="k">for</span> <span class="p">(</span><span class="nx">element</span> <span class="k">of</span> <span class="nx">elementsToRemove</span><span class="p">[</span><span class="nx">key</span><span class="p">]){</span>
+                    <span class="k">try</span> <span class="p">{</span>
+                        <span class="nx">element</span><span class="p">.</span><span class="nx">remove</span><span class="p">();</span>
+                    <span class="p">}</span>
+                    <span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">};</span>
+
+        <span class="c1">// Create an observer instance linked to the callback function
+</span><span class="c1"></span>        <span class="kr">const</span> <span class="nx">observer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MutationObserver</span><span class="p">(</span><span class="nx">callback</span><span class="p">);</span>
+
+        <span class="c1">// Start observing the target node for configured mutations
+</span><span class="c1"></span>        <span class="nx">observer</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="nx">targetNode</span><span class="p">,</span> <span class="nx">config</span><span class="p">);</span>
+    <span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>The only other JavaScript in the extension is in a &lsquo;background script&rsquo;.
+Whereas &lsquo;content scripts&rsquo; are loaded alongside a webpage, background scripts are persistent and always run whenever the extension is loaded.
+This means they are useful for doing things before a page is loaded.
+One feature of the extension is you can redirect any links to YouTube.com to youtube.com/feed/subscriptions, so you aren&rsquo;t bombarded by useless recommendations.
+I initially had the redirect in a content script but that required the whole page to be loaded before redirecting away from it.</p>
+<p>My current solution uses the WebRequest API to intercept a page request and load a new one instead.
+This is also done be setting up a listener, such as this one:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// YouTube
+</span><span class="c1"></span>    <span class="nx">chrome</span><span class="p">.</span><span class="nx">webRequest</span><span class="p">.</span><span class="nx">onBeforeRequest</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span>
+        <span class="kd">function</span> <span class="p">(</span><span class="nx">details</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">settings</span><span class="p">[</span><span class="s2">&#34;YTHomeRedirect&#34;</span><span class="p">])</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="p">{</span><span class="nx">redirectUrl</span><span class="o">:</span> <span class="s2">&#34;https://youtube.com/feed/subscriptions&#34;</span><span class="p">};</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nx">urls</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&#34;*://*.youtube.com/&#34;</span>
+            <span class="p">],</span>
+            <span class="nx">types</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;main_frame&#34;</span><span class="p">,</span> <span class="s2">&#34;sub_frame&#34;</span><span class="p">,</span> <span class="s2">&#34;stylesheet&#34;</span><span class="p">,</span> <span class="s2">&#34;script&#34;</span><span class="p">,</span> <span class="s2">&#34;image&#34;</span><span class="p">,</span> <span class="s2">&#34;object&#34;</span><span class="p">,</span> <span class="s2">&#34;xmlhttprequest&#34;</span><span class="p">,</span> <span class="s2">&#34;other&#34;</span><span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">[</span><span class="s2">&#34;blocking&#34;</span><span class="p">]</span>
+    <span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Finally, all that was left was to create a manifest.
+I have great experience with manifests since <a href="https://github.com/LukeBriggsDev/Pepys" target="_blank" rel="noopener noreffer">Pepys recently received builds for rpm, .deb, and PKGBUILD</a>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;manifest_version&#34;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Calmer Internet&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;1.1.0&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;browser_specific_settings&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;gecko&#34;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="s2">&#34;calmerinternet@lukebriggs.dev&#34;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">&#34;browser_action&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;default_icon&#34;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&#34;16&#34;</span><span class="p">:</span> <span class="s2">&#34;icons/16.png&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;24&#34;</span><span class="p">:</span> <span class="s2">&#34;icons/24.png&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;32&#34;</span><span class="p">:</span> <span class="s2">&#34;icons/32.png&#34;</span>
+    <span class="p">},</span>
+    <span class="nt">&#34;default_title&#34;</span><span class="p">:</span> <span class="s2">&#34;Calmer Internet&#34;</span>
+  <span class="p">},</span>
+  <span class="nt">&#34;icons&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;48&#34;</span><span class="p">:</span> <span class="s2">&#34;icons/48.png&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;96&#34;</span><span class="p">:</span> <span class="s2">&#34;icons/96.png&#34;</span>
+  <span class="p">},</span>
+  <span class="nt">&#34;content_scripts&#34;</span><span class="p">:</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nt">&#34;matches&#34;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&#34;*://*.youtube.com/*&#34;</span><span class="p">,</span>
+      <span class="s2">&#34;*://*.twitter.com/*&#34;</span><span class="p">,</span> <span class="s2">&#34;*://twitter.com/*&#34;</span><span class="p">,</span>
+      <span class="s2">&#34;*://*.instagram.com/*&#34;</span>
+    <span class="p">],</span>
+    <span class="nt">&#34;js&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;calmer.js&#34;</span><span class="p">]</span>
+  <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&#34;background&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;scripts&#34;</span><span class="p">:[</span><span class="s2">&#34;background.js&#34;</span><span class="p">]</span>
+  <span class="p">},</span>
+  <span class="nt">&#34;permissions&#34;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&#34;*://*.youtube.com/*&#34;</span><span class="p">,</span>
+    <span class="s2">&#34;*://*.twitter.com/*&#34;</span><span class="p">,</span> <span class="s2">&#34;*://twitter.com/*&#34;</span><span class="p">,</span>
+    <span class="s2">&#34;*://*.instagram.com/*&#34;</span><span class="p">,</span>
+    <span class="s2">&#34;storage&#34;</span><span class="p">,</span>
+    <span class="s2">&#34;webRequest&#34;</span><span class="p">,</span>
+    <span class="s2">&#34;webRequestBlocking&#34;</span>
+  <span class="p">],</span>
+  <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Provides a calmer internet experience. Removes comments and various recommendation elements from Twitter, YouTube, Instagram.&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;options_ui&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;page&#34;</span><span class="p">:</span> <span class="s2">&#34;options.html&#34;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="deployment">Deployment</h1>
+<p>The extension is available on the Chrome Web Store, the Firefox Add-on Store, and the Microsoft Store.
+WebExtensions are now pretty cross-compatible, so I use the exact same code-base across all browsers.
+It would even support Safari as of Big Sur, but I do not have a Mac to upload it, nor do I want to fork out the $99 price of an Apple Developer account.</p>
+<p>As ever, the project is also available in full on my <a href="https://github.com/LukeBriggsDev/calmer-internet" target="_blank" rel="noopener noreffer">GitHub</a></p>
+]]></description>
+</item><item>
     <title>Full Release: newcastle-bst - Harvard referencing style as recommended by Newcastle University</title>
     <link>https://www.lukebriggs.dev/full-release-newcastle-bst/</link>
     <pubDate>Sat, 10 Jul 2021 10:33:04 &#43;0100</pubDate>
@@ -1061,237 +1348,6 @@ I just add another section tag and it will become the second section in the docu
 <p>LaTeX isn’t perfect in its implementation, only its possible output. For instance, the answer to the question ‘how do I insert an svg’ is ‘use a pdf instead’ but I hope I have given you a taste of a better alternative to Word, even if it does introduce the possibility that your reports can have syntax errors.</p>
 <h1 id="further-notes">Further Notes</h1>
 <p>If you are writing your reports in LaTeX like me then you will need the correct bibliography formatting. LaTeX offers a few styles by default but I have learned there is no such thing as a standard and my University (Newcastle) uses <a href="https://libguides.ncl.ac.uk/managing/harvard" target="_blank" rel="noopener noreffer">its own guidelines</a>. The process for creating your own style involves both a command line tool and further tweaking using a bespoke programming language using REVERSE POLISH NOTATION, which is what happens if Christopher Nolan got his hands on a compiler. To save my fellow students time, I created a style for Newcastle’s bibliography style and <a href="https://github.com/LukeBriggsDev/Newcastle-BibTeX" target="_blank" rel="noopener noreffer">it is hosted on GitHub</a>.</p>
-]]></description>
-</item><item>
-    <title>Inspection &amp; Dissection: Dice-Jack</title>
-    <link>https://www.lukebriggs.dev/inspection-and-dissection-dice-jack/</link>
-    <pubDate>Tue, 24 Sep 2019 21:06:18 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://www.lukebriggs.dev/inspection-and-dissection-dice-jack/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/static/postimages/10/dicejack1.png" referrerpolicy="no-referrer">
-            </div><p>As part of a course we had to make a game in 2 days that involved random dice and be made as a Windows forms application with Visual Basic. So we had to make a game in something that was the furthest you could get from a game engine with a language I had never used before. But hey, <a href="https://en.wikipedia.org/wiki/Rogue_%28video_game%29" target="_blank" rel="noopener noreffer">Rogue</a> was made in 1980 and the graphics had to be ASCII so it could be worse.</p>
-<p>The rest of the class generally stuck to the brief with 3 dice that you rolled and you got points for each dot.</p>
-<p></p>
-<p>As you can see, its rather simple. Theres 4 picture boxes, 4 labels, 2 buttons and a listbox. Dice are rolled, the dots are added up and the score is added to the listbox. After 5 rolls the game ends and the player is given their total score. But to know how I added further features we need to look at how this prototype was made.</p>
-<h1 id="behind-the-prototype">Behind the prototype</h1>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-vbnet" data-lang="vbnet">
-<span class="k">Dim</span> <span class="n">Die1</span><span class="p">,</span> <span class="n">Die2</span><span class="p">,</span> <span class="n">Die3</span> <span class="ow">As</span> <span class="kt">Integer</span>
-<span class="k">Dim</span> <span class="n">DicePoints</span> <span class="ow">As</span> <span class="kt">Integer</span>
-<span class="k">Dim</span> <span class="n">random</span> <span class="ow">As</span> <span class="n">Random</span>
-<span class="k">Dim</span> <span class="n">RollCount</span> <span class="ow">As</span> <span class="kt">Integer</span> <span class="o">=</span> <span class="n">0</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>So we have our variables declared in the convoluted VB way. Die1, Die2, and Die3 and the scores for the corresponding dice. DicePoints is the total of those 3 scores and rollcount keeps track of how many times the dice were rolled. Random is just an object we use to generate random numbers</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="k">Private</span> <span class="k">Sub</span> <span class="nf">tmrTimer_Tick</span><span class="p">(</span><span class="n">sender</span> <span class="ow">As</span> <span class="kt">Object</span><span class="p">,</span> <span class="n">e</span> <span class="ow">As</span> <span class="n">EventArgs</span><span class="p">)</span> <span class="k">Handles</span> <span class="n">tmrTimer</span><span class="p">.</span><span class="n">Tick</span>
-        <span class="c">&#39;Increments the load bar every tick
-</span><span class="c"></span>        <span class="n">random</span> <span class="o">=</span> <span class="k">New</span> <span class="n">Random</span>
-        <span class="n">prbLoad</span><span class="p">.</span><span class="n">Increment</span><span class="p">(</span><span class="n">4</span><span class="p">)</span>
-        <span class="k">If</span> <span class="n">prbLoad</span><span class="p">.</span><span class="n">Value</span> <span class="o">=</span> <span class="n">100</span> <span class="k">Then</span>
-        <span class="p">...</span>
-        <span class="k">Else</span>
-            <span class="c">&#39;Sets dice to random number when the timer ticks before the load is full
-</span><span class="c"></span>            <span class="n">Die1</span> <span class="o">=</span> <span class="n">random</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="n">1</span><span class="p">,</span> <span class="n">7</span><span class="p">)</span>
-            <span class="n">Die2</span> <span class="o">=</span> <span class="n">random</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="n">1</span><span class="p">,</span> <span class="n">7</span><span class="p">)</span>
-            <span class="n">Die3</span> <span class="o">=</span> <span class="n">random</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="n">1</span><span class="p">,</span> <span class="n">7</span><span class="p">)</span>
- 
-            <span class="n">MatchImage</span><span class="p">(</span><span class="n">Die1</span><span class="p">,</span> <span class="n">pbxDie1</span><span class="p">)</span>
-            <span class="n">MatchImage</span><span class="p">(</span><span class="n">Die2</span><span class="p">,</span> <span class="n">pbxDie2</span><span class="p">)</span>
-            <span class="n">MatchImage</span><span class="p">(</span><span class="n">Die3</span><span class="p">,</span> <span class="n">pbxDie3</span><span class="p">)</span>
- 
-        <span class="k">End</span> <span class="k">If</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>On the board is a timer (inventfully called tmrTimer), it tick every 0.1s. Each tick it adds a bit onto the load bar at the bottom and randomizes the images on the dice. MatchImage is my own subroutine but all it does is take an integer and applies the correct face for it to whichever picture box I pass it.</p>
-<p>Once the bar gets to 100, the fun begins.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="k">If</span> <span class="n">prbLoad</span><span class="p">.</span><span class="n">Value</span> <span class="o">=</span> <span class="n">100</span> <span class="k">Then</span>
-            <span class="c">&#39;Adds the necessary points on the random dice when the load bar 
-</span><span class="c"></span>            <span class="c">&#39;reaches 100
-</span><span class="c"></span>            <span class="n">tmrTimer</span><span class="p">.</span><span class="n">Stop</span><span class="p">()</span>
-            <span class="n">prbLoad</span><span class="p">.</span><span class="n">Value</span> <span class="o">=</span> <span class="n">0</span>
-            <span class="n">RollCount</span> <span class="o">+=</span> <span class="n">1</span>
-            <span class="n">DicePoints</span> <span class="o">=</span> <span class="n">Die1</span> <span class="o">+</span> <span class="n">Die2</span> <span class="o">+</span> <span class="n">Die3</span> 
-</code></pre></td></tr></table>
-</div>
-</div><p>We stop the timer ticking, we empty the load bar and we increment our roll counter before adding up all the spots on the dice, pretty simple.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="c">&#39;Adds Score to list
-</span><span class="c"></span><span class="n">lstScore</span><span class="p">.</span><span class="n">Items</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&#34;Roll &#34;</span> <span class="o">&amp;</span> <span class="n">RollCount</span> <span class="o">&amp;</span> <span class="s">&#34;: &#34;</span> <span class="o">&amp;</span> <span class="n">DicePoints</span><span class="p">)</span>
-<span class="n">GameScore</span> <span class="o">+=</span> <span class="n">DicePoints</span>
-<span class="n">DicePoints</span> <span class="o">=</span> <span class="n">0</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>Almost done, we add our points to the listbox with some formatting. Add the points to the total score for the game and then set it back to 0.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="k">If</span> <span class="n">RollCount</span> <span class="o">&gt;=</span> <span class="n">5</span> <span class="k">Then</span>
-    <span class="n">MsgBox</span><span class="p">(</span><span class="s">&#34;Your game score was &#34;</span> <span class="o">&amp;</span> <span class="n">GameScore</span><span class="p">,,</span> <span class="s">&#34;Game Over&#34;</span><span class="p">)</span>
-    <span class="n">tmrTimer</span><span class="p">.</span><span class="n">Stop</span><span class="p">()</span>
-    <span class="n">btnStart</span><span class="p">.</span><span class="n">Enabled</span> <span class="o">=</span> <span class="k">False</span>
-    <span class="n">btnReset</span><span class="p">.</span><span class="n">Enabled</span> <span class="o">=</span> <span class="k">True</span>
- 
-<span class="k">End</span> <span class="k">If</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>Then we check whether they have reached the magic 5 rolls, if so we tell them their score and let them reset the game</p>
-<p>There is also some initialisation code that assigns images and there are event handlers that make the buttons work but this is the main logic. If you would like to see how that stuff works, you can find it at the <a href="https://github.com/LukeBriggsDev/Dice-Alpha" target="_blank" rel="noopener noreffer">github repo</a></p>
-<h1 id="the-evolution">The Evolution</h1>
-<p>The following won’t include too many code snippets since it is slightly more extensive (the rushed deadline also means it resembles a tin of Heinz spaghetti in a tumble dryer but we’ll keep that between us)</p>
-<p></p>
-<p>Lets break this down.</p>
-<p>First we have a background that was shamelessly made in powerpoint.</p>
-<p></p>
-<p>The rules, scores, and title are all labels. The bar on the right is made up of the same button and listbox items as before but with its properties edited to change colour, font and border style.</p>
-<p><strong>The Rules have been changed to the following:</strong></p>
-<ul>
-<li>The goal is to get as close to 21 points without going over</li>
-<li>There is a Player and a Dealer</li>
-<li>Each contestant has 2 dice</li>
-<li>The player goes first</li>
-<li>Each dice spot is worth 2 points</li>
-<li>If either the player or dealer goes over 21, they lose the game</li>
-<li>After the first roll, if the player has not gone bust, they can choose to ‘stand’ or ‘hit’</li>
-<li>If they ‘hit’, the dice are rolled again and the player can choose to add the points of either die or the total of both dice</li>
-<li>The player must add a score after hitting, even if it means they will go ‘bust’</li>
-<li>In the event of a tie, the game goes to the dealer</li>
-</ul>
-<p>The rules are based on those by <a href="http://www.chessandpoker.com/dice_blackjack.html" target="_blank" rel="noopener noreffer">James Yates</a></p>
-<p>Instead of a big chunk of code I’m going to show you the process of a turn through our good old friend the flow chart. They can be intimidating but I’ve tried to make it in a way that is easy to follow and you should be ale to get a grasp of what the code is doing behind the scenes.</p>
-<p></p>
-<p>There you go, who needs a hundred lines of bolognese when you can have pastel shapes?</p>
-<p>Those who played the game may also notice this is the first time I’ve included a computer-controlled opponent, ‘The Dealer’. The dealer is like the player but has the advantages of being able to go second and win in the result of a draw. The dealer’s choice code is as follows:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="k">If</span> <span class="n">DealerCanChoose1</span> <span class="ow">And</span> <span class="k">Not</span> <span class="p">(</span><span class="n">DealerCanChoose2</span> <span class="ow">Or</span> <span class="n">DealerCanChooseBoth</span><span class="p">)</span> <span class="k">Then</span>
-    <span class="n">DealerScore</span> <span class="o">+=</span> <span class="n">Die1</span> <span class="o">*</span> <span class="n">2</span>
- 
-<span class="k">ElseIf</span> <span class="n">DealerCanChoose2</span> <span class="ow">And</span> <span class="k">Not</span> <span class="p">(</span><span class="n">DealerCanChoose1</span> <span class="ow">Or</span> <span class="n">DealerCanChooseBoth</span><span class="p">)</span> <span class="k">Then</span>
-    <span class="n">DealerScore</span> <span class="o">+=</span> <span class="n">Die2</span> <span class="o">*</span> <span class="n">2</span>
- 
-<span class="k">ElseIf</span> <span class="n">DealerCanChooseBoth</span> <span class="k">Then</span>
-    <span class="n">DealerScore</span> <span class="o">+=</span> <span class="p">(</span><span class="n">Die1</span> <span class="o">+</span> <span class="n">Die2</span><span class="p">)</span> <span class="o">*</span> <span class="n">2</span>
- 
-<span class="k">ElseIf</span> <span class="n">DealerCanChoose1</span> <span class="ow">And</span> <span class="n">DealerCanChoose2</span> <span class="k">Then</span>
-    <span class="k">If</span> <span class="n">Die1</span> <span class="o">&gt;</span> <span class="n">Die2</span> <span class="k">Then</span>
-        <span class="n">DealerScore</span> <span class="o">+=</span> <span class="n">Die1</span> <span class="o">*</span> <span class="n">2</span>
-    <span class="k">Else</span>
-        <span class="n">DealerScore</span> <span class="o">+=</span> <span class="n">Die2</span> <span class="o">*</span> <span class="n">2</span>
-    <span class="k">End</span> <span class="k">If</span>
-<span class="k">End</span> <span class="k">If</span>
- 
-<span class="k">If</span> <span class="k">Not</span> <span class="p">(</span><span class="n">DealerCanChoose1</span> <span class="ow">Or</span> <span class="n">DealerCanChoose2</span> <span class="ow">Or</span> <span class="n">DealerCanChooseBoth</span><span class="p">)</span> <span class="k">Then</span>
-    <span class="c">&#39;Dealer goes bust if no options are available
-</span><span class="c"></span>    <span class="k">If</span> <span class="n">Die1</span> <span class="o">&lt;</span> <span class="n">Die2</span> <span class="k">Then</span>
-        <span class="n">DealerScore</span> <span class="o">+=</span> <span class="n">Die1</span> <span class="o">*</span> <span class="n">2</span>
-    <span class="k">Else</span>
-        <span class="n">DealerScore</span> <span class="o">+=</span> <span class="n">Die2</span> <span class="o">*</span> <span class="n">2</span>
-    <span class="k">End</span> <span class="k">If</span>
-    <span class="n">DealerStand</span><span class="p">()</span>
-    <span class="n">tmrDealer</span><span class="p">.</span><span class="n">Stop</span><span class="p">()</span>
- 
-<span class="k">ElseIf</span> <span class="n">DealerScore</span> <span class="o">&gt;</span> <span class="n">GameScore</span> <span class="k">Then</span>
-    <span class="c">&#39;Dealer stands if their score is more than the player&#39;s
-</span><span class="c"></span>    <span class="n">DealerStand</span><span class="p">()</span>
-<span class="k">Else</span>
-    <span class="n">DealerRoll</span><span class="p">()</span>
-<span class="k">End</span> <span class="k">If</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>Before this code I run checks that see which options are available after a dealer rolls (these are the DealerCanChoose variables). Here there is a series of conditionals that look at the options and picks the best one for the dealer.</p>
-<p>If there is only one option available, then the dealer will pick that one. If there is more than one option available then the dealer will pick whichever will get them the highest score that turn. If there are no options available then the dealer is bust and they will stand. The dealer will also stand if they have a score higher than that of the player. The dealer will continue to roll as long as they are lower than the player and their current score is under 17.</p>
-<p>And thats the game! The quickest project I’ve ever done and although its rough around the edges the gameplay is solid and I got to grips with windows form’s implementation of an event-driven program. You can find the full source code <a href="https://github.com/LukeBriggsDev/Dice-Jack" target="_blank" rel="noopener noreffer">here</a></p>
 ]]></description>
 </item></channel>
 </rss>

@@ -2,6 +2,23 @@
 
 Here is a list of all my projects that are available on the internet
 
+# Calmer Internet
+-------------------
+### *Release Date: 17th August 2021*
+
+A web extension that hides the elements of web pages that are best off hidden.
+Many sites are designed to suck time away from you by showing you things that are interesting enough to keep you scrolling but offers no value.
+
+This extension strips away all these comments, recommendations and promotions leaving you with just the content you have specifically asked to receive.
+
+<img src="/static/calmer-internet/banner.svg" alt="newcastle-bst" width="50%">
+
+[Firefox](https://addons.mozilla.org/en-GB/firefox/addon/calmer-internet/)
+
+[Chrome](https://chrome.google.com/webstore/detail/calmer-internet/eafehkefjngkemmnfplgddemgpcjlldb)
+
+[Source Code](https://github.com/LukeBriggsDev/calmer-internet/)
+
 # newcastle-bst
 -----------------
 ### *Release Date: 10th May 2021*
@@ -30,7 +47,11 @@ The biggest project I had released at the time one of my biggest learning experi
 
 [Windows](https://github.com/LukeBriggsDev/Pepys/releases)
 
-[Linux](https://flathub.org/apps/details/dev.lukebriggs.pepys)
+[Linux (Flatpak)](https://flathub.org/apps/details/dev.lukebriggs.pepys)
+
+[Linux (AUR)](https://aur.archlinux.org/packages/pepys/)
+
+[Linux (deb, rpm, PKGBUILD)](https://github.com/LukeBriggsDev/Pepys/releases)
 
 [Source Code](https://github.com/LukeBriggsDev/Pepys)
 
