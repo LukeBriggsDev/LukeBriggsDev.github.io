@@ -1,7 +1,7 @@
 # Where Hugo I Go
 
 
-As you are probably aware, I have redecorated. I said in a [previous post](/inspection-and-dissection-this-site) that my reason for making my own site in the first place was as a central hub to point people to all the things that I do. Despite the fact that from the outside it looks like I haven't done a whole lot since, behind the scenes I have my biggest project yet in development (check out my [GitHub](https://github.com/lukebriggsdev) if you want a sneak preview of that). It was while working on my project that I realised that I should have a site that requires my to ssh into a VPS and pull a git repository every time I want to add a post. 
+As you are probably aware, I have redecorated. I said in a [previous post](/inspection-and-dissection-this-site) that my reason for making my own site in the first place was as a central hub to point people to all the things that I do. Despite the fact that from the outside it looks like I haven't done a whole lot since, behind the scenes I have my biggest project yet in development (check out my [GitHub](https://github.com/lukebriggsdev) if you want a sneak preview of that). It was while working on my project that I realised that I shouldn't have a site that requires my to ssh into a VPS and pull a git repository every time I want to add a post. 
 
 ## Technology
 Behind the scenes, the site is hosted on GitHub Pages. The site is generated using a static site generator called [Hugo](https://gohugo.io/) with a *slightly* tweaked version of the [LoveIt](https://themes.gohugo.io/loveit/).
