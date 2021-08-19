@@ -17,6 +17,8 @@ This extension strips away all these comments, recommendations and promotions le
 
 [Chrome](https://chrome.google.com/webstore/detail/calmer-internet/eafehkefjngkemmnfplgddemgpcjlldb)
 
+[Edge](https://microsoftedge.microsoft.com/addons/detail/calmer-internet/fodnejjpkelloeegkfgejifhaifnpded)
+
 [Source Code](https://github.com/LukeBriggsDev/calmer-internet/)
 
 # newcastle-bst
