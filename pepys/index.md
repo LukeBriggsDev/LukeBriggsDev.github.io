@@ -15,8 +15,13 @@ Pepys is a journaling application that utilises markdown for writing and storing
   - [Date Oriented](#date-oriented)
   - [Dark Theme](#dark-theme)
   - [Future Proof](#future-proof)
-- [Downloads](#downloads)
-- [Source Code](#source-code)
+- [Installation](#installation)
+  - [Windows](#windows)
+    - [Installer & Standalone](#installer--standalone)
+    - [Winget](#winget)
+    - [AUR](#aur)
+    - [Debian/Fedora/Arch](#debianfedoraarch)
+- [Featured in](#featured-in)
 # Features
 ## Markdown Highlighting
 <img alt="syntax highlighting" src="https://lukebriggs.dev/static/pepys/pepys_editpane.png" width="100%"/>
@@ -52,14 +57,26 @@ Pepys stores all your entries as plain text files in a YYYY/MM folder structure 
 
 Pepys also uses pandoc syntax, with support for pandoc conversions to other formats. This means that all your entries can be converted completely to HTML, PDF, LaTeX, Microsoft Word, EPUB, and more!
 
-# Downloads
+# Installation
 
-[Linux](https://flathub.org/apps/details/dev.lukebriggs.pepys)
+## Windows
 
-[Windows](https://github.com/LukeBriggsDev/Pepys/releases)
+### Installer & Standalone
+The installer and standalone zip files are available on the [releases page](https://github.com/LukeBriggsDev/Pepys/releases)
 
-# Source Code
-The source code is available on [Github](https://github.com/LukeBriggsDev/Pepys)
+### Winget
+Pepys is available through winget:
+
+`winget install pepys`
+
+### AUR
+
+Pepys is available on the [Arch User Repository](https://aur.archlinux.org/packages/pepys/)
+
+`yay -S pepys`
+
+### Debian/Fedora/Arch
+Distribution specific packages are available on the [releases page](https://github.com/LukeBriggsDev/Pepys/releases)
 
 # Featured in
 FossBytes - <https://fossbytes.com/document-activity-pepys-journal-app-linux/>

@@ -561,8 +561,19 @@ I am excited about what I will create next, how I will iterate on what I have le
 <li><a href="#future-proof" rel="">Future Proof</a></li>
 </ul>
 </li>
-<li><a href="#downloads" rel="">Downloads</a></li>
-<li><a href="#source-code" rel="">Source Code</a></li>
+<li><a href="#installation" rel="">Installation</a>
+<ul>
+<li><a href="#windows" rel="">Windows</a>
+<ul>
+<li><a href="#installer--standalone" rel="">Installer &amp; Standalone</a></li>
+<li><a href="#winget" rel="">Winget</a></li>
+<li><a href="#aur" rel="">AUR</a></li>
+<li><a href="#debianfedoraarch" rel="">Debian/Fedora/Arch</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#featured-in" rel="">Featured in</a></li>
 </ul>
 <h1 id="features">Features</h1>
 <h2 id="markdown-highlighting">Markdown Highlighting</h2>
@@ -585,11 +596,18 @@ I am excited about what I will create next, how I will iterate on what I have le
 <p></p>
 <p>Pepys stores all your entries as plain text files in a YYYY/MM folder structure with a YYYY-MM-DD.md name format. This means that all your entries themselves will be viewable forever in any text editor that will come along.</p>
 <p>Pepys also uses pandoc syntax, with support for pandoc conversions to other formats. This means that all your entries can be converted completely to HTML, PDF, LaTeX, Microsoft Word, EPUB, and more!</p>
-<h1 id="downloads">Downloads</h1>
-<p><a href="https://flathub.org/apps/details/dev.lukebriggs.pepys" target="_blank" rel="noopener noreffer">Linux</a></p>
-<p><a href="https://github.com/LukeBriggsDev/Pepys/releases" target="_blank" rel="noopener noreffer">Windows</a></p>
-<h1 id="source-code">Source Code</h1>
-<p>The source code is available on <a href="https://github.com/LukeBriggsDev/Pepys" target="_blank" rel="noopener noreffer">Github</a></p>
+<h1 id="installation">Installation</h1>
+<h2 id="windows">Windows</h2>
+<h3 id="installer--standalone">Installer &amp; Standalone</h3>
+<p>The installer and standalone zip files are available on the <a href="https://github.com/LukeBriggsDev/Pepys/releases" target="_blank" rel="noopener noreffer">releases page</a></p>
+<h3 id="winget">Winget</h3>
+<p>Pepys is available through winget:</p>
+<p><code>winget install pepys</code></p>
+<h3 id="aur">AUR</h3>
+<p>Pepys is available on the <a href="https://aur.archlinux.org/packages/pepys/" target="_blank" rel="noopener noreffer">Arch User Repository</a></p>
+<p><code>yay -S pepys</code></p>
+<h3 id="debianfedoraarch">Debian/Fedora/Arch</h3>
+<p>Distribution specific packages are available on the <a href="https://github.com/LukeBriggsDev/Pepys/releases" target="_blank" rel="noopener noreffer">releases page</a></p>
 <h1 id="featured-in">Featured in</h1>
 <p>FossBytes - <a href="https://fossbytes.com/document-activity-pepys-journal-app-linux/">https://fossbytes.com/document-activity-pepys-journal-app-linux/</a>
 ConnectWWW.com - <a href="https://connectwww.com/pepys-markdown-journal-application/62941/">https://connectwww.com/pepys-markdown-journal-application/62941/</a></p>
