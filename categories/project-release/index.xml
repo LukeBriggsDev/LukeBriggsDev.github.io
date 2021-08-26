@@ -603,6 +603,7 @@ I am excited about what I will create next, how I will iterate on what I have le
 <h3 id="winget">Winget</h3>
 <p>Pepys is available through winget:</p>
 <p><code>winget install pepys</code></p>
+<h2 id="linux">Linux</h2>
 <h3 id="aur">AUR</h3>
 <p>Pepys is available on the <a href="https://aur.archlinux.org/packages/pepys/" target="_blank" rel="noopener noreffer">Arch User Repository</a></p>
 <p><code>yay -S pepys</code></p>

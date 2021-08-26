@@ -69,6 +69,7 @@ Pepys is available through winget:
 
 `winget install pepys`
 
+## Linux
 ### AUR
 
 Pepys is available on the [Arch User Repository](https://aur.archlinux.org/packages/pepys/)
