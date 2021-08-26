@@ -81,4 +81,5 @@ Distribution specific packages are available on the [releases page](https://gith
 
 # Featured in
 FossBytes - <https://fossbytes.com/document-activity-pepys-journal-app-linux/>
+
 ConnectWWW.com - <https://connectwww.com/pepys-markdown-journal-application/62941/>
