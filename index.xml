@@ -4,9 +4,431 @@
         <link>https://www.lukebriggs.dev/</link>
         <description>I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University.</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@lukebriggs.dev (Luke Briggs)</managingEditor>
-            <webMaster>contact@lukebriggs.dev (Luke Briggs)</webMaster><lastBuildDate>Wed, 18 Aug 2021 15:18:16 &#43;0100</lastBuildDate>
+            <webMaster>contact@lukebriggs.dev (Luke Briggs)</webMaster><lastBuildDate>Thu, 16 Sep 2021 15:07:04 &#43;0100</lastBuildDate>
             <atom:link href="https://www.lukebriggs.dev/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Inspection and Dissection: Sounds2Spotify</title>
+    <link>https://www.lukebriggs.dev/inspection-and-dissection-sounds2spotify/</link>
+    <pubDate>Thu, 16 Sep 2021 15:07:04 &#43;0100</pubDate>
+    <author>Author</author>
+    <guid>https://www.lukebriggs.dev/inspection-and-dissection-sounds2spotify/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/static/projects/sounds2spotify_banner.png" referrerpolicy="no-referrer">
+            </div><blockquote>
+<p>Available on <a href="https://github.com/LukeBriggsDev/Sounds2Spotify" target="_blank" rel="noopener noreffer">Github</a></p>
+</blockquote>
+<h1 id="brief-description">Brief Description</h1>
+<p>Sounds2Spotify is a web extension for firefox and chrome that converts the tracklists that appear on <a href="https://bbc.co.uk/sounds" target="_blank" rel="noopener noreffer">BBC Sounds</a> programme pages to be converted into Spotify playlists.</p>
+<p>Unlike <a href="/calmer-internet" rel="">Calmer-Internet</a> this extension can only be installed by following the instructions on <a href="https://github.com/LukeBriggsDev/Sounds2Spotify" target="_blank" rel="noopener noreffer">Github</a> due to its use of API keys.</p>
+<h1 id="impetus">Impetus</h1>
+<p>One of my pleasures in life is listening to Music.
+My favourite tracks are stored locally and also in Spotify playlists for when I&rsquo;m using a device without my collection.
+Most of the time, however, I&rsquo;m not listening to my favourite tracks, I&rsquo;m listening to the <a href="https://www.bbc.co.uk/sounds/play/live:bbc_6music" target="_blank" rel="noopener noreffer">BBC 6Music</a>.
+More specifically, I&rsquo;m listening to the <a href="https://www.bbc.co.uk/programmes/b00c000j" target="_blank" rel="noopener noreffer">Lauren Laverne Breakfast Show</a>.</p>
+<p>Due to licensing reasons the BBC can only have its music programming available on its own BBC Sounds app for a limited time.
+This is fine when I&rsquo;m using my computer or phone, but quite often I want to listen to music in the background when using my PlayStation, which only allows music to be played through Spotify.</p>
+<p>The goal: to convert the music played on BBC Sounds to Spotify playlists.</p>
+<h1 id="code-walkthrough">Code Walkthrough</h1>
+<h2 id="part-1-getting-the-music">Part 1: Getting the Music</h2>
+<p></p>
+<hr style="border: 1px solid black">
+<p></p>
+<p>Thankfully, underneath every music programme, the BBC provides a track list of all the music played throughout the programme as well as a popover menu providing links to external sources.</p>
+<p>So the first job my extension had to do was to scrape this information.
+There are no APIs or direct links to this information so the only way to get this information is by clicking on each button and grabbing the Spotify link.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// List of buttons that bring up track popover
+</span><span class="c1"></span><span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">&#39;[id^=&#34;track-&#34;]&#39;</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nx">tracklist</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="kd">var</span> <span class="nx">episodeDate</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="s2">&#34;sc-c-episode__metadata__data&#34;</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">lastChild</span><span class="p">.</span><span class="nx">data</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Each menu button has the HTML ID of &ldquo;track-x&rdquo; where x is its position in the tracklist.
+So a query for all these IDs will yield a list of button elements.</p>
+<p>The date the episode aired is also quite useful when it comes to naming the eventual playlist, so I grab that as well.</p>
+<p>I also initialise the tracklist here. Eventually I want a list of the Spotify links for the tracks.</p>
+<p>The IDs and element classes were obtained by hand by scouring the HTML source of the page.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">list</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="nx">list</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">scrollIntoView</span><span class="p">()</span>
+    <span class="nx">list</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">click</span><span class="p">()</span>
+    <span class="kr">await</span> <span class="nx">sleep</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span> <span class="c1">// t = 200ms
+</span><span class="c1"></span>    <span class="k">try</span><span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">track</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">&#39;[href^=&#34;https://open.spotify.com/track/&#34;]&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="kd">var</span> <span class="nx">trackMetadata</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">track</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s2">&#34;data-bbc-metadata&#34;</span><span class="p">))</span>
+        <span class="kd">var</span> <span class="nx">trackTitle</span> <span class="o">=</span> <span class="nx">trackMetadata</span><span class="p">.</span><span class="nx">TID</span>
+        <span class="nx">tracklist</span><span class="p">[</span><span class="nx">trackTitle</span><span class="p">]</span> <span class="o">=</span> <span class="nx">track</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s2">&#34;href&#34;</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">{</span>
+        <span class="c1">// No links found
+</span><span class="c1"></span>    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>I loop through all the button elements, scroll to the element and click it. There is a 200ms delay between each track as render differences can lead to buttons not being clicked.</p>
+<p>When a track is clicked, single popover appears containing a Spotify track link if it exists. As a result, by querying for a Spotify track URL on the page, I will get the link, if it exists.</p>
+<p>The popover also includes some metadata for the track in the form of JSON. So I use the track title as the key in a dictionary of tracks, just to make debugging easier.
+The value in the dictionary is the corresponding link.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">chrome</span><span class="p">.</span><span class="nx">runtime</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">({</span><span class="nx">type</span><span class="o">:</span> <span class="s2">&#34;tracklist&#34;</span> <span class="p">,</span> <span class="nx">track_list</span><span class="o">:</span> <span class="nx">tracklist</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="nb">document</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span> <span class="nx">date</span><span class="o">:</span> <span class="nx">episodeDate</span><span class="p">},</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">farewell</span><span class="p">);</span>
+<span class="p">})</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>All this data is then wrapped up into a message and sent off to be picked up by a background script.</p>
+<p>I mention background scripts in more detail on my <a href="/inspection-and-dissection-calmer-internet/" rel="">Inspection and Dissection on Calmer-Internet</a></p>
+<h2 id="part-2-promises-async-apis">Part 2: Promises, Async, APIs</h2>
+<p>Now for the complicated part.
+Using the list of Spotify links I have to create a playlist.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// Base URL
+</span><span class="c1"></span><span class="nx">get_url</span> <span class="o">=</span> <span class="s2">&#34;https://accounts.spotify.com/authorize?&#34;</span>
+<span class="nx">get_url</span> <span class="o">+=</span> <span class="sb">`client_id=</span><span class="si">${</span><span class="nx">client_id</span><span class="si">}</span><span class="sb">&amp;`</span>
+<span class="nx">get_url</span> <span class="o">+=</span> <span class="s2">&#34;response_type=code&amp;&#34;</span>
+<span class="nx">get_url</span> <span class="o">+=</span> <span class="sb">`redirect_uri=</span><span class="si">${</span><span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nx">chrome</span><span class="p">.</span><span class="nx">identity</span><span class="p">.</span><span class="nx">getRedirectURL</span><span class="p">())</span><span class="si">}</span><span class="sb">&amp;`</span>
+<span class="nx">get_url</span> <span class="o">+=</span> <span class="s2">&#34;scope=playlist-modify-public&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>The first thing I need to do is get authorisation from the user to allow the extension to modify public playlists.
+This is done by pointing a request to a specific url containing certain information.</p>
+<ul>
+<li>client_id: this is and id associated with a <a href="https://developer.spotify.com/dashboard/applications" target="_blank" rel="noopener noreffer">Spotify app</a>.</li>
+<li>response_type: there are various ways to authenticate, the way I are doing it is through a &lsquo;code&rsquo; flow</li>
+<li>redirect_uri: the url Spotify should redirect to when done.
+Web extensions require this to be a single link unique to the extension which is obtained through the method above</li>
+<li>scope: which permissions I require</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">chrome</span><span class="p">.</span><span class="nx">runtime</span><span class="p">.</span><span class="nx">onMessage</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span>
+    <span class="kd">function</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">sender</span><span class="p">,</span> <span class="nx">sendResponse</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">type</span> <span class="o">==</span> <span class="s2">&#34;tracklist&#34;</span><span class="p">){</span>
+            <span class="nx">sendResponse</span><span class="p">({</span><span class="nx">farewell</span><span class="o">:</span> <span class="s2">&#34;recieved tracklist&#34;</span><span class="p">});</span>
+
+            <span class="nx">tracklist</span> <span class="o">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">track_list</span>
+            <span class="nx">tracklist_name</span> <span class="o">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">name</span>
+            <span class="nx">tracklist_date</span> <span class="o">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">date</span>
+
+            <span class="c1">// Authenticate and make playlist
+</span><span class="c1"></span>            <span class="nx">chrome</span><span class="p">.</span><span class="nx">identity</span><span class="p">.</span><span class="nx">launchWebAuthFlow</span><span class="p">(</span>
+                <span class="p">{</span>
+                    <span class="nx">url</span><span class="o">:</span> <span class="nx">get_url</span><span class="p">,</span>
+                    <span class="nx">interactive</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                <span class="p">},</span> <span class="nx">authenticateSpotify</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>This is a listener that responds to my message containing a tracklist.
+All the listener does is store the information in global variables (I know it can be bad practice but this is a small program with a specific purpose) and launch an authentication flow with my link.</p>
+<p>Once this is done, I then call the <code>authenticateSpotify</code> method.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">authenticateSpotify</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span>
+    <span class="c1">// Get parameters from response
+</span><span class="c1"></span>    <span class="kd">var</span> <span class="nx">urlParams</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URLSearchParams</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="nx">chrome</span><span class="p">.</span><span class="nx">identity</span><span class="p">.</span><span class="nx">getRedirectURL</span><span class="p">(),</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
+        <span class="c1">//...
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>My WebAuthFlow passes a response in the form of a URL containing a parameter with an authorisation code (or a rejection).
+I isolate these parameters by stripping off My redirect url and calling <code>URLSearchParams</code> on it.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// POST request for access token
+</span><span class="c1"></span>    <span class="kd">var</span> <span class="nx">authRequest</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">(</span><span class="s2">&#34;https://accounts.spotify.com/api/token&#34;</span><span class="p">,</span>
+    <span class="p">{</span>
+        <span class="nx">method</span><span class="o">:</span> <span class="s2">&#34;POST&#34;</span><span class="p">,</span>
+        <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;application/x-www-form-urlencoded;charset=UTF-8&#39;</span>
+        <span class="p">},</span>
+        <span class="nx">body</span><span class="o">:</span> <span class="k">new</span> <span class="nx">URLSearchParams</span><span class="p">(</span>
+        <span class="p">{</span> 
+        <span class="s1">&#39;grant_type&#39;</span><span class="o">:</span> <span class="s1">&#39;authorization_code&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;code&#39;</span><span class="o">:</span> <span class="nx">urlParams</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;code&#34;</span><span class="p">),</span> 
+        <span class="s1">&#39;redirect_uri&#39;</span><span class="o">:</span> <span class="nx">chrome</span><span class="p">.</span><span class="nx">identity</span><span class="p">.</span><span class="nx">getRedirectURL</span><span class="p">(),</span>
+        <span class="s1">&#39;client_id&#39;</span><span class="o">:</span> <span class="sb">`</span><span class="si">${</span><span class="nx">client_id</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
+        <span class="s1">&#39;client_secret&#39;</span><span class="o">:</span> <span class="sb">`</span><span class="si">${</span><span class="nx">client_secret</span><span class="si">}</span><span class="sb">`</span>
+        <span class="p">})</span> 
+    <span class="p">})</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>I then construct a POST request to Spotify by exchanging my authorisation code, and client details for an access token.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// Create playlist
+</span><span class="c1"></span>    <span class="nx">fetch</span><span class="p">(</span><span class="nx">authRequest</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">json</span><span class="p">){</span>
+            <span class="nx">createPlaylist</span><span class="p">(</span><span class="nx">json</span><span class="p">.</span><span class="nx">access_token</span><span class="p">)</span>
+        <span class="p">})</span>
+    <span class="p">})</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>I then send this POST request, receive a response, parse the JSON response and send the access token to the <code>createPlaylist</code> function.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">async</span> <span class="kd">function</span> <span class="nx">getSpotifyID</span><span class="p">(</span><span class="nx">access_token</span><span class="p">){</span>
+    <span class="kd">var</span> <span class="nx">userRequest</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">(</span><span class="s2">&#34;https://api.spotify.com/v1/me&#34;</span><span class="p">,</span>
+    <span class="p">{</span>
+        <span class="nx">method</span><span class="o">:</span> <span class="s2">&#34;GET&#34;</span><span class="p">,</span>
+        <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">Authorization</span><span class="o">:</span> <span class="sb">`Bearer </span><span class="si">${</span><span class="nx">access_token</span><span class="si">}</span><span class="sb">`</span>
+        <span class="p">}</span>
+    <span class="p">})</span>
+    <span class="kr">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">userRequest</span><span class="p">)</span>
+    <span class="kr">const</span> <span class="nx">json</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span>
+    <span class="k">return</span> <span class="nx">json</span><span class="p">.</span><span class="nx">id</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>To know which account I&rsquo;m working with I ask for the profile ID.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">async</span> <span class="kd">function</span> <span class="nx">createPlaylist</span><span class="p">(</span><span class="nx">access_token</span><span class="p">){</span>
+    <span class="kd">var</span> <span class="nx">trackURIS</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1">// Add create Spotify URIs from track links
+</span><span class="c1"></span>    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">track</span> <span class="k">of</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">values</span><span class="p">(</span><span class="nx">tracklist</span><span class="p">)){</span>
+        <span class="nx">trackURIS</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="sb">`&#34;</span><span class="si">${</span><span class="nx">track</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s2">&#34;https://open.spotify.com/track/&#34;</span><span class="p">,</span> <span class="s2">&#34;spotify:track:&#34;</span><span class="p">)</span><span class="si">}</span><span class="sb">&#34;`</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>The Spotify API does not want the tracks in the form of a link it wants a uri in the form <code>spotify:track:trackid</code>.
+So for each link in our track list I replace the link part with <code>spotify:track:</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// Create new playlist
+</span><span class="c1"></span>    <span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">(</span><span class="sb">`https://api.spotify.com/v1/users/</span><span class="si">${</span><span class="nx">id</span><span class="si">}</span><span class="sb">/playlists`</span><span class="p">,</span>
+    <span class="p">{</span>
+        <span class="nx">method</span><span class="o">:</span> <span class="s2">&#34;POST&#34;</span><span class="p">,</span>
+        <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&#34;Authorization&#34;</span><span class="o">:</span> <span class="sb">`Bearer </span><span class="si">${</span><span class="nx">access_token</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
+            <span class="s2">&#34;Content-Type&#34;</span><span class="o">:</span> <span class="s2">&#34;application/json&#34;</span>
+        <span class="p">},</span>
+        <span class="nx">body</span><span class="o">:</span> 
+<span class="sb">`{
+</span><span class="sb">    &#34;name&#34;: &#34;</span><span class="si">${</span><span class="nx">tracklist_name</span><span class="si">}</span><span class="sb"> | </span><span class="si">${</span><span class="nx">tracklist_date</span><span class="si">}</span><span class="sb">&#34;,
+</span><span class="sb">    &#34;description&#34;: &#34;Made using Sounds2Spotify&#34;
+</span><span class="sb">}`</span>
+    <span class="p">})</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Before I can add to a playlist, I need to create one first, so I construct a request to do just that using the authorisation token, and the user ID.
+I use the page name, and date from the BBC Sounds page as the title of the playlist.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// Add tracklist songs to newly created playlist
+</span><span class="c1"></span>    <span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">(</span><span class="sb">`https://api.spotify.com/v1/playlists/</span><span class="si">${</span><span class="nx">playlistID</span><span class="si">}</span><span class="sb">/tracks`</span><span class="p">,</span>
+    <span class="p">{</span>
+        <span class="nx">method</span><span class="o">:</span> <span class="s2">&#34;POST&#34;</span><span class="p">,</span>
+        <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&#34;Content-Type&#34;</span><span class="o">:</span> <span class="s2">&#34;application/json&#34;</span><span class="p">,</span>
+            <span class="nx">Authorization</span><span class="o">:</span> <span class="sb">`Bearer </span><span class="si">${</span><span class="nx">access_token</span><span class="si">}</span><span class="sb">`</span>
+        <span class="p">},</span>
+        <span class="nx">body</span><span class="o">:</span> 
+<span class="sb">`{
+</span><span class="sb">    &#34;uris&#34;: [</span><span class="si">${</span><span class="nx">trackURIS</span><span class="si">}</span><span class="sb">]
+</span><span class="sb">}`</span>
+    <span class="p">})</span>
+
+    <span class="kd">var</span> <span class="nx">response</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">request</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>The response of my request contains the playlist ID which I then feed into our next request to add my list of tracks to the playlist.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// Open tab to new playlist
+</span><span class="c1"></span>    <span class="nx">chrome</span><span class="p">.</span><span class="nx">tabs</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span> <span class="nx">url</span><span class="o">:</span> <span class="sb">`https://open.spotify.com/playlist/</span><span class="si">${</span><span class="nx">playlistID</span><span class="si">}</span><span class="sb">`</span><span class="p">})</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Finally, I open up the playlist in a new tab.</p>
+<h1 id="retrospective">Retrospective</h1>
+<p>Overall, I am very pleased with what I managed to achieve.
+I have very limited experience in using JavaScript to interact with REST APIs, but I managed to pick it up reasonably quickly.</p>
+<p>The code I think is relatively clean for a first attempt.
+Obviously if any of the request throw an error then there is not much in the way of handling a response, but JavaScript tends to be pretty robust with errors and this isn&rsquo;t a product that is going to be released on any web store or anything.</p>
+<h1 id="reason-for-installation-procedure">Reason for Installation Procedure</h1>
+<p>The reason why this project is not going to be released on a web store is for security reasons.
+A part of the process requires sending Spotify secret API keys for the corresponding Spotify app.
+This would mean that my secret keys would have to be in the client-side code, and therefore be freely accessible.</p>
+<p>It would therefore be possible for someone to pose as my extension and start making requests as my app to users.</p>
+<p>The installation process isn&rsquo;t so cumbersome to be impossible to install, but it isn&rsquo;t as plug and play as I would like it to be</p>
+<h1 id="sources-of-information">Sources of Information</h1>
+<ul>
+<li>Spotify API Docs - <a href="https://developer.spotify.com/documentation/web-api/">https://developer.spotify.com/documentation/web-api/</a>
+<ul>
+<li><a href="https://developer.spotify.com/console/playlists/" target="_blank" rel="noopener noreffer">Playlists</a></li>
+</ul>
+</li>
+<li>Chrome extension API Docs - <a href="https://developer.chrome.com/docs/extensions/reference/">https://developer.chrome.com/docs/extensions/reference/</a>
+<ul>
+<li><a href="https://developer.chrome.com/docs/extensions/reference/identity/#method-getRedirectURL" target="_blank" rel="noopener noreffer">identity</a></li>
+<li><a href="https://developer.chrome.com/docs/extensions/mv2/messaging/" target="_blank" rel="noopener noreffer">Message Passing</a></li>
+</ul>
+</li>
+<li>Mozilla Web API Docs - <a href="https://developer.mozilla.org/en-US/docs/Web/API">https://developer.mozilla.org/en-US/docs/Web/API</a>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/fetch" target="_blank" rel="noopener noreffer">fetch()</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Response" target="_blank" rel="noopener noreffer">Response</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank" rel="noopener noreffer">Promise</a></li>
+</ul>
+</li>
+</ul>
+]]></description>
+</item><item>
     <title>Inspection and Dissection: Calmer Internet - My First Web Extension</title>
     <link>https://www.lukebriggs.dev/inspection-and-dissection-calmer-internet/</link>
     <pubDate>Wed, 18 Aug 2021 15:18:16 &#43;0100</pubDate>
@@ -1221,133 +1643,6 @@ Thanks to the incredible <a href="https://feedgen.kiesow.be/" target="_blank" re
 <li>A way to better list out blog posts (currently all are listed on one page which will probably become cumbersome when they grow in number)</li>
 </ul>
 <p>In the meantime I hope you come back and see if I can offer you any informative content.</p>
-]]></description>
-</item><item>
-    <title>The Layperson’s Guide to LaTeX</title>
-    <link>https://www.lukebriggs.dev/the-laypersons-guide-to-latex/</link>
-    <pubDate>Wed, 06 Jan 2021 22:06:22 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://www.lukebriggs.dev/the-laypersons-guide-to-latex/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/static/postimages/11/rainbow.jpg" referrerpolicy="no-referrer">
-            </div><p>As part of my degree I will have to write many words into many documents and submit them all as part of assignments.</p>
-<p>There was a time when we were young, stupid and thought that the peak of document formatting was WordArt, a drop shadow, and rainbow II. We would stick borders on our .pub files and feel superior if our PowerPoints had a dissolve transition. As we age past primary school we begin to conform to the world’s sensibilities that Comic Sans is not an adequate typeface and having every colour on the spectrum is a way to actually guarantee some of your text will be unreadable.</p>
-<p>Since we are forced to conform, we might as well do it to perfection, and you can only go so far in a tool that still thinks that word processors need a background ‘water droplet’ texture fill.</p>
-<h1 id="what-is-this-latex-and-why-is-it-not-pronounced-like-that">What is this LaTeX and Why is it Not Pronounced Like That?</h1>
-<p>If you want a tool that focuses on the nicest looking documents without caving into the design requirements of 7 year olds, you have to go back to a time before texture fills. Actually you have to go back to a time before computers could even show pictures. Nice looking documents (i.e had legible fonts) had to be obtained using specialised typesetters that cost as much as a house, either that or you’d use a literal printing press – this was the time in which TeX was created. LaTeX is built on TeX and is its more approachable step-son. LaTeX uses a mark-up language to design its document with the idea being that you focus on the content while the engine works out the best formatting.</p>
-<h1 id="isnt-this-a-bit-of-a-faff">Isn’t This a Bit of a Faff?</h1>
-<p>It depends on your personality. If you are happy with documents that are only adequate, then continue in your mediocrity. But for those of us who seek perfection and see neuroplasticity as a fundamental attribute, LaTeX offers a sterling reward for your efforts.</p>
-<h1 id="how-good-does-it-look">How Good Does it Look?</h1>
-<p>In the days when people weren’t made of pixels I spent the time making my own word template. It had wonderful serif headings; all the styles used Word’s tools so it did as much of the heavy lifting as possible; and all the font sizes were made just right.</p>
-<p>The results from Word are as follows:
-</p>
-<p>It looks <em>okay</em>. It looks far better than what some people create in Word. Even creating something okay looking feels like a hack though. Having nice paragraph spacing underneath headings required my to individually change all the line spacing options by hand. Anyone who has ever tried to implement code into a word document also knows that it will require you to sacrifice your firstborn.</p>
-<p>Now, for a LaTeX document:
-</p>
-<p>No time spent messing with templates, no changing font sizes, and it probably took me less time to make a document that looks even better. The best thing about LaTeX is that because everything is done programmatically, it can have an integration that is mind boggling. For instance, if you want to insert a segment of a python script in your document you dont actually need to copy and paste bits into your .tex file. You can just tell it where the script is, give it the line numbers and it will display and format it all for you.</p>
-<h1 id="where-do-i-begin">Where Do I Begin?</h1>
-<p>This is for those of a Windows disposition</p>
-<p>First install a distribution of LaTeX called <a href="https://miktex.org/download" target="_blank" rel="noopener noreffer">MiKTeX</a>. MiKTeX has everything you need and will make the whole experience as easy as possible.</p>
-<p>Our code editor is called TeXworks, so open that up and lets write some LaTeX.</p>
-<p>LaTeX follows a syntax of \command[option]{parameter} and we start a document off by selecting the type of document we want to create, and then starting and ending said document. There are a number of <a href="https://en.wikibooks.org/wiki/LaTeX/Document_Structure#Document_classes" target="_blank" rel="noopener noreffer">document classes</a> but article is the one recommended for most documents.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-latex" data-lang="latex"><span class="c">% Start of Document (Comments are denoted by a percentage at the start of the line)
-</span><span class="c"></span><span class="k">\documentclass</span><span class="nb">{</span>article<span class="nb">}</span>
-<span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
-I&#39;m so pretty
-<span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>And we get:
-</p>
-<p>Currently it looks like a note left by a serial killer with access to a typewriter so lets stick our name on it.</p>
-<p>The title, date, and author of your document all have dedicated tags in LaTeX. They are \title \date and \author. We then tell LaTeX to show all these on the screen by using \maketitle</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-latex" data-lang="latex"><span class="c">% Start of Document (Comments are denoted by a percentage at the start of the line)
-</span><span class="c"></span><span class="k">\documentclass</span><span class="nb">{</span>article<span class="nb">}</span>
- 
-<span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
- 
-<span class="k">\title</span><span class="nb">{</span>My Pretty Document<span class="nb">}</span>
-<span class="k">\author</span><span class="nb">{</span>J. Smith<span class="nb">}</span>
-<span class="k">\date</span><span class="nb">{</span>23 November 1963<span class="nb">}</span>
-<span class="k">\maketitle</span>
- 
-<span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>Output:
-</p>
-<p>You can hear groups of your preferred gender(s) running to throw themselves at you as we speak.</p>
-<p>Now for some content. Once again there are various different types of <a href="https://en.wikibooks.org/wiki/LaTeX/Document_Structure#Sectioning_commands" target="_blank" rel="noopener noreffer">sectioning</a> you can use but we will use the pretty straight forward \section</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-latex" data-lang="latex"><span class="c">% Start of Document (Comments are denoted by a percentage at the start of the line)
-</span><span class="c"></span><span class="k">\documentclass</span><span class="nb">{</span>article<span class="nb">}</span>
-<span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
- 
-<span class="k">\title</span><span class="nb">{</span>My Pretty Document<span class="nb">}</span>
-<span class="k">\author</span><span class="nb">{</span>J. Smith<span class="nb">}</span>
-<span class="k">\date</span><span class="nb">{</span>23 November 1963<span class="nb">}</span>
- 
-<span class="k">\maketitle</span>
- 
-<span class="k">\section</span><span class="nb">{</span>This is a subtitle<span class="nb">}</span>
-I can just write text under the section tag and it will all be made nice
- 
-<span class="k">\section</span><span class="nb">{</span>This is my second subtitle<span class="nb">}</span>
-I just add another section tag and it will become the second section in the document. Pretty cool!
- 
-<span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>Output:</p>
-<p></p>
-<p>Positive gasps emanate from the crowd at the sight of such serifs. You will notice that LaTex automatically added heading numbers and changed the weight, face, and size of the type to better suit a heading. <a href="https://en.wikibooks.org/wiki/LaTeX" target="_blank" rel="noopener noreffer">There are all sorts of things you can do</a> that I haven’t covered like how it can do bibliographies for you and organise images and figures correctly. There are also things that are beyond my knowledge like drawing your own 3d graphics within source. All of it can be taken one step at a time. If you don’t know something, look it up, learn how to do it, and implement it – it’s all pretty approachable.</p>
-<p>LaTeX isn’t perfect in its implementation, only its possible output. For instance, the answer to the question ‘how do I insert an svg’ is ‘use a pdf instead’ but I hope I have given you a taste of a better alternative to Word, even if it does introduce the possibility that your reports can have syntax errors.</p>
-<h1 id="further-notes">Further Notes</h1>
-<p>If you are writing your reports in LaTeX like me then you will need the correct bibliography formatting. LaTeX offers a few styles by default but I have learned there is no such thing as a standard and my University (Newcastle) uses <a href="https://libguides.ncl.ac.uk/managing/harvard" target="_blank" rel="noopener noreffer">its own guidelines</a>. The process for creating your own style involves both a command line tool and further tweaking using a bespoke programming language using REVERSE POLISH NOTATION, which is what happens if Christopher Nolan got his hands on a compiler. To save my fellow students time, I created a style for Newcastle’s bibliography style and <a href="https://github.com/LukeBriggsDev/Newcastle-BibTeX" target="_blank" rel="noopener noreffer">it is hosted on GitHub</a>.</p>
 ]]></description>
 </item></channel>
 </rss>

@@ -2,6 +2,16 @@
 
 Here is a list of all my projects that are available on the internet
 
+# Sounds2Spotify
+-------------------
+### *Release Date: 16th September 2021*
+
+Sounds2Spotify is a web extension for firefox and chrome that converts the tracklists that appear on [BBC Sounds](https://bbc.co.uk/sounds) programme pages to be converted into Spotify playlists.
+
+<img src="/static/projects/sounds2spotify_banner.svg" alt="newcastle-bst" width="50%">
+
+[Source Code](https://github.com/LukeBriggsDev/Sounds2Spotify)
+
 # Calmer Internet
 -------------------
 ### *Release Date: 17th August 2021*
