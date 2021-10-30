@@ -19,6 +19,8 @@ Pepys is a journalling application that utilises markdown for writing and storin
   - [Windows](#windows)
     - [Installer & Standalone](#installer--standalone)
     - [Winget](#winget)
+  - [Mac](#mac)
+  - [Linux](#linux)
     - [AUR](#aur)
     - [Debian/Fedora/Arch](#debianfedoraarch)
 - [Featured in](#featured-in)
@@ -68,6 +70,13 @@ The installer and standalone zip files are available on the [releases page](http
 Pepys is available through winget:
 
 `winget install pepys`
+
+## Mac
+Pepys on MacOS uses the [homebrew](https://brew.sh/) package manager
+
+- Download the ruby (.rb) file from the [releases page](https://github.com/LukeBriggsDev/Pepys/releases)
+- navigate to the ruby file in Terminal
+- `brew install pepys.rb`
 
 ## Linux
 ### AUR

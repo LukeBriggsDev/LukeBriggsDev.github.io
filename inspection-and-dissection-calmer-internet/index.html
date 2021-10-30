@@ -8,10 +8,10 @@
         <title>Inspection and Dissection: Calmer Internet - My First Web Extension - Luke Briggs</title><meta name="Description" content="A web extension that hides the elements of web pages that are best off hidden"><meta property="og:title" content="Inspection and Dissection: Calmer Internet - My First Web Extension" />
 <meta property="og:description" content="A web extension that hides the elements of web pages that are best off hidden" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.lukebriggs.dev/inspection-and-dissection-calmer-internet/" />
-<meta property="og:image" content="https://www.lukebriggs.dev/banner.png"/>
+<meta property="og:url" content="https://www.lukebriggs.dev/inspection-and-dissection-calmer-internet/" /><meta property="og:image" content="https://www.lukebriggs.dev/banner.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-08-18T15:18:16+01:00" />
 <meta property="article:modified_time" content="2021-08-18T15:18:16+01:00" />
+
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.lukebriggs.dev/banner.png"/>
 
@@ -141,7 +141,7 @@ This is a javascript file that just loaded alongside the current page at load ti
 The file then looks at the current URL and checks the page for any elements I&rsquo;ve told it to remove.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -159,7 +159,7 @@ The file then looks at the current URL and checks the page for any elements I&rs
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// Adding Twitter elements to a list of elements to remove
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// Adding Twitter elements to a list of elements to remove
 </span><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">hostname</span> <span class="o">===</span> <span class="s2">&#34;twitter.com&#34;</span> <span class="o">||</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">hostname</span> <span class="o">===</span> <span class="s2">&#34;mobile.twitter.com&#34;</span><span class="p">){</span>
         <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">settings</span><span class="p">[</span><span class="s2">&#34;TwitterTrendingBar&#34;</span><span class="p">]){</span>
             <span class="nx">elementsToRemove</span><span class="p">[</span><span class="s2">&#34;trendingBar&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">&#34;div[aria-label=&#39;Timeline: Trending now&#39;]&#34;</span><span class="p">)</span>
@@ -180,7 +180,7 @@ The file then looks at the current URL and checks the page for any elements I&rs
 </div><p>The script then attaches a listener that causes new checks every time the webpage is updated</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -209,7 +209,7 @@ The file then looks at the current URL and checks the page for any elements I&rs
 </span><span class="lnt">27
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="kd">function</span> <span class="nx">observeBodyRemove</span><span class="p">(){</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="kd">function</span> <span class="nx">observeBodyRemove</span><span class="p">(){</span>
         <span class="c1">// Select the node that will be observed for mutations
 </span><span class="c1"></span>        <span class="kd">var</span> <span class="nx">targetNode</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">);</span>
 
@@ -247,7 +247,7 @@ I initially had the redirect in a content script but that required the whole pag
 This is also done be setting up a listener, such as this one:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -264,7 +264,7 @@ This is also done be setting up a listener, such as this one:</p>
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// YouTube
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// YouTube
 </span><span class="c1"></span>    <span class="nx">chrome</span><span class="p">.</span><span class="nx">webRequest</span><span class="p">.</span><span class="nx">onBeforeRequest</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span>
         <span class="kd">function</span> <span class="p">(</span><span class="nx">details</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">settings</span><span class="p">[</span><span class="s2">&#34;YTHomeRedirect&#34;</span><span class="p">])</span> <span class="p">{</span>
@@ -285,7 +285,7 @@ This is also done be setting up a listener, such as this one:</p>
 I have great experience with manifests since <a href="https://github.com/LukeBriggsDev/Pepys" target="_blank" rel="noopener noreffer">Pepys recently received builds for rpm, .deb, and PKGBUILD</a>.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -334,7 +334,7 @@ I have great experience with manifests since <a href="https://github.com/LukeBri
 </span><span class="lnt">47
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;manifest_version&#34;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
   <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Calmer Internet&#34;</span><span class="p">,</span>
   <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;1.1.0&#34;</span><span class="p">,</span>
@@ -418,7 +418,7 @@ It would even support Safari as of Big Sur, but I do not have a Mac to upload it
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><a href="https://www.buymeacoffee.com/lukebriggs" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/arial-yellow.png" alt="Buy Me A Coffee" style="height: 40px !important;width: 217px !important;" ></a></div><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.80.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line"><a href="https://www.buymeacoffee.com/lukebriggs" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/arial-yellow.png" alt="Buy Me A Coffee" style="height: 40px !important;width: 217px !important;" ></a></div><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.88.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Luke Briggs</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>

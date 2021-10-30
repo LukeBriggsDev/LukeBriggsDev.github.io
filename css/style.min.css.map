@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "style.min.css",
-	"sourceRoot": "/home/luke/Documents/Projects/HugoSite",
+	"sourceRoot": "/Users/luke/Documents/Projects/HugoSite",
 	"sources": [
 		"themes/LoveIt/assets/css/style.scss",
 		"themes/LoveIt/assets/css/_variables.scss",

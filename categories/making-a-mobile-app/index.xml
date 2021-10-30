@@ -67,30 +67,30 @@ completely foolproof is to underestimate the ingenuity of complete fools.”</p>
 <p>Firstly you will need to download and install <a href="https://nodejs.org/en/" target="_blank" rel="noopener noreffer">Node.js</a> This is quite self explanatory as it has an actual wizard thus not requiring any command line interaction. Node is necessary for almost anything running local javascript. Next you’ll need to open the command line (found on windows by typing ‘cmd’ into the start menu) and run this command:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">npm install expo-cli --global
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">npm install expo-cli --global
 </code></pre></td></tr></table>
 </div>
 </div><p>You will then be asked to create an Expo account. Next you want no navigate to the directory where you want to store your app, this is done in windows by typing ‘cd’ followed by the directory. For example :</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">cd C:\Users\&lt;Your Username&gt;\Documents\app
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">cd C:\Users\&lt;Your Username&gt;\Documents\app
 </code></pre></td></tr></table>
 </div>
 </div><p>Then run the commands:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">expo init my-new-project
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">expo init my-new-project
 cd my-new-project
 expo start
 </code></pre></td></tr></table>

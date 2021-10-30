@@ -36,13 +36,13 @@ This is fine when I&rsquo;m using my computer or phone, but quite often I want t
 There are no APIs or direct links to this information so the only way to get this information is by clicking on each button and grabbing the Spotify link.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// List of buttons that bring up track popover
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// List of buttons that bring up track popover
 </span><span class="c1"></span><span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">&#39;[id^=&#34;track-&#34;]&#39;</span><span class="p">)</span>
 <span class="kd">var</span> <span class="nx">tracklist</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="kd">var</span> <span class="nx">episodeDate</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="s2">&#34;sc-c-episode__metadata__data&#34;</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">lastChild</span><span class="p">.</span><span class="nx">data</span>
@@ -55,7 +55,7 @@ So a query for all these IDs will yield a list of button elements.</p>
 <p>The IDs and element classes were obtained by hand by scouring the HTML source of the page.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -70,7 +70,7 @@ So a query for all these IDs will yield a list of button elements.</p>
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">list</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">list</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
     <span class="nx">list</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">scrollIntoView</span><span class="p">()</span>
     <span class="nx">list</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">click</span><span class="p">()</span>
     <span class="kr">await</span> <span class="nx">sleep</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span> <span class="c1">// t = 200ms
@@ -91,12 +91,12 @@ So a query for all these IDs will yield a list of button elements.</p>
 The value in the dictionary is the corresponding link.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">chrome</span><span class="p">.</span><span class="nx">runtime</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">({</span><span class="nx">type</span><span class="o">:</span> <span class="s2">&#34;tracklist&#34;</span> <span class="p">,</span> <span class="nx">track_list</span><span class="o">:</span> <span class="nx">tracklist</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="nb">document</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span> <span class="nx">date</span><span class="o">:</span> <span class="nx">episodeDate</span><span class="p">},</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">chrome</span><span class="p">.</span><span class="nx">runtime</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">({</span><span class="nx">type</span><span class="o">:</span> <span class="s2">&#34;tracklist&#34;</span> <span class="p">,</span> <span class="nx">track_list</span><span class="o">:</span> <span class="nx">tracklist</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="nb">document</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span> <span class="nx">date</span><span class="o">:</span> <span class="nx">episodeDate</span><span class="p">},</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">farewell</span><span class="p">);</span>
 <span class="p">})</span>
 </code></pre></td></tr></table>
@@ -108,7 +108,7 @@ The value in the dictionary is the corresponding link.</p>
 Using the list of Spotify links I have to create a playlist.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -116,7 +116,7 @@ Using the list of Spotify links I have to create a playlist.</p>
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// Base URL
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// Base URL
 </span><span class="c1"></span><span class="nx">get_url</span> <span class="o">=</span> <span class="s2">&#34;https://accounts.spotify.com/authorize?&#34;</span>
 <span class="nx">get_url</span> <span class="o">+=</span> <span class="sb">`client_id=</span><span class="si">${</span><span class="nx">client_id</span><span class="si">}</span><span class="sb">&amp;`</span>
 <span class="nx">get_url</span> <span class="o">+=</span> <span class="s2">&#34;response_type=code&amp;&#34;</span>
@@ -135,7 +135,7 @@ Web extensions require this to be a single link unique to the extension which is
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -155,7 +155,7 @@ Web extensions require this to be a single link unique to the extension which is
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">chrome</span><span class="p">.</span><span class="nx">runtime</span><span class="p">.</span><span class="nx">onMessage</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">chrome</span><span class="p">.</span><span class="nx">runtime</span><span class="p">.</span><span class="nx">onMessage</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span>
     <span class="kd">function</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">sender</span><span class="p">,</span> <span class="nx">sendResponse</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">type</span> <span class="o">==</span> <span class="s2">&#34;tracklist&#34;</span><span class="p">){</span>
             <span class="nx">sendResponse</span><span class="p">({</span><span class="nx">farewell</span><span class="o">:</span> <span class="s2">&#34;recieved tracklist&#34;</span><span class="p">});</span>
@@ -180,14 +180,14 @@ All the listener does is store the information in global variables (I know it ca
 <p>Once this is done, I then call the <code>authenticateSpotify</code> method.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">authenticateSpotify</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">authenticateSpotify</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span>
     <span class="c1">// Get parameters from response
 </span><span class="c1"></span>    <span class="kd">var</span> <span class="nx">urlParams</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URLSearchParams</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="nx">chrome</span><span class="p">.</span><span class="nx">identity</span><span class="p">.</span><span class="nx">getRedirectURL</span><span class="p">(),</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
         <span class="c1">//...
@@ -198,7 +198,7 @@ All the listener does is store the information in global variables (I know it ca
 I isolate these parameters by stripping off My redirect url and calling <code>URLSearchParams</code> on it.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -216,7 +216,7 @@ I isolate these parameters by stripping off My redirect url and calling <code>UR
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// POST request for access token
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// POST request for access token
 </span><span class="c1"></span>    <span class="kd">var</span> <span class="nx">authRequest</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">(</span><span class="s2">&#34;https://accounts.spotify.com/api/token&#34;</span><span class="p">,</span>
     <span class="p">{</span>
         <span class="nx">method</span><span class="o">:</span> <span class="s2">&#34;POST&#34;</span><span class="p">,</span>
@@ -237,7 +237,7 @@ I isolate these parameters by stripping off My redirect url and calling <code>UR
 </div><p>I then construct a POST request to Spotify by exchanging my authorisation code, and client details for an access token.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -245,7 +245,7 @@ I isolate these parameters by stripping off My redirect url and calling <code>UR
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// Create playlist
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// Create playlist
 </span><span class="c1"></span>    <span class="nx">fetch</span><span class="p">(</span><span class="nx">authRequest</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span>
         <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">json</span><span class="p">){</span>
             <span class="nx">createPlaylist</span><span class="p">(</span><span class="nx">json</span><span class="p">.</span><span class="nx">access_token</span><span class="p">)</span>
@@ -256,7 +256,7 @@ I isolate these parameters by stripping off My redirect url and calling <code>UR
 </div><p>I then send this POST request, receive a response, parse the JSON response and send the access token to the <code>createPlaylist</code> function.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -270,7 +270,7 @@ I isolate these parameters by stripping off My redirect url and calling <code>UR
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">async</span> <span class="kd">function</span> <span class="nx">getSpotifyID</span><span class="p">(</span><span class="nx">access_token</span><span class="p">){</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">async</span> <span class="kd">function</span> <span class="nx">getSpotifyID</span><span class="p">(</span><span class="nx">access_token</span><span class="p">){</span>
     <span class="kd">var</span> <span class="nx">userRequest</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">(</span><span class="s2">&#34;https://api.spotify.com/v1/me&#34;</span><span class="p">,</span>
     <span class="p">{</span>
         <span class="nx">method</span><span class="o">:</span> <span class="s2">&#34;GET&#34;</span><span class="p">,</span>
@@ -287,7 +287,7 @@ I isolate these parameters by stripping off My redirect url and calling <code>UR
 </div><p>To know which account I&rsquo;m working with I ask for the profile ID.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -297,7 +297,7 @@ I isolate these parameters by stripping off My redirect url and calling <code>UR
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">async</span> <span class="kd">function</span> <span class="nx">createPlaylist</span><span class="p">(</span><span class="nx">access_token</span><span class="p">){</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">async</span> <span class="kd">function</span> <span class="nx">createPlaylist</span><span class="p">(</span><span class="nx">access_token</span><span class="p">){</span>
     <span class="kd">var</span> <span class="nx">trackURIS</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="c1">// Add create Spotify URIs from track links
@@ -311,7 +311,7 @@ I isolate these parameters by stripping off My redirect url and calling <code>UR
 So for each link in our track list I replace the link part with <code>spotify:track:</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -327,7 +327,7 @@ So for each link in our track list I replace the link part with <code>spotify:tr
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// Create new playlist
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// Create new playlist
 </span><span class="c1"></span>    <span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">(</span><span class="sb">`https://api.spotify.com/v1/users/</span><span class="si">${</span><span class="nx">id</span><span class="si">}</span><span class="sb">/playlists`</span><span class="p">,</span>
     <span class="p">{</span>
         <span class="nx">method</span><span class="o">:</span> <span class="s2">&#34;POST&#34;</span><span class="p">,</span>
@@ -347,7 +347,7 @@ So for each link in our track list I replace the link part with <code>spotify:tr
 I use the page name, and date from the BBC Sounds page as the title of the playlist.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -364,7 +364,7 @@ I use the page name, and date from the BBC Sounds page as the title of the playl
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// Add tracklist songs to newly created playlist
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// Add tracklist songs to newly created playlist
 </span><span class="c1"></span>    <span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">(</span><span class="sb">`https://api.spotify.com/v1/playlists/</span><span class="si">${</span><span class="nx">playlistID</span><span class="si">}</span><span class="sb">/tracks`</span><span class="p">,</span>
     <span class="p">{</span>
         <span class="nx">method</span><span class="o">:</span> <span class="s2">&#34;POST&#34;</span><span class="p">,</span>
@@ -384,11 +384,11 @@ I use the page name, and date from the BBC Sounds page as the title of the playl
 </div><p>The response of my request contains the playlist ID which I then feed into our next request to add my list of tracks to the playlist.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// Open tab to new playlist
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// Open tab to new playlist
 </span><span class="c1"></span>    <span class="nx">chrome</span><span class="p">.</span><span class="nx">tabs</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span> <span class="nx">url</span><span class="o">:</span> <span class="sb">`https://open.spotify.com/playlist/</span><span class="si">${</span><span class="nx">playlistID</span><span class="si">}</span><span class="sb">`</span><span class="p">})</span>
 </code></pre></td></tr></table>
 </div>
@@ -406,18 +406,18 @@ This would mean that my secret keys would have to be in the client-side code, an
 <p>The installation process isn&rsquo;t so cumbersome to be impossible to install, but it isn&rsquo;t as plug and play as I would like it to be</p>
 <h1 id="sources-of-information">Sources of Information</h1>
 <ul>
-<li>Spotify API Docs - <a href="https://developer.spotify.com/documentation/web-api/">https://developer.spotify.com/documentation/web-api/</a>
+<li>Spotify API Docs - <a href="https://developer.spotify.com/documentation/web-api/" target="_blank" rel="noopener noreffer">https://developer.spotify.com/documentation/web-api/</a>
 <ul>
 <li><a href="https://developer.spotify.com/console/playlists/" target="_blank" rel="noopener noreffer">Playlists</a></li>
 </ul>
 </li>
-<li>Chrome extension API Docs - <a href="https://developer.chrome.com/docs/extensions/reference/">https://developer.chrome.com/docs/extensions/reference/</a>
+<li>Chrome extension API Docs - <a href="https://developer.chrome.com/docs/extensions/reference/" target="_blank" rel="noopener noreffer">https://developer.chrome.com/docs/extensions/reference/</a>
 <ul>
 <li><a href="https://developer.chrome.com/docs/extensions/reference/identity/#method-getRedirectURL" target="_blank" rel="noopener noreffer">identity</a></li>
 <li><a href="https://developer.chrome.com/docs/extensions/mv2/messaging/" target="_blank" rel="noopener noreffer">Message Passing</a></li>
 </ul>
 </li>
-<li>Mozilla Web API Docs - <a href="https://developer.mozilla.org/en-US/docs/Web/API">https://developer.mozilla.org/en-US/docs/Web/API</a>
+<li>Mozilla Web API Docs - <a href="https://developer.mozilla.org/en-US/docs/Web/API" target="_blank" rel="noopener noreffer">https://developer.mozilla.org/en-US/docs/Web/API</a>
 <ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/fetch" target="_blank" rel="noopener noreffer">fetch()</a></li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Response" target="_blank" rel="noopener noreffer">Response</a></li>
@@ -465,7 +465,7 @@ This is a javascript file that just loaded alongside the current page at load ti
 The file then looks at the current URL and checks the page for any elements I&rsquo;ve told it to remove.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -483,7 +483,7 @@ The file then looks at the current URL and checks the page for any elements I&rs
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// Adding Twitter elements to a list of elements to remove
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// Adding Twitter elements to a list of elements to remove
 </span><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">hostname</span> <span class="o">===</span> <span class="s2">&#34;twitter.com&#34;</span> <span class="o">||</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">hostname</span> <span class="o">===</span> <span class="s2">&#34;mobile.twitter.com&#34;</span><span class="p">){</span>
         <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">settings</span><span class="p">[</span><span class="s2">&#34;TwitterTrendingBar&#34;</span><span class="p">]){</span>
             <span class="nx">elementsToRemove</span><span class="p">[</span><span class="s2">&#34;trendingBar&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">&#34;div[aria-label=&#39;Timeline: Trending now&#39;]&#34;</span><span class="p">)</span>
@@ -504,7 +504,7 @@ The file then looks at the current URL and checks the page for any elements I&rs
 </div><p>The script then attaches a listener that causes new checks every time the webpage is updated</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -533,7 +533,7 @@ The file then looks at the current URL and checks the page for any elements I&rs
 </span><span class="lnt">27
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="kd">function</span> <span class="nx">observeBodyRemove</span><span class="p">(){</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="kd">function</span> <span class="nx">observeBodyRemove</span><span class="p">(){</span>
         <span class="c1">// Select the node that will be observed for mutations
 </span><span class="c1"></span>        <span class="kd">var</span> <span class="nx">targetNode</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">);</span>
 
@@ -571,7 +571,7 @@ I initially had the redirect in a content script but that required the whole pag
 This is also done be setting up a listener, such as this one:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -588,7 +588,7 @@ This is also done be setting up a listener, such as this one:</p>
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// YouTube
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// YouTube
 </span><span class="c1"></span>    <span class="nx">chrome</span><span class="p">.</span><span class="nx">webRequest</span><span class="p">.</span><span class="nx">onBeforeRequest</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span>
         <span class="kd">function</span> <span class="p">(</span><span class="nx">details</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">settings</span><span class="p">[</span><span class="s2">&#34;YTHomeRedirect&#34;</span><span class="p">])</span> <span class="p">{</span>
@@ -609,7 +609,7 @@ This is also done be setting up a listener, such as this one:</p>
 I have great experience with manifests since <a href="https://github.com/LukeBriggsDev/Pepys" target="_blank" rel="noopener noreffer">Pepys recently received builds for rpm, .deb, and PKGBUILD</a>.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -658,7 +658,7 @@ I have great experience with manifests since <a href="https://github.com/LukeBri
 </span><span class="lnt">47
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;manifest_version&#34;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
   <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Calmer Internet&#34;</span><span class="p">,</span>
   <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;1.1.0&#34;</span><span class="p">,</span>
@@ -790,12 +790,12 @@ If you are a student and notice any issues, please report them on <a href="https
 <p>To use the style include this in your preamble:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\usepackage</span><span class="nb">{</span>natbib<span class="nb">}</span>
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\usepackage</span><span class="nb">{</span>natbib<span class="nb">}</span>
 <span class="k">\usepackage</span><span class="na">[UKenglish]</span><span class="nb">{</span>isodate<span class="nb">}</span>
 <span class="k">\bibliographystyle</span><span class="nb">{</span>newcastle<span class="nb">}</span>
 </code></pre></td></tr></table>
@@ -803,10 +803,10 @@ If you are a student and notice any issues, please report them on <a href="https
 </div><p>Also remember to specify your <code>.bib</code> file at the end of the document:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\bibliography</span><span class="nb">{</span>file<span class="nb">}</span>
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\bibliography</span><span class="nb">{</span>file<span class="nb">}</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>The easiest way to create .bib files for this style is through exporting entries from a reference manager such as <a href="https://www.mendeley.com/" target="_blank" rel="noopener noreffer">Mendeley</a>.
@@ -989,6 +989,11 @@ I am excited about what I will create next, how I will iterate on what I have le
 <ul>
 <li><a href="#installer--standalone" rel="">Installer &amp; Standalone</a></li>
 <li><a href="#winget" rel="">Winget</a></li>
+</ul>
+</li>
+<li><a href="#mac" rel="">Mac</a></li>
+<li><a href="#linux" rel="">Linux</a>
+<ul>
 <li><a href="#aur" rel="">AUR</a></li>
 <li><a href="#debianfedoraarch" rel="">Debian/Fedora/Arch</a></li>
 </ul>
@@ -1025,6 +1030,13 @@ I am excited about what I will create next, how I will iterate on what I have le
 <h3 id="winget">Winget</h3>
 <p>Pepys is available through winget:</p>
 <p><code>winget install pepys</code></p>
+<h2 id="mac">Mac</h2>
+<p>Pepys on MacOS uses the <a href="https://brew.sh/" target="_blank" rel="noopener noreffer">homebrew</a> package manager</p>
+<ul>
+<li>Download the ruby (.rb) file from the <a href="https://github.com/LukeBriggsDev/Pepys/releases" target="_blank" rel="noopener noreffer">releases page</a></li>
+<li>navigate to the ruby file in Terminal</li>
+<li><code>brew install pepys.rb</code></li>
+</ul>
 <h2 id="linux">Linux</h2>
 <h3 id="aur">AUR</h3>
 <p>Pepys is available on the <a href="https://aur.archlinux.org/packages/pepys/" target="_blank" rel="noopener noreffer">Arch User Repository</a></p>
@@ -1032,8 +1044,8 @@ I am excited about what I will create next, how I will iterate on what I have le
 <h3 id="debianfedoraarch">Debian/Fedora/Arch</h3>
 <p>Distribution specific packages are available on the <a href="https://github.com/LukeBriggsDev/Pepys/releases" target="_blank" rel="noopener noreffer">releases page</a></p>
 <h1 id="featured-in">Featured in</h1>
-<p>FossBytes - <a href="https://fossbytes.com/document-activity-pepys-journal-app-linux/">https://fossbytes.com/document-activity-pepys-journal-app-linux/</a></p>
-<p>ConnectWWW.com - <a href="https://connectwww.com/pepys-markdown-journal-application/62941/">https://connectwww.com/pepys-markdown-journal-application/62941/</a></p>
+<p>FossBytes - <a href="https://fossbytes.com/document-activity-pepys-journal-app-linux/" target="_blank" rel="noopener noreffer">https://fossbytes.com/document-activity-pepys-journal-app-linux/</a></p>
+<p>ConnectWWW.com - <a href="https://connectwww.com/pepys-markdown-journal-application/62941/" target="_blank" rel="noopener noreffer">https://connectwww.com/pepys-markdown-journal-application/62941/</a></p>
 ]]></description>
 </item><item>
     <title>Where Hugo I Go</title>
@@ -1127,7 +1139,7 @@ top down arcade shooter. The game is pretty fun, the zombie death animations are
 <p>I&rsquo;m honoured at your presumption that I go above and beyond in the call of duty. The main thing I have done is make all my posts in markdown. Yes, all my posts are entirely written in markdown which makes me able to write nicely structured documents quickly. The raw text of the markdown is stored as a regular text field in the sqlite database but at the stage when the backend grabs the field from the database, jinja parses it as html using the python module <a href="https://mistune.readthedocs.io/en/latest/intro.html" target="_blank" rel="noopener noreffer">mistune</a>. To spice the formatting up even further, since I will be probably be using code snippets, I added the syntax highlighter <a href="https://pygments.org/" target="_blank" rel="noopener noreffer">pygments</a>. In fact here is the code for the highlight renderer being rendered in it:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1143,17 +1155,17 @@ top down arcade shooter. The game is pretty fun, the zombie death animations are
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">mistune</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">mistune</span>
 <span class="kn">from</span> <span class="nn">pygments</span> <span class="kn">import</span> <span class="n">highlight</span>
 <span class="kn">from</span> <span class="nn">pygments.lexers</span> <span class="kn">import</span> <span class="n">get_lexer_by_name</span>
 <span class="kn">from</span> <span class="nn">pygments.formatters</span> <span class="kn">import</span> <span class="n">html</span>
 
 
 <span class="k">class</span> <span class="nc">HighlightRenderer</span><span class="p">(</span><span class="n">mistune</span><span class="o">.</span><span class="n">Renderer</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">block_code</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">block_code</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">lang</span><span class="p">:</span>
-            <span class="n">lexer</span> <span class="o">=</span> <span class="n">get_lexer_by_name</span><span class="p">(</span><span class="n">lang</span><span class="p">,</span> <span class="n">stripall</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-            <span class="n">formatter</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">HtmlFormatter</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;monokai&#39;</span><span class="p">,</span> <span class="n">noclasses</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+            <span class="n">lexer</span> <span class="o">=</span> <span class="n">get_lexer_by_name</span><span class="p">(</span><span class="n">lang</span><span class="p">,</span> <span class="n">stripall</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">formatter</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">HtmlFormatter</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;monokai&#39;</span><span class="p">,</span> <span class="n">noclasses</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">highlight</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">lexer</span><span class="p">,</span> <span class="n">formatter</span><span class="p">)</span>
         <span class="k">return</span> <span class="s1">&#39;&lt;pre&gt;&lt;code&gt;&#39;</span> <span class="o">+</span> <span class="n">mistune</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">code</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&lt;/code&gt;&lt;/pre&gt;&#39;</span>
 
@@ -1182,14 +1194,14 @@ top down arcade shooter. The game is pretty fun, the zombie death animations are
 <h1 id="behind-the-prototype">Behind the prototype</h1>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-vbnet" data-lang="vbnet">
+<pre tabindex="0" class="chroma"><code class="language-vbnet" data-lang="vbnet">
 <span class="k">Dim</span> <span class="n">Die1</span><span class="p">,</span> <span class="n">Die2</span><span class="p">,</span> <span class="n">Die3</span> <span class="ow">As</span> <span class="kt">Integer</span>
 <span class="k">Dim</span> <span class="n">DicePoints</span> <span class="ow">As</span> <span class="kt">Integer</span>
 <span class="k">Dim</span> <span class="n">random</span> <span class="ow">As</span> <span class="n">Random</span>
@@ -1199,7 +1211,7 @@ top down arcade shooter. The game is pretty fun, the zombie death animations are
 </div><p>So we have our variables declared in the convoluted VB way. Die1, Die2, and Die3 and the scores for the corresponding dice. DicePoints is the total of those 3 scores and rollcount keeps track of how many times the dice were rolled. Random is just an object we use to generate random numbers</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1218,7 +1230,7 @@ top down arcade shooter. The game is pretty fun, the zombie death animations are
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="k">Private</span> <span class="k">Sub</span> <span class="nf">tmrTimer_Tick</span><span class="p">(</span><span class="n">sender</span> <span class="ow">As</span> <span class="kt">Object</span><span class="p">,</span> <span class="n">e</span> <span class="ow">As</span> <span class="n">EventArgs</span><span class="p">)</span> <span class="k">Handles</span> <span class="n">tmrTimer</span><span class="p">.</span><span class="n">Tick</span>
+<pre tabindex="0" class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="k">Private</span> <span class="k">Sub</span> <span class="nf">tmrTimer_Tick</span><span class="p">(</span><span class="n">sender</span> <span class="ow">As</span> <span class="kt">Object</span><span class="p">,</span> <span class="n">e</span> <span class="ow">As</span> <span class="n">EventArgs</span><span class="p">)</span> <span class="k">Handles</span> <span class="n">tmrTimer</span><span class="p">.</span><span class="n">Tick</span>
         <span class="c">&#39;Increments the load bar every tick
 </span><span class="c"></span>        <span class="n">random</span> <span class="o">=</span> <span class="k">New</span> <span class="n">Random</span>
         <span class="n">prbLoad</span><span class="p">.</span><span class="n">Increment</span><span class="p">(</span><span class="n">4</span><span class="p">)</span>
@@ -1241,7 +1253,7 @@ top down arcade shooter. The game is pretty fun, the zombie death animations are
 <p>Once the bar gets to 100, the fun begins.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1250,7 +1262,7 @@ top down arcade shooter. The game is pretty fun, the zombie death animations are
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="k">If</span> <span class="n">prbLoad</span><span class="p">.</span><span class="n">Value</span> <span class="o">=</span> <span class="n">100</span> <span class="k">Then</span>
+<pre tabindex="0" class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="k">If</span> <span class="n">prbLoad</span><span class="p">.</span><span class="n">Value</span> <span class="o">=</span> <span class="n">100</span> <span class="k">Then</span>
             <span class="c">&#39;Adds the necessary points on the random dice when the load bar 
 </span><span class="c"></span>            <span class="c">&#39;reaches 100
 </span><span class="c"></span>            <span class="n">tmrTimer</span><span class="p">.</span><span class="n">Stop</span><span class="p">()</span>
@@ -1262,13 +1274,13 @@ top down arcade shooter. The game is pretty fun, the zombie death animations are
 </div><p>We stop the timer ticking, we empty the load bar and we increment our roll counter before adding up all the spots on the dice, pretty simple.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="c">&#39;Adds Score to list
+<pre tabindex="0" class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="c">&#39;Adds Score to list
 </span><span class="c"></span><span class="n">lstScore</span><span class="p">.</span><span class="n">Items</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&#34;Roll &#34;</span> <span class="o">&amp;</span> <span class="n">RollCount</span> <span class="o">&amp;</span> <span class="s">&#34;: &#34;</span> <span class="o">&amp;</span> <span class="n">DicePoints</span><span class="p">)</span>
 <span class="n">GameScore</span> <span class="o">+=</span> <span class="n">DicePoints</span>
 <span class="n">DicePoints</span> <span class="o">=</span> <span class="n">0</span>
@@ -1277,7 +1289,7 @@ top down arcade shooter. The game is pretty fun, the zombie death animations are
 </div><p>Almost done, we add our points to the listbox with some formatting. Add the points to the total score for the game and then set it back to 0.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1286,7 +1298,7 @@ top down arcade shooter. The game is pretty fun, the zombie death animations are
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="k">If</span> <span class="n">RollCount</span> <span class="o">&gt;=</span> <span class="n">5</span> <span class="k">Then</span>
+<pre tabindex="0" class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="k">If</span> <span class="n">RollCount</span> <span class="o">&gt;=</span> <span class="n">5</span> <span class="k">Then</span>
     <span class="n">MsgBox</span><span class="p">(</span><span class="s">&#34;Your game score was &#34;</span> <span class="o">&amp;</span> <span class="n">GameScore</span><span class="p">,,</span> <span class="s">&#34;Game Over&#34;</span><span class="p">)</span>
     <span class="n">tmrTimer</span><span class="p">.</span><span class="n">Stop</span><span class="p">()</span>
     <span class="n">btnStart</span><span class="p">.</span><span class="n">Enabled</span> <span class="o">=</span> <span class="k">False</span>
@@ -1324,7 +1336,7 @@ top down arcade shooter. The game is pretty fun, the zombie death animations are
 <p>Those who played the game may also notice this is the first time I’ve included a computer-controlled opponent, ‘The Dealer’. The dealer is like the player but has the advantages of being able to go second and win in the result of a draw. The dealer’s choice code is as follows:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1359,7 +1371,7 @@ top down arcade shooter. The game is pretty fun, the zombie death animations are
 </span><span class="lnt">33
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="k">If</span> <span class="n">DealerCanChoose1</span> <span class="ow">And</span> <span class="k">Not</span> <span class="p">(</span><span class="n">DealerCanChoose2</span> <span class="ow">Or</span> <span class="n">DealerCanChooseBoth</span><span class="p">)</span> <span class="k">Then</span>
+<pre tabindex="0" class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="k">If</span> <span class="n">DealerCanChoose1</span> <span class="ow">And</span> <span class="k">Not</span> <span class="p">(</span><span class="n">DealerCanChoose2</span> <span class="ow">Or</span> <span class="n">DealerCanChooseBoth</span><span class="p">)</span> <span class="k">Then</span>
     <span class="n">DealerScore</span> <span class="o">+=</span> <span class="n">Die1</span> <span class="o">*</span> <span class="n">2</span>
  
 <span class="k">ElseIf</span> <span class="n">DealerCanChoose2</span> <span class="ow">And</span> <span class="k">Not</span> <span class="p">(</span><span class="n">DealerCanChoose1</span> <span class="ow">Or</span> <span class="n">DealerCanChooseBoth</span><span class="p">)</span> <span class="k">Then</span>

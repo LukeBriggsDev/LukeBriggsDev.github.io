@@ -34,14 +34,14 @@
 <p>LaTeX follows a syntax of \command[option]{parameter} and we start a document off by selecting the type of document we want to create, and then starting and ending said document. There are a number of <a href="https://en.wikibooks.org/wiki/LaTeX/Document_Structure#Document_classes" target="_blank" rel="noopener noreffer">document classes</a> but article is the one recommended for most documents.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-latex" data-lang="latex"><span class="c">% Start of Document (Comments are denoted by a percentage at the start of the line)
+<pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="c">% Start of Document (Comments are denoted by a percentage at the start of the line)
 </span><span class="c"></span><span class="k">\documentclass</span><span class="nb">{</span>article<span class="nb">}</span>
 <span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
 I&#39;m so pretty
@@ -54,7 +54,7 @@ I&#39;m so pretty
 <p>The title, date, and author of your document all have dedicated tags in LaTeX. They are \title \date and \author. We then tell LaTeX to show all these on the screen by using \maketitle</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -67,7 +67,7 @@ I&#39;m so pretty
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-latex" data-lang="latex"><span class="c">% Start of Document (Comments are denoted by a percentage at the start of the line)
+<pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="c">% Start of Document (Comments are denoted by a percentage at the start of the line)
 </span><span class="c"></span><span class="k">\documentclass</span><span class="nb">{</span>article<span class="nb">}</span>
  
 <span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
@@ -86,7 +86,7 @@ I&#39;m so pretty
 <p>Now for some content. Once again there are various different types of <a href="https://en.wikibooks.org/wiki/LaTeX/Document_Structure#Sectioning_commands" target="_blank" rel="noopener noreffer">sectioning</a> you can use but we will use the pretty straight forward \section</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -105,7 +105,7 @@ I&#39;m so pretty
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-latex" data-lang="latex"><span class="c">% Start of Document (Comments are denoted by a percentage at the start of the line)
+<pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="c">% Start of Document (Comments are denoted by a percentage at the start of the line)
 </span><span class="c"></span><span class="k">\documentclass</span><span class="nb">{</span>article<span class="nb">}</span>
 <span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
  

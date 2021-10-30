@@ -38,13 +38,13 @@ This is fine when I&rsquo;m using my computer or phone, but quite often I want t
 There are no APIs or direct links to this information so the only way to get this information is by clicking on each button and grabbing the Spotify link.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// List of buttons that bring up track popover
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// List of buttons that bring up track popover
 </span><span class="c1"></span><span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">&#39;[id^=&#34;track-&#34;]&#39;</span><span class="p">)</span>
 <span class="kd">var</span> <span class="nx">tracklist</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="kd">var</span> <span class="nx">episodeDate</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="s2">&#34;sc-c-episode__metadata__data&#34;</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">lastChild</span><span class="p">.</span><span class="nx">data</span>
@@ -57,7 +57,7 @@ So a query for all these IDs will yield a list of button elements.</p>
 <p>The IDs and element classes were obtained by hand by scouring the HTML source of the page.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -72,7 +72,7 @@ So a query for all these IDs will yield a list of button elements.</p>
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">list</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">list</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
     <span class="nx">list</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">scrollIntoView</span><span class="p">()</span>
     <span class="nx">list</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">click</span><span class="p">()</span>
     <span class="kr">await</span> <span class="nx">sleep</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span> <span class="c1">// t = 200ms
@@ -93,12 +93,12 @@ So a query for all these IDs will yield a list of button elements.</p>
 The value in the dictionary is the corresponding link.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">chrome</span><span class="p">.</span><span class="nx">runtime</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">({</span><span class="nx">type</span><span class="o">:</span> <span class="s2">&#34;tracklist&#34;</span> <span class="p">,</span> <span class="nx">track_list</span><span class="o">:</span> <span class="nx">tracklist</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="nb">document</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span> <span class="nx">date</span><span class="o">:</span> <span class="nx">episodeDate</span><span class="p">},</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">chrome</span><span class="p">.</span><span class="nx">runtime</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">({</span><span class="nx">type</span><span class="o">:</span> <span class="s2">&#34;tracklist&#34;</span> <span class="p">,</span> <span class="nx">track_list</span><span class="o">:</span> <span class="nx">tracklist</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="nb">document</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span> <span class="nx">date</span><span class="o">:</span> <span class="nx">episodeDate</span><span class="p">},</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">farewell</span><span class="p">);</span>
 <span class="p">})</span>
 </code></pre></td></tr></table>
@@ -110,7 +110,7 @@ The value in the dictionary is the corresponding link.</p>
 Using the list of Spotify links I have to create a playlist.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -118,7 +118,7 @@ Using the list of Spotify links I have to create a playlist.</p>
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// Base URL
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// Base URL
 </span><span class="c1"></span><span class="nx">get_url</span> <span class="o">=</span> <span class="s2">&#34;https://accounts.spotify.com/authorize?&#34;</span>
 <span class="nx">get_url</span> <span class="o">+=</span> <span class="sb">`client_id=</span><span class="si">${</span><span class="nx">client_id</span><span class="si">}</span><span class="sb">&amp;`</span>
 <span class="nx">get_url</span> <span class="o">+=</span> <span class="s2">&#34;response_type=code&amp;&#34;</span>
@@ -137,7 +137,7 @@ Web extensions require this to be a single link unique to the extension which is
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -157,7 +157,7 @@ Web extensions require this to be a single link unique to the extension which is
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">chrome</span><span class="p">.</span><span class="nx">runtime</span><span class="p">.</span><span class="nx">onMessage</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">chrome</span><span class="p">.</span><span class="nx">runtime</span><span class="p">.</span><span class="nx">onMessage</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span>
     <span class="kd">function</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">sender</span><span class="p">,</span> <span class="nx">sendResponse</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">type</span> <span class="o">==</span> <span class="s2">&#34;tracklist&#34;</span><span class="p">){</span>
             <span class="nx">sendResponse</span><span class="p">({</span><span class="nx">farewell</span><span class="o">:</span> <span class="s2">&#34;recieved tracklist&#34;</span><span class="p">});</span>
@@ -182,14 +182,14 @@ All the listener does is store the information in global variables (I know it ca
 <p>Once this is done, I then call the <code>authenticateSpotify</code> method.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">authenticateSpotify</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">authenticateSpotify</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span>
     <span class="c1">// Get parameters from response
 </span><span class="c1"></span>    <span class="kd">var</span> <span class="nx">urlParams</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URLSearchParams</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="nx">chrome</span><span class="p">.</span><span class="nx">identity</span><span class="p">.</span><span class="nx">getRedirectURL</span><span class="p">(),</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
         <span class="c1">//...
@@ -200,7 +200,7 @@ All the listener does is store the information in global variables (I know it ca
 I isolate these parameters by stripping off My redirect url and calling <code>URLSearchParams</code> on it.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -218,7 +218,7 @@ I isolate these parameters by stripping off My redirect url and calling <code>UR
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// POST request for access token
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// POST request for access token
 </span><span class="c1"></span>    <span class="kd">var</span> <span class="nx">authRequest</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">(</span><span class="s2">&#34;https://accounts.spotify.com/api/token&#34;</span><span class="p">,</span>
     <span class="p">{</span>
         <span class="nx">method</span><span class="o">:</span> <span class="s2">&#34;POST&#34;</span><span class="p">,</span>
@@ -239,7 +239,7 @@ I isolate these parameters by stripping off My redirect url and calling <code>UR
 </div><p>I then construct a POST request to Spotify by exchanging my authorisation code, and client details for an access token.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -247,7 +247,7 @@ I isolate these parameters by stripping off My redirect url and calling <code>UR
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// Create playlist
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// Create playlist
 </span><span class="c1"></span>    <span class="nx">fetch</span><span class="p">(</span><span class="nx">authRequest</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span>
         <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">json</span><span class="p">){</span>
             <span class="nx">createPlaylist</span><span class="p">(</span><span class="nx">json</span><span class="p">.</span><span class="nx">access_token</span><span class="p">)</span>
@@ -258,7 +258,7 @@ I isolate these parameters by stripping off My redirect url and calling <code>UR
 </div><p>I then send this POST request, receive a response, parse the JSON response and send the access token to the <code>createPlaylist</code> function.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -272,7 +272,7 @@ I isolate these parameters by stripping off My redirect url and calling <code>UR
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">async</span> <span class="kd">function</span> <span class="nx">getSpotifyID</span><span class="p">(</span><span class="nx">access_token</span><span class="p">){</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">async</span> <span class="kd">function</span> <span class="nx">getSpotifyID</span><span class="p">(</span><span class="nx">access_token</span><span class="p">){</span>
     <span class="kd">var</span> <span class="nx">userRequest</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">(</span><span class="s2">&#34;https://api.spotify.com/v1/me&#34;</span><span class="p">,</span>
     <span class="p">{</span>
         <span class="nx">method</span><span class="o">:</span> <span class="s2">&#34;GET&#34;</span><span class="p">,</span>
@@ -289,7 +289,7 @@ I isolate these parameters by stripping off My redirect url and calling <code>UR
 </div><p>To know which account I&rsquo;m working with I ask for the profile ID.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -299,7 +299,7 @@ I isolate these parameters by stripping off My redirect url and calling <code>UR
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">async</span> <span class="kd">function</span> <span class="nx">createPlaylist</span><span class="p">(</span><span class="nx">access_token</span><span class="p">){</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">async</span> <span class="kd">function</span> <span class="nx">createPlaylist</span><span class="p">(</span><span class="nx">access_token</span><span class="p">){</span>
     <span class="kd">var</span> <span class="nx">trackURIS</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="c1">// Add create Spotify URIs from track links
@@ -313,7 +313,7 @@ I isolate these parameters by stripping off My redirect url and calling <code>UR
 So for each link in our track list I replace the link part with <code>spotify:track:</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -329,7 +329,7 @@ So for each link in our track list I replace the link part with <code>spotify:tr
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// Create new playlist
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// Create new playlist
 </span><span class="c1"></span>    <span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">(</span><span class="sb">`https://api.spotify.com/v1/users/</span><span class="si">${</span><span class="nx">id</span><span class="si">}</span><span class="sb">/playlists`</span><span class="p">,</span>
     <span class="p">{</span>
         <span class="nx">method</span><span class="o">:</span> <span class="s2">&#34;POST&#34;</span><span class="p">,</span>
@@ -349,7 +349,7 @@ So for each link in our track list I replace the link part with <code>spotify:tr
 I use the page name, and date from the BBC Sounds page as the title of the playlist.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -366,7 +366,7 @@ I use the page name, and date from the BBC Sounds page as the title of the playl
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// Add tracklist songs to newly created playlist
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// Add tracklist songs to newly created playlist
 </span><span class="c1"></span>    <span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">(</span><span class="sb">`https://api.spotify.com/v1/playlists/</span><span class="si">${</span><span class="nx">playlistID</span><span class="si">}</span><span class="sb">/tracks`</span><span class="p">,</span>
     <span class="p">{</span>
         <span class="nx">method</span><span class="o">:</span> <span class="s2">&#34;POST&#34;</span><span class="p">,</span>
@@ -386,11 +386,11 @@ I use the page name, and date from the BBC Sounds page as the title of the playl
 </div><p>The response of my request contains the playlist ID which I then feed into our next request to add my list of tracks to the playlist.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// Open tab to new playlist
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// Open tab to new playlist
 </span><span class="c1"></span>    <span class="nx">chrome</span><span class="p">.</span><span class="nx">tabs</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span> <span class="nx">url</span><span class="o">:</span> <span class="sb">`https://open.spotify.com/playlist/</span><span class="si">${</span><span class="nx">playlistID</span><span class="si">}</span><span class="sb">`</span><span class="p">})</span>
 </code></pre></td></tr></table>
 </div>
@@ -408,18 +408,18 @@ This would mean that my secret keys would have to be in the client-side code, an
 <p>The installation process isn&rsquo;t so cumbersome to be impossible to install, but it isn&rsquo;t as plug and play as I would like it to be</p>
 <h1 id="sources-of-information">Sources of Information</h1>
 <ul>
-<li>Spotify API Docs - <a href="https://developer.spotify.com/documentation/web-api/">https://developer.spotify.com/documentation/web-api/</a>
+<li>Spotify API Docs - <a href="https://developer.spotify.com/documentation/web-api/" target="_blank" rel="noopener noreffer">https://developer.spotify.com/documentation/web-api/</a>
 <ul>
 <li><a href="https://developer.spotify.com/console/playlists/" target="_blank" rel="noopener noreffer">Playlists</a></li>
 </ul>
 </li>
-<li>Chrome extension API Docs - <a href="https://developer.chrome.com/docs/extensions/reference/">https://developer.chrome.com/docs/extensions/reference/</a>
+<li>Chrome extension API Docs - <a href="https://developer.chrome.com/docs/extensions/reference/" target="_blank" rel="noopener noreffer">https://developer.chrome.com/docs/extensions/reference/</a>
 <ul>
 <li><a href="https://developer.chrome.com/docs/extensions/reference/identity/#method-getRedirectURL" target="_blank" rel="noopener noreffer">identity</a></li>
 <li><a href="https://developer.chrome.com/docs/extensions/mv2/messaging/" target="_blank" rel="noopener noreffer">Message Passing</a></li>
 </ul>
 </li>
-<li>Mozilla Web API Docs - <a href="https://developer.mozilla.org/en-US/docs/Web/API">https://developer.mozilla.org/en-US/docs/Web/API</a>
+<li>Mozilla Web API Docs - <a href="https://developer.mozilla.org/en-US/docs/Web/API" target="_blank" rel="noopener noreffer">https://developer.mozilla.org/en-US/docs/Web/API</a>
 <ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/fetch" target="_blank" rel="noopener noreffer">fetch()</a></li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Response" target="_blank" rel="noopener noreffer">Response</a></li>
@@ -467,7 +467,7 @@ This is a javascript file that just loaded alongside the current page at load ti
 The file then looks at the current URL and checks the page for any elements I&rsquo;ve told it to remove.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -485,7 +485,7 @@ The file then looks at the current URL and checks the page for any elements I&rs
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// Adding Twitter elements to a list of elements to remove
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// Adding Twitter elements to a list of elements to remove
 </span><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">hostname</span> <span class="o">===</span> <span class="s2">&#34;twitter.com&#34;</span> <span class="o">||</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">hostname</span> <span class="o">===</span> <span class="s2">&#34;mobile.twitter.com&#34;</span><span class="p">){</span>
         <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">settings</span><span class="p">[</span><span class="s2">&#34;TwitterTrendingBar&#34;</span><span class="p">]){</span>
             <span class="nx">elementsToRemove</span><span class="p">[</span><span class="s2">&#34;trendingBar&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">&#34;div[aria-label=&#39;Timeline: Trending now&#39;]&#34;</span><span class="p">)</span>
@@ -506,7 +506,7 @@ The file then looks at the current URL and checks the page for any elements I&rs
 </div><p>The script then attaches a listener that causes new checks every time the webpage is updated</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -535,7 +535,7 @@ The file then looks at the current URL and checks the page for any elements I&rs
 </span><span class="lnt">27
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="kd">function</span> <span class="nx">observeBodyRemove</span><span class="p">(){</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="kd">function</span> <span class="nx">observeBodyRemove</span><span class="p">(){</span>
         <span class="c1">// Select the node that will be observed for mutations
 </span><span class="c1"></span>        <span class="kd">var</span> <span class="nx">targetNode</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">);</span>
 
@@ -573,7 +573,7 @@ I initially had the redirect in a content script but that required the whole pag
 This is also done be setting up a listener, such as this one:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -590,7 +590,7 @@ This is also done be setting up a listener, such as this one:</p>
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// YouTube
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// YouTube
 </span><span class="c1"></span>    <span class="nx">chrome</span><span class="p">.</span><span class="nx">webRequest</span><span class="p">.</span><span class="nx">onBeforeRequest</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span>
         <span class="kd">function</span> <span class="p">(</span><span class="nx">details</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">settings</span><span class="p">[</span><span class="s2">&#34;YTHomeRedirect&#34;</span><span class="p">])</span> <span class="p">{</span>
@@ -611,7 +611,7 @@ This is also done be setting up a listener, such as this one:</p>
 I have great experience with manifests since <a href="https://github.com/LukeBriggsDev/Pepys" target="_blank" rel="noopener noreffer">Pepys recently received builds for rpm, .deb, and PKGBUILD</a>.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -660,7 +660,7 @@ I have great experience with manifests since <a href="https://github.com/LukeBri
 </span><span class="lnt">47
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;manifest_version&#34;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
   <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Calmer Internet&#34;</span><span class="p">,</span>
   <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;1.1.0&#34;</span><span class="p">,</span>
@@ -738,12 +738,12 @@ If you are a student and notice any issues, please report them on <a href="https
 <p>To use the style include this in your preamble:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\usepackage</span><span class="nb">{</span>natbib<span class="nb">}</span>
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\usepackage</span><span class="nb">{</span>natbib<span class="nb">}</span>
 <span class="k">\usepackage</span><span class="na">[UKenglish]</span><span class="nb">{</span>isodate<span class="nb">}</span>
 <span class="k">\bibliographystyle</span><span class="nb">{</span>newcastle<span class="nb">}</span>
 </code></pre></td></tr></table>
@@ -751,10 +751,10 @@ If you are a student and notice any issues, please report them on <a href="https
 </div><p>Also remember to specify your <code>.bib</code> file at the end of the document:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\bibliography</span><span class="nb">{</span>file<span class="nb">}</span>
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\bibliography</span><span class="nb">{</span>file<span class="nb">}</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>The easiest way to create .bib files for this style is through exporting entries from a reference manager such as <a href="https://www.mendeley.com/" target="_blank" rel="noopener noreffer">Mendeley</a>.
@@ -927,11 +927,11 @@ I am excited about what I will create next, how I will iterate on what I have le
 <p>My current main machine runs Fedora Linux, this is a distribution that is kept reasonably up to date and, at the time of writing, has a new desktop environment and newer kernel than other non-Arch distros. All of this meant that when I tried to run my Linux compiled program on Ubuntu (A major distro I want to support), I get thrown an error that Ubuntu doesn&rsquo;t have the correct version of glibc (the dynamically linked C libraries). Sticking with the standard glibc versions that come with each distro, GNU/Linux is backwards compatible but not forwards compatible. That is to say that a program compiled on an older distro will run on a newer distro but not vice-versa. The solution to this seems straightforward doesn&rsquo;t it? Compile the program on an older version. So I loaded up an Ubuntu LTS VM, compile the program, works like a charm. I try to run that same executable on my main Fedora machine and I get an error message:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cmd" data-lang="cmd">Settings schema &#39;org.gnome.settings-daemon.plugins.xsettings&#39;
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">Settings schema &#39;org.gnome.settings-daemon.plugins.xsettings&#39;
 does not contain a key named &#39;antialiasing&#39;
 </code></pre></td></tr></table>
 </div>
@@ -941,7 +941,7 @@ does not contain a key named &#39;antialiasing&#39;
 <p>Throughout my exploration of deployment options, I have made all three. I have documented my results of binaries, and I also went on to make an RPM package (the packaging system that Fedora uses).</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1004,7 +1004,7 @@ does not contain a key named &#39;antialiasing&#39;
 </span><span class="lnt">61
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">Name:           Pepys
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">Name:           Pepys
 Version:        0.3.0
 Release:        8%<span class="o">{</span>?dist<span class="o">}</span>
 Summary:        A straightforward markdown journal
@@ -1074,7 +1074,7 @@ chmod -R <span class="m">777</span> /usr/share/pepys
 <p>We have metadata along with base dependencies</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1087,7 +1087,7 @@ chmod -R <span class="m">777</span> /usr/share/pepys
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">app-id</span><span class="p">:</span><span class="w"> </span><span class="l">dev.lukebriggs.pepys</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">app-id</span><span class="p">:</span><span class="w"> </span><span class="l">dev.lukebriggs.pepys</span><span class="w">
 </span><span class="w"></span><span class="nt">runtime</span><span class="p">:</span><span class="w"> </span><span class="l">org.kde.Platform</span><span class="w">
 </span><span class="w"></span><span class="nt">runtime-version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;5.15&#39;</span><span class="w">
 </span><span class="w"></span><span class="nt">sdk</span><span class="p">:</span><span class="w"> </span><span class="l">org.kde.Sdk</span><span class="w">
@@ -1103,7 +1103,7 @@ chmod -R <span class="m">777</span> /usr/share/pepys
 </div><p>Because everything is in a sandbox, we have to declare what parts of the host system we have to use</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1114,7 +1114,7 @@ chmod -R <span class="m">777</span> /usr/share/pepys
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">finish-args</span><span class="p">:</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">finish-args</span><span class="p">:</span><span class="w">
 </span><span class="w">  </span>- --<span class="l">share=ipc</span><span class="w">
 </span><span class="w">  </span>- --<span class="l">socket=x11</span><span class="w">
 </span><span class="w">  </span>- --<span class="l">socket=wayland</span><span class="w">
@@ -1131,7 +1131,7 @@ chmod -R <span class="m">777</span> /usr/share/pepys
 2 of my app dependencies are installed by effectively copying the prebuild binaries into the flatpak sandbox.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1152,7 +1152,7 @@ chmod -R <span class="m">777</span> /usr/share/pepys
 </span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">pandoc</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">pandoc</span><span class="w">
 </span><span class="w">    </span><span class="nt">buildsystem</span><span class="p">:</span><span class="w"> </span><span class="l">simple</span><span class="w">
 </span><span class="w">    </span><span class="nt">build-commands</span><span class="p">:</span><span class="w">
 </span><span class="w">      </span>- <span class="l">ls</span><span class="w">
@@ -1176,14 +1176,14 @@ chmod -R <span class="m">777</span> /usr/share/pepys
 </div><p>One of my dependencies is actually built and compiled within the flatpak container. (Given no <code>buildsystem</code> option on archives with makefiles in them, flatpak will automatically compile and install them)</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">  - name: enchant
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">  - name: enchant
     sources:
       - type: archive
         url: https://github.com/AbiWord/enchant/releases/download/v2.2.15/enchant-2.2.15.tar.gz
@@ -1201,16 +1201,16 @@ So, each python library had to be down as it&rsquo;s own python module with a li
 so the line in the flatpak yml</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml">- <span class="l">python3-requirements.json</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml">- <span class="l">python3-requirements.json</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
 </div><p>is a pointer to a file actually containing all pip dependencies</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">  1
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
 </span><span class="lnt">  2
 </span><span class="lnt">  3
 </span><span class="lnt">  4
@@ -1315,7 +1315,7 @@ so the line in the flatpak yml</p>
 </span><span class="lnt">103
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
     <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;python3-requirements&#34;</span><span class="p">,</span>
     <span class="nt">&#34;buildsystem&#34;</span><span class="p">:</span> <span class="s2">&#34;simple&#34;</span><span class="p">,</span>
     <span class="nt">&#34;build-commands&#34;</span><span class="p">:</span> <span class="p">[],</span>
@@ -1428,7 +1428,7 @@ so the line in the flatpak yml</p>
 <p>I looked at there yaml, and I knew then and there that they had found a solution.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1443,7 +1443,7 @@ so the line in the flatpak yml</p>
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="w">  </span><span class="c"># we used to build pyqt on our own here, but this build caused trouble with the pyqtgraph widget being transparent on some systems.</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="w">  </span><span class="c"># we used to build pyqt on our own here, but this build caused trouble with the pyqtgraph widget being transparent on some systems.</span><span class="w">
 </span><span class="w">  </span><span class="c"># Therefore, we just use the x86_64 wheel here...</span><span class="w">
 </span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">pyqt-x86_64</span><span class="w">
 </span><span class="w">    </span><span class="nt">buildsystem</span><span class="p">:</span><span class="w"> </span><span class="l">simple</span><span class="w">
@@ -1464,15 +1464,15 @@ so the line in the flatpak yml</p>
 <h2 id="further-reading">Further Reading</h2>
 <p>Here are some useful sources of information I turned to while interacting with packaging systems on Linux</p>
 <dl>
-<dt><a href="https://www.loganasherjones.com/2018/05/using-flatpak-with-python/">https://www.loganasherjones.com/2018/05/using-flatpak-with-python/</a></dt>
+<dt><a href="https://www.loganasherjones.com/2018/05/using-flatpak-with-python/" target="_blank" rel="noopener noreffer">https://www.loganasherjones.com/2018/05/using-flatpak-with-python/</a></dt>
 <dd>An excellent and succinct guide that covers making non-qt python apps work in a flatpak</dd>
-<dt><a href="https://docs.flatpak.org/en/latest/getting-started.html">https://docs.flatpak.org/en/latest/getting-started.html</a></dt>
+<dt><a href="https://docs.flatpak.org/en/latest/getting-started.html" target="_blank" rel="noopener noreffer">https://docs.flatpak.org/en/latest/getting-started.html</a></dt>
 <dd>Information on what a flatpak is and what its parts consist of.</dd>
-<dt><a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html">https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html</a></dt>
+<dt><a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html" target="_blank" rel="noopener noreffer">https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html</a></dt>
 <dd>A good reference for what commands can be used in flatpak YAML</dd>
-<dt><a href="https://github.com/flathub/io.github.hermitdemschoenenleben.linien/blob/8d89b1c7193602f0696f134e92ac1eba39986303/io.github.hermitdemschoenenleben.linien.yml#L18">https://github.com/flathub/io.github.hermitdemschoenenleben.linien/blob/8d89b1c7193602f0696f134e92ac1eba39986303/io.github.hermitdemschoenenleben.linien.yml#L18</a></dt>
+<dt><a href="https://github.com/flathub/io.github.hermitdemschoenenleben.linien/blob/8d89b1c7193602f0696f134e92ac1eba39986303/io.github.hermitdemschoenenleben.linien.yml#L18" target="_blank" rel="noopener noreffer">https://github.com/flathub/io.github.hermitdemschoenenleben.linien/blob/8d89b1c7193602f0696f134e92ac1eba39986303/io.github.hermitdemschoenenleben.linien.yml#L18</a></dt>
 <dd>The Humboldt University Berlin YAML</dd>
-<dt><a href="https://opensource.com/article/18/9/how-build-rpm-packages">https://opensource.com/article/18/9/how-build-rpm-packages</a></dt>
+<dt><a href="https://opensource.com/article/18/9/how-build-rpm-packages" target="_blank" rel="noopener noreffer">https://opensource.com/article/18/9/how-build-rpm-packages</a></dt>
 <dd>A straightforward guide on how to make RPM packages</dd>
 </dl>
 ]]></description>
@@ -1604,7 +1604,7 @@ Thanks to the incredible <a href="https://feedgen.kiesow.be/" target="_blank" re
 <p>I&rsquo;m honoured at your presumption that I go above and beyond in the call of duty. The main thing I have done is make all my posts in markdown. Yes, all my posts are entirely written in markdown which makes me able to write nicely structured documents quickly. The raw text of the markdown is stored as a regular text field in the sqlite database but at the stage when the backend grabs the field from the database, jinja parses it as html using the python module <a href="https://mistune.readthedocs.io/en/latest/intro.html" target="_blank" rel="noopener noreffer">mistune</a>. To spice the formatting up even further, since I will be probably be using code snippets, I added the syntax highlighter <a href="https://pygments.org/" target="_blank" rel="noopener noreffer">pygments</a>. In fact here is the code for the highlight renderer being rendered in it:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1620,17 +1620,17 @@ Thanks to the incredible <a href="https://feedgen.kiesow.be/" target="_blank" re
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">mistune</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">mistune</span>
 <span class="kn">from</span> <span class="nn">pygments</span> <span class="kn">import</span> <span class="n">highlight</span>
 <span class="kn">from</span> <span class="nn">pygments.lexers</span> <span class="kn">import</span> <span class="n">get_lexer_by_name</span>
 <span class="kn">from</span> <span class="nn">pygments.formatters</span> <span class="kn">import</span> <span class="n">html</span>
 
 
 <span class="k">class</span> <span class="nc">HighlightRenderer</span><span class="p">(</span><span class="n">mistune</span><span class="o">.</span><span class="n">Renderer</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">block_code</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">block_code</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">lang</span><span class="p">:</span>
-            <span class="n">lexer</span> <span class="o">=</span> <span class="n">get_lexer_by_name</span><span class="p">(</span><span class="n">lang</span><span class="p">,</span> <span class="n">stripall</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-            <span class="n">formatter</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">HtmlFormatter</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;monokai&#39;</span><span class="p">,</span> <span class="n">noclasses</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+            <span class="n">lexer</span> <span class="o">=</span> <span class="n">get_lexer_by_name</span><span class="p">(</span><span class="n">lang</span><span class="p">,</span> <span class="n">stripall</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">formatter</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">HtmlFormatter</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;monokai&#39;</span><span class="p">,</span> <span class="n">noclasses</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">highlight</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">lexer</span><span class="p">,</span> <span class="n">formatter</span><span class="p">)</span>
         <span class="k">return</span> <span class="s1">&#39;&lt;pre&gt;&lt;code&gt;&#39;</span> <span class="o">+</span> <span class="n">mistune</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">code</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&lt;/code&gt;&lt;/pre&gt;&#39;</span>
 

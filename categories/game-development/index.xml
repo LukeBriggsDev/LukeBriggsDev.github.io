@@ -61,14 +61,14 @@ top down arcade shooter. The game is pretty fun, the zombie death animations are
 <h1 id="behind-the-prototype">Behind the prototype</h1>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-vbnet" data-lang="vbnet">
+<pre tabindex="0" class="chroma"><code class="language-vbnet" data-lang="vbnet">
 <span class="k">Dim</span> <span class="n">Die1</span><span class="p">,</span> <span class="n">Die2</span><span class="p">,</span> <span class="n">Die3</span> <span class="ow">As</span> <span class="kt">Integer</span>
 <span class="k">Dim</span> <span class="n">DicePoints</span> <span class="ow">As</span> <span class="kt">Integer</span>
 <span class="k">Dim</span> <span class="n">random</span> <span class="ow">As</span> <span class="n">Random</span>
@@ -78,7 +78,7 @@ top down arcade shooter. The game is pretty fun, the zombie death animations are
 </div><p>So we have our variables declared in the convoluted VB way. Die1, Die2, and Die3 and the scores for the corresponding dice. DicePoints is the total of those 3 scores and rollcount keeps track of how many times the dice were rolled. Random is just an object we use to generate random numbers</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -97,7 +97,7 @@ top down arcade shooter. The game is pretty fun, the zombie death animations are
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="k">Private</span> <span class="k">Sub</span> <span class="nf">tmrTimer_Tick</span><span class="p">(</span><span class="n">sender</span> <span class="ow">As</span> <span class="kt">Object</span><span class="p">,</span> <span class="n">e</span> <span class="ow">As</span> <span class="n">EventArgs</span><span class="p">)</span> <span class="k">Handles</span> <span class="n">tmrTimer</span><span class="p">.</span><span class="n">Tick</span>
+<pre tabindex="0" class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="k">Private</span> <span class="k">Sub</span> <span class="nf">tmrTimer_Tick</span><span class="p">(</span><span class="n">sender</span> <span class="ow">As</span> <span class="kt">Object</span><span class="p">,</span> <span class="n">e</span> <span class="ow">As</span> <span class="n">EventArgs</span><span class="p">)</span> <span class="k">Handles</span> <span class="n">tmrTimer</span><span class="p">.</span><span class="n">Tick</span>
         <span class="c">&#39;Increments the load bar every tick
 </span><span class="c"></span>        <span class="n">random</span> <span class="o">=</span> <span class="k">New</span> <span class="n">Random</span>
         <span class="n">prbLoad</span><span class="p">.</span><span class="n">Increment</span><span class="p">(</span><span class="n">4</span><span class="p">)</span>
@@ -120,7 +120,7 @@ top down arcade shooter. The game is pretty fun, the zombie death animations are
 <p>Once the bar gets to 100, the fun begins.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -129,7 +129,7 @@ top down arcade shooter. The game is pretty fun, the zombie death animations are
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="k">If</span> <span class="n">prbLoad</span><span class="p">.</span><span class="n">Value</span> <span class="o">=</span> <span class="n">100</span> <span class="k">Then</span>
+<pre tabindex="0" class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="k">If</span> <span class="n">prbLoad</span><span class="p">.</span><span class="n">Value</span> <span class="o">=</span> <span class="n">100</span> <span class="k">Then</span>
             <span class="c">&#39;Adds the necessary points on the random dice when the load bar 
 </span><span class="c"></span>            <span class="c">&#39;reaches 100
 </span><span class="c"></span>            <span class="n">tmrTimer</span><span class="p">.</span><span class="n">Stop</span><span class="p">()</span>
@@ -141,13 +141,13 @@ top down arcade shooter. The game is pretty fun, the zombie death animations are
 </div><p>We stop the timer ticking, we empty the load bar and we increment our roll counter before adding up all the spots on the dice, pretty simple.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="c">&#39;Adds Score to list
+<pre tabindex="0" class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="c">&#39;Adds Score to list
 </span><span class="c"></span><span class="n">lstScore</span><span class="p">.</span><span class="n">Items</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&#34;Roll &#34;</span> <span class="o">&amp;</span> <span class="n">RollCount</span> <span class="o">&amp;</span> <span class="s">&#34;: &#34;</span> <span class="o">&amp;</span> <span class="n">DicePoints</span><span class="p">)</span>
 <span class="n">GameScore</span> <span class="o">+=</span> <span class="n">DicePoints</span>
 <span class="n">DicePoints</span> <span class="o">=</span> <span class="n">0</span>
@@ -156,7 +156,7 @@ top down arcade shooter. The game is pretty fun, the zombie death animations are
 </div><p>Almost done, we add our points to the listbox with some formatting. Add the points to the total score for the game and then set it back to 0.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -165,7 +165,7 @@ top down arcade shooter. The game is pretty fun, the zombie death animations are
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="k">If</span> <span class="n">RollCount</span> <span class="o">&gt;=</span> <span class="n">5</span> <span class="k">Then</span>
+<pre tabindex="0" class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="k">If</span> <span class="n">RollCount</span> <span class="o">&gt;=</span> <span class="n">5</span> <span class="k">Then</span>
     <span class="n">MsgBox</span><span class="p">(</span><span class="s">&#34;Your game score was &#34;</span> <span class="o">&amp;</span> <span class="n">GameScore</span><span class="p">,,</span> <span class="s">&#34;Game Over&#34;</span><span class="p">)</span>
     <span class="n">tmrTimer</span><span class="p">.</span><span class="n">Stop</span><span class="p">()</span>
     <span class="n">btnStart</span><span class="p">.</span><span class="n">Enabled</span> <span class="o">=</span> <span class="k">False</span>
@@ -203,7 +203,7 @@ top down arcade shooter. The game is pretty fun, the zombie death animations are
 <p>Those who played the game may also notice this is the first time I’ve included a computer-controlled opponent, ‘The Dealer’. The dealer is like the player but has the advantages of being able to go second and win in the result of a draw. The dealer’s choice code is as follows:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -238,7 +238,7 @@ top down arcade shooter. The game is pretty fun, the zombie death animations are
 </span><span class="lnt">33
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="k">If</span> <span class="n">DealerCanChoose1</span> <span class="ow">And</span> <span class="k">Not</span> <span class="p">(</span><span class="n">DealerCanChoose2</span> <span class="ow">Or</span> <span class="n">DealerCanChooseBoth</span><span class="p">)</span> <span class="k">Then</span>
+<pre tabindex="0" class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="k">If</span> <span class="n">DealerCanChoose1</span> <span class="ow">And</span> <span class="k">Not</span> <span class="p">(</span><span class="n">DealerCanChoose2</span> <span class="ow">Or</span> <span class="n">DealerCanChooseBoth</span><span class="p">)</span> <span class="k">Then</span>
     <span class="n">DealerScore</span> <span class="o">+=</span> <span class="n">Die1</span> <span class="o">*</span> <span class="n">2</span>
  
 <span class="k">ElseIf</span> <span class="n">DealerCanChoose2</span> <span class="ow">And</span> <span class="k">Not</span> <span class="p">(</span><span class="n">DealerCanChoose1</span> <span class="ow">Or</span> <span class="n">DealerCanChooseBoth</span><span class="p">)</span> <span class="k">Then</span>
@@ -312,7 +312,7 @@ just with potatoes.”</p>
 <p>-Douglas Adams</p>
 </blockquote>
 <p>The first videogame I ever played was Crash Bandicoot for the PlayStation One. I spent many an hour running my little orange friend across precarious ledges and away from Raiders of the Lost Ark levels of boulderage.  As is usually the case with videogames during your early childhood, I imagine I didn’t get anywhere near as far as I think. I will never know though as not long into my tenure in videogames I suffered my first casualty. My PS1 and all its saves froze in a pixellated mess on my screen and in the words of John Cleese, “ceased to be”.</p>
-<p>As I played more advanced and thought-provoking games I wondered what it would take to make my own and after numerous false starts I  finally made my first game (sort of). The game , Fallen Stars, was made using [Construct 2] (<a href="https://www.scirra.com/)">https://www.scirra.com/)</a>. Construct is the piece of software that makes making games so easy you can create your first game within a day, rather than programming scripts and dealing with forces you utilise an incredibly powerful ‘drag and drop’ interface with the ability to create some pretty professional looking software. I recommend watching <a href="https://www.youtube.com/watch?v=zxAjmicdeiU&amp;list=PLRDhcp_8c7uAPQfE6WMBo7PCNlkQIOLdO" target="_blank" rel="noopener noreffer">3kliksphilip’s Game Making Journey</a> for an almost videogame origin story as well an explanation of what these types of tools can do. I would thoroughly recommend those who don’t know where to begin to give these prototyping software ago as it is by far the way to get the quickest turnaround of a videogame from concept to executable.</p>
+<p>As I played more advanced and thought-provoking games I wondered what it would take to make my own and after numerous false starts I  finally made my first game (sort of). The game , Fallen Stars, was made using [Construct 2] (<a href="https://www.scirra.com/%29" target="_blank" rel="noopener noreffer">https://www.scirra.com/)</a>. Construct is the piece of software that makes making games so easy you can create your first game within a day, rather than programming scripts and dealing with forces you utilise an incredibly powerful ‘drag and drop’ interface with the ability to create some pretty professional looking software. I recommend watching <a href="https://www.youtube.com/watch?v=zxAjmicdeiU&amp;list=PLRDhcp_8c7uAPQfE6WMBo7PCNlkQIOLdO" target="_blank" rel="noopener noreffer">3kliksphilip’s Game Making Journey</a> for an almost videogame origin story as well an explanation of what these types of tools can do. I would thoroughly recommend those who don’t know where to begin to give these prototyping software ago as it is by far the way to get the quickest turnaround of a videogame from concept to executable.</p>
 <p>Following my escapades in construct my game making took back seat as I switched to learning more programming languages past the rudimentary python skills gained at age 14 in school and final exams loomed in summer 2018. I furthered my knowledge of python and used websites such as <a href="https://www.codecademy.com/" target="_blank" rel="noopener noreffer">Codeacademy</a> to pickup the basics of JavaScript and C#; this is very useful in showing you what all different types of languages there are and the uses of them.</p>
 <p><strong>I would like to stress at this moment I only have a basic knowledge of these thee languages. Instantiation is as advanced as it gets at the moment, just wanted to reassure anyone wanting to learn to program that you don’t need to be an expert at all these to get a grasp of what programming is like or in order to get a good base for game development.</strong></p>
 <p>Fast-forward to now, summer 2018, and I have time for game development again and I wanted it to more closely link to my programming and software work. I chose Unity as my editor of choice for three reasons.</p>

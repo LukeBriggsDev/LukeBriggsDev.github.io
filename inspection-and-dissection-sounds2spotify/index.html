@@ -8,10 +8,10 @@
         <title>Inspection and Dissection: Sounds2Spotify - Luke Briggs</title><meta name="Description" content="My first foray into APIs"><meta property="og:title" content="Inspection and Dissection: Sounds2Spotify" />
 <meta property="og:description" content="My first foray into APIs" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.lukebriggs.dev/inspection-and-dissection-sounds2spotify/" />
-<meta property="og:image" content="https://www.lukebriggs.dev/banner.png"/>
+<meta property="og:url" content="https://www.lukebriggs.dev/inspection-and-dissection-sounds2spotify/" /><meta property="og:image" content="https://www.lukebriggs.dev/banner.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-09-16T15:07:04+01:00" />
 <meta property="article:modified_time" content="2021-09-16T15:07:04+01:00" />
+
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.lukebriggs.dev/banner.png"/>
 
@@ -162,13 +162,13 @@ This is fine when I&rsquo;m using my computer or phone, but quite often I want t
 There are no APIs or direct links to this information so the only way to get this information is by clicking on each button and grabbing the Spotify link.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// List of buttons that bring up track popover
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// List of buttons that bring up track popover
 </span><span class="c1"></span><span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">&#39;[id^=&#34;track-&#34;]&#39;</span><span class="p">)</span>
 <span class="kd">var</span> <span class="nx">tracklist</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="kd">var</span> <span class="nx">episodeDate</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="s2">&#34;sc-c-episode__metadata__data&#34;</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">lastChild</span><span class="p">.</span><span class="nx">data</span>
@@ -181,7 +181,7 @@ So a query for all these IDs will yield a list of button elements.</p>
 <p>The IDs and element classes were obtained by hand by scouring the HTML source of the page.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -196,7 +196,7 @@ So a query for all these IDs will yield a list of button elements.</p>
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">list</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">list</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
     <span class="nx">list</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">scrollIntoView</span><span class="p">()</span>
     <span class="nx">list</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">click</span><span class="p">()</span>
     <span class="kr">await</span> <span class="nx">sleep</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span> <span class="c1">// t = 200ms
@@ -217,12 +217,12 @@ So a query for all these IDs will yield a list of button elements.</p>
 The value in the dictionary is the corresponding link.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">chrome</span><span class="p">.</span><span class="nx">runtime</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">({</span><span class="nx">type</span><span class="o">:</span> <span class="s2">&#34;tracklist&#34;</span> <span class="p">,</span> <span class="nx">track_list</span><span class="o">:</span> <span class="nx">tracklist</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="nb">document</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span> <span class="nx">date</span><span class="o">:</span> <span class="nx">episodeDate</span><span class="p">},</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">chrome</span><span class="p">.</span><span class="nx">runtime</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">({</span><span class="nx">type</span><span class="o">:</span> <span class="s2">&#34;tracklist&#34;</span> <span class="p">,</span> <span class="nx">track_list</span><span class="o">:</span> <span class="nx">tracklist</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="nb">document</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span> <span class="nx">date</span><span class="o">:</span> <span class="nx">episodeDate</span><span class="p">},</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">farewell</span><span class="p">);</span>
 <span class="p">})</span>
 </code></pre></td></tr></table>
@@ -234,7 +234,7 @@ The value in the dictionary is the corresponding link.</p>
 Using the list of Spotify links I have to create a playlist.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -242,7 +242,7 @@ Using the list of Spotify links I have to create a playlist.</p>
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// Base URL
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// Base URL
 </span><span class="c1"></span><span class="nx">get_url</span> <span class="o">=</span> <span class="s2">&#34;https://accounts.spotify.com/authorize?&#34;</span>
 <span class="nx">get_url</span> <span class="o">+=</span> <span class="sb">`client_id=</span><span class="si">${</span><span class="nx">client_id</span><span class="si">}</span><span class="sb">&amp;`</span>
 <span class="nx">get_url</span> <span class="o">+=</span> <span class="s2">&#34;response_type=code&amp;&#34;</span>
@@ -261,7 +261,7 @@ Web extensions require this to be a single link unique to the extension which is
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -281,7 +281,7 @@ Web extensions require this to be a single link unique to the extension which is
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">chrome</span><span class="p">.</span><span class="nx">runtime</span><span class="p">.</span><span class="nx">onMessage</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">chrome</span><span class="p">.</span><span class="nx">runtime</span><span class="p">.</span><span class="nx">onMessage</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span>
     <span class="kd">function</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">sender</span><span class="p">,</span> <span class="nx">sendResponse</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">type</span> <span class="o">==</span> <span class="s2">&#34;tracklist&#34;</span><span class="p">){</span>
             <span class="nx">sendResponse</span><span class="p">({</span><span class="nx">farewell</span><span class="o">:</span> <span class="s2">&#34;recieved tracklist&#34;</span><span class="p">});</span>
@@ -306,14 +306,14 @@ All the listener does is store the information in global variables (I know it ca
 <p>Once this is done, I then call the <code>authenticateSpotify</code> method.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">authenticateSpotify</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">authenticateSpotify</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span>
     <span class="c1">// Get parameters from response
 </span><span class="c1"></span>    <span class="kd">var</span> <span class="nx">urlParams</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URLSearchParams</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="nx">chrome</span><span class="p">.</span><span class="nx">identity</span><span class="p">.</span><span class="nx">getRedirectURL</span><span class="p">(),</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
         <span class="c1">//...
@@ -324,7 +324,7 @@ All the listener does is store the information in global variables (I know it ca
 I isolate these parameters by stripping off My redirect url and calling <code>URLSearchParams</code> on it.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -342,7 +342,7 @@ I isolate these parameters by stripping off My redirect url and calling <code>UR
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// POST request for access token
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// POST request for access token
 </span><span class="c1"></span>    <span class="kd">var</span> <span class="nx">authRequest</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">(</span><span class="s2">&#34;https://accounts.spotify.com/api/token&#34;</span><span class="p">,</span>
     <span class="p">{</span>
         <span class="nx">method</span><span class="o">:</span> <span class="s2">&#34;POST&#34;</span><span class="p">,</span>
@@ -363,7 +363,7 @@ I isolate these parameters by stripping off My redirect url and calling <code>UR
 </div><p>I then construct a POST request to Spotify by exchanging my authorisation code, and client details for an access token.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -371,7 +371,7 @@ I isolate these parameters by stripping off My redirect url and calling <code>UR
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// Create playlist
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// Create playlist
 </span><span class="c1"></span>    <span class="nx">fetch</span><span class="p">(</span><span class="nx">authRequest</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span>
         <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">json</span><span class="p">){</span>
             <span class="nx">createPlaylist</span><span class="p">(</span><span class="nx">json</span><span class="p">.</span><span class="nx">access_token</span><span class="p">)</span>
@@ -382,7 +382,7 @@ I isolate these parameters by stripping off My redirect url and calling <code>UR
 </div><p>I then send this POST request, receive a response, parse the JSON response and send the access token to the <code>createPlaylist</code> function.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -396,7 +396,7 @@ I isolate these parameters by stripping off My redirect url and calling <code>UR
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">async</span> <span class="kd">function</span> <span class="nx">getSpotifyID</span><span class="p">(</span><span class="nx">access_token</span><span class="p">){</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">async</span> <span class="kd">function</span> <span class="nx">getSpotifyID</span><span class="p">(</span><span class="nx">access_token</span><span class="p">){</span>
     <span class="kd">var</span> <span class="nx">userRequest</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">(</span><span class="s2">&#34;https://api.spotify.com/v1/me&#34;</span><span class="p">,</span>
     <span class="p">{</span>
         <span class="nx">method</span><span class="o">:</span> <span class="s2">&#34;GET&#34;</span><span class="p">,</span>
@@ -413,7 +413,7 @@ I isolate these parameters by stripping off My redirect url and calling <code>UR
 </div><p>To know which account I&rsquo;m working with I ask for the profile ID.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -423,7 +423,7 @@ I isolate these parameters by stripping off My redirect url and calling <code>UR
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">async</span> <span class="kd">function</span> <span class="nx">createPlaylist</span><span class="p">(</span><span class="nx">access_token</span><span class="p">){</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">async</span> <span class="kd">function</span> <span class="nx">createPlaylist</span><span class="p">(</span><span class="nx">access_token</span><span class="p">){</span>
     <span class="kd">var</span> <span class="nx">trackURIS</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="c1">// Add create Spotify URIs from track links
@@ -437,7 +437,7 @@ I isolate these parameters by stripping off My redirect url and calling <code>UR
 So for each link in our track list I replace the link part with <code>spotify:track:</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -453,7 +453,7 @@ So for each link in our track list I replace the link part with <code>spotify:tr
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// Create new playlist
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// Create new playlist
 </span><span class="c1"></span>    <span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">(</span><span class="sb">`https://api.spotify.com/v1/users/</span><span class="si">${</span><span class="nx">id</span><span class="si">}</span><span class="sb">/playlists`</span><span class="p">,</span>
     <span class="p">{</span>
         <span class="nx">method</span><span class="o">:</span> <span class="s2">&#34;POST&#34;</span><span class="p">,</span>
@@ -473,7 +473,7 @@ So for each link in our track list I replace the link part with <code>spotify:tr
 I use the page name, and date from the BBC Sounds page as the title of the playlist.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -490,7 +490,7 @@ I use the page name, and date from the BBC Sounds page as the title of the playl
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// Add tracklist songs to newly created playlist
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// Add tracklist songs to newly created playlist
 </span><span class="c1"></span>    <span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">(</span><span class="sb">`https://api.spotify.com/v1/playlists/</span><span class="si">${</span><span class="nx">playlistID</span><span class="si">}</span><span class="sb">/tracks`</span><span class="p">,</span>
     <span class="p">{</span>
         <span class="nx">method</span><span class="o">:</span> <span class="s2">&#34;POST&#34;</span><span class="p">,</span>
@@ -510,11 +510,11 @@ I use the page name, and date from the BBC Sounds page as the title of the playl
 </div><p>The response of my request contains the playlist ID which I then feed into our next request to add my list of tracks to the playlist.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// Open tab to new playlist
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="c1">// Open tab to new playlist
 </span><span class="c1"></span>    <span class="nx">chrome</span><span class="p">.</span><span class="nx">tabs</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span> <span class="nx">url</span><span class="o">:</span> <span class="sb">`https://open.spotify.com/playlist/</span><span class="si">${</span><span class="nx">playlistID</span><span class="si">}</span><span class="sb">`</span><span class="p">})</span>
 </code></pre></td></tr></table>
 </div>
@@ -532,18 +532,18 @@ This would mean that my secret keys would have to be in the client-side code, an
 <p>The installation process isn&rsquo;t so cumbersome to be impossible to install, but it isn&rsquo;t as plug and play as I would like it to be</p>
 <h1 id="sources-of-information">Sources of Information</h1>
 <ul>
-<li>Spotify API Docs - <a href="https://developer.spotify.com/documentation/web-api/">https://developer.spotify.com/documentation/web-api/</a>
+<li>Spotify API Docs - <a href="https://developer.spotify.com/documentation/web-api/" target="_blank" rel="noopener noreffer">https://developer.spotify.com/documentation/web-api/</a>
 <ul>
 <li><a href="https://developer.spotify.com/console/playlists/" target="_blank" rel="noopener noreffer">Playlists</a></li>
 </ul>
 </li>
-<li>Chrome extension API Docs - <a href="https://developer.chrome.com/docs/extensions/reference/">https://developer.chrome.com/docs/extensions/reference/</a>
+<li>Chrome extension API Docs - <a href="https://developer.chrome.com/docs/extensions/reference/" target="_blank" rel="noopener noreffer">https://developer.chrome.com/docs/extensions/reference/</a>
 <ul>
 <li><a href="https://developer.chrome.com/docs/extensions/reference/identity/#method-getRedirectURL" target="_blank" rel="noopener noreffer">identity</a></li>
 <li><a href="https://developer.chrome.com/docs/extensions/mv2/messaging/" target="_blank" rel="noopener noreffer">Message Passing</a></li>
 </ul>
 </li>
-<li>Mozilla Web API Docs - <a href="https://developer.mozilla.org/en-US/docs/Web/API">https://developer.mozilla.org/en-US/docs/Web/API</a>
+<li>Mozilla Web API Docs - <a href="https://developer.mozilla.org/en-US/docs/Web/API" target="_blank" rel="noopener noreffer">https://developer.mozilla.org/en-US/docs/Web/API</a>
 <ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/fetch" target="_blank" rel="noopener noreffer">fetch()</a></li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Response" target="_blank" rel="noopener noreffer">Response</a></li>
@@ -580,7 +580,7 @@ This would mean that my secret keys would have to be in the client-side code, an
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><a href="https://www.buymeacoffee.com/lukebriggs" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/arial-yellow.png" alt="Buy Me A Coffee" style="height: 40px !important;width: 217px !important;" ></a></div><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.80.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line"><a href="https://www.buymeacoffee.com/lukebriggs" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/arial-yellow.png" alt="Buy Me A Coffee" style="height: 40px !important;width: 217px !important;" ></a></div><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.88.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Luke Briggs</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>

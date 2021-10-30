@@ -8,10 +8,10 @@
         <title>Inspection &amp; Dissection: Dice-Jack - Luke Briggs</title><meta name="Description" content="I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University."><meta property="og:title" content="Inspection &amp; Dissection: Dice-Jack" />
 <meta property="og:description" content="As part of a course we had to make a game in 2 days that involved random dice and be made as a Windows forms application with Visual Basic. So we had to make a game in something that was the furthest you could get from a game engine with a language I had never used before. But hey, Rogue was made in 1980 and the graphics had to be ASCII so it could be worse." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.lukebriggs.dev/inspection-and-dissection-dice-jack/" />
-<meta property="og:image" content="https://www.lukebriggs.dev/banner.png"/>
+<meta property="og:url" content="https://www.lukebriggs.dev/inspection-and-dissection-dice-jack/" /><meta property="og:image" content="https://www.lukebriggs.dev/banner.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2019-09-24T21:06:18+00:00" />
 <meta property="article:modified_time" content="2019-09-24T21:06:18+00:00" />
+
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.lukebriggs.dev/banner.png"/>
 
@@ -124,14 +124,14 @@
 <h1 id="behind-the-prototype">Behind the prototype</h1>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-vbnet" data-lang="vbnet">
+<pre tabindex="0" class="chroma"><code class="language-vbnet" data-lang="vbnet">
 <span class="k">Dim</span> <span class="n">Die1</span><span class="p">,</span> <span class="n">Die2</span><span class="p">,</span> <span class="n">Die3</span> <span class="ow">As</span> <span class="kt">Integer</span>
 <span class="k">Dim</span> <span class="n">DicePoints</span> <span class="ow">As</span> <span class="kt">Integer</span>
 <span class="k">Dim</span> <span class="n">random</span> <span class="ow">As</span> <span class="n">Random</span>
@@ -141,7 +141,7 @@
 </div><p>So we have our variables declared in the convoluted VB way. Die1, Die2, and Die3 and the scores for the corresponding dice. DicePoints is the total of those 3 scores and rollcount keeps track of how many times the dice were rolled. Random is just an object we use to generate random numbers</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -160,7 +160,7 @@
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="k">Private</span> <span class="k">Sub</span> <span class="nf">tmrTimer_Tick</span><span class="p">(</span><span class="n">sender</span> <span class="ow">As</span> <span class="kt">Object</span><span class="p">,</span> <span class="n">e</span> <span class="ow">As</span> <span class="n">EventArgs</span><span class="p">)</span> <span class="k">Handles</span> <span class="n">tmrTimer</span><span class="p">.</span><span class="n">Tick</span>
+<pre tabindex="0" class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="k">Private</span> <span class="k">Sub</span> <span class="nf">tmrTimer_Tick</span><span class="p">(</span><span class="n">sender</span> <span class="ow">As</span> <span class="kt">Object</span><span class="p">,</span> <span class="n">e</span> <span class="ow">As</span> <span class="n">EventArgs</span><span class="p">)</span> <span class="k">Handles</span> <span class="n">tmrTimer</span><span class="p">.</span><span class="n">Tick</span>
         <span class="c">&#39;Increments the load bar every tick
 </span><span class="c"></span>        <span class="n">random</span> <span class="o">=</span> <span class="k">New</span> <span class="n">Random</span>
         <span class="n">prbLoad</span><span class="p">.</span><span class="n">Increment</span><span class="p">(</span><span class="n">4</span><span class="p">)</span>
@@ -183,7 +183,7 @@
 <p>Once the bar gets to 100, the fun begins.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -192,7 +192,7 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="k">If</span> <span class="n">prbLoad</span><span class="p">.</span><span class="n">Value</span> <span class="o">=</span> <span class="n">100</span> <span class="k">Then</span>
+<pre tabindex="0" class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="k">If</span> <span class="n">prbLoad</span><span class="p">.</span><span class="n">Value</span> <span class="o">=</span> <span class="n">100</span> <span class="k">Then</span>
             <span class="c">&#39;Adds the necessary points on the random dice when the load bar 
 </span><span class="c"></span>            <span class="c">&#39;reaches 100
 </span><span class="c"></span>            <span class="n">tmrTimer</span><span class="p">.</span><span class="n">Stop</span><span class="p">()</span>
@@ -204,13 +204,13 @@
 </div><p>We stop the timer ticking, we empty the load bar and we increment our roll counter before adding up all the spots on the dice, pretty simple.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="c">&#39;Adds Score to list
+<pre tabindex="0" class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="c">&#39;Adds Score to list
 </span><span class="c"></span><span class="n">lstScore</span><span class="p">.</span><span class="n">Items</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&#34;Roll &#34;</span> <span class="o">&amp;</span> <span class="n">RollCount</span> <span class="o">&amp;</span> <span class="s">&#34;: &#34;</span> <span class="o">&amp;</span> <span class="n">DicePoints</span><span class="p">)</span>
 <span class="n">GameScore</span> <span class="o">+=</span> <span class="n">DicePoints</span>
 <span class="n">DicePoints</span> <span class="o">=</span> <span class="n">0</span>
@@ -219,7 +219,7 @@
 </div><p>Almost done, we add our points to the listbox with some formatting. Add the points to the total score for the game and then set it back to 0.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -228,7 +228,7 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="k">If</span> <span class="n">RollCount</span> <span class="o">&gt;=</span> <span class="n">5</span> <span class="k">Then</span>
+<pre tabindex="0" class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="k">If</span> <span class="n">RollCount</span> <span class="o">&gt;=</span> <span class="n">5</span> <span class="k">Then</span>
     <span class="n">MsgBox</span><span class="p">(</span><span class="s">&#34;Your game score was &#34;</span> <span class="o">&amp;</span> <span class="n">GameScore</span><span class="p">,,</span> <span class="s">&#34;Game Over&#34;</span><span class="p">)</span>
     <span class="n">tmrTimer</span><span class="p">.</span><span class="n">Stop</span><span class="p">()</span>
     <span class="n">btnStart</span><span class="p">.</span><span class="n">Enabled</span> <span class="o">=</span> <span class="k">False</span>
@@ -287,7 +287,7 @@
 <p>Those who played the game may also notice this is the first time I’ve included a computer-controlled opponent, ‘The Dealer’. The dealer is like the player but has the advantages of being able to go second and win in the result of a draw. The dealer’s choice code is as follows:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -322,7 +322,7 @@
 </span><span class="lnt">33
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="k">If</span> <span class="n">DealerCanChoose1</span> <span class="ow">And</span> <span class="k">Not</span> <span class="p">(</span><span class="n">DealerCanChoose2</span> <span class="ow">Or</span> <span class="n">DealerCanChooseBoth</span><span class="p">)</span> <span class="k">Then</span>
+<pre tabindex="0" class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="k">If</span> <span class="n">DealerCanChoose1</span> <span class="ow">And</span> <span class="k">Not</span> <span class="p">(</span><span class="n">DealerCanChoose2</span> <span class="ow">Or</span> <span class="n">DealerCanChooseBoth</span><span class="p">)</span> <span class="k">Then</span>
     <span class="n">DealerScore</span> <span class="o">+=</span> <span class="n">Die1</span> <span class="o">*</span> <span class="n">2</span>
  
 <span class="k">ElseIf</span> <span class="n">DealerCanChoose2</span> <span class="ow">And</span> <span class="k">Not</span> <span class="p">(</span><span class="n">DealerCanChoose1</span> <span class="ow">Or</span> <span class="n">DealerCanChooseBoth</span><span class="p">)</span> <span class="k">Then</span>
@@ -390,7 +390,7 @@
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><a href="https://www.buymeacoffee.com/lukebriggs" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/arial-yellow.png" alt="Buy Me A Coffee" style="height: 40px !important;width: 217px !important;" ></a></div><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.80.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line"><a href="https://www.buymeacoffee.com/lukebriggs" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/arial-yellow.png" alt="Buy Me A Coffee" style="height: 40px !important;width: 217px !important;" ></a></div><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.88.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Luke Briggs</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>

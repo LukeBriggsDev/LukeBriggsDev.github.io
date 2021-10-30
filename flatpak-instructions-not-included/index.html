@@ -8,10 +8,10 @@
         <title>Flatpak: Instructions Not Included - Luke Briggs</title><meta name="Description" content="How German Laser Beams Fixed My App"><meta property="og:title" content="Flatpak: Instructions Not Included" />
 <meta property="og:description" content="How German Laser Beams Fixed My App" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.lukebriggs.dev/flatpak-instructions-not-included/" />
-<meta property="og:image" content="https://www.lukebriggs.dev/banner.png"/>
+<meta property="og:url" content="https://www.lukebriggs.dev/flatpak-instructions-not-included/" /><meta property="og:image" content="https://www.lukebriggs.dev/banner.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-05-22T19:08:56+01:00" />
 <meta property="article:modified_time" content="2021-05-22T19:08:56+01:00" />
+
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.lukebriggs.dev/banner.png"/>
 
@@ -147,11 +147,11 @@
 <p>My current main machine runs Fedora Linux, this is a distribution that is kept reasonably up to date and, at the time of writing, has a new desktop environment and newer kernel than other non-Arch distros. All of this meant that when I tried to run my Linux compiled program on Ubuntu (A major distro I want to support), I get thrown an error that Ubuntu doesn&rsquo;t have the correct version of glibc (the dynamically linked C libraries). Sticking with the standard glibc versions that come with each distro, GNU/Linux is backwards compatible but not forwards compatible. That is to say that a program compiled on an older distro will run on a newer distro but not vice-versa. The solution to this seems straightforward doesn&rsquo;t it? Compile the program on an older version. So I loaded up an Ubuntu LTS VM, compile the program, works like a charm. I try to run that same executable on my main Fedora machine and I get an error message:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cmd" data-lang="cmd">Settings schema &#39;org.gnome.settings-daemon.plugins.xsettings&#39;
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">Settings schema &#39;org.gnome.settings-daemon.plugins.xsettings&#39;
 does not contain a key named &#39;antialiasing&#39;
 </code></pre></td></tr></table>
 </div>
@@ -161,7 +161,7 @@ does not contain a key named &#39;antialiasing&#39;
 <p>Throughout my exploration of deployment options, I have made all three. I have documented my results of binaries, and I also went on to make an RPM package (the packaging system that Fedora uses).</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -224,7 +224,7 @@ does not contain a key named &#39;antialiasing&#39;
 </span><span class="lnt">61
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">Name:           Pepys
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">Name:           Pepys
 Version:        0.3.0
 Release:        8%<span class="o">{</span>?dist<span class="o">}</span>
 Summary:        A straightforward markdown journal
@@ -294,7 +294,7 @@ chmod -R <span class="m">777</span> /usr/share/pepys
 <p>We have metadata along with base dependencies</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -307,7 +307,7 @@ chmod -R <span class="m">777</span> /usr/share/pepys
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">app-id</span><span class="p">:</span><span class="w"> </span><span class="l">dev.lukebriggs.pepys</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">app-id</span><span class="p">:</span><span class="w"> </span><span class="l">dev.lukebriggs.pepys</span><span class="w">
 </span><span class="w"></span><span class="nt">runtime</span><span class="p">:</span><span class="w"> </span><span class="l">org.kde.Platform</span><span class="w">
 </span><span class="w"></span><span class="nt">runtime-version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;5.15&#39;</span><span class="w">
 </span><span class="w"></span><span class="nt">sdk</span><span class="p">:</span><span class="w"> </span><span class="l">org.kde.Sdk</span><span class="w">
@@ -323,7 +323,7 @@ chmod -R <span class="m">777</span> /usr/share/pepys
 </div><p>Because everything is in a sandbox, we have to declare what parts of the host system we have to use</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -334,7 +334,7 @@ chmod -R <span class="m">777</span> /usr/share/pepys
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">finish-args</span><span class="p">:</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">finish-args</span><span class="p">:</span><span class="w">
 </span><span class="w">  </span>- --<span class="l">share=ipc</span><span class="w">
 </span><span class="w">  </span>- --<span class="l">socket=x11</span><span class="w">
 </span><span class="w">  </span>- --<span class="l">socket=wayland</span><span class="w">
@@ -351,7 +351,7 @@ chmod -R <span class="m">777</span> /usr/share/pepys
 2 of my app dependencies are installed by effectively copying the prebuild binaries into the flatpak sandbox.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -372,7 +372,7 @@ chmod -R <span class="m">777</span> /usr/share/pepys
 </span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">pandoc</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">pandoc</span><span class="w">
 </span><span class="w">    </span><span class="nt">buildsystem</span><span class="p">:</span><span class="w"> </span><span class="l">simple</span><span class="w">
 </span><span class="w">    </span><span class="nt">build-commands</span><span class="p">:</span><span class="w">
 </span><span class="w">      </span>- <span class="l">ls</span><span class="w">
@@ -396,14 +396,14 @@ chmod -R <span class="m">777</span> /usr/share/pepys
 </div><p>One of my dependencies is actually built and compiled within the flatpak container. (Given no <code>buildsystem</code> option on archives with makefiles in them, flatpak will automatically compile and install them)</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">  - name: enchant
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">  - name: enchant
     sources:
       - type: archive
         url: https://github.com/AbiWord/enchant/releases/download/v2.2.15/enchant-2.2.15.tar.gz
@@ -421,16 +421,16 @@ So, each python library had to be down as it&rsquo;s own python module with a li
 so the line in the flatpak yml</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml">- <span class="l">python3-requirements.json</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml">- <span class="l">python3-requirements.json</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
 </div><p>is a pointer to a file actually containing all pip dependencies</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">  1
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
 </span><span class="lnt">  2
 </span><span class="lnt">  3
 </span><span class="lnt">  4
@@ -535,7 +535,7 @@ so the line in the flatpak yml</p>
 </span><span class="lnt">103
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
     <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;python3-requirements&#34;</span><span class="p">,</span>
     <span class="nt">&#34;buildsystem&#34;</span><span class="p">:</span> <span class="s2">&#34;simple&#34;</span><span class="p">,</span>
     <span class="nt">&#34;build-commands&#34;</span><span class="p">:</span> <span class="p">[],</span>
@@ -648,7 +648,7 @@ so the line in the flatpak yml</p>
 <p>I looked at there yaml, and I knew then and there that they had found a solution.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -663,7 +663,7 @@ so the line in the flatpak yml</p>
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="w">  </span><span class="c"># we used to build pyqt on our own here, but this build caused trouble with the pyqtgraph widget being transparent on some systems.</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="w">  </span><span class="c"># we used to build pyqt on our own here, but this build caused trouble with the pyqtgraph widget being transparent on some systems.</span><span class="w">
 </span><span class="w">  </span><span class="c"># Therefore, we just use the x86_64 wheel here...</span><span class="w">
 </span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">pyqt-x86_64</span><span class="w">
 </span><span class="w">    </span><span class="nt">buildsystem</span><span class="p">:</span><span class="w"> </span><span class="l">simple</span><span class="w">
@@ -684,15 +684,15 @@ so the line in the flatpak yml</p>
 <h2 id="further-reading">Further Reading</h2>
 <p>Here are some useful sources of information I turned to while interacting with packaging systems on Linux</p>
 <dl>
-<dt><a href="https://www.loganasherjones.com/2018/05/using-flatpak-with-python/">https://www.loganasherjones.com/2018/05/using-flatpak-with-python/</a></dt>
+<dt><a href="https://www.loganasherjones.com/2018/05/using-flatpak-with-python/" target="_blank" rel="noopener noreffer">https://www.loganasherjones.com/2018/05/using-flatpak-with-python/</a></dt>
 <dd>An excellent and succinct guide that covers making non-qt python apps work in a flatpak</dd>
-<dt><a href="https://docs.flatpak.org/en/latest/getting-started.html">https://docs.flatpak.org/en/latest/getting-started.html</a></dt>
+<dt><a href="https://docs.flatpak.org/en/latest/getting-started.html" target="_blank" rel="noopener noreffer">https://docs.flatpak.org/en/latest/getting-started.html</a></dt>
 <dd>Information on what a flatpak is and what its parts consist of.</dd>
-<dt><a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html">https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html</a></dt>
+<dt><a href="https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html" target="_blank" rel="noopener noreffer">https://docs.flatpak.org/en/latest/flatpak-builder-command-reference.html</a></dt>
 <dd>A good reference for what commands can be used in flatpak YAML</dd>
-<dt><a href="https://github.com/flathub/io.github.hermitdemschoenenleben.linien/blob/8d89b1c7193602f0696f134e92ac1eba39986303/io.github.hermitdemschoenenleben.linien.yml#L18">https://github.com/flathub/io.github.hermitdemschoenenleben.linien/blob/8d89b1c7193602f0696f134e92ac1eba39986303/io.github.hermitdemschoenenleben.linien.yml#L18</a></dt>
+<dt><a href="https://github.com/flathub/io.github.hermitdemschoenenleben.linien/blob/8d89b1c7193602f0696f134e92ac1eba39986303/io.github.hermitdemschoenenleben.linien.yml#L18" target="_blank" rel="noopener noreffer">https://github.com/flathub/io.github.hermitdemschoenenleben.linien/blob/8d89b1c7193602f0696f134e92ac1eba39986303/io.github.hermitdemschoenenleben.linien.yml#L18</a></dt>
 <dd>The Humboldt University Berlin YAML</dd>
-<dt><a href="https://opensource.com/article/18/9/how-build-rpm-packages">https://opensource.com/article/18/9/how-build-rpm-packages</a></dt>
+<dt><a href="https://opensource.com/article/18/9/how-build-rpm-packages" target="_blank" rel="noopener noreffer">https://opensource.com/article/18/9/how-build-rpm-packages</a></dt>
 <dd>A straightforward guide on how to make RPM packages</dd>
 </dl>
 </div><div class="post-footer" id="post-footer">
@@ -725,7 +725,7 @@ so the line in the flatpak yml</p>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><a href="https://www.buymeacoffee.com/lukebriggs" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/arial-yellow.png" alt="Buy Me A Coffee" style="height: 40px !important;width: 217px !important;" ></a></div><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.80.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line"><a href="https://www.buymeacoffee.com/lukebriggs" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/arial-yellow.png" alt="Buy Me A Coffee" style="height: 40px !important;width: 217px !important;" ></a></div><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.88.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Luke Briggs</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>

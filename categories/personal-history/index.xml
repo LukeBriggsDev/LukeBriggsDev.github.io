@@ -97,7 +97,7 @@ without the proper training.”</p>
 <p>As I have said before, my first outreach into programming began with  a GCSE Computer Science course which was cancelled after 7 months for various reasons. Those 7 months were possibly the best way to get a strong foundation of how programming languages work and the general structure in which they follow. The lessons consisted of us being taught a feature (how to do ‘if’ statements, how to call functions, how to cycle through array, etc) and then being given a series of tasks that we had to create a program to complete. The first and simplest of these tasks was Bob’s Change:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -109,7 +109,7 @@ without the proper training.”</p>
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="s2">&#34;&#34;&#34;Problem:
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="s2">&#34;&#34;&#34;Problem:
 </span><span class="s2">Bob would like to buy some sweets, which cost 50p.
 </span><span class="s2">Bob has some money but, unfortunately, Bob is only 3
 </span><span class="s2">and has no concept of money yet. Bob’s solution to this
