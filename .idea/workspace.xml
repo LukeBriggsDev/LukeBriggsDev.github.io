@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2d7a3c6e-8ea0-4071-bdbc-c42e9ce06af6" name="Changes" comment="Change to victor generated site">
+      <change afterPath="$PROJECT_DIR$/about/about.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/font-awesome-4.7.0/HELP-US-OUT.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/font-awesome-4.7.0/css/font-awesome.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/font-awesome-4.7.0/css/font-awesome.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/font-awesome-4.7.0/fonts/FontAwesome.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/font-awesome-4.7.0/fonts/fontawesome-webfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/font-awesome-4.7.0/fonts/fontawesome-webfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/font-awesome-4.7.0/fonts/fontawesome-webfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/font-awesome-4.7.0/fonts/fontawesome-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/font-awesome-4.7.0/fonts/fontawesome-webfont.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/font-awesome-4.7.0/less/animated.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/font-awesome-4.7.0/less/bordered-pulled.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/font-awesome-4.7.0/less/core.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/font-awesome-4.7.0/less/fixed-width.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/font-awesome-4.7.0/less/font-awesome.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/font-awesome-4.7.0/less/icons.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/font-awesome-4.7.0/less/larger.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/font-awesome-4.7.0/less/list.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/font-awesome-4.7.0/less/mixins.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/font-awesome-4.7.0/less/path.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/font-awesome-4.7.0/less/rotated-flipped.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/font-awesome-4.7.0/less/screen-reader.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/font-awesome-4.7.0/less/stacked.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/font-awesome-4.7.0/less/variables.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/font-awesome-4.7.0/scss/_animated.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/font-awesome-4.7.0/scss/_bordered-pulled.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/font-awesome-4.7.0/scss/_core.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/font-awesome-4.7.0/scss/_fixed-width.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/font-awesome-4.7.0/scss/_icons.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/font-awesome-4.7.0/scss/_larger.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/font-awesome-4.7.0/scss/_list.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/font-awesome-4.7.0/scss/_mixins.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/font-awesome-4.7.0/scss/_path.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/font-awesome-4.7.0/scss/_rotated-flipped.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/font-awesome-4.7.0/scss/_screen-reader.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/font-awesome-4.7.0/scss/_stacked.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/font-awesome-4.7.0/scss/_variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/font-awesome-4.7.0/scss/font-awesome.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/projects.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/syntax_highlight.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stylesheets/victor.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/0/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/1/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/a-game-of-two-halves/a-game-of-two-halves.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/a-game-of-two-halves/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/flatpak-instructions-not-included/flatpak-instructions-not-included.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/flatpak-instructions-not-included/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/full-release-newcastle-bst/full-release-newcastle-bst.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/full-release-newcastle-bst/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/goodbye-windows-i-hardly-gnu-ya/goodbye-windows-i-hardly-gnu-ya.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/goodbye-windows-i-hardly-gnu-ya/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/inspection-and-dissection-calmer-internet/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/inspection-and-dissection-calmer-internet/inspection-and-dissection-calmer-internet.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/inspection-and-dissection-dice-jack/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/inspection-and-dissection-dice-jack/inspection-and-dissection-dice-jack.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/inspection-and-dissection-pepys/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/inspection-and-dissection-pepys/inspection-and-dissection-pepys.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/inspection-and-dissection-ping/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/inspection-and-dissection-ping/inspection-and-dissection-ping.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/inspection-and-dissection-sounds2spotify/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/inspection-and-dissection-sounds2spotify/inspection-and-dissection-sounds2spotify.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/inspection-and-dissection-this-site/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/inspection-and-dissection-this-site/inspection-and-dissection-this-site.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/inspection-and-dissection-type-or-die/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/inspection-and-dissection-type-or-die/inspection-and-dissection-type-or-die.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/making-a-mobile-app-chapter-1/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/making-a-mobile-app-chapter-1/making-a-mobile-app-chapter-1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/making-a-mobile-app-chapter-2/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/making-a-mobile-app-chapter-2/making-a-mobile-app-chapter-2.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/making-a-mobile-app-chapter-3/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/making-a-mobile-app-chapter-3/making-a-mobile-app-chapter-3.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/making-a-mobile-app-chapter-4/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/making-a-mobile-app-chapter-4/making-a-mobile-app-chapter-4.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/making-a-mobile-app-chapter-5/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/making-a-mobile-app-chapter-5/making-a-mobile-app-chapter-5.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/probably/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/probably/probably.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/the-first-line-of-code/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/the-first-line-of-code/the-first-line-of-code.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/the-laypersons-guide-to-latex/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/the-laypersons-guide-to-latex/the-laypersons-guide-to-latex.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/where-hugo-i-go/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/where-hugo-i-go/where-hugo-i-go.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/where-i-began/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/where-i-began/where-i-began.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/you-can-now-follow-me-on-rss/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/you-can-now-follow-me-on-rss/you-can-now-follow-me-on-rss.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/calmer-internet/calmer-internet.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/calmer-internet/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/dice-jack/dice-jack.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/dice-jack/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/fallen-stars/fallen-stars.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/fallen-stars/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/newcastle-bst/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/newcastle-bst/newcastle-bst.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/pepys/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/pepys/pepys.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ping/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ping/ping.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/sounds2spotify/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/sounds2spotify/sounds2spotify.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/type-or-die/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/type-or-die/type-or-die.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects_copy/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects_copy/projects_copy.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/postimages/flatpak-instructions-not-included/flatpak.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/projects/dicejack.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/projects/fallen-stars.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/projects/ping.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/projects/sounds2spotify_new_banner.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/public.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/404.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CNAME" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a-game-of-two-halves/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a-game-of-two-halves/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/about/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/about/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/about/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/calmer-internet/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/calmer-internet/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/categories/computing/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/categories/computing/index.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/categories/computing/page/1/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/categories/game-development/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/categories/game-development/index.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/categories/game-development/page/1/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/categories/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/categories/making-a-mobile-app/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/categories/making-a-mobile-app/index.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/categories/making-a-mobile-app/page/1/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/categories/personal-history/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/categories/personal-history/index.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/categories/personal-history/page/1/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/categories/project-release/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/categories/project-release/index.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/categories/project-release/page/1/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/categories/software-development/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/categories/software-development/index.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/categories/software-development/page/1/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/categories/tutorial/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/categories/tutorial/index.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/categories/tutorial/page/1/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/categories/university/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/categories/university/index.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/categories/university/page/1/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flatpak-instructions-not-included/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flatpak-instructions-not-included/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/full-release-newcastle-bst/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/full-release-newcastle-bst/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/goodbye-windows-i-hardly-gnu-ya/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/goodbye-windows-i-hardly-gnu-ya/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.xml" beforeDir="false" afterPath="$PROJECT_DIR$/index.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inspection-and-dissection-calmer-internet/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inspection-and-dissection-calmer-internet/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inspection-and-dissection-dice-jack/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inspection-and-dissection-dice-jack/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inspection-and-dissection-pepys/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inspection-and-dissection-pepys/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inspection-and-dissection-ping/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inspection-and-dissection-ping/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inspection-and-dissection-sounds2spotify/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inspection-and-dissection-sounds2spotify/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inspection-and-dissection-this-site/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inspection-and-dissection-this-site/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inspection-and-dissection-type-or-die/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inspection-and-dissection-type-or-die/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/theme.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/theme.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/animate/animate.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/autocomplete/autocomplete.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/clipboard/clipboard.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/fontawesome-free/all.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/fonts/lg.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/fonts/lg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/fonts/lg.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/fonts/lg.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/img/loading.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/img/video-play.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/img/vimeo-play.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/img/youtube-play.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/auto-render.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/copy-tex.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/copy-tex.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_AMS-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_AMS-Regular.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_AMS-Regular.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Caligraphic-Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Caligraphic-Bold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Caligraphic-Bold.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Caligraphic-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Caligraphic-Regular.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Caligraphic-Regular.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Fraktur-Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Fraktur-Bold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Fraktur-Bold.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Fraktur-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Fraktur-Regular.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Fraktur-Regular.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Main-Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Main-Bold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Main-Bold.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Main-BoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Main-BoldItalic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Main-BoldItalic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Main-Italic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Main-Italic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Main-Italic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Main-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Main-Regular.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Main-Regular.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Math-BoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Math-BoldItalic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Math-BoldItalic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Math-Italic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Math-Italic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Math-Italic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_SansSerif-Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_SansSerif-Bold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_SansSerif-Bold.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_SansSerif-Italic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_SansSerif-Italic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_SansSerif-Italic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_SansSerif-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_SansSerif-Regular.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_SansSerif-Regular.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Script-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Script-Regular.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Script-Regular.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Size1-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Size1-Regular.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Size1-Regular.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Size2-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Size2-Regular.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Size2-Regular.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Size3-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Size3-Regular.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Size3-Regular.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Size4-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Size4-Regular.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Size4-Regular.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Typewriter-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Typewriter-Regular.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/fonts/KaTeX_Typewriter-Regular.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/katex.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/katex.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/katex/mhchem.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/lazysizes/lazysizes.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/lunr/lunr.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/normalize/normalize.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/sharer/sharer.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/simple-icons/icons/line.min.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/simple-icons/icons/myspace.min.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/smooth-scroll/smooth-scroll.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/webfonts/fa-brands-400.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/webfonts/fa-brands-400.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/webfonts/fa-brands-400.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/webfonts/fa-brands-400.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/webfonts/fa-brands-400.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/webfonts/fa-regular-400.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/webfonts/fa-regular-400.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/webfonts/fa-regular-400.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/webfonts/fa-regular-400.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/webfonts/fa-regular-400.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/webfonts/fa-solid-900.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/webfonts/fa-solid-900.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/webfonts/fa-solid-900.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/webfonts/fa-solid-900.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/webfonts/fa-solid-900.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/making-a-mobile-app-chapter-1/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/making-a-mobile-app-chapter-1/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/making-a-mobile-app-chapter-2/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/making-a-mobile-app-chapter-2/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/making-a-mobile-app-chapter-3/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/making-a-mobile-app-chapter-3/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/making-a-mobile-app-chapter-4/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/making-a-mobile-app-chapter-4/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/making-a-mobile-app-chapter-5/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/making-a-mobile-app-chapter-5/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/1/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/2/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pepys/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pepys/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/posts/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/index.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/page/1/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/page/2/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/probably/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/probably/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/projects/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public.asc" beforeDir="false" afterPath="$PROJECT_DIR$/public.asc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitemap.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sitemap.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/calmer-internet/banner.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/calmer-internet/banner.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/postimages/inspection-and-dissection-pepys/BookLogoLargeWhite.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/postimages/inspection-and-dissection-pepys/BookLogoLargeWhite.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/projects/dicejack.gif" beforeDir="false" afterPath="$PROJECT_DIR$/static/projects/dicejack.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/projects/sounds2spotify_banner.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/projects/sounds2spotify_banner.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svg/loading.min.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tags/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/the-first-line-of-code/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/the-first-line-of-code/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/the-laypersons-guide-to-latex/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/the-laypersons-guide-to-latex/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/where-hugo-i-go/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/where-hugo-i-go/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/where-i-began/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/where-i-began/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/you-can-now-follow-me-on-rss/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/you-can-now-follow-me-on-rss/index.md" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="20hFVJVFtxentAVLOVi69wQ0aoI" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2d7a3c6e-8ea0-4071-bdbc-c42e9ce06af6" name="Changes" comment="" />
+      <created>1636488934764</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1636488934764</updated>
+      <workItem from="1636488936402" duration="566000" />
+    </task>
+    <task id="LOCAL-00001" summary="Change to victor generated site">
+      <created>1636488969598</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1636488969598</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Change to victor generated site" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change to victor generated site" />
+  </component>
+</project>
