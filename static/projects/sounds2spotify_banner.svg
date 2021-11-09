@@ -2,13 +2,13 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="1920"
-   height="960"
-   viewBox="0 0 507.99999 254.00001"
+   width="1936.3347"
+   height="863.46753"
+   viewBox="0 0 512.32188 228.45913"
    version="1.1"
    id="svg4382"
-   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
-   sodipodi:docname="banner.svg"
+   inkscape:version="1.1.1 (c3084ef, 2021-09-22)"
+   sodipodi:docname="sounds2spotify_banner.svg"
    inkscape:export-filename="/home/luke/Documents/Projects/HugoSite/static/static/projects/sounds2spotify_banner.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
@@ -29,12 +29,12 @@
      showgrid="false"
      units="px"
      inkscape:zoom="0.38529391"
-     inkscape:cx="438.62619"
-     inkscape:cy="659.237"
-     inkscape:window-width="1920"
-     inkscape:window-height="1007"
+     inkscape:cx="445.11474"
+     inkscape:cy="612.51941"
+     inkscape:window-width="1512"
+     inkscape:window-height="916"
      inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-y="38"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer2" />
   <defs
@@ -247,7 +247,7 @@
          id="feComposite35294" />
     </filter>
     <filter
-       style="color-interpolation-filters:sRGB;"
+       style="color-interpolation-filters:sRGB"
        inkscape:label="Drop Shadow"
        id="filter25369"
        x="-0.0061751972"
@@ -286,20 +286,20 @@
   <g
      inkscape:groupmode="layer"
      id="layer3"
-     inkscape:label="base" />
+     inkscape:label="base"
+     transform="translate(2.0601156,-12.23521)" />
   <g
      inkscape:groupmode="layer"
      id="layer2"
-     inkscape:label="bg">
+     inkscape:label="bg"
+     transform="translate(2.0601156,-12.23521)">
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke-width:0.264999"
+       style="fill:#ffffff;fill-opacity:1;stroke-width:0.257774"
        id="rect5328"
-       width="502.70834"
-       height="246.0625"
-       x="2.7468209"
-       y="3.433526"
-       rx="16.933332"
-       ry="16.933332" />
+       width="512.3219"
+       height="228.45912"
+       x="-2.0601156"
+       y="12.23521" />
     <g
        aria-label="Sounds 2 Spotify"
        id="text7008"
@@ -352,7 +352,8 @@
   <g
      inkscape:label="Logo"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(2.0601156,-12.23521)">
     <g
        id="g4726"
        transform="translate(-8.9958338)">

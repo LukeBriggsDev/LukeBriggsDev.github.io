@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0;">
+
+    <meta property="og:description" content="I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://lukebriggs.dev/" />
+    <meta property="og:image" content="https://lukebriggs.dev/banner.png"/>
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image" content="https://lukebriggs.dev/banner.png"/>
+    <meta name="twitter:title" content="Luke Briggs"/>
+    <meta name="twitter:description" content="I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University"/>
+    <meta name="application-name" content="Luke Briggs">
+
+    <title> Inspection-And-Dissection-Calmer-Internet  - Luke Briggs</title>
+    <base href="https://lukebriggs.dev/">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="feed" type="application/rss+xml" href="index.xml" title="Luke Briggs">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="assets/stylesheets/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/stylesheets/victor.css">
+    <link rel="stylesheet" href="assets/stylesheets/syntax_highlight.css">
+    <link rel="stylesheet" href="assets/stylesheets/projects.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <ul class="nav-menu">
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="">Home</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="posts">Posts</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="projects">Projects</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="about">About</a>
+                </li>
+            
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+</header>
+
+    <article>
+        <h4 class="description">Wed 18 Aug 2021</h4>
+        <img class='post-hero' src='static/calmer-internet/banner.svg' alt='<div>Inspection and Dissection: Calmer Internet - My First Web Extension</div>
+'/><h1 class='post-title'><div>Inspection and Dissection: Calmer Internet - My First Web Extension</div>
+</h1><blockquote>
+<p>The product page is available <a href="projects/calmer-internet">here</a></p>
+</blockquote>
+<a name='brief-description'></a><h1>Brief Description</h1>
+<p><em>Calmer Internet</em> is a web extension for Chrome, Firefox, and Edge that makes the internet a less infuriating place to be.
+It removes comments, recommended content and various trending pages from Twitter, YouTube, and Instagram to try and relieve that doom-scrolling.</p>
+<a name='rationale'></a><h1>Rationale</h1>
+<p>Since I finished stage 1 of University in June, I had a considerable amount of time off.
+A lot of that time was spent in a state of not quite working and not quite relaxing.
+I was stuck in a cycle of following the YouTube sidebar of bland content before going to Twitter and scrolling down the trending hashtags and comments, getting annoyed at every step.</p>
+<p>Many social media platforms just throw various things at you in an attempt to just keep scrolling and clicking and engaging, before you know it you've spent an hour of your life on a soul-sucking site.</p>
+<p>I didn't want to quit these sites entirely. 
+There are truly incredible and insightful people on there like <a href="https://www.youtube.com/user/enyay">Tom Scott</a>, <a href="https://www.youtube.com/c/Exurb1a">exurb1a</a>, and <a href="https://www.youtube.com/channel/UCE1jXbVAGJQEORz9nZqb5bQ">Ahoy</a>.
+Twitter is also good as a micro-blog feed for people I want to follow in the tech sector. 
+The conclusion I came to is that I need to take control of what I see. 
+I should only be consuming things I have actively sought out, because those are the things that I enjoy the most.
+It also means that I can't just keep scrolling and watching forever, I will run out of content because I only see what I have subscribed to.
+There is no 'one more click'</p>
+<p>My initial solution was to have everything go to an RSS reader but most social media platforms don't play nicely with rss feeds and feed readers don't really play nicely with conveying threads, retweets and video content.
+As a result, I turned to editing the sites themselves to provide a more focused experience.</p>
+<a name='how-it's-made'></a><h1>How it's made</h1>
+<p>This extension didn't start out as an extension. It started out as a set of rules for my ad-blocker. 
+I'd use the eyedropper tool to select the <em>Trending</em> bar on Twitter just so I wouldn't be tempted to click it.
+I did similar things with the trending tab on YouTube.
+It then got to a point where I wanted to do more like remove the recommended sidebar and the video-wall end screens, so I decided I needed a web extension.</p>
+<p>I have never made a web extension before, but I do have some experience in HTML and JavaScript so it wasn't too troublesome to get used to.
+Most of what my extension does takes place in a 'content script'.
+This is a javascript file that just loaded alongside the current page at load time.
+The file then looks at the current URL and checks the page for any elements I've told it to remove.</p>
+<div class="highlight"><pre><span></span><span class="c1">// Adding Twitter elements to a list of elements to remove</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">hostname</span> <span class="o">===</span> <span class="s2">&quot;twitter.com&quot;</span> <span class="o">||</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">hostname</span> <span class="o">===</span> <span class="s2">&quot;mobile.twitter.com&quot;</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">settings</span><span class="p">[</span><span class="s2">&quot;TwitterTrendingBar&quot;</span><span class="p">]){</span>
+            <span class="nx">elementsToRemove</span><span class="p">[</span><span class="s2">&quot;trendingBar&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">&quot;div[aria-label=&#39;Timeline: Trending now&#39;]&quot;</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">settings</span><span class="p">[</span><span class="s2">&quot;TwitterExploreLinks&quot;</span><span class="p">]){</span>
+            <span class="nx">elementsToRemove</span><span class="p">[</span><span class="s2">&quot;exploreLinks&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">&quot;a[href=&#39;/explore&#39;]&quot;</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">settings</span><span class="p">[</span><span class="s2">&quot;TwitterWhoToFollow&quot;</span><span class="p">]){</span>
+            <span class="nx">elementsToRemove</span><span class="p">[</span><span class="s2">&quot;miscStyling&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="s2">&quot;css-1dbjc4n r-1867qdf r-1phboty r-rs99b7 r-1ifxtd0 r-1bro5k0 r-1udh08x&quot;</span><span class="p">)</span>
+            <span class="nx">elementsToRemove</span><span class="p">[</span><span class="s2">&quot;whoToFollow&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">&quot;aside[aria-label=&#39;Who to follow&#39;]&quot;</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">settings</span><span class="p">[</span><span class="s2">&quot;TwitterTopics&quot;</span><span class="p">]){</span>
+            <span class="nx">elementsToRemove</span><span class="p">[</span><span class="s2">&quot;topics&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">&quot;div[aria-label=&#39;Timeline: &#39;]&quot;</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+<p>The script then attaches a listener that causes new checks every time the webpage is updated</p>
+<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">observeBodyRemove</span><span class="p">(){</span>
+        <span class="c1">// Select the node that will be observed for mutations</span>
+        <span class="kd">var</span> <span class="nx">targetNode</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">);</span>
+
+        <span class="c1">// Options for the observer (which mutations to observe)</span>
+        <span class="kd">const</span> <span class="nx">config</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">attributes</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">childList</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">subtree</span><span class="o">:</span> <span class="kc">true</span> <span class="p">};</span>
+
+        <span class="c1">// Callback function to execute when mutations are observed</span>
+        <span class="kd">const</span> <span class="nx">callback</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">mutationsList</span><span class="p">,</span> <span class="nx">observer</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">elementsToRemove</span> <span class="o">=</span> <span class="nx">getElementsToRemove</span><span class="p">();</span>
+            <span class="k">for</span><span class="p">(</span><span class="nx">key</span> <span class="ow">in</span> <span class="nx">elementsToRemove</span><span class="p">){</span>
+                <span class="k">for</span> <span class="p">(</span><span class="nx">element</span> <span class="k">of</span> <span class="nx">elementsToRemove</span><span class="p">[</span><span class="nx">key</span><span class="p">]){</span>
+                    <span class="k">try</span> <span class="p">{</span>
+                        <span class="nx">element</span><span class="p">.</span><span class="nx">remove</span><span class="p">();</span>
+                    <span class="p">}</span>
+                    <span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">};</span>
+
+        <span class="c1">// Create an observer instance linked to the callback function</span>
+        <span class="kd">const</span> <span class="nx">observer</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">MutationObserver</span><span class="p">(</span><span class="nx">callback</span><span class="p">);</span>
+
+        <span class="c1">// Start observing the target node for configured mutations</span>
+        <span class="nx">observer</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="nx">targetNode</span><span class="p">,</span> <span class="nx">config</span><span class="p">);</span>
+    <span class="p">}</span>
+</pre></div>
+<p>The only other JavaScript in the extension is in a 'background script'.
+Whereas 'content scripts' are loaded alongside a webpage, background scripts are persistent and always run whenever the extension is loaded.
+This means they are useful for doing things before a page is loaded. 
+One feature of the extension is you can redirect any links to YouTube.com to youtube.com/feed/subscriptions, so you aren't bombarded by useless recommendations.
+I initially had the redirect in a content script but that required the whole page to be loaded before redirecting away from it.</p>
+<p>My current solution uses the WebRequest API to intercept a page request and load a new one instead.
+This is also done be setting up a listener, such as this one:</p>
+<div class="highlight"><pre><span></span><span class="c1">// YouTube</span>
+    <span class="nx">chrome</span><span class="p">.</span><span class="nx">webRequest</span><span class="p">.</span><span class="nx">onBeforeRequest</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span>
+        <span class="kd">function</span> <span class="p">(</span><span class="nx">details</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">settings</span><span class="p">[</span><span class="s2">&quot;YTHomeRedirect&quot;</span><span class="p">])</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="p">{</span><span class="nx">redirectUrl</span><span class="o">:</span> <span class="s2">&quot;https://youtube.com/feed/subscriptions&quot;</span><span class="p">};</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nx">urls</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;*://*.youtube.com/&quot;</span>
+            <span class="p">],</span>
+            <span class="nx">types</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;main_frame&quot;</span><span class="p">,</span> <span class="s2">&quot;sub_frame&quot;</span><span class="p">,</span> <span class="s2">&quot;stylesheet&quot;</span><span class="p">,</span> <span class="s2">&quot;script&quot;</span><span class="p">,</span> <span class="s2">&quot;image&quot;</span><span class="p">,</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span> <span class="s2">&quot;xmlhttprequest&quot;</span><span class="p">,</span> <span class="s2">&quot;other&quot;</span><span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">[</span><span class="s2">&quot;blocking&quot;</span><span class="p">]</span>
+    <span class="p">);</span>
+</pre></div>
+<p>Finally, all that was left was to create a manifest.
+I have great experience with manifests since <a href="https://github.com/LukeBriggsDev/Pepys">Pepys recently received builds for rpm, .deb, and PKGBUILD</a>.</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;manifest_version&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Calmer Internet&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.1.0&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;browser_specific_settings&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;gecko&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;calmerinternet@lukebriggs.dev&quot;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;browser_action&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;default_icon&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;16&quot;</span><span class="p">:</span> <span class="s2">&quot;icons/16.png&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;24&quot;</span><span class="p">:</span> <span class="s2">&quot;icons/24.png&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;32&quot;</span><span class="p">:</span> <span class="s2">&quot;icons/32.png&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;default_title&quot;</span><span class="p">:</span> <span class="s2">&quot;Calmer Internet&quot;</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;icons&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;48&quot;</span><span class="p">:</span> <span class="s2">&quot;icons/48.png&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;96&quot;</span><span class="p">:</span> <span class="s2">&quot;icons/96.png&quot;</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;content_scripts&quot;</span><span class="p">:</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;matches&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;*://*.youtube.com/*&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;*://*.twitter.com/*&quot;</span><span class="p">,</span> <span class="s2">&quot;*://twitter.com/*&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;*://*.instagram.com/*&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;js&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;calmer.js&quot;</span><span class="p">]</span>
+  <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;background&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;scripts&quot;</span><span class="p">:[</span><span class="s2">&quot;background.js&quot;</span><span class="p">]</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;permissions&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;*://*.youtube.com/*&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;*://*.twitter.com/*&quot;</span><span class="p">,</span> <span class="s2">&quot;*://twitter.com/*&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;*://*.instagram.com/*&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;storage&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;webRequest&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;webRequestBlocking&quot;</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Provides a calmer internet experience. Removes comments and various recommendation elements from Twitter, YouTube, Instagram.&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;options_ui&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;page&quot;</span><span class="p">:</span> <span class="s2">&quot;options.html&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<a name='deployment'></a><h1>Deployment</h1>
+<p>The extension is available on the Chrome Web Store, the Firefox Add-on Store, and the Microsoft Store.
+WebExtensions are now pretty cross-compatible, so I use the exact same code-base across all browsers.
+It would even support Safari as of Big Sur, but I do not have a Mac to upload it, nor do I want to fork out the $99 price of an Apple Developer account.</p>
+<p>As ever, the project is also available in full on my <a href="https://github.com/LukeBriggsDev/calmer-internet">GitHub</a></p>
+
+    </article>
+
+<footer>
+    &copy; Luke Briggs
+</footer>
+<script>
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+
+    hamburger.addEventListener("click", mobileMenu);
+
+    function mobileMenu() {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+
+    }
+
+    const navLink = document.querySelectorAll(".nav-link");
+
+    navLink.forEach(n => n.addEventListener("click", closeMenu));
+
+    function closeMenu() {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+    }
+
+</script>
+</body>
+</html>

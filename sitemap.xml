@@ -1,42 +1,227 @@
 <urlset
-    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-    xmlns:xhtml="http://www.w3.org/1999/xhtml"
-    ><url>
-            <loc>https://www.lukebriggs.dev/categories/</loc><lastmod>2021-09-16T15:07:04&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.lukebriggs.dev/inspection-and-dissection-sounds2spotify/</loc><lastmod>2021-09-16T15:07:04&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.lukebriggs.dev/</loc><lastmod>2021-09-16T15:07:04&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.lukebriggs.dev/posts/</loc><lastmod>2021-09-16T15:07:04&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.lukebriggs.dev/categories/project-release/</loc><lastmod>2021-09-16T15:07:04&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.lukebriggs.dev/categories/software-development/</loc><lastmod>2021-09-16T15:07:04&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.lukebriggs.dev/inspection-and-dissection-calmer-internet/</loc><lastmod>2021-08-18T15:18:16&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.lukebriggs.dev/calmer-internet/</loc><lastmod>2021-08-15T15:46:07&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.lukebriggs.dev/full-release-newcastle-bst/</loc><lastmod>2021-07-10T10:33:04&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.lukebriggs.dev/inspection-and-dissection-pepys/</loc><lastmod>2021-05-31T16:47:38&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.lukebriggs.dev/pepys/</loc><lastmod>2021-05-31T16:47:38&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.lukebriggs.dev/flatpak-instructions-not-included/</loc><lastmod>2021-05-22T19:08:56&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.lukebriggs.dev/about/</loc><lastmod>2021-05-03T22:34:46&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.lukebriggs.dev/categories/computing/</loc><lastmod>2021-05-03T20:06:07&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.lukebriggs.dev/where-hugo-i-go/</loc><lastmod>2021-05-03T20:06:07&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.lukebriggs.dev/categories/game-development/</loc><lastmod>2021-03-05T12:11:40&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.lukebriggs.dev/inspection-and-dissection-type-or-die/</loc><lastmod>2021-03-05T12:11:40&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.lukebriggs.dev/you-can-now-follow-me-on-rss/</loc><lastmod>2021-02-18T20:52:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.lukebriggs.dev/goodbye-windows-i-hardly-gnu-ya/</loc><lastmod>2021-02-07T21:12:30&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.lukebriggs.dev/categories/personal-history/</loc><lastmod>2021-02-07T21:12:30&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.lukebriggs.dev/inspection-and-dissection-this-site/</loc><lastmod>2021-02-03T16:39:25&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.lukebriggs.dev/the-laypersons-guide-to-latex/</loc><lastmod>2021-01-06T22:06:22&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.lukebriggs.dev/categories/tutorial/</loc><lastmod>2021-01-06T22:06:22&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.lukebriggs.dev/inspection-and-dissection-dice-jack/</loc><lastmod>2019-09-24T21:06:18&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.lukebriggs.dev/probably/</loc><lastmod>2019-08-17T20:49:25&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.lukebriggs.dev/categories/university/</loc><lastmod>2019-08-17T20:49:25&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.lukebriggs.dev/categories/making-a-mobile-app/</loc><lastmod>2019-03-09T20:47:46&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.lukebriggs.dev/making-a-mobile-app-chapter-5/</loc><lastmod>2019-03-09T20:47:46&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.lukebriggs.dev/making-a-mobile-app-chapter-4/</loc><lastmod>2018-12-10T21:57:21&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.lukebriggs.dev/making-a-mobile-app-chapter-3/</loc><lastmod>2018-12-10T20:14:17&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.lukebriggs.dev/making-a-mobile-app-chapter-2/</loc><lastmod>2018-12-09T20:07:21&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.lukebriggs.dev/making-a-mobile-app-chapter-1/</loc><lastmod>2018-12-09T19:57:21&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.lukebriggs.dev/where-i-began/</loc><lastmod>2018-06-27T18:40:06&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.lukebriggs.dev/inspection-and-dissection-ping/</loc><lastmod>2018-06-23T17:52:33&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.lukebriggs.dev/a-game-of-two-halves/</loc><lastmod>2018-06-23T17:20:33&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.lukebriggs.dev/the-first-line-of-code/</loc><lastmod>2018-06-23T16:42:40&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.lukebriggs.dev/projects/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://www.lukebriggs.dev/tags/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>
+xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+        <loc>https://lukebriggs.dev/about/</loc>
+        <lastmod>2021-11-09T20:13:56.029538</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+                                
+    <url>
+        <loc>https://lukebriggs.dev/projects_copy/</loc>
+        <lastmod>2021-11-09T20:13:56.034202</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+                                
+    <url>
+        <loc>https://lukebriggs.dev/posts/a-game-of-two-halves/</loc>
+        <lastmod>2021-11-09T20:13:56.040954</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+                                
+    <url>
+        <loc>https://lukebriggs.dev/posts/inspection-and-dissection-type-or-die/</loc>
+        <lastmod>2021-11-09T20:13:56.045695</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+                                
+    <url>
+        <loc>https://lukebriggs.dev/posts/the-laypersons-guide-to-latex/</loc>
+        <lastmod>2021-11-09T20:13:56.059911</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+                                
+    <url>
+        <loc>https://lukebriggs.dev/posts/inspection-and-dissection-sounds2spotify/</loc>
+        <lastmod>2021-11-09T20:13:56.081701</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+                                
+    <url>
+        <loc>https://lukebriggs.dev/posts/where-hugo-i-go/</loc>
+        <lastmod>2021-11-09T20:13:56.085333</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+                                
+    <url>
+        <loc>https://lukebriggs.dev/posts/making-a-mobile-app-chapter-2/</loc>
+        <lastmod>2021-11-09T20:13:56.089712</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+                                
+    <url>
+        <loc>https://lukebriggs.dev/posts/inspection-and-dissection-calmer-internet/</loc>
+        <lastmod>2021-11-09T20:13:56.097787</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+                                
+    <url>
+        <loc>https://lukebriggs.dev/posts/full-release-newcastle-bst/</loc>
+        <lastmod>2021-11-09T20:13:56.102289</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+                                
+    <url>
+        <loc>https://lukebriggs.dev/posts/making-a-mobile-app-chapter-3/</loc>
+        <lastmod>2021-11-09T20:13:56.109288</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+                                
+    <url>
+        <loc>https://lukebriggs.dev/posts/inspection-and-dissection-ping/</loc>
+        <lastmod>2021-11-09T20:13:56.113885</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+                                
+    <url>
+        <loc>https://lukebriggs.dev/posts/the-first-line-of-code/</loc>
+        <lastmod>2021-11-09T20:13:56.117343</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+                                
+    <url>
+        <loc>https://lukebriggs.dev/posts/you-can-now-follow-me-on-rss/</loc>
+        <lastmod>2021-11-09T20:13:56.120027</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+                                
+    <url>
+        <loc>https://lukebriggs.dev/posts/inspection-and-dissection-pepys/</loc>
+        <lastmod>2021-11-09T20:13:56.126716</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+                                
+    <url>
+        <loc>https://lukebriggs.dev/posts/making-a-mobile-app-chapter-4/</loc>
+        <lastmod>2021-11-09T20:13:56.130714</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+                                
+    <url>
+        <loc>https://lukebriggs.dev/posts/making-a-mobile-app-chapter-5/</loc>
+        <lastmod>2021-11-09T20:13:56.134293</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+                                
+    <url>
+        <loc>https://lukebriggs.dev/posts/probably/</loc>
+        <lastmod>2021-11-09T20:13:56.138357</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+                                
+    <url>
+        <loc>https://lukebriggs.dev/posts/making-a-mobile-app-chapter-1/</loc>
+        <lastmod>2021-11-09T20:13:56.141977</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+                                
+    <url>
+        <loc>https://lukebriggs.dev/posts/goodbye-windows-i-hardly-gnu-ya/</loc>
+        <lastmod>2021-11-09T20:13:56.147425</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+                                
+    <url>
+        <loc>https://lukebriggs.dev/posts/inspection-and-dissection-dice-jack/</loc>
+        <lastmod>2021-11-09T20:13:56.165189</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+                                
+    <url>
+        <loc>https://lukebriggs.dev/posts/flatpak-instructions-not-included/</loc>
+        <lastmod>2021-11-09T20:13:56.209186</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+                                
+    <url>
+        <loc>https://lukebriggs.dev/posts/where-i-began/</loc>
+        <lastmod>2021-11-09T20:13:56.232681</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+                                
+    <url>
+        <loc>https://lukebriggs.dev/posts/inspection-and-dissection-this-site/</loc>
+        <lastmod>2021-11-09T20:13:56.238423</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+                                
+    <url>
+        <loc>https://lukebriggs.dev/projects/pepys/</loc>
+        <lastmod>2021-11-09T20:13:56.243732</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+                                
+    <url>
+        <loc>https://lukebriggs.dev/projects/dice-jack/</loc>
+        <lastmod>2021-11-09T20:13:56.247244</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+                                
+    <url>
+        <loc>https://lukebriggs.dev/projects/sounds2spotify/</loc>
+        <lastmod>2021-11-09T20:13:56.250748</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+                                
+    <url>
+        <loc>https://lukebriggs.dev/projects/ping/</loc>
+        <lastmod>2021-11-09T20:13:56.253494</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+                                
+    <url>
+        <loc>https://lukebriggs.dev/projects/type-or-die/</loc>
+        <lastmod>2021-11-09T20:13:56.256311</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+                                
+    <url>
+        <loc>https://lukebriggs.dev/projects/newcastle-bst/</loc>
+        <lastmod>2021-11-09T20:13:56.260404</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+                                
+    <url>
+        <loc>https://lukebriggs.dev/projects/fallen-stars/</loc>
+        <lastmod>2021-11-09T20:13:56.263433</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+                                
+    <url>
+        <loc>https://lukebriggs.dev/projects/calmer-internet/</loc>
+        <lastmod>2021-11-09T20:13:56.267341</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+                                </urlset>

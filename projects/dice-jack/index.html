@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0;">
+
+    <meta property="og:description" content="I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://lukebriggs.dev/" />
+    <meta property="og:image" content="https://lukebriggs.dev/banner.png"/>
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image" content="https://lukebriggs.dev/banner.png"/>
+    <meta name="twitter:title" content="Luke Briggs"/>
+    <meta name="twitter:description" content="I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University"/>
+    <meta name="application-name" content="Luke Briggs">
+
+    <title> Dice-Jack  - Luke Briggs</title>
+    <base href="https://lukebriggs.dev/">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="feed" type="application/rss+xml" href="index.xml" title="Luke Briggs">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="assets/stylesheets/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/stylesheets/victor.css">
+    <link rel="stylesheet" href="assets/stylesheets/syntax_highlight.css">
+    <link rel="stylesheet" href="assets/stylesheets/projects.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <ul class="nav-menu">
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="">Home</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="posts">Posts</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="projects">Projects</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="about">About</a>
+                </li>
+            
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+</header>
+
+    <article>
+        <h4 class="description">Mon 23 Sep 2019</h4>
+        <img class='post-hero' src='static/projects/dicejack.png' alt='<div>Dice Jack</div>
+'/><h1 class='post-title'><div>Dice Jack</div>
+</h1><blockquote>
+<p><a href="https://github.com/CodeLuke/Dice-Jack">Source Code</a></p>
+</blockquote>
+<p>Made in 2 days as a mini-project for a course. Used as a way to get to grips with windows forms and learn some Visual Basic .NET. Just so happens to also be the first game of mine with a computer controlled player.</p>
+<a name='rules'></a><h2>Rules</h2>
+<ul>
+<li>The goal is to get as close to 21 points without going over</li>
+<li>There is a Player and a Dealer</li>
+<li>Each contestant has 2 dice</li>
+<li>The player goes first</li>
+<li>Each dice spot is worth 2 points</li>
+<li>If either the player or dealer goes over 21, they lose the game</li>
+<li>After the first roll, if the player has not gone bust, they can choose to 'stand' or 'hit'</li>
+<li>If they 'hit', the dice are rolled again and the player can choose to add the points of either die or the total of both dice</li>
+<li>The player must add a score after hitting, even if it means they will go 'bust'</li>
+<li>In the event of a tie, the game goes to the dealer</li>
+</ul>
+
+    </article>
+
+<footer>
+    &copy; Luke Briggs
+</footer>
+<script>
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+
+    hamburger.addEventListener("click", mobileMenu);
+
+    function mobileMenu() {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+
+    }
+
+    const navLink = document.querySelectorAll(".nav-link");
+
+    navLink.forEach(n => n.addEventListener("click", closeMenu));
+
+    function closeMenu() {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0;">
+
+    <meta property="og:description" content="I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://lukebriggs.dev/" />
+    <meta property="og:image" content="https://lukebriggs.dev/banner.png"/>
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image" content="https://lukebriggs.dev/banner.png"/>
+    <meta name="twitter:title" content="Luke Briggs"/>
+    <meta name="twitter:description" content="I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University"/>
+    <meta name="application-name" content="Luke Briggs">
+
+    <title> Inspection-And-Dissection-Sounds2Spotify  - Luke Briggs</title>
+    <base href="https://lukebriggs.dev/">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="feed" type="application/rss+xml" href="index.xml" title="Luke Briggs">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="assets/stylesheets/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/stylesheets/victor.css">
+    <link rel="stylesheet" href="assets/stylesheets/syntax_highlight.css">
+    <link rel="stylesheet" href="assets/stylesheets/projects.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <ul class="nav-menu">
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="">Home</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="posts">Posts</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="projects">Projects</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="about">About</a>
+                </li>
+            
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+</header>
+
+    <article>
+        <h4 class="description">Thu 16 Sep 2021</h4>
+        <img class='post-hero' src='static/projects/sounds2spotify_banner.svg' alt='<div>Inspection and Dissection: Sounds2<wbr>Spotify</div>
+'/><h1 class='post-title'><div>Inspection and Dissection: Sounds2<wbr>Spotify</div>
+</h1><blockquote>
+<p>Available on <a href="https://github.com/LukeBriggsDev/Sounds2Spotify">Github</a></p>
+</blockquote>
+<a name='brief-description'></a><h1>Brief Description</h1>
+<p>Sounds2Spotify is a web extension for firefox and chrome that converts the tracklists that appear on <a href="https://bbc.co.uk/sounds">BBC Sounds</a> programme pages to be converted into Spotify playlists.</p>
+<p>Unlike <a href="projectscalmer-internet">Calmer-Internet</a> this extension can only be installed by following the instructions on <a href="https://github.com/LukeBriggsDev/Sounds2Spotify">Github</a> due to its use of API keys.</p>
+<a name='impetus'></a><h1>Impetus</h1>
+<p>One of my pleasures in life is listening to Music.
+My favourite tracks are stored locally and also in Spotify playlists for when I'm using a device without my collection.
+Most of the time, however, I'm not listening to my favourite tracks, I'm listening to the <a href="https://www.bbc.co.uk/sounds/play/live:bbc_6music">BBC 6Music</a>.
+More specifically, I'm listening to the <a href="https://www.bbc.co.uk/programmes/b00c000j">Lauren Laverne Breakfast Show</a>.</p>
+<p>Due to licensing reasons the BBC can only have its music programming available on its own BBC Sounds app for a limited time.
+This is fine when I'm using my computer or phone, but quite often I want to listen to music in the background when using my PlayStation, which only allows music to be played through Spotify.</p>
+<p>The goal: to convert the music played on BBC Sounds to Spotify playlists.</p>
+<a name='code-walkthrough'></a><h1>Code Walkthrough</h1>
+<a name='part-1:-getting-the-music'></a><h2>Part 1: Getting the Music</h2>
+<p><img src="static/postimages/inspection-and-dissection-sounds2spotify/tracklist.png" alt="BBC Sounds Tracklist" /></p>
+<hr style="border: 1px solid black">
+<p><img src="static/postimages/inspection-and-dissection-sounds2spotify/track_popup.png" alt="Track popup" /></p>
+<p>Thankfully, underneath every music programme, the BBC provides a track list of all the music played throughout the programme as well as a popover menu providing links to external sources.</p>
+<p>So the first job my extension had to do was to scrape this information.
+There are no APIs or direct links to this information so the only way to get this information is by clicking on each button and grabbing the Spotify link.</p>
+<div class="highlight"><pre><span></span><span class="c1">// List of buttons that bring up track popover</span>
+<span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">&#39;[id^=&quot;track-&quot;]&#39;</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nx">tracklist</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="kd">var</span> <span class="nx">episodeDate</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="s2">&quot;sc-c-episode__metadata__data&quot;</span><span class="p">)[</span><span class="mf">0</span><span class="p">].</span><span class="nx">lastChild</span><span class="p">.</span><span class="nx">data</span>
+</pre></div>
+<p>Each menu button has the HTML ID of &quot;track-x&quot; where x is its position in the tracklist.
+So a query for all these IDs will yield a list of button elements.</p>
+<p>The date the episode aired is also quite useful when it comes to naming the eventual playlist, so I grab that as well.</p>
+<p>I also initialise the tracklist here. Eventually I want a list of the Spotify links for the tracks.</p>
+<p>The IDs and element classes were obtained by hand by scouring the HTML source of the page.</p>
+<div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mf">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">list</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="nx">list</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">scrollIntoView</span><span class="p">()</span>
+    <span class="nx">list</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">click</span><span class="p">()</span>
+    <span class="k">await</span> <span class="nx">sleep</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span> <span class="c1">// t = 200ms</span>
+    <span class="k">try</span><span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">track</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">&#39;[href^=&quot;https://open.spotify.com/track/&quot;]&#39;</span><span class="p">)[</span><span class="mf">0</span><span class="p">]</span>
+        <span class="kd">var</span> <span class="nx">trackMetadata</span> <span class="o">=</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">track</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s2">&quot;data-bbc-metadata&quot;</span><span class="p">))</span>
+        <span class="kd">var</span> <span class="nx">trackTitle</span> <span class="o">=</span> <span class="nx">trackMetadata</span><span class="p">.</span><span class="nx">TID</span>
+        <span class="nx">tracklist</span><span class="p">[</span><span class="nx">trackTitle</span><span class="p">]</span> <span class="o">=</span> <span class="nx">track</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s2">&quot;href&quot;</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">{</span>
+        <span class="c1">// No links found</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>I loop through all the button elements, scroll to the element and click it. There is a 200ms delay between each track as render differences can lead to buttons not being clicked.</p>
+<p>When a track is clicked, single popover appears containing a Spotify track link if it exists. As a result, by querying for a Spotify track URL on the page, I will get the link, if it exists.</p>
+<p>The popover also includes some metadata for the track in the form of JSON. So I use the track title as the key in a dictionary of tracks, just to make debugging easier. 
+The value in the dictionary is the corresponding link.</p>
+<div class="highlight"><pre><span></span><span class="nx">chrome</span><span class="p">.</span><span class="nx">runtime</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">({</span><span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;tracklist&quot;</span> <span class="p">,</span> <span class="nx">track_list</span><span class="o">:</span> <span class="nx">tracklist</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="nb">document</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span> <span class="nx">date</span><span class="o">:</span> <span class="nx">episodeDate</span><span class="p">},</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">farewell</span><span class="p">);</span>
+<span class="p">})</span>
+</pre></div>
+<p>All this data is then wrapped up into a message and sent off to be picked up by a background script.</p>
+<p>I mention background scripts in more detail on my <a href="posts/inspection-and-dissection-calmer-internet/">Inspection and Dissection on Calmer-Internet</a></p>
+<a name='part-2:-promises,-async,-apis'></a><h2>Part 2: Promises, Async, APIs</h2>
+<p>Now for the complicated part.
+Using the list of Spotify links I have to create a playlist.</p>
+<div class="highlight"><pre><span></span><span class="c1">// Base URL</span>
+<span class="nx">get_url</span> <span class="o">=</span> <span class="s2">&quot;https://accounts.spotify.com/authorize?&quot;</span>
+<span class="nx">get_url</span> <span class="o">+=</span> <span class="sb">`client_id=</span><span class="si">${</span><span class="nx">client_id</span><span class="si">}</span><span class="sb">&amp;`</span>
+<span class="nx">get_url</span> <span class="o">+=</span> <span class="s2">&quot;response_type=code&amp;&quot;</span>
+<span class="nx">get_url</span> <span class="o">+=</span> <span class="sb">`redirect_uri=</span><span class="si">${</span><span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nx">chrome</span><span class="p">.</span><span class="nx">identity</span><span class="p">.</span><span class="nx">getRedirectURL</span><span class="p">())</span><span class="si">}</span><span class="sb">&amp;`</span>
+<span class="nx">get_url</span> <span class="o">+=</span> <span class="s2">&quot;scope=playlist-modify-public&quot;</span>
+</pre></div>
+<p>The first thing I need to do is get authorisation from the user to allow the extension to modify public playlists.
+This is done by pointing a request to a specific url containing certain information.</p>
+<ul>
+<li>client_id: this is and id associated with a <a href="https://developer.spotify.com/dashboard/applications">Spotify app</a>.</li>
+<li>response_type: there are various ways to authenticate, the way I are doing it is through a 'code' flow</li>
+<li>redirect_uri: the url Spotify should redirect to when done.</li>
+</ul>
+<p>Web extensions require this to be a single link unique to the extension which is obtained through the method above</p>
+<ul>
+<li>scope: which permissions I require</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="nx">chrome</span><span class="p">.</span><span class="nx">runtime</span><span class="p">.</span><span class="nx">onMessage</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span>
+    <span class="kd">function</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">sender</span><span class="p">,</span> <span class="nx">sendResponse</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">type</span> <span class="o">==</span> <span class="s2">&quot;tracklist&quot;</span><span class="p">){</span>
+            <span class="nx">sendResponse</span><span class="p">({</span><span class="nx">farewell</span><span class="o">:</span> <span class="s2">&quot;recieved tracklist&quot;</span><span class="p">});</span>
+
+            <span class="nx">tracklist</span> <span class="o">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">track_list</span>
+            <span class="nx">tracklist_name</span> <span class="o">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">name</span>
+            <span class="nx">tracklist_date</span> <span class="o">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">date</span>
+
+            <span class="c1">// Authenticate and make playlist</span>
+            <span class="nx">chrome</span><span class="p">.</span><span class="nx">identity</span><span class="p">.</span><span class="nx">launchWebAuthFlow</span><span class="p">(</span>
+                <span class="p">{</span>
+                    <span class="nx">url</span><span class="o">:</span> <span class="nx">get_url</span><span class="p">,</span>
+                    <span class="nx">interactive</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                <span class="p">},</span> <span class="nx">authenticateSpotify</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+<p>This is a listener that responds to my message containing a tracklist.
+All the listener does is store the information in global variables (I know it can be bad practice but this is a small program with a specific purpose) and launch an authentication flow with my link.</p>
+<p>Once this is done, I then call the <code>authenticateSpotify</code> method.</p>
+<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">authenticateSpotify</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span>
+    <span class="c1">// Get parameters from response</span>
+    <span class="kd">var</span> <span class="nx">urlParams</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">URLSearchParams</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="nx">chrome</span><span class="p">.</span><span class="nx">identity</span><span class="p">.</span><span class="nx">getRedirectURL</span><span class="p">(),</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
+        <span class="c1">//...</span>
+<span class="p">}</span>
+</pre></div>
+<p>My WebAuthFlow passes a response in the form of a URL containing a parameter with an authorisation code (or a rejection).
+I isolate these parameters by stripping off My redirect url and calling <code>URLSearchParams</code> on it.</p>
+<div class="highlight"><pre><span></span><span class="c1">// POST request for access token</span>
+    <span class="kd">var</span> <span class="nx">authRequest</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Request</span><span class="p">(</span><span class="s2">&quot;https://accounts.spotify.com/api/token&quot;</span><span class="p">,</span>
+    <span class="p">{</span>
+        <span class="nx">method</span><span class="o">:</span> <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+        <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;application/x-www-form-urlencoded;charset=UTF-8&#39;</span>
+        <span class="p">},</span>
+        <span class="nx">body</span><span class="o">:</span> <span class="ow">new</span> <span class="nx">URLSearchParams</span><span class="p">(</span>
+        <span class="p">{</span> 
+        <span class="s1">&#39;grant_type&#39;</span><span class="o">:</span> <span class="s1">&#39;authorization_code&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;code&#39;</span><span class="o">:</span> <span class="nx">urlParams</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;code&quot;</span><span class="p">),</span> 
+        <span class="s1">&#39;redirect_uri&#39;</span><span class="o">:</span> <span class="nx">chrome</span><span class="p">.</span><span class="nx">identity</span><span class="p">.</span><span class="nx">getRedirectURL</span><span class="p">(),</span>
+        <span class="s1">&#39;client_id&#39;</span><span class="o">:</span> <span class="sb">`</span><span class="si">${</span><span class="nx">client_id</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
+        <span class="s1">&#39;client_secret&#39;</span><span class="o">:</span> <span class="sb">`</span><span class="si">${</span><span class="nx">client_secret</span><span class="si">}</span><span class="sb">`</span>
+        <span class="p">})</span> 
+    <span class="p">})</span>
+</pre></div>
+<p>I then construct a POST request to Spotify by exchanging my authorisation code, and client details for an access token.</p>
+<div class="highlight"><pre><span></span><span class="c1">// Create playlist</span>
+    <span class="nx">fetch</span><span class="p">(</span><span class="nx">authRequest</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">json</span><span class="p">){</span>
+            <span class="nx">createPlaylist</span><span class="p">(</span><span class="nx">json</span><span class="p">.</span><span class="nx">access_token</span><span class="p">)</span>
+        <span class="p">})</span>
+    <span class="p">})</span>
+</pre></div>
+<p>I then send this POST request, receive a response, parse the JSON response and send the access token to the <code>createPlaylist</code> function.</p>
+<div class="highlight"><pre><span></span><span class="k">async</span> <span class="kd">function</span> <span class="nx">getSpotifyID</span><span class="p">(</span><span class="nx">access_token</span><span class="p">){</span>
+    <span class="kd">var</span> <span class="nx">userRequest</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Request</span><span class="p">(</span><span class="s2">&quot;https://api.spotify.com/v1/me&quot;</span><span class="p">,</span>
+    <span class="p">{</span>
+        <span class="nx">method</span><span class="o">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
+        <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">Authorization</span><span class="o">:</span> <span class="sb">`Bearer </span><span class="si">${</span><span class="nx">access_token</span><span class="si">}</span><span class="sb">`</span>
+        <span class="p">}</span>
+    <span class="p">})</span>
+    <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">userRequest</span><span class="p">)</span>
+    <span class="kd">const</span> <span class="nx">json</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span>
+    <span class="k">return</span> <span class="nx">json</span><span class="p">.</span><span class="nx">id</span>
+<span class="p">}</span>
+</pre></div>
+<p>To know which account I'm working with I ask for the profile ID.</p>
+<div class="highlight"><pre><span></span><span class="k">async</span> <span class="kd">function</span> <span class="nx">createPlaylist</span><span class="p">(</span><span class="nx">access_token</span><span class="p">){</span>
+    <span class="kd">var</span> <span class="nx">trackURIS</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1">// Add create Spotify URIs from track links</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">track</span> <span class="k">of</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">values</span><span class="p">(</span><span class="nx">tracklist</span><span class="p">)){</span>
+        <span class="nx">trackURIS</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="sb">`&quot;</span><span class="si">${</span><span class="nx">track</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s2">&quot;https://open.spotify.com/track/&quot;</span><span class="p">,</span> <span class="s2">&quot;spotify:track:&quot;</span><span class="p">)</span><span class="si">}</span><span class="sb">&quot;`</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>The Spotify API does not want the tracks in the form of a link it wants a uri in the form <code>spotify:track:trackid</code>.
+So for each link in our track list I replace the link part with <code>spotify:track:</code></p>
+<div class="highlight"><pre><span></span><span class="c1">// Create new playlist</span>
+    <span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Request</span><span class="p">(</span><span class="sb">`https://api.spotify.com/v1/users/</span><span class="si">${</span><span class="nx">id</span><span class="si">}</span><span class="sb">/playlists`</span><span class="p">,</span>
+    <span class="p">{</span>
+        <span class="nx">method</span><span class="o">:</span> <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+        <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;Authorization&quot;</span><span class="o">:</span> <span class="sb">`Bearer </span><span class="si">${</span><span class="nx">access_token</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
+            <span class="s2">&quot;Content-Type&quot;</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span>
+        <span class="p">},</span>
+        <span class="nx">body</span><span class="o">:</span> 
+<span class="sb">`{</span>
+<span class="sb">    &quot;name&quot;: &quot;</span><span class="si">${</span><span class="nx">tracklist_name</span><span class="si">}</span><span class="sb"> | </span><span class="si">${</span><span class="nx">tracklist_date</span><span class="si">}</span><span class="sb">&quot;,</span>
+<span class="sb">    &quot;description&quot;: &quot;Made using Sounds2Spotify&quot;</span>
+<span class="sb">}`</span>
+    <span class="p">})</span>
+</pre></div>
+<p>Before I can add to a playlist, I need to create one first, so I construct a request to do just that using the authorisation token, and the user ID.
+I use the page name, and date from the BBC Sounds page as the title of the playlist.</p>
+<div class="highlight"><pre><span></span><span class="c1">// Add tracklist songs to newly created playlist</span>
+    <span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Request</span><span class="p">(</span><span class="sb">`https://api.spotify.com/v1/playlists/</span><span class="si">${</span><span class="nx">playlistID</span><span class="si">}</span><span class="sb">/tracks`</span><span class="p">,</span>
+    <span class="p">{</span>
+        <span class="nx">method</span><span class="o">:</span> <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+        <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;Content-Type&quot;</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+            <span class="nx">Authorization</span><span class="o">:</span> <span class="sb">`Bearer </span><span class="si">${</span><span class="nx">access_token</span><span class="si">}</span><span class="sb">`</span>
+        <span class="p">},</span>
+        <span class="nx">body</span><span class="o">:</span> 
+<span class="sb">`{</span>
+<span class="sb">    &quot;uris&quot;: [</span><span class="si">${</span><span class="nx">trackURIS</span><span class="si">}</span><span class="sb">]</span>
+<span class="sb">}`</span>
+    <span class="p">})</span>
+
+    <span class="kd">var</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">request</span><span class="p">)</span>
+</pre></div>
+<p>The response of my request contains the playlist ID which I then feed into our next request to add my list of tracks to the playlist.</p>
+<div class="highlight"><pre><span></span><span class="c1">// Open tab to new playlist</span>
+    <span class="nx">chrome</span><span class="p">.</span><span class="nx">tabs</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span> <span class="nx">url</span><span class="o">:</span> <span class="sb">`https://open.spotify.com/playlist/</span><span class="si">${</span><span class="nx">playlistID</span><span class="si">}</span><span class="sb">`</span><span class="p">})</span>
+</pre></div>
+<p>Finally, I open up the playlist in a new tab.</p>
+<a name='retrospective'></a><h1>Retrospective</h1>
+<p>Overall, I am very pleased with what I managed to achieve. 
+I have very limited experience in using JavaScript to interact with REST APIs, but I managed to pick it up reasonably quickly.</p>
+<p>The code I think is relatively clean for a first attempt.
+Obviously if any of the request throw an error then there is not much in the way of handling a response, but JavaScript tends to be pretty robust with errors and this isn't a product that is going to be released on any web store or anything.</p>
+<a name='reason-for-installation-procedure'></a><h1>Reason for Installation Procedure</h1>
+<p>The reason why this project is not going to be released on a web store is for security reasons.
+A part of the process requires sending Spotify secret API keys for the corresponding Spotify app.
+This would mean that my secret keys would have to be in the client-side code, and therefore be freely accessible.</p>
+<p>It would therefore be possible for someone to pose as my extension and start making requests as my app to users.</p>
+<p>The installation process isn't so cumbersome to be impossible to install, but it isn't as plug and play as I would like it to be</p>
+<a name='sources-of-information'></a><h1>Sources of Information</h1>
+<ul>
+<li>Spotify API Docs - <a href="https://developer.spotify.com/documentation/web-api/">https://developer.spotify.com/documentation/web-api/</a><ul>
+<li><a href="https://developer.spotify.com/console/playlists/">Playlists</a></li>
+</ul>
+</li>
+<li>Chrome extension API Docs - <a href="https://developer.chrome.com/docs/extensions/reference/">https://developer.chrome.com/docs/extensions/reference/</a><ul>
+<li><a href="https://developer.chrome.com/docs/extensions/reference/identity/#method-getRedirectURL">identity</a></li>
+<li><a href="https://developer.chrome.com/docs/extensions/mv2/messaging/">Message Passing</a></li>
+</ul>
+</li>
+<li>Mozilla Web API Docs - <a href="https://developer.mozilla.org/en-US/docs/Web/API">https://developer.mozilla.org/en-US/docs/Web/API</a><ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/fetch">fetch()</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Response">Response</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></li>
+</ul>
+</li>
+</ul>
+
+    </article>
+
+<footer>
+    &copy; Luke Briggs
+</footer>
+<script>
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+
+    hamburger.addEventListener("click", mobileMenu);
+
+    function mobileMenu() {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+
+    }
+
+    const navLink = document.querySelectorAll(".nav-link");
+
+    navLink.forEach(n => n.addEventListener("click", closeMenu));
+
+    function closeMenu() {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+    }
+
+</script>
+</body>
+</html>

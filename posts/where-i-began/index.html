@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0;">
+
+    <meta property="og:description" content="I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://lukebriggs.dev/" />
+    <meta property="og:image" content="https://lukebriggs.dev/banner.png"/>
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image" content="https://lukebriggs.dev/banner.png"/>
+    <meta name="twitter:title" content="Luke Briggs"/>
+    <meta name="twitter:description" content="I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University"/>
+    <meta name="application-name" content="Luke Briggs">
+
+    <title> Where-I-Began  - Luke Briggs</title>
+    <base href="https://lukebriggs.dev/">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="feed" type="application/rss+xml" href="index.xml" title="Luke Briggs">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="assets/stylesheets/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/stylesheets/victor.css">
+    <link rel="stylesheet" href="assets/stylesheets/syntax_highlight.css">
+    <link rel="stylesheet" href="assets/stylesheets/projects.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <ul class="nav-menu">
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="">Home</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="posts">Posts</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="projects">Projects</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="about">About</a>
+                </li>
+            
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+</header>
+
+    <article>
+        <h4 class="description">Wed 27 Jun 2018</h4>
+        <img class='post-hero' src='static/postimages/4/code.jpg' alt='<div>Where I Began</div>
+'/><h1 class='post-title'><div>Where I Began</div>
+</h1><blockquote>
+<p>“It can be very dangerous to see things from somebody else’s point of view
+without the proper training.”</p>
+<p>Douglas Adams</p>
+</blockquote>
+<p>As I have said before, my first outreach into programming began with  a GCSE Computer Science course which was cancelled after 7 months for various reasons. Those 7 months were possibly the best way to get a strong foundation of how programming languages work and the general structure in which they follow. The lessons consisted of us being taught a feature (how to do ‘if’ statements, how to call functions, how to cycle through array, etc) and then being given a series of tasks that we had to create a program to complete. The first and simplest of these tasks was Bob’s Change:</p>
+<div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Problem:</span>
+<span class="sd">Bob would like to buy some sweets, which cost 50p.</span>
+<span class="sd">Bob has some money but, unfortunately, Bob is only 3</span>
+<span class="sd">and has no concept of money yet. Bob’s solution to this</span>
+<span class="sd">is to just hand over the whole of his change and hope the</span>
+<span class="sd">shopkeeper will sort it out for him.</span>
+<span class="sd">The function bobs_change takes in a number representing</span>
+<span class="sd">how much money Bob has handed over (in pence). It should print</span>
+<span class="sd">the amount of change owed if he has enough, or</span>
+<span class="sd">“Sorry Bob, you don’t have enough” if he is short.&quot;&quot;&quot;</span>
+</pre></div>
+<p>The program would then consist of if statements returning an answer after comparing the money Bob has to the price of a product. For those starting out programming, tests of these kind are a rewarding and fun way of practicing and reinforcing skills that you have learned. When learning a programming language I would strongly suggest using these sorts of tests after learning something new to ensure you both remember that skill better and to also give you a sense of progression as a new programming language can be hard to remember if it goes unused. The rest of the tasks we went through in that course can be downloaded <a href="https://github.com/LukeBriggsDev/GCSE-Code-Tasks">here</a>. And an entire assortment of more advanced tasks in many different languages can be found at <a href="https://www.codewars.com">codewars.com</a>.</p>
+<p>Really learning a skill and then practicing it is all you need to further your knowledge of programming. Once you have a grasp of basic features, you can then start to make more advanced programs using numerous packages and modules that give you the tools to create graphics and deeper features.</p>
+<p>This was how I learned to program. It broke the stages up so I wasn’t daunted by the fact I only knew what for loops were and there was so much more in the language, I only focused on the task and I found with every task I got closer to an understanding where I could begin to realise what could be done and put me on good footing for future projects.</p>
+
+    </article>
+
+<footer>
+    &copy; Luke Briggs
+</footer>
+<script>
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+
+    hamburger.addEventListener("click", mobileMenu);
+
+    function mobileMenu() {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+
+    }
+
+    const navLink = document.querySelectorAll(".nav-link");
+
+    navLink.forEach(n => n.addEventListener("click", closeMenu));
+
+    function closeMenu() {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+    }
+
+</script>
+</body>
+</html>

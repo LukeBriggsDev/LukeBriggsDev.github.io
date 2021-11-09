@@ -1,0 +1,397 @@
+html, body {
+    height: 100vh;
+    width: 100%;
+    color: black;
+    line-height: 2rem;
+    font-family: system-ui,-apple-system,BlinkMacSystemFont,PingFang SC,Microsoft YaHei UI,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+body {
+    display: flex;
+    flex-direction: column;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.79);
+}
+
+li a {
+    color: #3582b8;
+}
+
+p a{
+    color: #3582b8;
+}
+
+h1 {
+    line-height: 4rem;
+    font-family: "Libre Baskerville", serif;
+}
+
+h2 {
+    line-height: 3.5rem;
+    font-family: "Libre Baskerville", serif;
+}
+h3 {
+    font-family: "Libre Baskerville", serif;
+}
+h4 {
+    font-family: "Libre Baskerville", serif;
+    margin-bottom: 1rem;
+}
+h5 {
+    font-family: "Libre Baskerville", serif;
+}
+p {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.grow { transition: all .2s ease-in-out; }
+.grow:hover { transform: scale(1.05); }
+
+a img {
+    transition: all .2s ease-in-out;
+}
+
+a img :hover {
+    transform: scale(1.05);
+}
+
+.header{
+    border-bottom: 1px solid #E2E8F0;
+    width: 100%;
+}
+
+footer {
+    margin-top: auto;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 2rem;
+    position: relative;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    width: 100%;
+}
+
+.hamburger {
+    display: none;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: #101010;
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-item {
+    margin-left: 2.5rem;
+}
+
+.nav-link{
+    font-size: 1rem;
+    font-weight: 400;
+    color: #475569;
+}
+
+a:hover{
+    color: #46b4ff;
+}
+
+.nav-logo {
+    font-size: 2.1rem;
+    font-weight: 500;
+}
+
+.center_container {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.center_container .center-block{
+    margin: 0;
+}
+
+article {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: auto;
+    width: 60%;
+}
+
+article img {
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.1);
+}
+
+article li{
+    list-style: disc;
+}
+article li li{
+    list-style: disc;
+    margin-left: 1rem;
+}
+
+.site-title{
+    margin-bottom: 0.5rem;
+    font-size: 3rem;
+}
+
+.social-link {
+    display: inline-block;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+}
+.fa {
+    font-size: 2.1rem;
+}
+
+.post-list {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+}
+
+.post-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.post-nav a {
+    font-size: 1.5rem;
+    color: #3582b8;
+
+}
+
+.post-nav a:hover {
+    color: #46b4ff;
+}
+
+
+.post-item {
+    height: fit-content;
+    width: 100%;
+    margin-bottom: 3rem;
+    border-radius: 16px;
+}
+
+.post-title {
+    line-height: 2.5rem;
+}
+
+.post-date {
+    color: rgba(71, 85, 105, 0.5);
+    font-weight: bold;
+    margin-bottom: -0.5rem;
+}
+
+.description {
+    color: rgba(71, 85, 105, 0.42);
+    line-height: 1.2rem;
+}
+
+.post-thumbnail {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.1);
+}
+
+.post-hero {
+    margin-bottom: 2rem;
+}
+
+article .post-title {
+    font-size: 3rem;
+    line-height: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+blockquote {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border-left: 10px solid #3582b8;
+}
+
+blockquote p {
+    margin: 0;
+    color: rgba(71, 85, 105, 0.63);
+}
+
+figcaption {
+    text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+
+    html, body {
+        max-width: 100vw;
+    }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 3rem;
+        flex-direction: column;
+        background-color: #fff;
+        width: 100%;
+        border-radius: 10px;
+        text-align: center;
+        transition: 0.3s;
+        z-index: 7;
+        box-shadow:
+            0 10px 27px rgba(0, 0, 0, 0.05);
+    }
+
+    p {
+        word-wrap: break-word;
+    }
+
+    a {
+        word-wrap: break-word;
+    }
+
+    .post-list {
+        align-items: center;
+        width: 90%;
+    }
+
+    .post-thumbnail {
+        height: 50%;
+
+    }
+
+    article {
+        width: 90vw;
+    }
+
+    .site-title {
+        width: 70vw;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-item {
+        margin: 2.5rem 0;
+    }
+
+    .nav-link {
+        font-size: 2rem;
+    }
+
+    .hamburger {
+        display: block;
+        cursor: pointer;
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
+
+
+@media (prefers-color-scheme: dark) {
+    html, body {
+        background-color: #252525;
+        color: white;
+    }
+
+    blockquote p{
+        color: rgba(211, 211, 211, 0.78);
+    }
+
+    .nav-link {
+        color: rgba(211, 211, 211, 0.78);
+    }
+
+    .site-title {
+        color: white;
+    }
+    .social-link i {
+        color: rgba(211, 211, 211, 0.78);
+    }
+    .social-link i:hover{
+        color: #46b4ff;
+    }
+
+    li a {
+        color: #3582b8;
+    }
+
+    .nav-menu {
+        background-color: #252525;
+    }
+
+    .bar {
+        background-color: rgba(211, 211, 211, 0.78);
+    }
+
+    .post-date {
+        color: rgba(211, 211, 211, 0.83);
+    }
+
+    .post-thumbnail {
+        box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .description {
+        color: rgba(211, 211, 211, 0.78);
+    }
+
+    .post-item .post-title:hover{
+        color: #46b4ff;
+    }
+    a {
+        text-decoration: none;
+        color: white;
+    }
+}

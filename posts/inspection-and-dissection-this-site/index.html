@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0;">
+
+    <meta property="og:description" content="I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://lukebriggs.dev/" />
+    <meta property="og:image" content="https://lukebriggs.dev/banner.png"/>
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image" content="https://lukebriggs.dev/banner.png"/>
+    <meta name="twitter:title" content="Luke Briggs"/>
+    <meta name="twitter:description" content="I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University"/>
+    <meta name="application-name" content="Luke Briggs">
+
+    <title> Inspection-And-Dissection-This-Site  - Luke Briggs</title>
+    <base href="https://lukebriggs.dev/">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="feed" type="application/rss+xml" href="index.xml" title="Luke Briggs">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="assets/stylesheets/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/stylesheets/victor.css">
+    <link rel="stylesheet" href="assets/stylesheets/syntax_highlight.css">
+    <link rel="stylesheet" href="assets/stylesheets/projects.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <ul class="nav-menu">
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="">Home</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="posts">Posts</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="projects">Projects</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="about">About</a>
+                </li>
+            
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+</header>
+
+    <article>
+        <h4 class="description">Wed 03 Feb 2021</h4>
+        <img class='post-hero' src='static/postimages/12/index.png' alt='<div>Inspection & Dissection: This Site!</div>
+'/><h1 class='post-title'><div>Inspection & Dissection: This Site!</div>
+</h1><p>Look at me with a fancy website. We're about to get meta as we discuss how this site you're exploring right now came to be.</p>
+<a name='why-have-a-website?'></a><h1>Why have a website?</h1>
+<p>I want something to point to when someone asks 'so what have you done?'. I also need it for when I ask myself the same thing. Sometimes I wonder how much I have actually done in my spare time, and a site like this helps me to remember that I haven't wasted <em>all</em> of my spare time on Minecraft.</p>
+<a name='why-make-your-own-website?'></a><h1>Why make your own website?</h1>
+<p>Here in Computer Science land: men are real men, women are real women, and small furry creatures from Alpha Centauri are real small furry creatures from Alpha Centauri; thanks to these huge revelations in the field of existentialism we take it upon ourselves to walk the road already taken.</p>
+<p>The real reason is I ought to have side-projects, more than I used to. I have more time, not just because of COVID but also because Computer Science is now the only academic subject I have to pay attention to, whereas most of my time in Sixth Form was spent on Maths and Further Maths. It made reasonable sense for the first project to be a platform for my other projects and this is that platform.</p>
+<a name='where-did-you-start?'></a><h1>Where did you start?</h1>
+<p>I knew I wanted to make a website with a Flask back end for 2 reasons:</p>
+<ol>
+<li><p>I wanted a back-end that could enable things like logging in and writing blog posts all within the site.</p>
+</li>
+<li><p>I vehemently hate JavaScript and would prefer to do as much with python as possible. In fact this whole site doesn't have any JavaScript. You can inspect element and see that everything front end is done through CSS and HTML; this is certain to change but I will hold out for as long as I can.</p>
+</li>
+</ol>
+<p>For the uninitiated, websites have 2 parts: A front end and a back end. In a simple form, the front end is everything you see (HTML, CSS, JS) and the backend is everything you don't (Databases, Form requests, etc). Flask is a python framework that allows the said language to be used to serve all your requests.</p>
+<p>I had used Flask in the past whilst following the <a href="https://cs50.harvard.edu/x/2021/">Harvard CS50x</a> course back in 2019 to make a fake stocks app (💎👐). This time round, to re-familiarise myself I followed <a href="https://flask.palletsprojects.com/en/1.1.x/tutorial/">this excellent tutorial</a>.</p>
+<p>After you are let loose on your own (especially in web dev) I found you have to have goals and a purpose to what you are doing otherwise it'll never happened. I persevered through the trial-and-error process that is CSS</p>
+<p>I used a couple of sites for reference when I was making the design for the sight. These were the sights of: my new friend <a href="https://gwood.dev">George Wood</a>, the blog of <a href="https://www.caseyliss.com/">Casey Liss</a>, the blog of <a href="https://marco.org">Marco Arment</a>, and <a href="https://hypercritical.co">Hypercritical</a> (No prizes for guessing which podcast I listen to).</p>
+<a name='what-extra-things-have-you-done?'></a><h1>What extra things have you done?</h1>
+<p>I'm honoured at your presumption that I go above and beyond in the call of duty. The main thing I have done is make all my posts in markdown. Yes, all my posts are entirely written in markdown which makes me able to write nicely structured documents quickly. The raw text of the markdown is stored as a regular text field in the sqlite database but at the stage when the backend grabs the field from the database, jinja parses it as html using the python module <a href="https://mistune.readthedocs.io/en/latest/intro.html">mistune</a>. To spice the formatting up even further, since I will be probably be using code snippets, I added the syntax highlighter <a href="https://pygments.org/">pygments</a>. In fact here is the code for the highlight renderer being rendered in it:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mistune</span>
+<span class="kn">from</span> <span class="nn">pygments</span> <span class="kn">import</span> <span class="n">highlight</span>
+<span class="kn">from</span> <span class="nn">pygments.lexers</span> <span class="kn">import</span> <span class="n">get_lexer_by_name</span>
+<span class="kn">from</span> <span class="nn">pygments.formatters</span> <span class="kn">import</span> <span class="n">html</span>
+
+
+<span class="k">class</span> <span class="nc">HighlightRenderer</span><span class="p">(</span><span class="n">mistune</span><span class="o">.</span><span class="n">Renderer</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">block_code</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">lang</span><span class="p">:</span>
+            <span class="n">lexer</span> <span class="o">=</span> <span class="n">get_lexer_by_name</span><span class="p">(</span><span class="n">lang</span><span class="p">,</span> <span class="n">stripall</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">formatter</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">HtmlFormatter</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;monokai&#39;</span><span class="p">,</span> <span class="n">noclasses</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">highlight</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">lexer</span><span class="p">,</span> <span class="n">formatter</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s1">&#39;&lt;pre&gt;&lt;code&gt;&#39;</span> <span class="o">+</span> <span class="n">mistune</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">code</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&lt;/code&gt;&lt;/pre&gt;&#39;</span>
+</pre></div>
+<p>It goes without saying that this website will continue to be updated as I change my mind on a few things and wish to add more functionality. On my list of todos are:</p>
+<ul>
+<li>A switch between light mode and dark mode</li>
+<li>A way for people to follow the blog (maybe through RSS)</li>
+<li>A way to better list out blog posts (currently all are listed on one page which will probably become cumbersome when they grow in number)</li>
+</ul>
+<p>In the meantime I hope you come back and see if I can offer you any informative content.</p>
+
+    </article>
+
+<footer>
+    &copy; Luke Briggs
+</footer>
+<script>
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+
+    hamburger.addEventListener("click", mobileMenu);
+
+    function mobileMenu() {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+
+    }
+
+    const navLink = document.querySelectorAll(".nav-link");
+
+    navLink.forEach(n => n.addEventListener("click", closeMenu));
+
+    function closeMenu() {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+    }
+
+</script>
+</body>
+</html>

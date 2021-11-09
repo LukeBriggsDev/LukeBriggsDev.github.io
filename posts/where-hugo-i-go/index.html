@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0;">
+
+    <meta property="og:description" content="I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://lukebriggs.dev/" />
+    <meta property="og:image" content="https://lukebriggs.dev/banner.png"/>
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image" content="https://lukebriggs.dev/banner.png"/>
+    <meta name="twitter:title" content="Luke Briggs"/>
+    <meta name="twitter:description" content="I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University"/>
+    <meta name="application-name" content="Luke Briggs">
+
+    <title> Where-Hugo-I-Go  - Luke Briggs</title>
+    <base href="https://lukebriggs.dev/">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="feed" type="application/rss+xml" href="index.xml" title="Luke Briggs">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="assets/stylesheets/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/stylesheets/victor.css">
+    <link rel="stylesheet" href="assets/stylesheets/syntax_highlight.css">
+    <link rel="stylesheet" href="assets/stylesheets/projects.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <ul class="nav-menu">
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="">Home</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="posts">Posts</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="projects">Projects</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="about">About</a>
+                </li>
+            
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+</header>
+
+    <article>
+        <h4 class="description">Mon 03 May 2021</h4>
+        <img class='post-hero' src='static/postimages/where-hugo-i-go/banner.png' alt='<div>Where Hugo I Go</div>
+'/><h1 class='post-title'><div>Where Hugo I Go</div>
+</h1><p>As you are probably aware, I have redecorated. I said in a <a href="posts/inspection-and-dissection-this-site">previous post</a> that my reason for making my own site in the first place was as a central hub to point people to all the things that I do. Despite the fact that from the outside it looks like I haven't done a whole lot since, behind the scenes I have my biggest project yet in development (check out my <a href="https://github.com/lukebriggsdev">GitHub</a> if you want a sneak preview of that). It was while working on my project that I realised that I shouldn't have a site that requires my to ssh into a VPS and pull a git repository every time I want to add a post.</p>
+<a name='technology'></a><h2>Technology</h2>
+<p>Behind the scenes, the site is hosted on GitHub Pages. The site is generated using a static site generator called <a href="https://gohugo.io/">Hugo</a> with a <em>slightly</em> tweaked version of the <a href="https://themes.gohugo.io/loveit/">LoveIt</a>.</p>
+<p>With a static site I can remove server costs completely, have a better looking site, and make it easier to add new posts.</p>
+<p>Because each post is now a document rather than a database field, you can also stick <code>index.md</code> at the end of any post to get the raw markdown for that post. You are also able to view the source for the site at <a href="https://github.com/lukebriggsdev/lukebriggsdev.github.io">my GitHub</a></p>
+<a name='new-logo'></a><h2>New Logo</h2>
+<p><img src="static/postimages/where-hugo-i-go/ComputerLogoAnim.png" alt="New Logo" /></p>
+<p>Along with the revamped site, I have created a new logo to go with it; it is probably the best looking thing I have ever drawn. The logo takes inspiration from the IBM PCJr with a few more rounded corners, thinner bezels, and a more minimalist feel.</p>
+<p>It was made in <a href="https://inkscape.org">Inkscape</a> with the basic shapes and the font is Roboto Mono.</p>
+
+    </article>
+
+<footer>
+    &copy; Luke Briggs
+</footer>
+<script>
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+
+    hamburger.addEventListener("click", mobileMenu);
+
+    function mobileMenu() {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+
+    }
+
+    const navLink = document.querySelectorAll(".nav-link");
+
+    navLink.forEach(n => n.addEventListener("click", closeMenu));
+
+    function closeMenu() {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+    }
+
+</script>
+</body>
+</html>

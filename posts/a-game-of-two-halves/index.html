@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0;">
+
+    <meta property="og:description" content="I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://lukebriggs.dev/" />
+    <meta property="og:image" content="https://lukebriggs.dev/banner.png"/>
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image" content="https://lukebriggs.dev/banner.png"/>
+    <meta name="twitter:title" content="Luke Briggs"/>
+    <meta name="twitter:description" content="I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University"/>
+    <meta name="application-name" content="Luke Briggs">
+
+    <title> A-Game-Of-Two-Halves  - Luke Briggs</title>
+    <base href="https://lukebriggs.dev/">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="feed" type="application/rss+xml" href="index.xml" title="Luke Briggs">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="assets/stylesheets/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/stylesheets/victor.css">
+    <link rel="stylesheet" href="assets/stylesheets/syntax_highlight.css">
+    <link rel="stylesheet" href="assets/stylesheets/projects.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <ul class="nav-menu">
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="">Home</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="posts">Posts</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="projects">Projects</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="about">About</a>
+                </li>
+            
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+</header>
+
+    <article>
+        <h4 class="description">Sat 23 Jun 2018</h4>
+        <img class='post-hero' src='static/postimages/2/construct2.jpg' alt='<div>A Game of Two Halves</div>
+'/><h1 class='post-title'><div>A Game of Two Halves</div>
+</h1><blockquote>
+<p>“It is a mistake to think you can solve any major problems
+just with potatoes.”</p>
+<p>-Douglas Adams</p>
+</blockquote>
+<p>The first videogame I ever played was Crash Bandicoot for the PlayStation One. I spent many an hour running my little orange friend across precarious ledges and away from Raiders of the Lost Ark levels of boulderage.  As is usually the case with videogames during your early childhood, I imagine I didn’t get anywhere near as far as I think. I will never know though as not long into my tenure in videogames I suffered my first casualty. My PS1 and all its saves froze in a pixellated mess on my screen and in the words of John Cleese, “ceased to be”.</p>
+<p>As I played more advanced and thought-provoking games I wondered what it would take to make my own and after numerous false starts I  finally made my first game (sort of). The game , Fallen Stars, was made using [Construct 2] (<a href="https://www.scirra.com/">https://www.scirra.com/</a>). Construct is the piece of software that makes making games so easy you can create your first game within a day, rather than programming scripts and dealing with forces you utilise an incredibly powerful ‘drag and drop’ interface with the ability to create some pretty professional looking software. I recommend watching <a href="https://www.youtube.com/watch?v=zxAjmicdeiU&amp;list=PLRDhcp_8c7uAPQfE6WMBo7PCNlkQIOLdO">3kliksphilip’s Game Making Journey</a> for an almost videogame origin story as well an explanation of what these types of tools can do. I would thoroughly recommend those who don’t know where to begin to give these prototyping software ago as it is by far the way to get the quickest turnaround of a videogame from concept to executable.</p>
+<p>Following my escapades in construct my game making took back seat as I switched to learning more programming languages past the rudimentary python skills gained at age 14 in school and final exams loomed in summer 2018. I furthered my knowledge of python and used websites such as <a href="https://www.codecademy.com/">Codeacademy</a> to pickup the basics of JavaScript and C#; this is very useful in showing you what all different types of languages there are and the uses of them.</p>
+<p><strong>I would like to stress at this moment I only have a basic knowledge of these thee languages. Instantiation is as advanced as it gets at the moment, just wanted to reassure anyone wanting to learn to program that you don’t need to be an expert at all these to get a grasp of what programming is like or in order to get a good base for game development.</strong></p>
+<p>Fast-forward to now, summer 2018, and I have time for game development again and I wanted it to more closely link to my programming and software work. I chose Unity as my editor of choice for three reasons.</p>
+<ol>
+<li>It allows me to use the C# skills I had already put the effort in learning.</li>
+<li>It seems a lot more accessible than other engines as the structure seems more straightforward and you can get almost all features for free.</li>
+<li>It is versatile. You can make both 2D and 3D games for pretty much all platforms.</li>
+</ol>
+<p>It is with Unity that I went on to make my next game Ping.</p>
+
+    </article>
+
+<footer>
+    &copy; Luke Briggs
+</footer>
+<script>
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+
+    hamburger.addEventListener("click", mobileMenu);
+
+    function mobileMenu() {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+
+    }
+
+    const navLink = document.querySelectorAll(".nav-link");
+
+    navLink.forEach(n => n.addEventListener("click", closeMenu));
+
+    function closeMenu() {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+    }
+
+</script>
+</body>
+</html>

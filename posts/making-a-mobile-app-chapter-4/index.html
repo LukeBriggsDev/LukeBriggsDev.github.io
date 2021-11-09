@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0;">
+
+    <meta property="og:description" content="I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://lukebriggs.dev/" />
+    <meta property="og:image" content="https://lukebriggs.dev/banner.png"/>
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image" content="https://lukebriggs.dev/banner.png"/>
+    <meta name="twitter:title" content="Luke Briggs"/>
+    <meta name="twitter:description" content="I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University"/>
+    <meta name="application-name" content="Luke Briggs">
+
+    <title> Making-A-Mobile-App-Chapter-4  - Luke Briggs</title>
+    <base href="https://lukebriggs.dev/">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="feed" type="application/rss+xml" href="index.xml" title="Luke Briggs">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="assets/stylesheets/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/stylesheets/victor.css">
+    <link rel="stylesheet" href="assets/stylesheets/syntax_highlight.css">
+    <link rel="stylesheet" href="assets/stylesheets/projects.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <ul class="nav-menu">
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="">Home</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="posts">Posts</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="projects">Projects</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="about">About</a>
+                </li>
+            
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+</header>
+
+    <article>
+        <h4 class="description">Mon 10 Dec 2018</h4>
+        <img class='post-hero' src='static/postimages/8/desk.jpg' alt='<div>Making a Mobile App – Chapter 4: Fast and Flash</div>
+'/><h1 class='post-title'><div>Making a Mobile App – Chapter 4: Fast and Flash</div>
+</h1><blockquote>
+<p>“A common mistake that people make when trying to design something
+completely foolproof is to underestimate the ingenuity of complete fools.”</p>
+<p>Douglas Adams</p>
+</blockquote>
+<p>As this app will be for a business, it has to serve some purposes. First it has to present the company as a professional entity and also fit with its branding to provide not only a consistent experience but to also strengthen that companies place in your head, making them more likely to go to them rather than anyone else. Next it has to serve a point, it’s all well and good having some fancy spiel about company ethos and dedication to the craft but you want the user to have a reason to not only to install your app but to also keep using it. Finally, it has to be straightforward to use and foolproof. Well, nothing is foolproof proof. Well, nothing is foolproof.</p>
+<a name='branding'></a><h4>Branding</h4>
+<p>The company colours were red, dark grey and white. It therefore makes sense for the app to only use the colours red dark grey and white, seems simple enough.</p>
+<p><img src="static/postimages/8/redapp.png" alt="red app" /></p>
+<p>Eww, a red pastel background with black text and mismatch white buttons and icons. It looks like a tomato soup can just exploded in the microwave. It’s all about complimentary colours and keeping things clean. The main colour of any app or website shouldn’t be something outrageous or garish, you want to present professionalism and minimalism. It’s good to have an accent colour that pops and has your brand stand out but if you end up with too much it is both nauseating and ugly.</p>
+<p><img src="static/postimages/8/blackapp.png" alt="black app" /></p>
+<p>Ahh Much better. Character is nice but flamboyance is very easily annoying</p>
+<a name='purpose'></a><h4>Purpose</h4>
+<p>Like I say, your app needs a purpose otherwise what’s the point?</p>
+<p><img src="static/postimages/8/menu.png" alt="menu" />
+<img src="static/postimages/8/times.png" alt="times" /></p>
+<p>As you can see the app act doesn’t revolutionise e-commerce but what it does do is act as a hub for everything involved with this company. You can click a button and google maps opens up with the locations for shops and restaurants already plugged in and ready to plan a route. You can call to book a table for a restaurant and there are galleries of menus and images to see what products and dishes are on offer (As a side note if you are making a ReactJS app in Expo then <a href="https://www.npmjs.com/package/react-native-image-view">react-native-image-view</a> is a godsend, it is a bit fiddly to get working but it means you can keep using Expo without having to delve into Android files and java SDKs).</p>
+<a name='foolproofness-and-expandability'></a><h4>Foolproofness and Expandability</h4>
+<p>To make your app accessible you have to ensure it is something easy to navigate and intuitive to use. Since this is my first mobile app I felt it was more of a case of making sure it doesn’t look out of place compared to the modern selection of mobile apps that supermarkets and resteraunts have on offer. It uses clear icons and a navigation bar at the bottom which is the current style. I wanted the user to not be confused upon opening the app but feel comfortable in using it and having a smooth experience.</p>
+<p>One of the brilliant things about React Native is the modules are not only easy to use but also offer a great deal of wiggle room to do what you want. For example, creating new screens is as easy as adding a function to that screens javascript add sticking a call to it in a main navigator script; this allows the room to expand quite quickly once you’ve got a baseline set giving scalability without what some projects have which is a feeling of trying to balance on one leg while trying to solve a rubik’s cube.</p>
+
+    </article>
+
+<footer>
+    &copy; Luke Briggs
+</footer>
+<script>
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+
+    hamburger.addEventListener("click", mobileMenu);
+
+    function mobileMenu() {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+
+    }
+
+    const navLink = document.querySelectorAll(".nav-link");
+
+    navLink.forEach(n => n.addEventListener("click", closeMenu));
+
+    function closeMenu() {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+    }
+
+</script>
+</body>
+</html>

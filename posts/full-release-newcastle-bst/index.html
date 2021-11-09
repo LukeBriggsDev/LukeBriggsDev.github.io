@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0;">
+
+    <meta property="og:description" content="I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://lukebriggs.dev/" />
+    <meta property="og:image" content="https://lukebriggs.dev/banner.png"/>
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image" content="https://lukebriggs.dev/banner.png"/>
+    <meta name="twitter:title" content="Luke Briggs"/>
+    <meta name="twitter:description" content="I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University"/>
+    <meta name="application-name" content="Luke Briggs">
+
+    <title> Full-Release-Newcastle-Bst  - Luke Briggs</title>
+    <base href="https://lukebriggs.dev/">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="feed" type="application/rss+xml" href="index.xml" title="Luke Briggs">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="assets/stylesheets/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/stylesheets/victor.css">
+    <link rel="stylesheet" href="assets/stylesheets/syntax_highlight.css">
+    <link rel="stylesheet" href="assets/stylesheets/projects.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <ul class="nav-menu">
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="">Home</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="posts">Posts</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="projects">Projects</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="about">About</a>
+                </li>
+            
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+</header>
+
+    <article>
+        <h4 class="description">Sat 10 Jul 2021</h4>
+        <img class='post-hero' src='static/postimages/full-release-newcastle-bst/bibtex.png' alt='<div>Full Release: newcastle-bst - Harvard referencing style as recommended by Newcastle University</div>
+'/><h1 class='post-title'><div>Full Release: newcastle-bst - Harvard referencing style as recommended by Newcastle University</div>
+</h1><p>A couple of months ago I released <a href="posts/the-laypersons-guide-to-latex">a blog post about LateX</a>.
+At the bottom of the post I made quick reference to a BibTeX style I had created for the referencing used by Newcastle University.
+The style had a few bugs and was quite hard to find it but it was left dormant while I made some other software and focused on work.</p>
+<p>I am now pleased to say that I have spent some work polishing it up, fixing some issues, and giving it a proper release.
+It's even on <a href="https://ctan.org/pkg/newcastle-bst">CTAN!</a>.
+If you are a student and notice any issues, please report them on <a href="https://github.com/LukeBriggsDev/Newcastle-BibTeX/issues">GitHub</a></p>
+<a name='release-notes'></a><h1>Release Notes</h1>
+<a name='newcastle-bst:-harvard-referencing-style-as-recommended-by-newcastle-university'></a><h2>newcastle-bst: Harvard referencing style as recommended by Newcastle University</h2>
+<p>This package provides a <a href="https://ctan.org/pkg/BibTeX">BibTeX</a> style to format reference lists in the <a href="https://libguides.ncl.ac.uk/managing/harvard">Harvard at Newcastle</a> style recommended by Newcastle University. It should be used alongside <a href="https://ctan.org/pkg/natbib">natbib</a> for citations.</p>
+<a name='installation'></a><h3>Installation</h3>
+<p>The required style file is available from <a href="https://github.com/LukeBriggsDev/Newcastle-BibTeX">GitHub</a> and <a href="https://ctan.org/pkg/newcastle-bst">CTAN</a>. You can use the style by copying it into your working directory containing your <code>.tex</code> file. You can also add it to your bst directory in your tex path to use it without having to copy it over each time.</p>
+<a name='using-the-style'></a><h3>Using the style</h3>
+<p>To use the style include this in your preamble:</p>
+<div class="highlight"><pre><span></span><span class="k">\usepackage</span><span class="nb">{</span>natbib<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="na">[UKenglish]</span><span class="nb">{</span>isodate<span class="nb">}</span>
+<span class="k">\bibliographystyle</span><span class="nb">{</span>newcastle<span class="nb">}</span>
+</pre></div>
+<p>Also remember to specify your <code>.bib</code> file at the end of the document:</p>
+<div class="highlight"><pre><span></span><span class="k">\bibliography</span><span class="nb">{</span>file<span class="nb">}</span>
+</pre></div>
+<p>The easiest way to create .bib files for this style is through exporting entries from a reference manager such as <a href="https://www.mendeley.com/">Mendeley</a>.
+However, some parts are not available through this (such as titleaddon for computer programs).
+If you notice any discrepancies between generated references and the recommended styles then please raise this on <a href="https://github.com/LukeBriggsDev/Newcastle-BibTeX/issues">GitHub</a></p>
+<a name='license'></a><h3>License</h3>
+<p>Copyright 2021 Luke Briggs
+This work consists of the documented <code>newcastle.bst</code> file.</p>
+<p>The text files contained in this work may be distributed and/or modified under the conditions of the LATEX Project Public License (LPPL), either version 1.3c of this license or (at your option) any later version.</p>
+<p>This work has had no input from Newcastle University and is done entirely in order to help other students create bibliography quicker.</p>
+<p>This work is ‘maintained’ (as per LPPL maintenance status) by Luke Briggs.</p>
+
+    </article>
+
+<footer>
+    &copy; Luke Briggs
+</footer>
+<script>
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+
+    hamburger.addEventListener("click", mobileMenu);
+
+    function mobileMenu() {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+
+    }
+
+    const navLink = document.querySelectorAll(".nav-link");
+
+    navLink.forEach(n => n.addEventListener("click", closeMenu));
+
+    function closeMenu() {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+    }
+
+</script>
+</body>
+</html>

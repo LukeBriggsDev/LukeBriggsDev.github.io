@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0;">
+
+    <meta property="og:description" content="I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://lukebriggs.dev/" />
+    <meta property="og:image" content="https://lukebriggs.dev/banner.png"/>
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image" content="https://lukebriggs.dev/banner.png"/>
+    <meta name="twitter:title" content="Luke Briggs"/>
+    <meta name="twitter:description" content="I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University"/>
+    <meta name="application-name" content="Luke Briggs">
+
+    <title> Making-A-Mobile-App-Chapter-2  - Luke Briggs</title>
+    <base href="https://lukebriggs.dev/">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="feed" type="application/rss+xml" href="index.xml" title="Luke Briggs">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="assets/stylesheets/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/stylesheets/victor.css">
+    <link rel="stylesheet" href="assets/stylesheets/syntax_highlight.css">
+    <link rel="stylesheet" href="assets/stylesheets/projects.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <ul class="nav-menu">
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="">Home</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="posts">Posts</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="projects">Projects</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="about">About</a>
+                </li>
+            
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+</header>
+
+    <article>
+        <h4 class="description">Sun 09 Dec 2018</h4>
+        <img class='post-hero' src='static/postimages/6/phone.jpg' alt='<div>Making a Mobile App – Chapter 2: A Bad Worker Blames His Tools</div>
+'/><h1 class='post-title'><div>Making a Mobile App – Chapter 2: A Bad Worker Blames His Tools</div>
+</h1><blockquote>
+<p>“Don’t Panic.”</p>
+<p>Douglas Adams</p>
+</blockquote>
+<p>Finding the right tool for the job might be the most important thing I’ve learned &gt;in my short time in the world of development. The classic conversation everyone who wants to get into development goes something like this:</p>
+<blockquote>
+<p>New Guy: “What programming language is best.”</p>
+<p>Pro: “There isn’t one.”</p>
+<p>New Guy: “Ok. Well what programming language should I use for X.”</p>
+<p>Pro: “It depends.”</p>
+<p>New Guy: “Fine. Well what should I use if I want to use X for Y.”</p>
+<p>Pro: “Whatever you are comfortable with.”</p>
+<p>New Guy: “What do you mean comfortable. I’ve never programmed before,
+anyway its not as if a language is some sort of sofa. Hey! Where are you going!
+you can’t just leave me here!”</p>
+<p>Google: “Hello.”</p>
+<p>New Guy: “What.”</p>
+<p>Google: “I’m your new best friend.”</p>
+</blockquote>
+<p>There are so many use cases and things you might want to develop that almost every instance of someone’s development is bespoke to what they want. This is something that you have to have experiences before you understand it which makes it more useful for a new developer to learn while doing rather than learning then doing.</p>
+<p>I had to find the right tools for what I wanted. My requirements for this app were based off of the time constraints I had, the lack of experience I had and the needs I felt the app had:</p>
+<ol>
+<li>Needed to be easy to port to different platforms.</li>
+<li>Had to be easy to integrate design and programming elements together.</li>
+<li>Needed to be able to make a professional and modern look.
+4.Didn’t require low level access</li>
+</ol>
+<p>I settled on <a href="https://facebook.github.io/react-native/">React Native</a> with the <a href="https://expo.io/">Expo toolchain</a>. I felt React was by far the best option I had. The only other options were using C# to make a Xamarin.Forms app which felt a bit like using a jackhammer to do teeth surgery or learning to use Java and Objective-C/Swift to do native development and use a completely different codebase, not only would I have to learn two languages and systems at once but also would need to fork out an initial cost of $99 for an apple developer account and develop on an Mac which I neither have nor want.</p>
+<p>I’m using Expo because it means the app will be fully cross platform and I don’t need to interact with any of the awkward SDK’s and system specific stuff. Expo also provides a neat app that you run on your Android or iOS which connects to a local server with the app files and allows you to run your app within their app, no compiling, no apple developer account, no Mac. This made testing incredibly easy. Expo also handles keystoring for Android and all that fancy stuff.</p>
+
+    </article>
+
+<footer>
+    &copy; Luke Briggs
+</footer>
+<script>
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+
+    hamburger.addEventListener("click", mobileMenu);
+
+    function mobileMenu() {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+
+    }
+
+    const navLink = document.querySelectorAll(".nav-link");
+
+    navLink.forEach(n => n.addEventListener("click", closeMenu));
+
+    function closeMenu() {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+    }
+
+</script>
+</body>
+</html>

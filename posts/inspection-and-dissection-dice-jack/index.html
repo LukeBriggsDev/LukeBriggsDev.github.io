@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0;">
+
+    <meta property="og:description" content="I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://lukebriggs.dev/" />
+    <meta property="og:image" content="https://lukebriggs.dev/banner.png"/>
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image" content="https://lukebriggs.dev/banner.png"/>
+    <meta name="twitter:title" content="Luke Briggs"/>
+    <meta name="twitter:description" content="I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University"/>
+    <meta name="application-name" content="Luke Briggs">
+
+    <title> Inspection-And-Dissection-Dice-Jack  - Luke Briggs</title>
+    <base href="https://lukebriggs.dev/">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="feed" type="application/rss+xml" href="index.xml" title="Luke Briggs">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="assets/stylesheets/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/stylesheets/victor.css">
+    <link rel="stylesheet" href="assets/stylesheets/syntax_highlight.css">
+    <link rel="stylesheet" href="assets/stylesheets/projects.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <ul class="nav-menu">
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="">Home</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="posts">Posts</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="projects">Projects</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="about">About</a>
+                </li>
+            
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+</header>
+
+    <article>
+        <h4 class="description">Tue 24 Sep 2019</h4>
+        <img class='post-hero' src='static/postimages/10/dicejack1.png' alt='<div>Inspection & Dissection: Dice-Jack</div>
+'/><h1 class='post-title'><div>Inspection & Dissection: Dice-Jack</div>
+</h1><p>As part of a course we had to make a game in 2 days that involved random dice and be made as a Windows forms application with Visual Basic. So we had to make a game in something that was the furthest you could get from a game engine with a language I had never used before. But hey, <a href="https://en.wikipedia.org/wiki/Rogue_%28video_game%29">Rogue</a> was made in 1980 and the graphics had to be ASCII so it could be worse.</p>
+<p>The rest of the class generally stuck to the brief with 3 dice that you rolled and you got points for each dot.</p>
+<p><img src="static/postimages/10/dicejack2.png" alt="dicejack 2" /></p>
+<p>As you can see, its rather simple. Theres 4 picture boxes, 4 labels, 2 buttons and a listbox. Dice are rolled, the dots are added up and the score is added to the listbox. After 5 rolls the game ends and the player is given their total score. But to know how I added further features we need to look at how this prototype was made.</p>
+<a name='behind-the-prototype'></a><h1>Behind the prototype</h1>
+<div class="highlight"><pre><span></span><span class="k">Dim</span> <span class="n">Die1</span><span class="p">,</span> <span class="n">Die2</span><span class="p">,</span> <span class="n">Die3</span> <span class="ow">As</span> <span class="kt">Integer</span>
+<span class="k">Dim</span> <span class="n">DicePoints</span> <span class="ow">As</span> <span class="kt">Integer</span>
+<span class="k">Dim</span> <span class="n">random</span> <span class="ow">As</span> <span class="n">Random</span>
+<span class="k">Dim</span> <span class="n">RollCount</span> <span class="ow">As</span> <span class="kt">Integer</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+<p>So we have our variables declared in the convoluted VB way. Die1, Die2, and Die3 and the scores for the corresponding dice. DicePoints is the total of those 3 scores and rollcount keeps track of how many times the dice were rolled. Random is just an object we use to generate random numbers</p>
+<div class="highlight"><pre><span></span><span class="k">Private</span> <span class="k">Sub</span> <span class="nf">tmrTimer_Tick</span><span class="p">(</span><span class="n">sender</span> <span class="ow">As</span> <span class="kt">Object</span><span class="p">,</span> <span class="n">e</span> <span class="ow">As</span> <span class="n">EventArgs</span><span class="p">)</span> <span class="k">Handles</span> <span class="n">tmrTimer</span><span class="p">.</span><span class="n">Tick</span>
+        <span class="c">&#39;Increments the load bar every tick</span>
+        <span class="n">random</span> <span class="o">=</span> <span class="k">New</span> <span class="n">Random</span>
+        <span class="n">prbLoad</span><span class="p">.</span><span class="n">Increment</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+        <span class="k">If</span> <span class="n">prbLoad</span><span class="p">.</span><span class="n">Value</span> <span class="o">=</span> <span class="mi">100</span> <span class="k">Then</span>
+        <span class="p">...</span>
+        <span class="k">Else</span>
+            <span class="c">&#39;Sets dice to random number when the timer ticks before the load is full</span>
+            <span class="n">Die1</span> <span class="o">=</span> <span class="n">random</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+            <span class="n">Die2</span> <span class="o">=</span> <span class="n">random</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+            <span class="n">Die3</span> <span class="o">=</span> <span class="n">random</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+
+            <span class="n">MatchImage</span><span class="p">(</span><span class="n">Die1</span><span class="p">,</span> <span class="n">pbxDie1</span><span class="p">)</span>
+            <span class="n">MatchImage</span><span class="p">(</span><span class="n">Die2</span><span class="p">,</span> <span class="n">pbxDie2</span><span class="p">)</span>
+            <span class="n">MatchImage</span><span class="p">(</span><span class="n">Die3</span><span class="p">,</span> <span class="n">pbxDie3</span><span class="p">)</span>
+
+        <span class="k">End</span> <span class="k">If</span>
+</pre></div>
+<p>On the board is a timer (inventfully called tmrTimer), it tick every 0.1s. Each tick it adds a bit onto the load bar at the bottom and randomizes the images on the dice. MatchImage is my own subroutine but all it does is take an integer and applies the correct face for it to whichever picture box I pass it.</p>
+<p>Once the bar gets to 100, the fun begins.</p>
+<div class="highlight"><pre><span></span><span class="k">If</span> <span class="n">prbLoad</span><span class="p">.</span><span class="n">Value</span> <span class="o">=</span> <span class="mi">100</span> <span class="k">Then</span>
+            <span class="c">&#39;Adds the necessary points on the random dice when the load bar </span>
+            <span class="c">&#39;reaches 100</span>
+            <span class="n">tmrTimer</span><span class="p">.</span><span class="n">Stop</span><span class="p">()</span>
+            <span class="n">prbLoad</span><span class="p">.</span><span class="n">Value</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">RollCount</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">DicePoints</span> <span class="o">=</span> <span class="n">Die1</span> <span class="o">+</span> <span class="n">Die2</span> <span class="o">+</span> <span class="n">Die3</span>
+</pre></div>
+<p>We stop the timer ticking, we empty the load bar and we increment our roll counter before adding up all the spots on the dice, pretty simple.</p>
+<div class="highlight"><pre><span></span><span class="c">&#39;Adds Score to list</span>
+<span class="n">lstScore</span><span class="p">.</span><span class="n">Items</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;Roll &quot;</span> <span class="o">&amp;</span> <span class="n">RollCount</span> <span class="o">&amp;</span> <span class="s">&quot;: &quot;</span> <span class="o">&amp;</span> <span class="n">DicePoints</span><span class="p">)</span>
+<span class="n">GameScore</span> <span class="o">+=</span> <span class="n">DicePoints</span>
+<span class="n">DicePoints</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+<p>Almost done, we add our points to the listbox with some formatting. Add the points to the total score for the game and then set it back to 0.</p>
+<div class="highlight"><pre><span></span><span class="k">If</span> <span class="n">RollCount</span> <span class="o">&gt;=</span> <span class="mi">5</span> <span class="k">Then</span>
+    <span class="n">MsgBox</span><span class="p">(</span><span class="s">&quot;Your game score was &quot;</span> <span class="o">&amp;</span> <span class="n">GameScore</span><span class="p">,,</span> <span class="s">&quot;Game Over&quot;</span><span class="p">)</span>
+    <span class="n">tmrTimer</span><span class="p">.</span><span class="n">Stop</span><span class="p">()</span>
+    <span class="n">btnStart</span><span class="p">.</span><span class="n">Enabled</span> <span class="o">=</span> <span class="k">False</span>
+    <span class="n">btnReset</span><span class="p">.</span><span class="n">Enabled</span> <span class="o">=</span> <span class="k">True</span>
+
+<span class="k">End</span> <span class="k">If</span>
+</pre></div>
+<p>Then we check whether they have reached the magic 5 rolls, if so we tell them their score and let them reset the game</p>
+<p>There is also some initialisation code that assigns images and there are event handlers that make the buttons work but this is the main logic. If you would like to see how that stuff works, you can find it at the <a href="https://github.com/LukeBriggsDev/Dice-Alpha">github repo</a></p>
+<a name='the-evolution'></a><h1>The Evolution</h1>
+<p>The following won’t include too many code snippets since it is slightly more extensive (the rushed deadline also means it resembles a tin of Heinz spaghetti in a tumble dryer but we’ll keep that between us)</p>
+<p><img src="static/postimages/10/dicejack1.png" alt="dicejack 1" /></p>
+<p>Lets break this down.</p>
+<p>First we have a background that was shamelessly made in powerpoint.</p>
+<p><img src="static/postimages/10/dicejack3.png" alt="dicejack 3" /></p>
+<p>The rules, scores, and title are all labels. The bar on the right is made up of the same button and listbox items as before but with its properties edited to change colour, font and border style.</p>
+<p><strong>The Rules have been changed to the following:</strong></p>
+<ul>
+<li>The goal is to get as close to 21 points without going over</li>
+<li>There is a Player and a Dealer</li>
+<li>Each contestant has 2 dice</li>
+<li>The player goes first</li>
+<li>Each dice spot is worth 2 points</li>
+<li>If either the player or dealer goes over 21, they lose the game</li>
+<li>After the first roll, if the player has not gone bust, they can choose to ‘stand’ or ‘hit’</li>
+<li>If they ‘hit’, the dice are rolled again and the player can choose to add the points of either die or the total of both dice</li>
+<li>The player must add a score after hitting, even if it means they will go ‘bust’</li>
+<li>In the event of a tie, the game goes to the dealer</li>
+</ul>
+<p>The rules are based on those by <a href="http://www.chessandpoker.com/dice_blackjack.html">James Yates</a></p>
+<p>Instead of a big chunk of code I’m going to show you the process of a turn through our good old friend the flow chart. They can be intimidating but I’ve tried to make it in a way that is easy to follow and you should be ale to get a grasp of what the code is doing behind the scenes.</p>
+<p><img src="static/postimages/10/flowchart.png" alt="flowchart" /></p>
+<p>There you go, who needs a hundred lines of bolognese when you can have pastel shapes?</p>
+<p>Those who played the game may also notice this is the first time I’ve included a computer-controlled opponent, ‘The Dealer’. The dealer is like the player but has the advantages of being able to go second and win in the result of a draw. The dealer’s choice code is as follows:</p>
+<div class="highlight"><pre><span></span><span class="k">If</span> <span class="n">DealerCanChoose1</span> <span class="ow">And</span> <span class="k">Not</span> <span class="p">(</span><span class="n">DealerCanChoose2</span> <span class="ow">Or</span> <span class="n">DealerCanChooseBoth</span><span class="p">)</span> <span class="k">Then</span>
+    <span class="n">DealerScore</span> <span class="o">+=</span> <span class="n">Die1</span> <span class="o">*</span> <span class="mi">2</span>
+
+<span class="k">ElseIf</span> <span class="n">DealerCanChoose2</span> <span class="ow">And</span> <span class="k">Not</span> <span class="p">(</span><span class="n">DealerCanChoose1</span> <span class="ow">Or</span> <span class="n">DealerCanChooseBoth</span><span class="p">)</span> <span class="k">Then</span>
+    <span class="n">DealerScore</span> <span class="o">+=</span> <span class="n">Die2</span> <span class="o">*</span> <span class="mi">2</span>
+
+<span class="k">ElseIf</span> <span class="n">DealerCanChooseBoth</span> <span class="k">Then</span>
+    <span class="n">DealerScore</span> <span class="o">+=</span> <span class="p">(</span><span class="n">Die1</span> <span class="o">+</span> <span class="n">Die2</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
+
+<span class="k">ElseIf</span> <span class="n">DealerCanChoose1</span> <span class="ow">And</span> <span class="n">DealerCanChoose2</span> <span class="k">Then</span>
+    <span class="k">If</span> <span class="n">Die1</span> <span class="o">&gt;</span> <span class="n">Die2</span> <span class="k">Then</span>
+        <span class="n">DealerScore</span> <span class="o">+=</span> <span class="n">Die1</span> <span class="o">*</span> <span class="mi">2</span>
+    <span class="k">Else</span>
+        <span class="n">DealerScore</span> <span class="o">+=</span> <span class="n">Die2</span> <span class="o">*</span> <span class="mi">2</span>
+    <span class="k">End</span> <span class="k">If</span>
+<span class="k">End</span> <span class="k">If</span>
+
+<span class="k">If</span> <span class="k">Not</span> <span class="p">(</span><span class="n">DealerCanChoose1</span> <span class="ow">Or</span> <span class="n">DealerCanChoose2</span> <span class="ow">Or</span> <span class="n">DealerCanChooseBoth</span><span class="p">)</span> <span class="k">Then</span>
+    <span class="c">&#39;Dealer goes bust if no options are available</span>
+    <span class="k">If</span> <span class="n">Die1</span> <span class="o">&lt;</span> <span class="n">Die2</span> <span class="k">Then</span>
+        <span class="n">DealerScore</span> <span class="o">+=</span> <span class="n">Die1</span> <span class="o">*</span> <span class="mi">2</span>
+    <span class="k">Else</span>
+        <span class="n">DealerScore</span> <span class="o">+=</span> <span class="n">Die2</span> <span class="o">*</span> <span class="mi">2</span>
+    <span class="k">End</span> <span class="k">If</span>
+    <span class="n">DealerStand</span><span class="p">()</span>
+    <span class="n">tmrDealer</span><span class="p">.</span><span class="n">Stop</span><span class="p">()</span>
+
+<span class="k">ElseIf</span> <span class="n">DealerScore</span> <span class="o">&gt;</span> <span class="n">GameScore</span> <span class="k">Then</span>
+    <span class="c">&#39;Dealer stands if their score is more than the player&#39;s</span>
+    <span class="n">DealerStand</span><span class="p">()</span>
+<span class="k">Else</span>
+    <span class="n">DealerRoll</span><span class="p">()</span>
+<span class="k">End</span> <span class="k">If</span>
+</pre></div>
+<p>Before this code I run checks that see which options are available after a dealer rolls (these are the DealerCanChoose variables). Here there is a series of conditionals that look at the options and picks the best one for the dealer.</p>
+<p>If there is only one option available, then the dealer will pick that one. If there is more than one option available then the dealer will pick whichever will get them the highest score that turn. If there are no options available then the dealer is bust and they will stand. The dealer will also stand if they have a score higher than that of the player. The dealer will continue to roll as long as they are lower than the player and their current score is under 17.</p>
+<p>And thats the game! The quickest project I’ve ever done and although its rough around the edges the gameplay is solid and I got to grips with windows form’s implementation of an event-driven program. You can find the full source code <a href="https://github.com/LukeBriggsDev/Dice-Jack">here</a></p>
+
+    </article>
+
+<footer>
+    &copy; Luke Briggs
+</footer>
+<script>
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+
+    hamburger.addEventListener("click", mobileMenu);
+
+    function mobileMenu() {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+
+    }
+
+    const navLink = document.querySelectorAll(".nav-link");
+
+    navLink.forEach(n => n.addEventListener("click", closeMenu));
+
+    function closeMenu() {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+    }
+
+</script>
+</body>
+</html>
