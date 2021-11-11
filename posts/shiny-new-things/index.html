@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0;">
+
+    <meta property="og:description" content="I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://lukebriggs.dev/" />
+    <meta property="og:image" content="https://lukebriggs.dev/banner.png"/>
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image" content="https://lukebriggs.dev/banner.png"/>
+    <meta name="twitter:title" content="Luke Briggs"/>
+    <meta name="twitter:description" content="I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University"/>
+    <meta name="application-name" content="Luke Briggs">
+
+    <title> Shiny-New-Things  - Luke Briggs</title>
+    <base href="https://lukebriggs.dev/">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="feed" type="application/rss+xml" href="index.xml" title="Luke Briggs">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="assets/stylesheets/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/stylesheets/victor.css">
+    <link rel="stylesheet" href="assets/stylesheets/syntax_highlight.css">
+    <link rel="stylesheet" href="assets/stylesheets/projects.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <ul class="nav-menu">
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="">Home</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="posts">Posts</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="projects">Projects</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="about">About</a>
+                </li>
+            
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+</header>
+
+    <article>
+        <h4 class="description">Thu 11 Nov 2021</h4>
+        <img class='post-hero' src='static/postimages/shiny-new-things/mac_desktop.jpg' alt='<div>Shiny New Things</div>
+'/><h1 class='post-title'><div>Shiny New Things</div>
+</h1><a name='new-hardware'></a><h2>New Hardware</h2>
+<p>The RISC revolution claims a new victim.
+On October 25th I became the owner of my first Apple computer, my first non-x86 desktop, and what is already the best computer I have ever used.</p>
+<a name='past-devices'></a><h3>Past devices</h3>
+<p>I <a href="posts/goodbye-windows-i-hardly-gnu-ya/">moved away from Windows about 9 months ago</a> and I really haven't looked back.
+A few things changed in that gestation period.
+Firstly, I settled on Fedora 34 as my final distro: GNOME 40 made some changes I liked and also my bluetooth audio devices worked better.
+Secondly, and more importantly, my priorities shifted.
+September saw the return of in-person University lecturing and some changes had to be made.</p>
+<figure>
+<img src="static/postimages/shiny-new-things/legion5.jpg" alt="Lenovo Legion 5"></a>
+<figcaption>&copy; <a href="https://www.trustedreviews.com/">Trusted Reviews</a></figcaption>
+</figure>
+<p>My previous computer was a Lenovo Legion 5, it had a efficient (but still power hungry) Ryzen 5 4600h, and a dedicated Nvidia GPU.
+The laptop was 15.6&quot;, weighed 2.4kg and would require obnoxious fans to spin up if it even thought you might do something demanding.
+The laptop was a symptom of being purchased at the beginning of stay-at-home orders by someone who overestimated the amount of games they would be playing.</p>
+<p>When it came to in-person teaching, it also was a bit cumbersome to use the machines on-site.
+At the beginning of the term, the University decided move away from using local software to having Azure Virtual Desktops instead, with the PCs acting as thin clients.
+Even with gigabit networking and decent hardware, virtual desktops still have a strange smell to them.
+The main issue was the fact that they are still in the teething phase and IT departments are not quick to react.
+Not every virtual desktop has exactly the same software, and there is no way to know which desktop you are going to get.
+One day I logged onto a virtual desktop and it had all the software I needed except git.
+My only solution was installing a portable version of git <em>into</em> my OneDrive so I could guarantee a git install on each machine.
+Virtual desktops also made python virtual environments a hassle since every time I would do work on my personal machine, all the symlinks from the AVD would be broke and I'd have too recreate it.</p>
+<p><strong>So here were my new requirement:</strong></p>
+<ul>
+<li>A CPU at least as powerful as my previous laptop</li>
+<li>16GB RAM (8GB was too little when doing development alongside local virtual machines)</li>
+<li>No dGPU (the weight, battery, and noise overhead is just awful)</li>
+<li>Screen larger than 13&quot;, ideally 14.5 - 15&quot;</li>
+<li>Portable, ideally around 1.5kg</li>
+</ul>
+<br />
+<p><strong>Like-to-haves:</strong></p>
+<ul>
+<li>120Hz screen (Legion 5 had it and it made things very nice)</li>
+<li>512GB hard drive (Legion 5 had 256GB and I was pushing up against it)</li>
+<li>A iGPU good enough to play basic 3d games at full speed</li>
+</ul>
+<p>There was a selection of PC laptops that met some of my requirements. 
+However, a lot of them put the higher RAM behind the models with a dGPU, which is an instant turn-off.</p>
+<p>The incredible performance of last year's M1 chips got my head pointed towards Cupertino.
+They were efficient, quiet, had a strong GPU, blazing CPU and were bundled with a first-party Unix OS.
+Last year's MacBooks did not meet my requirements for the case however. A 13&quot; screen is too small to be doing comfortable development work on.</p>
+<p>So I sat eagerly awaiting the November Apple Event, hoping that rumors of a more powerful 14&quot; MacBook Pro was on the horizon.</p>
+<p>The announced computers met every single one of my criteria, the price was steeper than I had been anticipating but I had some disposable income and I had fallen slightly in love.</p>
+<a name='the-mac-factor'></a><h3>The Mac Factor</h3>
+<p>I took delivery of my base-model 14-inch MacBook Pro (M1 Pro 8/14) on day one, and have used it every day in the 2 weeks since.
+The true reason why I went slightly over-budget is due to the fact that these computers are the first in a while to be truly exciting to me.
+A whole new instruction set platform in the desktop space is not something that has happened in my computing lifetime and it just awakens the computer nerd inside of me.
+Speed <em>and</em> battery life, graphics <em>and</em> little fan noise, to mention nothing of the fact that Apple devices have the most high-quality feel of any laptop.</p>
+<p>The software enthusiast inside of me also loves the idea of being one of the first on a new platform.
+Not all the open source apps I use have been compiled for ARM yet, I could be the one to do it!
+Heck, I have my own apps to port!</p>
+<a name='new-site'></a><h2>New Site</h2>
+<p>If you have a look around you may also notice a slight redecoration.
+This is iteration ⅠⅠⅠ of my site.</p>
+<ul>
+<li>The first was a <a href="posts/inspection-and-dissection-this-site">dynamic site served through my own flask web server</a>,</li>
+<li>The second was a <a href="/posts/where-hugo-i-go/">static site generated through Hugo</a>,</li>
+<li>This iteration is a <a href="https://github.com/LukeBriggsDev/VictorSSG">static site generator of my own devising</a></li>
+</ul>
+<p>I made the change because my last site looked pretty cluttered, and I felt that my design skills have improved since my first attempt).
+I also wanted a nicer way to list my projects.</p>
+<p>The process of developing a static site generator in python was much more straightforward than I thought.
+It only took around 4 days to get to a point where everything looked nice on the outside.
+The codebase needs some cleanup and it isn't entirely ready for anyone other than me to use it but it works.</p>
+<p>The program on initialisation creates a few directories to place stuff (<code>content</code>, <code>projects</code>, <code>static</code>, etc) as well as a config file for certain things like the navigation bar.
+The built website gets put into a <code>public</code> directory.
+The building process itself starts by copying the static directory tree into the public directory.
+A python library called <a href="https://pypi.org/project/mistune/">mistune</a> converts the markdown files in <code>content</code> (along with YAML metadata headers) to HTML, <a href="https://pypi.org/project/Pygments/">pygments</a> is also used for syntax highlighting. 
+The converted html posts are then passed to myy custom <a href="https://pypi.org/project/Jinja2/">jinja2</a> templates that have all the styling and base markup.
+There are a couple of other things like auto-generated social links on the homepage and a so-basic-its-almost-broken built-in HTTP server for viewing webpages locally.</p>
+<p>I will probably tweak a few things over time but I think I've settled on the principle design, at least for a while.</p>
+<p>The SSG is named Victor as a tongue-in-cheek nod to Hugo, I also quite like that it is also the name of Mr. Freeze which kind of makes sense for a static site generator.</p>
+<p><a href="https://github.com/LukeBriggsDev/VictorSSG">The source code is available on GitHub</a></p>
+
+    </article>
+
+<footer>
+    &copy; Luke Briggs
+</footer>
+<script>
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+
+    hamburger.addEventListener("click", mobileMenu);
+
+    function mobileMenu() {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+
+    }
+
+    const navLink = document.querySelectorAll(".nav-link");
+
+    navLink.forEach(n => n.addEventListener("click", closeMenu));
+
+    function closeMenu() {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+    }
+
+</script>
+</body>
+</html>

@@ -12,7 +12,7 @@
       <link>https://lukebriggs.dev/</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Tue, 09 Nov 2021 21:08:40 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 11 Nov 2021 19:30:55 +0000</lastBuildDate>
     <item>
       <title>The First Line of Code
 </title>
@@ -2868,6 +2868,170 @@ This would mean that my secret keys would have to be in the client-side code, an
 &lt;/ul&gt;
 </content:encoded>
       <pubDate>Thu, 16 Sep 2021 15:07:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>Shiny New Things
+</title>
+      <link>https://lukebriggs.dev/posts/shiny-new-things/shiny-new-things.md</link>
+      <description>&lt;img class='post-hero' src='static/postimages/shiny-new-things/mac_desktop.jpg' alt='&lt;div&gt;Shiny New Things&lt;/div&gt;
+'/&gt;&lt;h1 class='post-title'&gt;&lt;div&gt;Shiny New Things&lt;/div&gt;
+&lt;/h1&gt;&lt;a name='new-hardware'&gt;&lt;/a&gt;&lt;h2&gt;New Hardware&lt;/h2&gt;
+&lt;p&gt;The RISC revolution claims a new victim.
+On October 25th I became the owner of my first Apple computer, my first non-x86 desktop, and what is already the best computer I have ever used.&lt;/p&gt;
+&lt;a name='past-devices'&gt;&lt;/a&gt;&lt;h3&gt;Past devices&lt;/h3&gt;
+&lt;p&gt;I &lt;a href="posts/goodbye-windows-i-hardly-gnu-ya/"&gt;moved away from Windows about 9 months ago&lt;/a&gt; and I really haven't looked back.
+A few things changed in that gestation period.
+Firstly, I settled on Fedora 34 as my final distro: GNOME 40 made some changes I liked and also my bluetooth audio devices worked better.
+Secondly, and more importantly, my priorities shifted.
+September saw the return of in-person University lecturing and some changes had to be made.&lt;/p&gt;
+&lt;figure&gt;
+&lt;img src="static/postimages/shiny-new-things/legion5.jpg" alt="Lenovo Legion 5"&gt;&lt;/a&gt;
+&lt;figcaption&gt;&amp;copy; &lt;a href="https://www.trustedreviews.com/"&gt;Trusted Reviews&lt;/a&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;My previous computer was a Lenovo Legion 5, it had a efficient (but still power hungry) Ryzen 5 4600h, and a dedicated Nvidia GPU.
+The laptop was 15.6&amp;quot;, weighed 2.4kg and would require obnoxious fans to spin up if it even thought you might do something demanding.
+The laptop was a symptom of being purchased at the beginning of stay-at-home orders by someone who overestimated the amount of games they would be playing.&lt;/p&gt;
+&lt;p&gt;When it came to in-person teaching, it also was a bit cumbersome to use the machines on-site.
+At the beginning of the term, the University decided move away from using local software to having Azure Virtual Desktops instead, with the PCs acting as thin clients.
+Even with gigabit networking and decent hardware, virtual desktops still have a strange smell to them.
+The main issue was the fact that they are still in the teething phase and IT departments are not quick to react.
+Not every virtual desktop has exactly the same software, and there is no way to know which desktop you are going to get.
+One day I logged onto a virtual desktop and it had all the software I needed except git.
+My only solution was installing a portable version of git &lt;em&gt;into&lt;/em&gt; my OneDrive so I could guarantee a git install on each machine.
+Virtual desktops also made python virtual environments a hassle since every time I would do work on my personal machine, all the symlinks from the AVD would be broke and I'd have too recreate it.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;So here were my new requirement:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A CPU at least as powerful as my previous laptop&lt;/li&gt;
+&lt;li&gt;16GB RAM (8GB was too little when doing development alongside local virtual machines)&lt;/li&gt;
+&lt;li&gt;No dGPU (the weight, battery, and noise overhead is just awful)&lt;/li&gt;
+&lt;li&gt;Screen larger than 13&amp;quot;, ideally 14.5 - 15&amp;quot;&lt;/li&gt;
+&lt;li&gt;Portable, ideally around 1.5kg&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br /&gt;
+&lt;p&gt;&lt;strong&gt;Like-to-haves:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;120Hz screen (Legion 5 had it and it made things very nice)&lt;/li&gt;
+&lt;li&gt;512GB hard drive (Legion 5 had 256GB and I was pushing up against it)&lt;/li&gt;
+&lt;li&gt;A iGPU good enough to play basic 3d games at full speed&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There was a selection of PC laptops that met some of my requirements. 
+However, a lot of them put the higher RAM behind the models with a dGPU, which is an instant turn-off.&lt;/p&gt;
+&lt;p&gt;The incredible performance of last year's M1 chips got my head pointed towards Cupertino.
+They were efficient, quiet, had a strong GPU, blazing CPU and were bundled with a first-party Unix OS.
+Last year's MacBooks did not meet my requirements for the case however. A 13&amp;quot; screen is too small to be doing comfortable development work on.&lt;/p&gt;
+&lt;p&gt;So I sat eagerly awaiting the November Apple Event, hoping that rumors of a more powerful 14&amp;quot; MacBook Pro was on the horizon.&lt;/p&gt;
+&lt;p&gt;The announced computers met every single one of my criteria, the price was steeper than I had been anticipating but I had some disposable income and I had fallen slightly in love.&lt;/p&gt;
+&lt;a name='the-mac-factor'&gt;&lt;/a&gt;&lt;h3&gt;The Mac Factor&lt;/h3&gt;
+&lt;p&gt;I took delivery of my base-model 14-inch MacBook Pro (M1 Pro 8/14) on day one, and have used it every day in the 2 weeks since.
+The true reason why I went slightly over-budget is due to the fact that these computers are the first in a while to be truly exciting to me.
+A whole new instruction set platform in the desktop space is not something that has happened in my computing lifetime and it just awakens the computer nerd inside of me.
+Speed &lt;em&gt;and&lt;/em&gt; battery life, graphics &lt;em&gt;and&lt;/em&gt; little fan noise, to mention nothing of the fact that Apple devices have the most high-quality feel of any laptop.&lt;/p&gt;
+&lt;p&gt;The software enthusiast inside of me also loves the idea of being one of the first on a new platform.
+Not all the open source apps I use have been compiled for ARM yet, I could be the one to do it!
+Heck, I have my own apps to port!&lt;/p&gt;
+&lt;a name='new-site'&gt;&lt;/a&gt;&lt;h2&gt;New Site&lt;/h2&gt;
+&lt;p&gt;If you have a look around you may also notice a slight redecoration.
+This is iteration ⅠⅠⅠ of my site.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The first was a &lt;a href="posts/inspection-and-dissection-this-site"&gt;dynamic site served through my own flask web server&lt;/a&gt;,&lt;/li&gt;
+&lt;li&gt;The second was a &lt;a href="/posts/where-hugo-i-go/"&gt;static site generated through Hugo&lt;/a&gt;,&lt;/li&gt;
+&lt;li&gt;This iteration is a &lt;a href="https://github.com/LukeBriggsDev/VictorSSG"&gt;static site generator of my own devising&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I made the change because my last site looked pretty cluttered, and I felt that my design skills have improved since my first attempt).
+I also wanted a nicer way to list my projects.&lt;/p&gt;
+&lt;p&gt;The process of developing a static site generator in python was much more straightforward than I thought.
+It only took around 4 days to get to a point where everything looked nice on the outside.
+The codebase needs some cleanup and it isn't entirely ready for anyone other than me to use it but it works.&lt;/p&gt;
+&lt;p&gt;The program on initialisation creates a few directories to place stuff (&lt;code&gt;content&lt;/code&gt;, &lt;code&gt;projects&lt;/code&gt;, &lt;code&gt;static&lt;/code&gt;, etc) as well as a config file for certain things like the navigation bar.
+The built website gets put into a &lt;code&gt;public&lt;/code&gt; directory.
+The building process itself starts by copying the static directory tree into the public directory.
+A python library called &lt;a href="https://pypi.org/project/mistune/"&gt;mistune&lt;/a&gt; converts the markdown files in &lt;code&gt;content&lt;/code&gt; (along with YAML metadata headers) to HTML, &lt;a href="https://pypi.org/project/Pygments/"&gt;pygments&lt;/a&gt; is also used for syntax highlighting. 
+The converted html posts are then passed to myy custom &lt;a href="https://pypi.org/project/Jinja2/"&gt;jinja2&lt;/a&gt; templates that have all the styling and base markup.
+There are a couple of other things like auto-generated social links on the homepage and a so-basic-its-almost-broken built-in HTTP server for viewing webpages locally.&lt;/p&gt;
+&lt;p&gt;I will probably tweak a few things over time but I think I've settled on the principle design, at least for a while.&lt;/p&gt;
+&lt;p&gt;The SSG is named Victor as a tongue-in-cheek nod to Hugo, I also quite like that it is also the name of Mr. Freeze which kind of makes sense for a static site generator.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/LukeBriggsDev/VictorSSG"&gt;The source code is available on GitHub&lt;/a&gt;&lt;/p&gt;
+</description>
+      <content:encoded>&lt;img class='post-hero' src='static/postimages/shiny-new-things/mac_desktop.jpg' alt='&lt;div&gt;Shiny New Things&lt;/div&gt;
+'/&gt;&lt;h1 class='post-title'&gt;&lt;div&gt;Shiny New Things&lt;/div&gt;
+&lt;/h1&gt;&lt;a name='new-hardware'&gt;&lt;/a&gt;&lt;h2&gt;New Hardware&lt;/h2&gt;
+&lt;p&gt;The RISC revolution claims a new victim.
+On October 25th I became the owner of my first Apple computer, my first non-x86 desktop, and what is already the best computer I have ever used.&lt;/p&gt;
+&lt;a name='past-devices'&gt;&lt;/a&gt;&lt;h3&gt;Past devices&lt;/h3&gt;
+&lt;p&gt;I &lt;a href="posts/goodbye-windows-i-hardly-gnu-ya/"&gt;moved away from Windows about 9 months ago&lt;/a&gt; and I really haven't looked back.
+A few things changed in that gestation period.
+Firstly, I settled on Fedora 34 as my final distro: GNOME 40 made some changes I liked and also my bluetooth audio devices worked better.
+Secondly, and more importantly, my priorities shifted.
+September saw the return of in-person University lecturing and some changes had to be made.&lt;/p&gt;
+&lt;figure&gt;
+&lt;img src="static/postimages/shiny-new-things/legion5.jpg" alt="Lenovo Legion 5"&gt;&lt;/a&gt;
+&lt;figcaption&gt;&amp;copy; &lt;a href="https://www.trustedreviews.com/"&gt;Trusted Reviews&lt;/a&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;My previous computer was a Lenovo Legion 5, it had a efficient (but still power hungry) Ryzen 5 4600h, and a dedicated Nvidia GPU.
+The laptop was 15.6&amp;quot;, weighed 2.4kg and would require obnoxious fans to spin up if it even thought you might do something demanding.
+The laptop was a symptom of being purchased at the beginning of stay-at-home orders by someone who overestimated the amount of games they would be playing.&lt;/p&gt;
+&lt;p&gt;When it came to in-person teaching, it also was a bit cumbersome to use the machines on-site.
+At the beginning of the term, the University decided move away from using local software to having Azure Virtual Desktops instead, with the PCs acting as thin clients.
+Even with gigabit networking and decent hardware, virtual desktops still have a strange smell to them.
+The main issue was the fact that they are still in the teething phase and IT departments are not quick to react.
+Not every virtual desktop has exactly the same software, and there is no way to know which desktop you are going to get.
+One day I logged onto a virtual desktop and it had all the software I needed except git.
+My only solution was installing a portable version of git &lt;em&gt;into&lt;/em&gt; my OneDrive so I could guarantee a git install on each machine.
+Virtual desktops also made python virtual environments a hassle since every time I would do work on my personal machine, all the symlinks from the AVD would be broke and I'd have too recreate it.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;So here were my new requirement:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A CPU at least as powerful as my previous laptop&lt;/li&gt;
+&lt;li&gt;16GB RAM (8GB was too little when doing development alongside local virtual machines)&lt;/li&gt;
+&lt;li&gt;No dGPU (the weight, battery, and noise overhead is just awful)&lt;/li&gt;
+&lt;li&gt;Screen larger than 13&amp;quot;, ideally 14.5 - 15&amp;quot;&lt;/li&gt;
+&lt;li&gt;Portable, ideally around 1.5kg&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br /&gt;
+&lt;p&gt;&lt;strong&gt;Like-to-haves:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;120Hz screen (Legion 5 had it and it made things very nice)&lt;/li&gt;
+&lt;li&gt;512GB hard drive (Legion 5 had 256GB and I was pushing up against it)&lt;/li&gt;
+&lt;li&gt;A iGPU good enough to play basic 3d games at full speed&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There was a selection of PC laptops that met some of my requirements. 
+However, a lot of them put the higher RAM behind the models with a dGPU, which is an instant turn-off.&lt;/p&gt;
+&lt;p&gt;The incredible performance of last year's M1 chips got my head pointed towards Cupertino.
+They were efficient, quiet, had a strong GPU, blazing CPU and were bundled with a first-party Unix OS.
+Last year's MacBooks did not meet my requirements for the case however. A 13&amp;quot; screen is too small to be doing comfortable development work on.&lt;/p&gt;
+&lt;p&gt;So I sat eagerly awaiting the November Apple Event, hoping that rumors of a more powerful 14&amp;quot; MacBook Pro was on the horizon.&lt;/p&gt;
+&lt;p&gt;The announced computers met every single one of my criteria, the price was steeper than I had been anticipating but I had some disposable income and I had fallen slightly in love.&lt;/p&gt;
+&lt;a name='the-mac-factor'&gt;&lt;/a&gt;&lt;h3&gt;The Mac Factor&lt;/h3&gt;
+&lt;p&gt;I took delivery of my base-model 14-inch MacBook Pro (M1 Pro 8/14) on day one, and have used it every day in the 2 weeks since.
+The true reason why I went slightly over-budget is due to the fact that these computers are the first in a while to be truly exciting to me.
+A whole new instruction set platform in the desktop space is not something that has happened in my computing lifetime and it just awakens the computer nerd inside of me.
+Speed &lt;em&gt;and&lt;/em&gt; battery life, graphics &lt;em&gt;and&lt;/em&gt; little fan noise, to mention nothing of the fact that Apple devices have the most high-quality feel of any laptop.&lt;/p&gt;
+&lt;p&gt;The software enthusiast inside of me also loves the idea of being one of the first on a new platform.
+Not all the open source apps I use have been compiled for ARM yet, I could be the one to do it!
+Heck, I have my own apps to port!&lt;/p&gt;
+&lt;a name='new-site'&gt;&lt;/a&gt;&lt;h2&gt;New Site&lt;/h2&gt;
+&lt;p&gt;If you have a look around you may also notice a slight redecoration.
+This is iteration ⅠⅠⅠ of my site.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The first was a &lt;a href="posts/inspection-and-dissection-this-site"&gt;dynamic site served through my own flask web server&lt;/a&gt;,&lt;/li&gt;
+&lt;li&gt;The second was a &lt;a href="/posts/where-hugo-i-go/"&gt;static site generated through Hugo&lt;/a&gt;,&lt;/li&gt;
+&lt;li&gt;This iteration is a &lt;a href="https://github.com/LukeBriggsDev/VictorSSG"&gt;static site generator of my own devising&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I made the change because my last site looked pretty cluttered, and I felt that my design skills have improved since my first attempt).
+I also wanted a nicer way to list my projects.&lt;/p&gt;
+&lt;p&gt;The process of developing a static site generator in python was much more straightforward than I thought.
+It only took around 4 days to get to a point where everything looked nice on the outside.
+The codebase needs some cleanup and it isn't entirely ready for anyone other than me to use it but it works.&lt;/p&gt;
+&lt;p&gt;The program on initialisation creates a few directories to place stuff (&lt;code&gt;content&lt;/code&gt;, &lt;code&gt;projects&lt;/code&gt;, &lt;code&gt;static&lt;/code&gt;, etc) as well as a config file for certain things like the navigation bar.
+The built website gets put into a &lt;code&gt;public&lt;/code&gt; directory.
+The building process itself starts by copying the static directory tree into the public directory.
+A python library called &lt;a href="https://pypi.org/project/mistune/"&gt;mistune&lt;/a&gt; converts the markdown files in &lt;code&gt;content&lt;/code&gt; (along with YAML metadata headers) to HTML, &lt;a href="https://pypi.org/project/Pygments/"&gt;pygments&lt;/a&gt; is also used for syntax highlighting. 
+The converted html posts are then passed to myy custom &lt;a href="https://pypi.org/project/Jinja2/"&gt;jinja2&lt;/a&gt; templates that have all the styling and base markup.
+There are a couple of other things like auto-generated social links on the homepage and a so-basic-its-almost-broken built-in HTTP server for viewing webpages locally.&lt;/p&gt;
+&lt;p&gt;I will probably tweak a few things over time but I think I've settled on the principle design, at least for a while.&lt;/p&gt;
+&lt;p&gt;The SSG is named Victor as a tongue-in-cheek nod to Hugo, I also quite like that it is also the name of Mr. Freeze which kind of makes sense for a static site generator.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/LukeBriggsDev/VictorSSG"&gt;The source code is available on GitHub&lt;/a&gt;&lt;/p&gt;
+</content:encoded>
+      <pubDate>Thu, 11 Nov 2021 15:48:20 +0000</pubDate>
     </item>
   </channel>
 </rss>
