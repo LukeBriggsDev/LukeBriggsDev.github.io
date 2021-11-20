@@ -7,12 +7,12 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <image>
-      <url>/Users/luke/Documents/Projects/StaticSiteGenerator/public/favicon.ico</url>
+      <url>/Users/luke/Documents/Projects/lukebriggs.dev/public/favicon.ico</url>
       <title>Luke Briggs</title>
       <link>https://lukebriggs.dev/</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Thu, 11 Nov 2021 20:06:07 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 20 Nov 2021 21:03:25 +0000</lastBuildDate>
     <item>
       <title>The First Line of Code
 </title>
