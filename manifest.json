@@ -1,0 +1,14 @@
+{
+  "short_name": "Luke Briggs",
+  "name": "Luke Briggs",
+  "icons": [
+  {
+  "src":"/LogoSimple.svg",
+  "sizes": "192x192"
+  }
+  ],
+  "start_url": "/",
+  "background_color": "#e05a47",
+  "theme_color": "#e05a47",
+  "display": "standalone"
+}
