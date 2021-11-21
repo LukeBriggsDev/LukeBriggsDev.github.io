@@ -14,17 +14,17 @@ Thanks to the incredible [FeedGen](https://feedgen.kiesow.be/) python library, y
 
     <meta property="og:description" content="I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://lukebriggs.dev/" />
-    <meta property="og:image" content="https://lukebriggs.dev/banner.png"/>
+    <meta property="og:url" content="https://www.lukebriggs.dev/" />
+    <meta property="og:image" content="https://www.lukebriggs.dev/banner.png"/>
 
     <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:image" content="https://lukebriggs.dev/banner.png"/>
+    <meta name="twitter:image" content="https://www.lukebriggs.dev/banner.png"/>
     <meta name="twitter:title" content="Luke Briggs"/>
     <meta name="twitter:description" content="I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University"/>
     <meta name="application-name" content="Luke Briggs">
 
     <title> You Can Now Follow Me on RSS!  - Luke Briggs</title>
-    <base href="https://lukebriggs.dev/">
+    <base href="https://www.lukebriggs.dev/">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="manifest" href="site.webmanifest">
     <link rel="feed" type="application/rss+xml" href="index.xml" title="Luke Briggs">
@@ -98,6 +98,22 @@ Thanks to the incredible <a href="https://feedgen.kiesow.be/">FeedGen</a> python
     function closeMenu() {
         hamburger.classList.remove("active");
         navMenu.classList.remove("active");
+    }
+
+    if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+    // Registration was successful
+    console.log('Registered!');
+    }, function(err) {
+    // registration failed :(
+    console.log('ServiceWorker registration failed: ', err);
+    }).catch(function(err) {
+    console.log(err);
+    });
+    });
+    } else {
+    console.log('service worker is not supported');
     }
 
 </script>
