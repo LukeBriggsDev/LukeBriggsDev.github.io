@@ -60,8 +60,7 @@ A selection of Luke facts from the past year:
 2. perk is short for perquisite
 3. the french for walkie-talkie is le talkie-walkie
 4. More people have walked on the moon than won takeshi's castle
-5. the phrase "and on that bombshell" to end an episode of television does not originate with Top Gear
-It actually originates with Alan Partridge
+5. the phrase "and on that bombshell" to end an episode of television does not originate with Top Gear It actually originates with Alan Partridge
 6. In the span of 8 months 3 songs called the power of love reached top 10 in the UK charts, Huey Lewis' being the only one to not reach number 1.
 
 
