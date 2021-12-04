@@ -22,13 +22,13 @@ It is wistfulness in sound waves.
 
 # Stephen Tobolowsky on working with Steven Seagal
 
-<iframe width="500" height="240" src="https://www.youtube.com/embed/5cUNU8GkMso?list=LL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="500" height="240" src="https://www.youtube.com/embed/5cUNU8GkMso" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 What if your action star has a spiritual awakening and has decided he doesn't want to kill people in movies anymore?
 
 # Yoann Bourgeois / CCN2 – Celui qui tombe
 
-<iframe width="500" height="240" src="https://www.youtube.com/embed/n0zqQxz4DHs?list=LL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="500" height="240" src="https://www.youtube.com/embed/n0zqQxz4DHs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 An incredible dance performance taking place entirely on a spinning platform.
 This may be video that makes me see dance as a legitimate art form.
