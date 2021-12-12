@@ -57,4 +57,4 @@ This extension strips away all these comments, recommendations and promotions le
 
 <a href='https://microsoftedge.microsoft.com/addons/detail/calmer-internet/fodnejjpkelloeegkfgejifhaifnpded'><img src='https://developer.microsoft.com/store/badges/images/English_get-it-from-MS.png' alt='English badge' style='width: 30%;'/></a>
 
-<a href="https://github.com/LukeBriggsDev/calmer-interne"><img src="GitHub-Mark.svg" alt="github" style="width: 10%;" /></a>
+<a href="https://github.com/LukeBriggsDev/calmer-internet"><img src="GitHub-Mark.svg" alt="github" style="width: 10%;" /></a>
