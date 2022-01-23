@@ -30,7 +30,7 @@ In the days when people weren’t made of pixels I spent the time making my own 
 The results from Word are as follows:
 ![full word document](static/postimages/11/full.png)
 
-It looks *okay*. It looks far better than what some people create in Word. Even creating something okay looking feels like a hack though. Having nice paragraph spacing underneath headings required my to individually change all the line spacing options by hand. Anyone who has ever tried to implement code into a word document also knows that it will require you to sacrifice your firstborn.
+It looks *okay*. It looks far better than what some people create in Word. Even creating something okay looking feels like a hack though. Having nice paragraph spacing underneath headings required me to individually change all the line spacing options by hand. Anyone who has ever tried to implement code into a word document also knows that it will require you to sacrifice your firstborn.
 
 Now, for a LaTeX document:
 ![full latex](static/postimages/11/fulllatex.png)

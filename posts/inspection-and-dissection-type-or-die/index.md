@@ -38,7 +38,7 @@ replayability.
 Every waking moment from Monday to Thursday was spent either watching [Suits](https://www.imdb.com/title/tt1632701/?ref_=fn_al_tt_1)
 or making this game, and the sheer intensity of such an endeavour in the middle of some pretty hectic University team projects
 made me realise one thing, I will probably not make another game for a very long time. If you have a gander at my [projects](projects) page
-you will see that all of them are game, so you may think that I really enjoy game-making. But in retrospect I think I only made games as
+you will see that all of them are games, so you may think that I really enjoy game-making. But in retrospect I think I only made games as
 an outlet for programming rather than an outlet for artistic ideas. Creation is a painful process, so you have to see the purpose in it.
 As much as I am proud of what I achieved with each of the games I made, I can't see them as providing a service.
 
