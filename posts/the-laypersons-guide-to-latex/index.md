@@ -7,7 +7,7 @@ author: Luke Briggs
 rssFullText: true
 linkToMarkdown: true
 categories: [Computing, Tutorial]
-description: "Pretty prinitng"
+description: "Pretty printing"
 ---
 As part of my degree I will have to write many words into many documents and submit them all as part of assignments.
 
