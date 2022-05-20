@@ -12,7 +12,7 @@
       <link>https://www.lukebriggs.dev/</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Fri, 20 May 2022 17:52:56 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 20 May 2022 18:00:51 +0000</lastBuildDate>
     <item>
       <title>The First Line of Code
 </title>
@@ -3137,7 +3137,7 @@ The address we get back is stored on the stack, and we can load values into this
 &lt;span class="x"&gt;ldr         x0,[sp, #malloc_int+0x20]   ; Load heap address (which is stored on stack)&lt;/span&gt;
 &lt;span class="x"&gt;                                        ; into register              &lt;/span&gt;
 &lt;span class="x"&gt;mov         w1,#0xa1                    ; move our integer into register 1              &lt;/span&gt;
-&lt;span class="x"&gt;str         w1,[x0]                     ; Store our integer into the the heap address &lt;/span&gt;
+&lt;span class="x"&gt;str         w1,[x0]                     ; Store our integer into the heap address &lt;/span&gt;
 &lt;span class="x"&gt;                                        ; (integer is now on the heap)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;blockquote&gt;
@@ -3294,7 +3294,7 @@ The address we get back is stored on the stack, and we can load values into this
 &lt;span class="x"&gt;ldr         x0,[sp, #malloc_int+0x20]   ; Load heap address (which is stored on stack)&lt;/span&gt;
 &lt;span class="x"&gt;                                        ; into register              &lt;/span&gt;
 &lt;span class="x"&gt;mov         w1,#0xa1                    ; move our integer into register 1              &lt;/span&gt;
-&lt;span class="x"&gt;str         w1,[x0]                     ; Store our integer into the the heap address &lt;/span&gt;
+&lt;span class="x"&gt;str         w1,[x0]                     ; Store our integer into the heap address &lt;/span&gt;
 &lt;span class="x"&gt;                                        ; (integer is now on the heap)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;blockquote&gt;

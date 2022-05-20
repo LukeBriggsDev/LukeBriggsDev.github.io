@@ -165,7 +165,7 @@ The address we get back is stored on the stack, and we can load values into this
 <span class="x">ldr         x0,[sp, #malloc_int+0x20]   ; Load heap address (which is stored on stack)</span>
 <span class="x">                                        ; into register              </span>
 <span class="x">mov         w1,#0xa1                    ; move our integer into register 1              </span>
-<span class="x">str         w1,[x0]                     ; Store our integer into the the heap address </span>
+<span class="x">str         w1,[x0]                     ; Store our integer into the heap address </span>
 <span class="x">                                        ; (integer is now on the heap)</span>
 </pre></div>
 <blockquote>

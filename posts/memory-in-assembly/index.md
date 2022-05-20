@@ -132,7 +132,7 @@ str         x0,[sp, #malloc_int+0x20]   ; Store return value of malloc (register
 ldr         x0,[sp, #malloc_int+0x20]   ; Load heap address (which is stored on stack)
                                         ; into register              
 mov         w1,#0xa1                    ; move our integer into register 1              
-str         w1,[x0]                     ; Store our integer into the the heap address 
+str         w1,[x0]                     ; Store our integer into the heap address 
                                         ; (integer is now on the heap)
 
 ```
