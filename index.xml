@@ -12,7 +12,7 @@
       <link>https://www.lukebriggs.dev/</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Fri, 20 May 2022 16:43:11 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 20 May 2022 17:52:56 +0000</lastBuildDate>
     <item>
       <title>The First Line of Code
 </title>
@@ -3032,6 +3032,326 @@ There are a couple of other things like auto-generated social links on the homep
 &lt;p&gt;&lt;a href="https://github.com/LukeBriggsDev/VictorSSG"&gt;The source code is available on GitHub&lt;/a&gt;&lt;/p&gt;
 </content:encoded>
       <pubDate>Thu, 11 Nov 2021 15:48:20 +0000</pubDate>
+    </item>
+    <item>
+      <title>Memory in Assembly - How different areas of memory are treated at the metal
+</title>
+      <link>https://www.lukebriggs.dev/posts/memory-in-assembly/memory-in-assembly.md</link>
+      <description>&lt;img class='post-hero' src='/static/postimages/memory-in-assembly/ghidra.png' alt='&lt;div&gt;Memory in Assembly - How different areas of memory are treated at the metal&lt;/div&gt;
+'/&gt;&lt;h1 class='post-title'&gt;&lt;div&gt;Memory in Assembly - How different areas of memory are treated at the metal&lt;/div&gt;
+&lt;/h1&gt;&lt;p&gt;I thought it might make for an interesting learning exercise to see how memory in different areas is treated at the assembly level.
+The program itself is simple, but I hope it will provide some insight.&lt;/p&gt;
+&lt;a name='c-program'&gt;&lt;/a&gt;&lt;h2&gt;C Program&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;const&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;constant_int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mh"&gt;0xc07&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;static&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;static_int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mh"&gt;0x57a71c&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;stack_int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mh"&gt;0x57ac3&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;malloc_int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;malloc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;malloc_int&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mh"&gt;0xa1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;func_int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;stack_int&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;func_int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;malloc_int&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;func_int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;static_int&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;func_const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;constant_int&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;a name='armv8-assembly'&gt;&lt;/a&gt;&lt;h2&gt;ARMv8 Assembly&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;stp         x29,x30,[sp, #local_20]!                &lt;/span&gt;
+&lt;span class="x"&gt;mov         x29,sp                                  &lt;/span&gt;
+&lt;span class="x"&gt;mov         w0,#0x7ac3                              &lt;/span&gt;
+&lt;span class="x"&gt;movk        w0,#0x5, LSL #16                        &lt;/span&gt;
+&lt;span class="x"&gt;str         w0,[sp, #stack_int+0x20]                &lt;/span&gt;
+&lt;span class="x"&gt;mov         x0,#0x1                                 &lt;/span&gt;
+&lt;span class="x"&gt;bl          __stubs:__stubs::_malloc                ;void * _malloc(size_t param_1)&lt;/span&gt;
+&lt;span class="x"&gt;str         x0,[sp, #malloc_int+0x20]               &lt;/span&gt;
+&lt;span class="x"&gt;ldr         x0,[sp, #malloc_int+0x20]               &lt;/span&gt;
+&lt;span class="x"&gt;mov         w1,#0xa1                                &lt;/span&gt;
+&lt;span class="x"&gt;str         w1,[x0]                                 &lt;/span&gt;
+&lt;span class="x"&gt;ldr         w0,[sp, #stack_int+0x20]                &lt;/span&gt;
+&lt;span class="x"&gt;bl          func_int                                ;void func_int(int x)&lt;/span&gt;
+&lt;span class="x"&gt;ldr         x0,[sp, #malloc_int+0x20]               &lt;/span&gt;
+&lt;span class="x"&gt;ldr         w0,[x0]                                 &lt;/span&gt;
+&lt;span class="x"&gt;bl          func_int                                ;void func_int(int x)&lt;/span&gt;
+&lt;span class="x"&gt;adrp        x0,0x100008000                          &lt;/span&gt;
+&lt;span class="x"&gt;add         x0,x0,#0x0                              &lt;/span&gt;
+&lt;span class="x"&gt;ldr         w0,[x0]=&amp;gt;__data:main::static_int        ;= 57A71Ch&lt;/span&gt;
+&lt;span class="x"&gt;bl          func_int                                ;void func_int(int x)&lt;/span&gt;
+&lt;span class="x"&gt;mov         w0,#0xc07                               &lt;/span&gt;
+&lt;span class="x"&gt;bl          func_const                              ;void func_const(int x)&lt;/span&gt;
+&lt;span class="x"&gt;mov         w0,#0x0                                 &lt;/span&gt;
+&lt;span class="x"&gt;ldp         x29=&amp;gt;local_20,x30,[sp], #0x20           &lt;/span&gt;
+&lt;span class="x"&gt;ret&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;a name='static-integer'&gt;&lt;/a&gt;&lt;h2&gt;Static Integer&lt;/h2&gt;
+&lt;p&gt;You may notice that our static (0x57a71c) variable is not declared in the assembly. 
+This is because everything you see above is in the TEXT segment. The part of the assembly that is read only. 
+Text segment is labelled as such with an assembly directive.&lt;/p&gt;
+&lt;p&gt;Static variables exist for the lifetime of the program but can change their value and so shouldn't be loaded into the text segment. 
+Instead, values that can be edited but are static and initialised are loaded into the data segment.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;// __data&lt;/span&gt;
+&lt;span class="x"&gt;// __DATA&lt;/span&gt;
+&lt;span class="x"&gt;// ram:100008000-ram:100008003&lt;/span&gt;
+&lt;span class="x"&gt;//&lt;/span&gt;
+
+&lt;span class="x"&gt;_static_int.0&lt;/span&gt;
+&lt;span class="x"&gt;main::static int&lt;/span&gt;
+&lt;span class="x"&gt;    int     57A71Ch&lt;/span&gt;
+&lt;span class="x"&gt;//&lt;/span&gt;
+&lt;span class="x"&gt;//__DATA&lt;/span&gt;
+&lt;span class="x"&gt;//__DATA&lt;/span&gt;
+&lt;span class="x"&gt;// ram:100008004-ram:10000bfff&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;With Ghidra we can see that our file contains a directive to load our static variable into the data segment at launch. 
+We also have a label to this static variable that somewhat matches our C code.&lt;/p&gt;
+&lt;a name='stack-integer'&gt;&lt;/a&gt;&lt;h2&gt;Stack Integer&lt;/h2&gt;
+&lt;p&gt;This works by moving our value into a register, then storing the contents of that register into an area of memory offset from the stack pointer. 
+The stack pointer is a special register that the CPU uses to tell us where our stack is. 
+Because everything we store on the stack is a known size, the compiler works out the offsets and knows where things should be stored in relation to each other.&lt;/p&gt;
+&lt;a name='c'&gt;&lt;/a&gt;&lt;h3&gt;C&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;stack_int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mh"&gt;0x57ac3&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;a name='assembly'&gt;&lt;/a&gt;&lt;h3&gt;Assembly&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;mov         w0,#0x7ac3               ; move integer into register 0                             &lt;/span&gt;
+&lt;span class="x"&gt;movk        w0,#0x5, LSL #16                        &lt;/span&gt;
+&lt;span class="x"&gt;str         w0,[sp, #stack_int+0x20] ; store integer into RAM address pointed to by&lt;/span&gt;
+&lt;span class="x"&gt;                                     ; stack pointer (sp) + an offset based on number&lt;/span&gt;
+&lt;span class="x"&gt;                                     ; size. Our number is now in stack memory&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;a name='heap-integer'&gt;&lt;/a&gt;&lt;h2&gt;Heap Integer&lt;/h2&gt;
+&lt;p&gt;This works by asking for a given amount of memory to be allocated, the kernel allocates the new memory in our address space then hands us back a pointer to it. 
+The address we get back is stored on the stack, and we can load values into this address to store on the heap.&lt;/p&gt;
+&lt;a name='c'&gt;&lt;/a&gt;&lt;h3&gt;C&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;malloc_int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;malloc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="n"&gt;malloc_int&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mh"&gt;0xa1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;a name='assembly'&gt;&lt;/a&gt;&lt;h3&gt;Assembly&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;mov         x0,#0x1                     ; Set first parameter of malloc to 1 (number of &lt;/span&gt;
+&lt;span class="x"&gt;                                        ; bytes to allocate)                        &lt;/span&gt;
+&lt;span class="x"&gt;bl          __stubs:__stubs::_malloc    ; call malloc&lt;/span&gt;
+&lt;span class="x"&gt;str         x0,[sp, #malloc_int+0x20]   ; Store return value of malloc (register 0)&lt;/span&gt;
+&lt;span class="x"&gt;                                        ; onto the stack (sp + offset)&lt;/span&gt;
+
+
+
+
+&lt;span class="x"&gt;ldr         x0,[sp, #malloc_int+0x20]   ; Load heap address (which is stored on stack)&lt;/span&gt;
+&lt;span class="x"&gt;                                        ; into register              &lt;/span&gt;
+&lt;span class="x"&gt;mov         w1,#0xa1                    ; move our integer into register 1              &lt;/span&gt;
+&lt;span class="x"&gt;str         w1,[x0]                     ; Store our integer into the the heap address &lt;/span&gt;
+&lt;span class="x"&gt;                                        ; (integer is now on the heap)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Notice how the bottom two lines are effectively the same as what we did on the stack, everything else is all the extra overhead of using the heap, this is one of the reasons why it's easier to use the stack to store local variables (another obvious one is we don't have to free things on the stack whereas in a real program we would also have to remember to free this memory)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a name='calling-a-function-with-a-stack-variable'&gt;&lt;/a&gt;&lt;h2&gt;Calling a function with a stack variable&lt;/h2&gt;
+&lt;a name='c'&gt;&lt;/a&gt;&lt;h3&gt;C&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;func_int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;stack_int&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;a name='assembly'&gt;&lt;/a&gt;&lt;h3&gt;Assembly&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;ldr         w0,[sp, #stack_int+0x20] ; Set parameter 0 to value stored in the &lt;/span&gt;
+&lt;span class="x"&gt;                                     ;  address pointed to by stack_int                &lt;/span&gt;
+&lt;span class="x"&gt;bl          func_int                 ; call function&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;a name='calling-a-function-with-a-heap-variable'&gt;&lt;/a&gt;&lt;h2&gt;Calling a function with a heap variable&lt;/h2&gt;
+&lt;a name='c'&gt;&lt;/a&gt;&lt;h3&gt;C&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;func_int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;malloc_int&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;a name='assembly'&gt;&lt;/a&gt;&lt;h3&gt;Assembly&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;ldr         x0,[sp, #malloc_int+0x20] ; load the value stored at the malloc_int variable (our&lt;/span&gt;
+&lt;span class="x"&gt;                                      ; heap pointer) into register 0&lt;/span&gt;
+&lt;span class="x"&gt;ldr         w0,[x0]                   ; load the value at our heap address (the actual number) &lt;/span&gt;
+&lt;span class="x"&gt;                                      ; into register 0 as the parameter to our function.                         &lt;/span&gt;
+&lt;span class="x"&gt;bl          func_int                  ; call function&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;a name='calling-a-function-with-a-static-variable'&gt;&lt;/a&gt;&lt;h2&gt;Calling a function with a static variable&lt;/h2&gt;
+&lt;a name='c'&gt;&lt;/a&gt;&lt;h3&gt;C&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;func_int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;static_int&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;a name='assembly'&gt;&lt;/a&gt;&lt;h3&gt;Assembly&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;adrp        x0,0x100008000   ; Since static variables are in the data section,&lt;/span&gt;
+&lt;span class="x"&gt;                             ; we know the precise address (relative to our &lt;/span&gt;
+&lt;span class="x"&gt;                             ; program) of them, and so we don&amp;#39;t need to use the &lt;/span&gt;
+&lt;span class="x"&gt;                             ; stack pointer, just the program counter which adrp &lt;/span&gt;
+&lt;span class="x"&gt;                             ; does by default                        &lt;/span&gt;
+&lt;span class="x"&gt;add         x0,x0,#0x0                                    &lt;/span&gt;
+&lt;span class="x"&gt;ldr         w0,[x0]          ; load the value at the data address from memory &lt;/span&gt;
+&lt;span class="x"&gt;                             ; into register 0 (our function parameter)&lt;/span&gt;
+&lt;span class="x"&gt;bl          func_int         ; call function&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;a name='calling-a-function-with-a-constant-variable'&gt;&lt;/a&gt;&lt;h2&gt;Calling a function with a constant variable&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;func_const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;constant_int&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;mov         w0,#0xc07   ; A constant variable never changes so we don&amp;#39;t need to &lt;/span&gt;
+&lt;span class="x"&gt;                        ; use addresses, the constant is here in the text section &lt;/span&gt;
+&lt;span class="x"&gt;                        ; with the code and is loaded by value into register 0&lt;/span&gt;
+&lt;span class="x"&gt;bl          func_const. ; call function&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;a name='recap'&gt;&lt;/a&gt;&lt;h2&gt;Recap&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Using stack variables, we load everything relative to the stack pointer.&lt;/li&gt;
+&lt;li&gt;With heap variables we first load the address we have on the stack, then load the value from this address&lt;/li&gt;
+&lt;li&gt;With a static variable we load everything from a known location relative to the program counter (in the data segment)&lt;/li&gt;
+&lt;li&gt;With a constant variable we can just use the values as is which is stored in the text of the assembly itself.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      <content:encoded>&lt;img class='post-hero' src='/static/postimages/memory-in-assembly/ghidra.png' alt='&lt;div&gt;Memory in Assembly - How different areas of memory are treated at the metal&lt;/div&gt;
+'/&gt;&lt;h1 class='post-title'&gt;&lt;div&gt;Memory in Assembly - How different areas of memory are treated at the metal&lt;/div&gt;
+&lt;/h1&gt;&lt;p&gt;I thought it might make for an interesting learning exercise to see how memory in different areas is treated at the assembly level.
+The program itself is simple, but I hope it will provide some insight.&lt;/p&gt;
+&lt;a name='c-program'&gt;&lt;/a&gt;&lt;h2&gt;C Program&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;const&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;constant_int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mh"&gt;0xc07&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;static&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;static_int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mh"&gt;0x57a71c&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;stack_int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mh"&gt;0x57ac3&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;malloc_int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;malloc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;malloc_int&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mh"&gt;0xa1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;func_int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;stack_int&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;func_int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;malloc_int&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;func_int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;static_int&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;func_const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;constant_int&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;a name='armv8-assembly'&gt;&lt;/a&gt;&lt;h2&gt;ARMv8 Assembly&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;stp         x29,x30,[sp, #local_20]!                &lt;/span&gt;
+&lt;span class="x"&gt;mov         x29,sp                                  &lt;/span&gt;
+&lt;span class="x"&gt;mov         w0,#0x7ac3                              &lt;/span&gt;
+&lt;span class="x"&gt;movk        w0,#0x5, LSL #16                        &lt;/span&gt;
+&lt;span class="x"&gt;str         w0,[sp, #stack_int+0x20]                &lt;/span&gt;
+&lt;span class="x"&gt;mov         x0,#0x1                                 &lt;/span&gt;
+&lt;span class="x"&gt;bl          __stubs:__stubs::_malloc                ;void * _malloc(size_t param_1)&lt;/span&gt;
+&lt;span class="x"&gt;str         x0,[sp, #malloc_int+0x20]               &lt;/span&gt;
+&lt;span class="x"&gt;ldr         x0,[sp, #malloc_int+0x20]               &lt;/span&gt;
+&lt;span class="x"&gt;mov         w1,#0xa1                                &lt;/span&gt;
+&lt;span class="x"&gt;str         w1,[x0]                                 &lt;/span&gt;
+&lt;span class="x"&gt;ldr         w0,[sp, #stack_int+0x20]                &lt;/span&gt;
+&lt;span class="x"&gt;bl          func_int                                ;void func_int(int x)&lt;/span&gt;
+&lt;span class="x"&gt;ldr         x0,[sp, #malloc_int+0x20]               &lt;/span&gt;
+&lt;span class="x"&gt;ldr         w0,[x0]                                 &lt;/span&gt;
+&lt;span class="x"&gt;bl          func_int                                ;void func_int(int x)&lt;/span&gt;
+&lt;span class="x"&gt;adrp        x0,0x100008000                          &lt;/span&gt;
+&lt;span class="x"&gt;add         x0,x0,#0x0                              &lt;/span&gt;
+&lt;span class="x"&gt;ldr         w0,[x0]=&amp;gt;__data:main::static_int        ;= 57A71Ch&lt;/span&gt;
+&lt;span class="x"&gt;bl          func_int                                ;void func_int(int x)&lt;/span&gt;
+&lt;span class="x"&gt;mov         w0,#0xc07                               &lt;/span&gt;
+&lt;span class="x"&gt;bl          func_const                              ;void func_const(int x)&lt;/span&gt;
+&lt;span class="x"&gt;mov         w0,#0x0                                 &lt;/span&gt;
+&lt;span class="x"&gt;ldp         x29=&amp;gt;local_20,x30,[sp], #0x20           &lt;/span&gt;
+&lt;span class="x"&gt;ret&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;a name='static-integer'&gt;&lt;/a&gt;&lt;h2&gt;Static Integer&lt;/h2&gt;
+&lt;p&gt;You may notice that our static (0x57a71c) variable is not declared in the assembly. 
+This is because everything you see above is in the TEXT segment. The part of the assembly that is read only. 
+Text segment is labelled as such with an assembly directive.&lt;/p&gt;
+&lt;p&gt;Static variables exist for the lifetime of the program but can change their value and so shouldn't be loaded into the text segment. 
+Instead, values that can be edited but are static and initialised are loaded into the data segment.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;// __data&lt;/span&gt;
+&lt;span class="x"&gt;// __DATA&lt;/span&gt;
+&lt;span class="x"&gt;// ram:100008000-ram:100008003&lt;/span&gt;
+&lt;span class="x"&gt;//&lt;/span&gt;
+
+&lt;span class="x"&gt;_static_int.0&lt;/span&gt;
+&lt;span class="x"&gt;main::static int&lt;/span&gt;
+&lt;span class="x"&gt;    int     57A71Ch&lt;/span&gt;
+&lt;span class="x"&gt;//&lt;/span&gt;
+&lt;span class="x"&gt;//__DATA&lt;/span&gt;
+&lt;span class="x"&gt;//__DATA&lt;/span&gt;
+&lt;span class="x"&gt;// ram:100008004-ram:10000bfff&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;With Ghidra we can see that our file contains a directive to load our static variable into the data segment at launch. 
+We also have a label to this static variable that somewhat matches our C code.&lt;/p&gt;
+&lt;a name='stack-integer'&gt;&lt;/a&gt;&lt;h2&gt;Stack Integer&lt;/h2&gt;
+&lt;p&gt;This works by moving our value into a register, then storing the contents of that register into an area of memory offset from the stack pointer. 
+The stack pointer is a special register that the CPU uses to tell us where our stack is. 
+Because everything we store on the stack is a known size, the compiler works out the offsets and knows where things should be stored in relation to each other.&lt;/p&gt;
+&lt;a name='c'&gt;&lt;/a&gt;&lt;h3&gt;C&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;stack_int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mh"&gt;0x57ac3&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;a name='assembly'&gt;&lt;/a&gt;&lt;h3&gt;Assembly&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;mov         w0,#0x7ac3               ; move integer into register 0                             &lt;/span&gt;
+&lt;span class="x"&gt;movk        w0,#0x5, LSL #16                        &lt;/span&gt;
+&lt;span class="x"&gt;str         w0,[sp, #stack_int+0x20] ; store integer into RAM address pointed to by&lt;/span&gt;
+&lt;span class="x"&gt;                                     ; stack pointer (sp) + an offset based on number&lt;/span&gt;
+&lt;span class="x"&gt;                                     ; size. Our number is now in stack memory&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;a name='heap-integer'&gt;&lt;/a&gt;&lt;h2&gt;Heap Integer&lt;/h2&gt;
+&lt;p&gt;This works by asking for a given amount of memory to be allocated, the kernel allocates the new memory in our address space then hands us back a pointer to it. 
+The address we get back is stored on the stack, and we can load values into this address to store on the heap.&lt;/p&gt;
+&lt;a name='c'&gt;&lt;/a&gt;&lt;h3&gt;C&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;malloc_int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;malloc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="n"&gt;malloc_int&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mh"&gt;0xa1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;a name='assembly'&gt;&lt;/a&gt;&lt;h3&gt;Assembly&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;mov         x0,#0x1                     ; Set first parameter of malloc to 1 (number of &lt;/span&gt;
+&lt;span class="x"&gt;                                        ; bytes to allocate)                        &lt;/span&gt;
+&lt;span class="x"&gt;bl          __stubs:__stubs::_malloc    ; call malloc&lt;/span&gt;
+&lt;span class="x"&gt;str         x0,[sp, #malloc_int+0x20]   ; Store return value of malloc (register 0)&lt;/span&gt;
+&lt;span class="x"&gt;                                        ; onto the stack (sp + offset)&lt;/span&gt;
+
+
+
+
+&lt;span class="x"&gt;ldr         x0,[sp, #malloc_int+0x20]   ; Load heap address (which is stored on stack)&lt;/span&gt;
+&lt;span class="x"&gt;                                        ; into register              &lt;/span&gt;
+&lt;span class="x"&gt;mov         w1,#0xa1                    ; move our integer into register 1              &lt;/span&gt;
+&lt;span class="x"&gt;str         w1,[x0]                     ; Store our integer into the the heap address &lt;/span&gt;
+&lt;span class="x"&gt;                                        ; (integer is now on the heap)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Notice how the bottom two lines are effectively the same as what we did on the stack, everything else is all the extra overhead of using the heap, this is one of the reasons why it's easier to use the stack to store local variables (another obvious one is we don't have to free things on the stack whereas in a real program we would also have to remember to free this memory)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a name='calling-a-function-with-a-stack-variable'&gt;&lt;/a&gt;&lt;h2&gt;Calling a function with a stack variable&lt;/h2&gt;
+&lt;a name='c'&gt;&lt;/a&gt;&lt;h3&gt;C&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;func_int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;stack_int&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;a name='assembly'&gt;&lt;/a&gt;&lt;h3&gt;Assembly&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;ldr         w0,[sp, #stack_int+0x20] ; Set parameter 0 to value stored in the &lt;/span&gt;
+&lt;span class="x"&gt;                                     ;  address pointed to by stack_int                &lt;/span&gt;
+&lt;span class="x"&gt;bl          func_int                 ; call function&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;a name='calling-a-function-with-a-heap-variable'&gt;&lt;/a&gt;&lt;h2&gt;Calling a function with a heap variable&lt;/h2&gt;
+&lt;a name='c'&gt;&lt;/a&gt;&lt;h3&gt;C&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;func_int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;malloc_int&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;a name='assembly'&gt;&lt;/a&gt;&lt;h3&gt;Assembly&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;ldr         x0,[sp, #malloc_int+0x20] ; load the value stored at the malloc_int variable (our&lt;/span&gt;
+&lt;span class="x"&gt;                                      ; heap pointer) into register 0&lt;/span&gt;
+&lt;span class="x"&gt;ldr         w0,[x0]                   ; load the value at our heap address (the actual number) &lt;/span&gt;
+&lt;span class="x"&gt;                                      ; into register 0 as the parameter to our function.                         &lt;/span&gt;
+&lt;span class="x"&gt;bl          func_int                  ; call function&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;a name='calling-a-function-with-a-static-variable'&gt;&lt;/a&gt;&lt;h2&gt;Calling a function with a static variable&lt;/h2&gt;
+&lt;a name='c'&gt;&lt;/a&gt;&lt;h3&gt;C&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;func_int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;static_int&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;a name='assembly'&gt;&lt;/a&gt;&lt;h3&gt;Assembly&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;adrp        x0,0x100008000   ; Since static variables are in the data section,&lt;/span&gt;
+&lt;span class="x"&gt;                             ; we know the precise address (relative to our &lt;/span&gt;
+&lt;span class="x"&gt;                             ; program) of them, and so we don&amp;#39;t need to use the &lt;/span&gt;
+&lt;span class="x"&gt;                             ; stack pointer, just the program counter which adrp &lt;/span&gt;
+&lt;span class="x"&gt;                             ; does by default                        &lt;/span&gt;
+&lt;span class="x"&gt;add         x0,x0,#0x0                                    &lt;/span&gt;
+&lt;span class="x"&gt;ldr         w0,[x0]          ; load the value at the data address from memory &lt;/span&gt;
+&lt;span class="x"&gt;                             ; into register 0 (our function parameter)&lt;/span&gt;
+&lt;span class="x"&gt;bl          func_int         ; call function&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;a name='calling-a-function-with-a-constant-variable'&gt;&lt;/a&gt;&lt;h2&gt;Calling a function with a constant variable&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;func_const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;constant_int&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;mov         w0,#0xc07   ; A constant variable never changes so we don&amp;#39;t need to &lt;/span&gt;
+&lt;span class="x"&gt;                        ; use addresses, the constant is here in the text section &lt;/span&gt;
+&lt;span class="x"&gt;                        ; with the code and is loaded by value into register 0&lt;/span&gt;
+&lt;span class="x"&gt;bl          func_const. ; call function&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;a name='recap'&gt;&lt;/a&gt;&lt;h2&gt;Recap&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Using stack variables, we load everything relative to the stack pointer.&lt;/li&gt;
+&lt;li&gt;With heap variables we first load the address we have on the stack, then load the value from this address&lt;/li&gt;
+&lt;li&gt;With a static variable we load everything from a known location relative to the program counter (in the data segment)&lt;/li&gt;
+&lt;li&gt;With a constant variable we can just use the values as is which is stored in the text of the assembly itself.&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+      <pubDate>Fri, 20 May 2022 17:57:44 +0000</pubDate>
     </item>
   </channel>
 </rss>

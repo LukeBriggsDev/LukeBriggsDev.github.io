@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+<meta name="description" content="A little dive into the world of stacks, heaps, and data">
+
+    <link rel="manifest" href="manifest.json" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0;">
+
+    <meta property="og:description" content="I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.lukebriggs.dev/" />
+    <meta property="og:image" content="https://www.lukebriggs.dev/banner.png"/>
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image" content="https://www.lukebriggs.dev/banner.png"/>
+    <meta name="twitter:title" content="Luke Briggs"/>
+    <meta name="twitter:description" content="I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University"/>
+    <meta name="application-name" content="Luke Briggs">
+
+    <title> Memory in Assembly - How different areas of memory are treated at the metal  - Luke Briggs</title>
+    <base href="https://www.lukebriggs.dev/">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="feed" type="application/rss+xml" href="index.xml" title="Luke Briggs">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="assets/stylesheets/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/stylesheets/victor.css">
+    <link rel="stylesheet" href="assets/stylesheets/syntax_highlight.css">
+    <link rel="stylesheet" href="assets/stylesheets/projects.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <ul class="nav-menu">
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="">Home</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="posts">Posts</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="projects">Projects</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="about">About</a>
+                </li>
+            
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+</header>
+
+    <article>
+        <h4 class="description">Fri 20 May 2022</h4>
+        <img class='post-hero' src='/static/postimages/memory-in-assembly/ghidra.png' alt='<div>Memory in Assembly - How different areas of memory are treated at the metal</div>
+'/><h1 class='post-title'><div>Memory in Assembly - How different areas of memory are treated at the metal</div>
+</h1><p>I thought it might make for an interesting learning exercise to see how memory in different areas is treated at the assembly level.
+The program itself is simple, but I hope it will provide some insight.</p>
+<a name='c-program'></a><h2>C Program</h2>
+<div class="highlight"><pre><span></span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">constant_int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0xc07</span><span class="p">;</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">static_int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x57a71c</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">stack_int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x57ac3</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">malloc_int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">malloc_int</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0xa1</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">func_int</span><span class="p">(</span><span class="n">stack_int</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">func_int</span><span class="p">(</span><span class="o">*</span><span class="n">malloc_int</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">func_int</span><span class="p">(</span><span class="n">static_int</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">func_const</span><span class="p">(</span><span class="n">constant_int</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+<a name='armv8-assembly'></a><h2>ARMv8 Assembly</h2>
+<div class="highlight"><pre><span></span><span class="x">stp         x29,x30,[sp, #local_20]!                </span>
+<span class="x">mov         x29,sp                                  </span>
+<span class="x">mov         w0,#0x7ac3                              </span>
+<span class="x">movk        w0,#0x5, LSL #16                        </span>
+<span class="x">str         w0,[sp, #stack_int+0x20]                </span>
+<span class="x">mov         x0,#0x1                                 </span>
+<span class="x">bl          __stubs:__stubs::_malloc                ;void * _malloc(size_t param_1)</span>
+<span class="x">str         x0,[sp, #malloc_int+0x20]               </span>
+<span class="x">ldr         x0,[sp, #malloc_int+0x20]               </span>
+<span class="x">mov         w1,#0xa1                                </span>
+<span class="x">str         w1,[x0]                                 </span>
+<span class="x">ldr         w0,[sp, #stack_int+0x20]                </span>
+<span class="x">bl          func_int                                ;void func_int(int x)</span>
+<span class="x">ldr         x0,[sp, #malloc_int+0x20]               </span>
+<span class="x">ldr         w0,[x0]                                 </span>
+<span class="x">bl          func_int                                ;void func_int(int x)</span>
+<span class="x">adrp        x0,0x100008000                          </span>
+<span class="x">add         x0,x0,#0x0                              </span>
+<span class="x">ldr         w0,[x0]=&gt;__data:main::static_int        ;= 57A71Ch</span>
+<span class="x">bl          func_int                                ;void func_int(int x)</span>
+<span class="x">mov         w0,#0xc07                               </span>
+<span class="x">bl          func_const                              ;void func_const(int x)</span>
+<span class="x">mov         w0,#0x0                                 </span>
+<span class="x">ldp         x29=&gt;local_20,x30,[sp], #0x20           </span>
+<span class="x">ret</span>
+</pre></div>
+<a name='static-integer'></a><h2>Static Integer</h2>
+<p>You may notice that our static (0x57a71c) variable is not declared in the assembly. 
+This is because everything you see above is in the TEXT segment. The part of the assembly that is read only. 
+Text segment is labelled as such with an assembly directive.</p>
+<p>Static variables exist for the lifetime of the program but can change their value and so shouldn't be loaded into the text segment. 
+Instead, values that can be edited but are static and initialised are loaded into the data segment.</p>
+<div class="highlight"><pre><span></span><span class="x">// __data</span>
+<span class="x">// __DATA</span>
+<span class="x">// ram:100008000-ram:100008003</span>
+<span class="x">//</span>
+
+<span class="x">_static_int.0</span>
+<span class="x">main::static int</span>
+<span class="x">    int     57A71Ch</span>
+<span class="x">//</span>
+<span class="x">//__DATA</span>
+<span class="x">//__DATA</span>
+<span class="x">// ram:100008004-ram:10000bfff</span>
+</pre></div>
+<p>With Ghidra we can see that our file contains a directive to load our static variable into the data segment at launch. 
+We also have a label to this static variable that somewhat matches our C code.</p>
+<a name='stack-integer'></a><h2>Stack Integer</h2>
+<p>This works by moving our value into a register, then storing the contents of that register into an area of memory offset from the stack pointer. 
+The stack pointer is a special register that the CPU uses to tell us where our stack is. 
+Because everything we store on the stack is a known size, the compiler works out the offsets and knows where things should be stored in relation to each other.</p>
+<a name='c'></a><h3>C</h3>
+<div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">stack_int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x57ac3</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+<a name='assembly'></a><h3>Assembly</h3>
+<div class="highlight"><pre><span></span><span class="x">mov         w0,#0x7ac3               ; move integer into register 0                             </span>
+<span class="x">movk        w0,#0x5, LSL #16                        </span>
+<span class="x">str         w0,[sp, #stack_int+0x20] ; store integer into RAM address pointed to by</span>
+<span class="x">                                     ; stack pointer (sp) + an offset based on number</span>
+<span class="x">                                     ; size. Our number is now in stack memory</span>
+</pre></div>
+<a name='heap-integer'></a><h2>Heap Integer</h2>
+<p>This works by asking for a given amount of memory to be allocated, the kernel allocates the new memory in our address space then hands us back a pointer to it. 
+The address we get back is stored on the stack, and we can load values into this address to store on the heap.</p>
+<a name='c'></a><h3>C</h3>
+<div class="highlight"><pre><span></span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">malloc_int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">malloc_int</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0xa1</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+<a name='assembly'></a><h3>Assembly</h3>
+<div class="highlight"><pre><span></span><span class="x">mov         x0,#0x1                     ; Set first parameter of malloc to 1 (number of </span>
+<span class="x">                                        ; bytes to allocate)                        </span>
+<span class="x">bl          __stubs:__stubs::_malloc    ; call malloc</span>
+<span class="x">str         x0,[sp, #malloc_int+0x20]   ; Store return value of malloc (register 0)</span>
+<span class="x">                                        ; onto the stack (sp + offset)</span>
+
+
+
+
+<span class="x">ldr         x0,[sp, #malloc_int+0x20]   ; Load heap address (which is stored on stack)</span>
+<span class="x">                                        ; into register              </span>
+<span class="x">mov         w1,#0xa1                    ; move our integer into register 1              </span>
+<span class="x">str         w1,[x0]                     ; Store our integer into the the heap address </span>
+<span class="x">                                        ; (integer is now on the heap)</span>
+</pre></div>
+<blockquote>
+<p>Notice how the bottom two lines are effectively the same as what we did on the stack, everything else is all the extra overhead of using the heap, this is one of the reasons why it's easier to use the stack to store local variables (another obvious one is we don't have to free things on the stack whereas in a real program we would also have to remember to free this memory)</p>
+</blockquote>
+<a name='calling-a-function-with-a-stack-variable'></a><h2>Calling a function with a stack variable</h2>
+<a name='c'></a><h3>C</h3>
+<div class="highlight"><pre><span></span><span class="n">func_int</span><span class="p">(</span><span class="n">stack_int</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+<a name='assembly'></a><h3>Assembly</h3>
+<div class="highlight"><pre><span></span><span class="x">ldr         w0,[sp, #stack_int+0x20] ; Set parameter 0 to value stored in the </span>
+<span class="x">                                     ;  address pointed to by stack_int                </span>
+<span class="x">bl          func_int                 ; call function</span>
+</pre></div>
+<a name='calling-a-function-with-a-heap-variable'></a><h2>Calling a function with a heap variable</h2>
+<a name='c'></a><h3>C</h3>
+<div class="highlight"><pre><span></span><span class="n">func_int</span><span class="p">(</span><span class="o">*</span><span class="n">malloc_int</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+<a name='assembly'></a><h3>Assembly</h3>
+<div class="highlight"><pre><span></span><span class="x">ldr         x0,[sp, #malloc_int+0x20] ; load the value stored at the malloc_int variable (our</span>
+<span class="x">                                      ; heap pointer) into register 0</span>
+<span class="x">ldr         w0,[x0]                   ; load the value at our heap address (the actual number) </span>
+<span class="x">                                      ; into register 0 as the parameter to our function.                         </span>
+<span class="x">bl          func_int                  ; call function</span>
+</pre></div>
+<a name='calling-a-function-with-a-static-variable'></a><h2>Calling a function with a static variable</h2>
+<a name='c'></a><h3>C</h3>
+<div class="highlight"><pre><span></span><span class="n">func_int</span><span class="p">(</span><span class="n">static_int</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+<a name='assembly'></a><h3>Assembly</h3>
+<div class="highlight"><pre><span></span><span class="x">adrp        x0,0x100008000   ; Since static variables are in the data section,</span>
+<span class="x">                             ; we know the precise address (relative to our </span>
+<span class="x">                             ; program) of them, and so we don&#39;t need to use the </span>
+<span class="x">                             ; stack pointer, just the program counter which adrp </span>
+<span class="x">                             ; does by default                        </span>
+<span class="x">add         x0,x0,#0x0                                    </span>
+<span class="x">ldr         w0,[x0]          ; load the value at the data address from memory </span>
+<span class="x">                             ; into register 0 (our function parameter)</span>
+<span class="x">bl          func_int         ; call function</span>
+</pre></div>
+<a name='calling-a-function-with-a-constant-variable'></a><h2>Calling a function with a constant variable</h2>
+<div class="highlight"><pre><span></span><span class="n">func_const</span><span class="p">(</span><span class="n">constant_int</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+<div class="highlight"><pre><span></span><span class="x">mov         w0,#0xc07   ; A constant variable never changes so we don&#39;t need to </span>
+<span class="x">                        ; use addresses, the constant is here in the text section </span>
+<span class="x">                        ; with the code and is loaded by value into register 0</span>
+<span class="x">bl          func_const. ; call function</span>
+</pre></div>
+<a name='recap'></a><h2>Recap</h2>
+<ul>
+<li>Using stack variables, we load everything relative to the stack pointer.</li>
+<li>With heap variables we first load the address we have on the stack, then load the value from this address</li>
+<li>With a static variable we load everything from a known location relative to the program counter (in the data segment)</li>
+<li>With a constant variable we can just use the values as is which is stored in the text of the assembly itself.</li>
+</ul>
+
+    </article>
+
+<footer>
+    &copy; Luke Briggs
+</footer>
+<script>
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+
+    hamburger.addEventListener("click", mobileMenu);
+
+    function mobileMenu() {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+
+    }
+
+    const navLink = document.querySelectorAll(".nav-link");
+
+    navLink.forEach(n => n.addEventListener("click", closeMenu));
+
+    function closeMenu() {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+    }
+
+    if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+    // Registration was successful
+    console.log('Registered!');
+    }, function(err) {
+    // registration failed :(
+    console.log('ServiceWorker registration failed: ', err);
+    }).catch(function(err) {
+    console.log(err);
+    });
+    });
+    } else {
+    console.log('service worker is not supported');
+    }
+
+</script>
+</body>
+</html>
