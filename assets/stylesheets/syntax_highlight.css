@@ -1,12 +1,6 @@
-p code {
-    background-color: #ede9e4;
-}
-
 .highlight {
-    background-color: #ede9e4;
     padding: 1rem 1rem 1rem 1rem;
     margin-bottom: 1rem;
-    border-radius: 8px;
     width: 100%;
     overflow-x: scroll;
 }
@@ -80,15 +74,12 @@ p code {
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
 
 @media (prefers-color-scheme: dark) {
-    p code {
-        background-color: #202020; color: #d0d0d0;
-    }
     .highlight .hll { background-color: #404040 }
     .highlight  {
         padding: 1rem 1rem 1rem 1rem;
         margin-bottom: 1rem;
-        border-radius: 8px;
-        background: #202020; color: #d0d0d0 }
+        color: #d0d0d0
+    }
     .highlight .c { color: #999999; font-style: italic } /* Comment */
     .highlight .err { color: #a61717; background-color: #e3d2d2 } /* Error */
     .highlight .esc { color: #d0d0d0 } /* Escape */

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+<meta name="description" content="Giving 100 threads 100 paintbrushes and expecting the Mona Lisa.">
+
+    <link rel="manifest" href="manifest.json" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0;">
+
+    <meta property="og:description" content="I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.lukebriggs.dev/" />
+    <meta property="og:image" content="https://www.lukebriggs.dev/banner.png"/>
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image" content="https://www.lukebriggs.dev/banner.png"/>
+    <meta name="twitter:title" content="Luke Briggs"/>
+    <meta name="twitter:description" content="I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University"/>
+    <meta name="application-name" content="Luke Briggs">
+
+    <title> Painting by the Numbers: An exploration into evolutionary algorithms  - Luke Briggs</title>
+    <base href="https://www.lukebriggs.dev/">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="feed" type="application/rss+xml" href="index.xml" title="Luke Briggs">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="assets/stylesheets/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/stylesheets/victor.css">
+    <link rel="stylesheet" href="assets/stylesheets/syntax_highlight.css">
+    <link rel="stylesheet" href="assets/stylesheets/projects.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <ul class="nav-menu">
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="">Home</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="posts">Posts</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="projects">Projects</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="about">About</a>
+                </li>
+            
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+</header>
+
+    <article>
+        <h4 class="description">Sat 28 May 2022</h4>
+        <img class='post-hero' src='static/postimages/painting-by-the-numbers/header.png' alt='<div>Painting by the Numbers: An exploration into evolutionary algorithms</div>
+'/><h1 class='post-title'><div>Painting by the Numbers: An exploration into evolutionary algorithms</div>
+</h1><p>In a recent second year University project, I was tasked with developing an <a href="https://en.wikipedia.org/wiki/Evolutionary_algorithm">evolutionary algorithm</a> for reproducing images using a limited number of semi-transparent polygons. I spent so much time above and beyond what I needed to that I thought it was worth writing a post about how I went about my work and challenges along the way.</p>
+<a name='what-are-evolutionary-algorithms?'></a><h2>What are evolutionary algorithms?</h2>
+<p>The basic premise of an evolutionary algorithm is: you have a population of solutions; this population goes through some sort of mutation, reproduction, or mating; the individuals in the population are then evaluated according to a particular <em>fitness function</em> and the fittest survive. The idea with evolutionary algorithms, as with evolution of biological species, is that given sufficient time, variation, and evolutionary pressure, it is possible for individuals to emerge that solve the particular problem you have placed upon it.</p>
+<p>Just as when faced with the problem of getting food from land, some fish became amphibious, and eventually exclusively land creatures. Given the problem of wanting to look like the Mona Lisa, a population of shapes will emerge that solve this problem.</p>
+<a name='the-brief'></a><h2>The brief</h2>
+<p>The brief was inspired by <a href="https://rogerjohansson.blog/2008/12/07/genetic-programming-evolution-of-mona-lisa/">Roger Alsing's blog post</a> where he did a similar thing.
+His algorithm was quite simplistic in what sort of mutations it offered and it was therefore felt we could make some improvement on this.</p>
+<p>The final submission for the project was written in Python using the <a href="https://deap.readthedocs.io/en/master/">DEAP</a> library, however, I fancied a speed-up.
+And using a compiled solution like <a href="https://www.pypy.org">PyPy</a> was not cooperative and so I rewrote the program in Go.
+Because of various hoops and hurdles in releasing University coursework submissions, the original python implementation is not available.
+My Go rewrite, however, is available at my <a href="https://github.com/LukeBriggsDev/EARP">GitHub</a>.
+I am not as experienced in developing in Go as with python but I feel I have made (mostly) sane, if not idiomatic, choices.</p>
+<a name='the-program'></a><h2>The Program</h2>
+<a name='making-the-population'></a><h3>Making the population</h3>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">individuals</span> <span class="p">[]</span><span class="nx">Individual</span>
+<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">256</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+    <span class="nx">individuals</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">individuals</span><span class="p">,</span> <span class="nx">makeIndividual</span><span class="p">(</span><span class="nx">MAX_POLYGONS</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+<p>I start off by making the population of Individuals.
+In this case I make 256 individuals with each individual consisting of 100 polygons.</p>
+<p>Our Polygon and Point structs looks like this:</p>
+<div class="highlight"><pre><span></span><span class="kd">type</span> <span class="nx">Polygon</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">color</span>    <span class="nx">rgba</span>
+    <span class="nx">vertices</span> <span class="p">[]</span><span class="nx">Point</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">Point</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">x</span> <span class="kt">float64</span>
+    <span class="nx">y</span> <span class="kt">float64</span>
+<span class="p">}</span>
+</pre></div>
+<p>To make a polygon I simply create instances of these classes with various random starting values in order to provide a diverse population from which a solution can emerge.</p>
+<div class="highlight"><pre><span></span><span class="kd">func</span> <span class="nx">makePolygon</span><span class="p">()</span> <span class="nx">Polygon</span> <span class="p">{</span>
+    <span class="c1">// Create colour</span>
+    <span class="nx">polygon</span> <span class="o">:=</span> <span class="nx">Polygon</span><span class="p">{</span><span class="nx">color</span><span class="p">:</span> <span class="nx">rgba</span><span class="p">{</span>
+        <span class="nx">r</span><span class="p">:</span> <span class="nb">uint8</span><span class="p">(</span><span class="nx">rand</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="mi">255</span><span class="p">)),</span>
+        <span class="nx">g</span><span class="p">:</span> <span class="nb">uint8</span><span class="p">(</span><span class="nx">rand</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="mi">255</span><span class="p">)),</span>
+        <span class="nx">b</span><span class="p">:</span> <span class="nb">uint8</span><span class="p">(</span><span class="nx">rand</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="mi">255</span><span class="p">)),</span>
+        <span class="nx">a</span><span class="p">:</span> <span class="nb">uint8</span><span class="p">(</span><span class="nx">rand</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="mi">255</span><span class="o">-</span><span class="mi">75</span><span class="p">)</span> <span class="o">+</span> <span class="mi">75</span><span class="p">),</span>
+    <span class="p">}}</span>
+
+    <span class="nx">sides</span> <span class="o">:=</span> <span class="mi">3</span>
+    <span class="c1">// Create vertices</span>
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">sides</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="nx">x</span> <span class="o">:=</span> <span class="nx">rand</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+        <span class="nx">y</span> <span class="o">:=</span> <span class="nx">rand</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+        <span class="nx">polygon</span><span class="p">.</span><span class="nx">vertices</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">polygon</span><span class="p">.</span><span class="nx">vertices</span><span class="p">,</span> <span class="nx">Point</span><span class="p">{</span><span class="nx">x</span><span class="p">:</span> <span class="nb">float64</span><span class="p">(</span><span class="nx">x</span><span class="p">),</span> <span class="nx">y</span><span class="p">:</span> <span class="nb">float64</span><span class="p">(</span><span class="nx">y</span><span class="p">)})</span>
+    <span class="p">}</span>
+    <span class="c1">// Arrange vertices such that they don&#39;t create a shape that self intersects if a polygon has more than 3 initial sides</span>
+    <span class="nx">polygon</span><span class="p">.</span><span class="nx">removeSelfIntersect</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="nx">polygon</span>
+<span class="p">}</span>
+</pre></div>
+<p>See <a href="javascript:;" onclick="document.location.hash='non-self-intersecting-polygons';">This section</a> for more details on how I made sure polygons didn't self-intersect.</p>
+<p>The polygons then go on to form an individual:</p>
+<div class="highlight"><pre><span></span><span class="kd">func</span> <span class="nx">makeIndividual</span><span class="p">(</span><span class="nx">n</span> <span class="kt">int</span><span class="p">)</span> <span class="nx">Individual</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">polygons</span> <span class="p">[]</span><span class="nx">Polygon</span>
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">n</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="nx">polygons</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">polygons</span><span class="p">,</span> <span class="nx">makePolygon</span><span class="p">())</span>
+    <span class="p">}</span>
+    <span class="nx">ind</span> <span class="o">:=</span> <span class="nx">Individual</span><span class="p">{</span>
+        <span class="nx">elements</span><span class="p">:</span> <span class="nx">polygons</span><span class="p">,</span>
+        <span class="nx">fitness</span><span class="p">:</span>  <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">ind</span>
+<span class="p">}</span>
+</pre></div>
+<p>Individuals are initialised with a fitness of -1, which means that fitness is invalid and needs to be re-calculated.
+In order to prevent doing more processing than necessary, I will reset the fitness back to -1 whenever a change is made to that individuals polygons.
+Doing this means that I can guarantee that if a fitness is not -1, the polygons haven't change and I can skip that individual's evaluation.</p>
+<a name='generating-offspring'></a><h3>Generating offspring</h3>
+<p>Every generation, new offspring are created from our current population.
+The strategy I went with (varOr) leads to each child being either a copy of a parent, a mutation of a parent, or a mating between two parents.</p>
+<div class="highlight"><pre><span></span><span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">generations</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+    <span class="nx">offspring</span> <span class="o">:=</span> <span class="nx">varOr</span><span class="p">(</span><span class="nx">population</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">)</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+<p>Mating involves getting a taking a random point in the list of polygons as a pivot point, then swapping everything after the pivot point with the same set of points from the other parent.
+Leaving a child where the first half(ish) of the polygons are from one parent, and the other half(ish) are from the second parent.
+Any children from this process are also given an initial fitness of -1, as the parent fitness is no longer valid due to half the polygons being different.</p>
+<div class="highlight"><pre><span></span><span class="c1">// Get pivot</span>
+<span class="nx">cxpoint</span> <span class="o">:=</span> <span class="nx">rand</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="nx">size</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="c1">// Swap ends</span>
+<span class="nx">temp</span> <span class="o">:=</span> <span class="nx">ind1</span><span class="p">[</span><span class="nx">cxpoint</span><span class="p">:]</span>
+<span class="nx">ind1</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">ind1</span><span class="p">[:</span><span class="nx">cxpoint</span><span class="p">],</span> <span class="nx">ind2</span><span class="p">[</span><span class="nx">cxpoint</span><span class="p">:]</span><span class="o">...</span><span class="p">)</span>
+<span class="nx">ind2</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">ind2</span><span class="p">[:</span><span class="nx">cxpoint</span><span class="p">],</span> <span class="nx">temp</span><span class="o">...</span><span class="p">)</span>
+<span class="c1">// return children</span>
+<span class="k">return</span> <span class="nx">ind1</span><span class="p">,</span> <span class="nx">ind2</span>
+</pre></div>
+<p>Reproduction involves a simple copying of one individual across generations, as such the fitness does not have to be invalidated to -1 because it is a perfect copy of an Individual with valid fitness.</p>
+<div class="highlight"><pre><span></span><span class="c1">// Choose individual</span>
+<span class="nx">idx</span> <span class="o">:=</span> <span class="nx">rand</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nx">population</span><span class="p">))</span>
+<span class="c1">// Clone individual&#39;s polygons</span>
+<span class="nx">ind</span> <span class="o">:=</span> <span class="nx">clonePolygonSlice</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">population</span><span class="p">[</span><span class="nx">idx</span><span class="p">].</span><span class="nx">elements</span><span class="p">)</span>
+<span class="c1">// Add new individual with same polygons to offspring</span>
+<span class="nx">offspring</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">offspring</span><span class="p">,</span> <span class="nx">Individual</span><span class="p">{</span><span class="nx">elements</span><span class="p">:</span> <span class="nx">ind</span><span class="p">,</span> <span class="nx">fitness</span><span class="p">:</span> <span class="nx">population</span><span class="p">[</span><span class="nx">idx</span><span class="p">].</span><span class="nx">fitness</span><span class="p">})</span>
+</pre></div>
+<p>Mutation is where a large amount of the uniqueness of this implementation comes in, and where a lot of the improvement was made during development.
+The following mutations can occur to an individual:</p>
+<ul>
+<li>Change colour of polygon</li>
+<li>Change transparency of polygon</li>
+<li>Add a polygon to an individual (within 100 limits)</li>
+<li>Remove polygon from an individual (within 20-100 limits)</li>
+<li>Add a point to a polygon (requires removing self intersect)</li>
+<li>Re-order how polygons are stacked</li>
+<li>Change position of a single point</li>
+<li>Change position of all points at once</li>
+</ul>
+<p>The mutations were picked through a process of 1% inspiration, 99% calculation.
+With many trial and error runs of various mutations and algorithm choices before settling on the current set with their current probabilities of occurrence.</p>
+<a name='offspring-evaluation'></a><h3>Offspring evaluation</h3>
+<p>Once we've got our children, we need to see how good they are.
+It is at this point that Go slightly comes into its own.
+Evolutionary algorithms, particularly the evaluation, are incredibly well suited to multithreading.
+Each evaluation is entirely independent and, as such, each one can run in its own thread, speeding up things significantly on multi-core systems.</p>
+<p>It is also in this aspect where Go also comes into its own, as Go has first-class support for multithreading.
+If you have a thread-safe function, then spinning it up in a new thread is as easy as putting the keyword <code>go</code> before it.</p>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">waitGroup</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span>
+<span class="k">for</span> <span class="nx">offIdx</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">offIdx</span> <span class="p">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="nx">offspring</span><span class="p">);</span> <span class="nx">offIdx</span><span class="o">++</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">offspring</span><span class="p">[</span><span class="nx">offIdx</span><span class="p">].</span><span class="nx">fitness</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="p">{</span>
+        <span class="nx">waitGroup</span><span class="p">.</span><span class="nx">Add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">go</span> <span class="kd">func</span><span class="p">(</span><span class="nx">offIdx</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">defer</span> <span class="nx">waitGroup</span><span class="p">.</span><span class="nx">Done</span><span class="p">()</span>
+            <span class="nx">offspring</span><span class="p">[</span><span class="nx">offIdx</span><span class="p">].</span><span class="nx">fitness</span> <span class="p">=</span> <span class="nx">evaluate</span><span class="p">(</span><span class="nx">offspring</span><span class="p">[</span><span class="nx">offIdx</span><span class="p">].</span><span class="nx">elements</span><span class="p">)</span>
+        <span class="p">}(</span><span class="nx">offIdx</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="nx">waitGroup</span><span class="p">.</span><span class="nx">Wait</span><span class="p">()</span>
+</pre></div>
+<p>In this instance, we loop through all the offspring, and if the fitness is invalid (like it is the result of a mutation or mating) we evaluate the fitness of the Individuals polygons.
+All the <code>WaitGroup</code> stuff around it just holds a counter of how many routines are left to finish until we can carry on with the program.
+This allows us to utilise all the physical cores on our machine during the evaluation stage.</p>
+<p>The evaluation itself is quite straightforward.
+We draw the individual out onto a canvas, convert it and the target image into greyscale, and then go pixel by pixel to calculate how different the image is.
+The individual with the smallest difference between its greyscale and the target greyscale is determined to have the highest fitness.</p>
+<div class="highlight"><pre><span></span><span class="kd">func</span> <span class="nx">evaluate</span><span class="p">(</span><span class="nx">solution</span> <span class="p">[]</span><span class="nx">Polygon</span><span class="p">)</span> <span class="kt">float64</span> <span class="p">{</span>
+    <span class="nx">img</span> <span class="o">:=</span> <span class="nx">drawSolution</span><span class="p">(</span><span class="nx">solution</span><span class="p">)</span>
+    <span class="nx">diff</span> <span class="o">:=</span> <span class="nx">ImageDifference</span><span class="p">(</span><span class="nx">img</span><span class="p">.</span><span class="nx">Image</span><span class="p">(),</span> <span class="nx">TARGET</span><span class="p">)</span>
+    <span class="nx">MAX</span> <span class="o">:=</span> <span class="nb">float64</span><span class="p">(</span><span class="nx">math</span><span class="p">.</span><span class="nx">MaxUint16</span> <span class="o">*</span> <span class="nx">img</span><span class="p">.</span><span class="nx">Height</span><span class="p">()</span> <span class="o">*</span> <span class="nx">img</span><span class="p">.</span><span class="nx">Width</span><span class="p">())</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nx">MAX</span> <span class="o">-</span> <span class="nx">diff</span><span class="p">)</span> <span class="o">/</span> <span class="nx">MAX</span>
+<span class="p">}</span>
+</pre></div>
+<a name='offspring-selection'></a><h3>Offspring selection</h3>
+<p>After we have our children, we must pit them against each other to the death.
+The selection method I chose was tournament selection, this works be getting a random sample from the population and carrying the best from that sample into the future generation.</p>
+<div class="highlight"><pre><span></span><span class="kd">func</span> <span class="nx">TournSel</span><span class="p">(</span><span class="nx">individuals</span> <span class="p">[]</span><span class="nx">Individual</span><span class="p">,</span> <span class="nx">k</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">tournsize</span> <span class="kt">int</span><span class="p">)</span> <span class="p">[]</span><span class="nx">Individual</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">chosen</span> <span class="p">[]</span><span class="nx">Individual</span>
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">k</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">aspirant</span> <span class="p">[]</span><span class="nx">Individual</span>
+        <span class="k">for</span> <span class="nx">j</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span> <span class="p">&lt;</span> <span class="nx">tournsize</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span> <span class="p">{</span>
+            <span class="nx">aspirant</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">aspirant</span><span class="p">,</span> <span class="nx">individuals</span><span class="p">[</span><span class="nx">rand</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nx">individuals</span><span class="p">))])</span>
+        <span class="p">}</span>
+        <span class="nx">chosen</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">chosen</span><span class="p">,</span> <span class="nx">BestSel</span><span class="p">(</span><span class="nx">aspirant</span><span class="p">))</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">chosen</span>
+<span class="p">}</span>
+</pre></div>
+<p>I then draw out the best child each generation just so I can see the progress as it goes on.
+Apart from that, our generation is over and the cycle starts over again.</p>
+<a name='the-results'></a><h2>The results</h2>
+<iframe width="424" height="424" src="https://www.youtube.com/embed/-eObA3jZh7g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>Even though we never do anything other than random, indiscriminate changes, after about 250,000 generations we can get pretty good images made up of very few polygons.</p>
+<span style="margin-left: auto; margin-right:auto">
+<img alt="Darwin reference" src="/static/postimages/painting-by-the-numbers/darwin.png">
+<img alt="Darwin 96.87% fitness" src="/static/postimages/painting-by-the-numbers/darwin96.87.png">
+</span>
+<span style="margin-left: auto; margin-right:auto">
+<img alt="Mona Lisa reference" src="/static/postimages/painting-by-the-numbers/monalisa.png">
+<img alt="Mona Lisa 96.65% fitness" src="/static/postimages/painting-by-the-numbers/monalisa96.65.png">
+</span>
+<a name='appendix'></a><h2>Appendix</h2>
+<a name='non-self-intersecting-polygons'></a><h3>Non self-intersecting polygons</h3>
+<p>When it comes to the vertices of a polygon, you can't just start drawing lines between them and hope for the best.</p>
+<p>If I have 4 points that are going to make up my square:</p>
+<p><img src="/static/postimages/painting-by-the-numbers/self-intersect-1.svg" alt="4 points plotted in a square" /></p>
+<p>And then I start drawing lines between the points in any order:</p>
+<p><img src="/static/postimages/painting-by-the-numbers/self-intersect-2.svg" alt="A self-intersecting square" /></p>
+<p>That ain't no square chief.
+So, how can we tell which order we should connect the points?
+One way to do it is with the power of vectors and angles.
+First we start out with a base vector, which we just use to be the vector between the center of the polygon and the first point:</p>
+<p><img src="/static/postimages/painting-by-the-numbers/self-intersect-3.svg" alt="Vector between first and center point" /></p>
+<p>We then get vectors between the center and each point in the shape:</p>
+<p><img src="/static/postimages/painting-by-the-numbers/self-intersect-4.svg" alt="All vectors between points and the center" /></p>
+<p>If we then get the angle between the base vector and all of those vectors, we notice a pattern:</p>
+<p><img src="/static/postimages/painting-by-the-numbers/self-intersect-5.svg" alt="All angles between vectors and base vector" /></p>
+<p>The order in which we wan't to connect the dots in, also make increasingly large angles with the base vector.
+Therefore, if we get our points and sort them by the angle their vector makes with the base vector, they will be in the order in which we can draw them.</p>
+<p>The code for the mathematics itself can be found in <a href="https://github.com/LukeBriggsDev/EARP/blob/715bd60cab714bcadee6e1d27525ad7cfa070bef/polygon.go#L49"><code>polygon.go</code></a></p>
+
+    </article>
+
+<footer>
+    &copy; Luke Briggs
+</footer>
+<script>
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+
+    hamburger.addEventListener("click", mobileMenu);
+
+    function mobileMenu() {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+
+    }
+
+    const navLink = document.querySelectorAll(".nav-link");
+
+    navLink.forEach(n => n.addEventListener("click", closeMenu));
+
+    function closeMenu() {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+    }
+
+    if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+    // Registration was successful
+    console.log('Registered!');
+    }, function(err) {
+    // registration failed :(
+    console.log('ServiceWorker registration failed: ', err);
+    }).catch(function(err) {
+    console.log(err);
+    });
+    });
+    } else {
+    console.log('service worker is not supported');
+    }
+
+</script>
+</body>
+</html>

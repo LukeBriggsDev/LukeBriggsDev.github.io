@@ -12,7 +12,7 @@
       <link>https://www.lukebriggs.dev/</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Fri, 20 May 2022 18:00:51 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 29 May 2022 18:28:07 +0000</lastBuildDate>
     <item>
       <title>The First Line of Code
 </title>
@@ -3352,6 +3352,406 @@ The address we get back is stored on the stack, and we can load values into this
 &lt;/ul&gt;
 </content:encoded>
       <pubDate>Fri, 20 May 2022 17:57:44 +0000</pubDate>
+    </item>
+    <item>
+      <title>Painting by the Numbers: An exploration into evolutionary algorithms
+</title>
+      <link>https://www.lukebriggs.dev/posts/painting-by-the-numbers/painting-by-the-numbers.md</link>
+      <description>&lt;img class='post-hero' src='static/postimages/painting-by-the-numbers/header.png' alt='&lt;div&gt;Painting by the Numbers: An exploration into evolutionary algorithms&lt;/div&gt;
+'/&gt;&lt;h1 class='post-title'&gt;&lt;div&gt;Painting by the Numbers: An exploration into evolutionary algorithms&lt;/div&gt;
+&lt;/h1&gt;&lt;p&gt;In a recent second year University project, I was tasked with developing an &lt;a href="https://en.wikipedia.org/wiki/Evolutionary_algorithm"&gt;evolutionary algorithm&lt;/a&gt; for reproducing images using a limited number of semi-transparent polygons. I spent so much time above and beyond what I needed to that I thought it was worth writing a post about how I went about my work and challenges along the way.&lt;/p&gt;
+&lt;a name='what-are-evolutionary-algorithms?'&gt;&lt;/a&gt;&lt;h2&gt;What are evolutionary algorithms?&lt;/h2&gt;
+&lt;p&gt;The basic premise of an evolutionary algorithm is: you have a population of solutions; this population goes through some sort of mutation, reproduction, or mating; the individuals in the population are then evaluated according to a particular &lt;em&gt;fitness function&lt;/em&gt; and the fittest survive. The idea with evolutionary algorithms, as with evolution of biological species, is that given sufficient time, variation, and evolutionary pressure, it is possible for individuals to emerge that solve the particular problem you have placed upon it.&lt;/p&gt;
+&lt;p&gt;Just as when faced with the problem of getting food from land, some fish became amphibious, and eventually exclusively land creatures. Given the problem of wanting to look like the Mona Lisa, a population of shapes will emerge that solve this problem.&lt;/p&gt;
+&lt;a name='the-brief'&gt;&lt;/a&gt;&lt;h2&gt;The brief&lt;/h2&gt;
+&lt;p&gt;The brief was inspired by &lt;a href="https://rogerjohansson.blog/2008/12/07/genetic-programming-evolution-of-mona-lisa/"&gt;Roger Alsing's blog post&lt;/a&gt; where he did a similar thing.
+His algorithm was quite simplistic in what sort of mutations it offered and it was therefore felt we could make some improvement on this.&lt;/p&gt;
+&lt;p&gt;The final submission for the project was written in Python using the &lt;a href="https://deap.readthedocs.io/en/master/"&gt;DEAP&lt;/a&gt; library, however, I fancied a speed-up.
+And using a compiled solution like &lt;a href="https://www.pypy.org"&gt;PyPy&lt;/a&gt; was not cooperative and so I rewrote the program in Go.
+Because of various hoops and hurdles in releasing University coursework submissions, the original python implementation is not available.
+My Go rewrite, however, is available at my &lt;a href="https://github.com/LukeBriggsDev/EARP"&gt;GitHub&lt;/a&gt;.
+I am not as experienced in developing in Go as with python but I feel I have made (mostly) sane, if not idiomatic, choices.&lt;/p&gt;
+&lt;a name='the-program'&gt;&lt;/a&gt;&lt;h2&gt;The Program&lt;/h2&gt;
+&lt;a name='making-the-population'&gt;&lt;/a&gt;&lt;h3&gt;Making the population&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;individuals&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;&lt;span class="nx"&gt;Individual&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;256&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;individuals&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;individuals&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;makeIndividual&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;MAX_POLYGONS&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;I start off by making the population of Individuals.
+In this case I make 256 individuals with each individual consisting of 100 polygons.&lt;/p&gt;
+&lt;p&gt;Our Polygon and Point structs looks like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;type&lt;/span&gt; &lt;span class="nx"&gt;Polygon&lt;/span&gt; &lt;span class="kd"&gt;struct&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;color&lt;/span&gt;    &lt;span class="nx"&gt;rgba&lt;/span&gt;
+    &lt;span class="nx"&gt;vertices&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;&lt;span class="nx"&gt;Point&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="kd"&gt;type&lt;/span&gt; &lt;span class="nx"&gt;Point&lt;/span&gt; &lt;span class="kd"&gt;struct&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;x&lt;/span&gt; &lt;span class="kt"&gt;float64&lt;/span&gt;
+    &lt;span class="nx"&gt;y&lt;/span&gt; &lt;span class="kt"&gt;float64&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;To make a polygon I simply create instances of these classes with various random starting values in order to provide a diverse population from which a solution can emerge.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;func&lt;/span&gt; &lt;span class="nx"&gt;makePolygon&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="nx"&gt;Polygon&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="c1"&gt;// Create colour&lt;/span&gt;
+    &lt;span class="nx"&gt;polygon&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="nx"&gt;Polygon&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;rgba&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nx"&gt;r&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;uint8&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Intn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+        &lt;span class="nx"&gt;g&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;uint8&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Intn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+        &lt;span class="nx"&gt;b&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;uint8&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Intn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+        &lt;span class="nx"&gt;a&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;uint8&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Intn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;75&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;75&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;}}&lt;/span&gt;
+
+    &lt;span class="nx"&gt;sides&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;
+    &lt;span class="c1"&gt;// Create vertices&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt; &lt;span class="nx"&gt;sides&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nx"&gt;x&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="nx"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Intn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="nx"&gt;y&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="nx"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Intn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="nx"&gt;polygon&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;vertices&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;polygon&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;vertices&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;Point&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;float64&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;x&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="nx"&gt;y&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;float64&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)})&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="c1"&gt;// Arrange vertices such that they don&amp;#39;t create a shape that self intersects if a polygon has more than 3 initial sides&lt;/span&gt;
+    &lt;span class="nx"&gt;polygon&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;removeSelfIntersect&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;polygon&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;See &lt;a href="javascript:;" onclick="document.location.hash='non-self-intersecting-polygons';"&gt;This section&lt;/a&gt; for more details on how I made sure polygons didn't self-intersect.&lt;/p&gt;
+&lt;p&gt;The polygons then go on to form an individual:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;func&lt;/span&gt; &lt;span class="nx"&gt;makeIndividual&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;n&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nx"&gt;Individual&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;polygons&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;&lt;span class="nx"&gt;Polygon&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt; &lt;span class="nx"&gt;n&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nx"&gt;polygons&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;polygons&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;makePolygon&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="nx"&gt;ind&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="nx"&gt;Individual&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nx"&gt;elements&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;polygons&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nx"&gt;fitness&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;  &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;ind&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Individuals are initialised with a fitness of -1, which means that fitness is invalid and needs to be re-calculated.
+In order to prevent doing more processing than necessary, I will reset the fitness back to -1 whenever a change is made to that individuals polygons.
+Doing this means that I can guarantee that if a fitness is not -1, the polygons haven't change and I can skip that individual's evaluation.&lt;/p&gt;
+&lt;a name='generating-offspring'&gt;&lt;/a&gt;&lt;h3&gt;Generating offspring&lt;/h3&gt;
+&lt;p&gt;Every generation, new offspring are created from our current population.
+The strategy I went with (varOr) leads to each child being either a copy of a parent, a mutation of a parent, or a mating between two parents.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt; &lt;span class="nx"&gt;generations&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;offspring&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="nx"&gt;varOr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;population&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;120&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.25&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="c1"&gt;// ...&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Mating involves getting a taking a random point in the list of polygons as a pivot point, then swapping everything after the pivot point with the same set of points from the other parent.
+Leaving a child where the first half(ish) of the polygons are from one parent, and the other half(ish) are from the second parent.
+Any children from this process are also given an initial fitness of -1, as the parent fitness is no longer valid due to half the polygons being different.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;// Get pivot&lt;/span&gt;
+&lt;span class="nx"&gt;cxpoint&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="nx"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Intn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;size&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="c1"&gt;// Swap ends&lt;/span&gt;
+&lt;span class="nx"&gt;temp&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="nx"&gt;ind1&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;cxpoint&lt;/span&gt;&lt;span class="p"&gt;:]&lt;/span&gt;
+&lt;span class="nx"&gt;ind1&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;ind1&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="nx"&gt;cxpoint&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="nx"&gt;ind2&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;cxpoint&lt;/span&gt;&lt;span class="p"&gt;:]&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nx"&gt;ind2&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;ind2&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="nx"&gt;cxpoint&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="nx"&gt;temp&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c1"&gt;// return children&lt;/span&gt;
+&lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;ind1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;ind2&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Reproduction involves a simple copying of one individual across generations, as such the fitness does not have to be invalidated to -1 because it is a perfect copy of an Individual with valid fitness.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;// Choose individual&lt;/span&gt;
+&lt;span class="nx"&gt;idx&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="nx"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Intn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;population&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="c1"&gt;// Clone individual&amp;#39;s polygons&lt;/span&gt;
+&lt;span class="nx"&gt;ind&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="nx"&gt;clonePolygonSlice&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nx"&gt;population&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;elements&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c1"&gt;// Add new individual with same polygons to offspring&lt;/span&gt;
+&lt;span class="nx"&gt;offspring&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;offspring&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;Individual&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;elements&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;ind&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;fitness&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;population&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;fitness&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Mutation is where a large amount of the uniqueness of this implementation comes in, and where a lot of the improvement was made during development.
+The following mutations can occur to an individual:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Change colour of polygon&lt;/li&gt;
+&lt;li&gt;Change transparency of polygon&lt;/li&gt;
+&lt;li&gt;Add a polygon to an individual (within 100 limits)&lt;/li&gt;
+&lt;li&gt;Remove polygon from an individual (within 20-100 limits)&lt;/li&gt;
+&lt;li&gt;Add a point to a polygon (requires removing self intersect)&lt;/li&gt;
+&lt;li&gt;Re-order how polygons are stacked&lt;/li&gt;
+&lt;li&gt;Change position of a single point&lt;/li&gt;
+&lt;li&gt;Change position of all points at once&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The mutations were picked through a process of 1% inspiration, 99% calculation.
+With many trial and error runs of various mutations and algorithm choices before settling on the current set with their current probabilities of occurrence.&lt;/p&gt;
+&lt;a name='offspring-evaluation'&gt;&lt;/a&gt;&lt;h3&gt;Offspring evaluation&lt;/h3&gt;
+&lt;p&gt;Once we've got our children, we need to see how good they are.
+It is at this point that Go slightly comes into its own.
+Evolutionary algorithms, particularly the evaluation, are incredibly well suited to multithreading.
+Each evaluation is entirely independent and, as such, each one can run in its own thread, speeding up things significantly on multi-core systems.&lt;/p&gt;
+&lt;p&gt;It is also in this aspect where Go also comes into its own, as Go has first-class support for multithreading.
+If you have a thread-safe function, then spinning it up in a new thread is as easy as putting the keyword &lt;code&gt;go&lt;/code&gt; before it.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;waitGroup&lt;/span&gt; &lt;span class="nx"&gt;sync&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;WaitGroup&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nx"&gt;offIdx&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;offIdx&lt;/span&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;offspring&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="nx"&gt;offIdx&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nx"&gt;offspring&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;offIdx&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;fitness&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nx"&gt;waitGroup&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;go&lt;/span&gt; &lt;span class="kd"&gt;func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;offIdx&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="k"&gt;defer&lt;/span&gt; &lt;span class="nx"&gt;waitGroup&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Done&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+            &lt;span class="nx"&gt;offspring&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;offIdx&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;fitness&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;evaluate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;offspring&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;offIdx&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;elements&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="p"&gt;}(&lt;/span&gt;&lt;span class="nx"&gt;offIdx&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="nx"&gt;waitGroup&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Wait&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;In this instance, we loop through all the offspring, and if the fitness is invalid (like it is the result of a mutation or mating) we evaluate the fitness of the Individuals polygons.
+All the &lt;code&gt;WaitGroup&lt;/code&gt; stuff around it just holds a counter of how many routines are left to finish until we can carry on with the program.
+This allows us to utilise all the physical cores on our machine during the evaluation stage.&lt;/p&gt;
+&lt;p&gt;The evaluation itself is quite straightforward.
+We draw the individual out onto a canvas, convert it and the target image into greyscale, and then go pixel by pixel to calculate how different the image is.
+The individual with the smallest difference between its greyscale and the target greyscale is determined to have the highest fitness.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;func&lt;/span&gt; &lt;span class="nx"&gt;evaluate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;solution&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;&lt;span class="nx"&gt;Polygon&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="kt"&gt;float64&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;img&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="nx"&gt;drawSolution&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;solution&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="nx"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="nx"&gt;ImageDifference&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;img&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Image&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="nx"&gt;TARGET&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="nx"&gt;MAX&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="nb"&gt;float64&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;math&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;MaxUint16&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="nx"&gt;img&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Height&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="nx"&gt;img&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Width&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;MAX&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nx"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="nx"&gt;MAX&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;a name='offspring-selection'&gt;&lt;/a&gt;&lt;h3&gt;Offspring selection&lt;/h3&gt;
+&lt;p&gt;After we have our children, we must pit them against each other to the death.
+The selection method I chose was tournament selection, this works be getting a random sample from the population and carrying the best from that sample into the future generation.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;func&lt;/span&gt; &lt;span class="nx"&gt;TournSel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;individuals&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;&lt;span class="nx"&gt;Individual&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;k&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;tournsize&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;&lt;span class="nx"&gt;Individual&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;chosen&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;&lt;span class="nx"&gt;Individual&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt; &lt;span class="nx"&gt;k&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;aspirant&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;&lt;span class="nx"&gt;Individual&lt;/span&gt;
+        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nx"&gt;j&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;j&lt;/span&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt; &lt;span class="nx"&gt;tournsize&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;j&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="nx"&gt;aspirant&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aspirant&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;individuals&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Intn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;individuals&lt;/span&gt;&lt;span class="p"&gt;))])&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+        &lt;span class="nx"&gt;chosen&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;chosen&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;BestSel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aspirant&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;chosen&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;I then draw out the best child each generation just so I can see the progress as it goes on.
+Apart from that, our generation is over and the cycle starts over again.&lt;/p&gt;
+&lt;a name='the-results'&gt;&lt;/a&gt;&lt;h2&gt;The results&lt;/h2&gt;
+&lt;iframe width="424" height="424" src="https://www.youtube.com/embed/-eObA3jZh7g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;p&gt;Even though we never do anything other than random, indiscriminate changes, after about 250,000 generations we can get pretty good images made up of very few polygons.&lt;/p&gt;
+&lt;span style="margin-left: auto; margin-right:auto"&gt;
+&lt;img alt="Darwin reference" src="/static/postimages/painting-by-the-numbers/darwin.png"&gt;
+&lt;img alt="Darwin 96.87% fitness" src="/static/postimages/painting-by-the-numbers/darwin96.87.png"&gt;
+&lt;/span&gt;
+&lt;span style="margin-left: auto; margin-right:auto"&gt;
+&lt;img alt="Mona Lisa reference" src="/static/postimages/painting-by-the-numbers/monalisa.png"&gt;
+&lt;img alt="Mona Lisa 96.65% fitness" src="/static/postimages/painting-by-the-numbers/monalisa96.65.png"&gt;
+&lt;/span&gt;
+&lt;a name='appendix'&gt;&lt;/a&gt;&lt;h2&gt;Appendix&lt;/h2&gt;
+&lt;a name='non-self-intersecting-polygons'&gt;&lt;/a&gt;&lt;h3&gt;Non self-intersecting polygons&lt;/h3&gt;
+&lt;p&gt;When it comes to the vertices of a polygon, you can't just start drawing lines between them and hope for the best.&lt;/p&gt;
+&lt;p&gt;If I have 4 points that are going to make up my square:&lt;/p&gt;
+&lt;p&gt;&lt;img src="/static/postimages/painting-by-the-numbers/self-intersect-1.svg" alt="4 points plotted in a square" /&gt;&lt;/p&gt;
+&lt;p&gt;And then I start drawing lines between the points in any order:&lt;/p&gt;
+&lt;p&gt;&lt;img src="/static/postimages/painting-by-the-numbers/self-intersect-2.svg" alt="A self-intersecting square" /&gt;&lt;/p&gt;
+&lt;p&gt;That ain't no square chief.
+So, how can we tell which order we should connect the points?
+One way to do it is with the power of vectors and angles.
+First we start out with a base vector, which we just use to be the vector between the center of the polygon and the first point:&lt;/p&gt;
+&lt;p&gt;&lt;img src="/static/postimages/painting-by-the-numbers/self-intersect-3.svg" alt="Vector between first and center point" /&gt;&lt;/p&gt;
+&lt;p&gt;We then get vectors between the center and each point in the shape:&lt;/p&gt;
+&lt;p&gt;&lt;img src="/static/postimages/painting-by-the-numbers/self-intersect-4.svg" alt="All vectors between points and the center" /&gt;&lt;/p&gt;
+&lt;p&gt;If we then get the angle between the base vector and all of those vectors, we notice a pattern:&lt;/p&gt;
+&lt;p&gt;&lt;img src="/static/postimages/painting-by-the-numbers/self-intersect-5.svg" alt="All angles between vectors and base vector" /&gt;&lt;/p&gt;
+&lt;p&gt;The order in which we wan't to connect the dots in, also make increasingly large angles with the base vector.
+Therefore, if we get our points and sort them by the angle their vector makes with the base vector, they will be in the order in which we can draw them.&lt;/p&gt;
+&lt;p&gt;The code for the mathematics itself can be found in &lt;a href="https://github.com/LukeBriggsDev/EARP/blob/715bd60cab714bcadee6e1d27525ad7cfa070bef/polygon.go#L49"&gt;&lt;code&gt;polygon.go&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+</description>
+      <content:encoded>&lt;img class='post-hero' src='static/postimages/painting-by-the-numbers/header.png' alt='&lt;div&gt;Painting by the Numbers: An exploration into evolutionary algorithms&lt;/div&gt;
+'/&gt;&lt;h1 class='post-title'&gt;&lt;div&gt;Painting by the Numbers: An exploration into evolutionary algorithms&lt;/div&gt;
+&lt;/h1&gt;&lt;p&gt;In a recent second year University project, I was tasked with developing an &lt;a href="https://en.wikipedia.org/wiki/Evolutionary_algorithm"&gt;evolutionary algorithm&lt;/a&gt; for reproducing images using a limited number of semi-transparent polygons. I spent so much time above and beyond what I needed to that I thought it was worth writing a post about how I went about my work and challenges along the way.&lt;/p&gt;
+&lt;a name='what-are-evolutionary-algorithms?'&gt;&lt;/a&gt;&lt;h2&gt;What are evolutionary algorithms?&lt;/h2&gt;
+&lt;p&gt;The basic premise of an evolutionary algorithm is: you have a population of solutions; this population goes through some sort of mutation, reproduction, or mating; the individuals in the population are then evaluated according to a particular &lt;em&gt;fitness function&lt;/em&gt; and the fittest survive. The idea with evolutionary algorithms, as with evolution of biological species, is that given sufficient time, variation, and evolutionary pressure, it is possible for individuals to emerge that solve the particular problem you have placed upon it.&lt;/p&gt;
+&lt;p&gt;Just as when faced with the problem of getting food from land, some fish became amphibious, and eventually exclusively land creatures. Given the problem of wanting to look like the Mona Lisa, a population of shapes will emerge that solve this problem.&lt;/p&gt;
+&lt;a name='the-brief'&gt;&lt;/a&gt;&lt;h2&gt;The brief&lt;/h2&gt;
+&lt;p&gt;The brief was inspired by &lt;a href="https://rogerjohansson.blog/2008/12/07/genetic-programming-evolution-of-mona-lisa/"&gt;Roger Alsing's blog post&lt;/a&gt; where he did a similar thing.
+His algorithm was quite simplistic in what sort of mutations it offered and it was therefore felt we could make some improvement on this.&lt;/p&gt;
+&lt;p&gt;The final submission for the project was written in Python using the &lt;a href="https://deap.readthedocs.io/en/master/"&gt;DEAP&lt;/a&gt; library, however, I fancied a speed-up.
+And using a compiled solution like &lt;a href="https://www.pypy.org"&gt;PyPy&lt;/a&gt; was not cooperative and so I rewrote the program in Go.
+Because of various hoops and hurdles in releasing University coursework submissions, the original python implementation is not available.
+My Go rewrite, however, is available at my &lt;a href="https://github.com/LukeBriggsDev/EARP"&gt;GitHub&lt;/a&gt;.
+I am not as experienced in developing in Go as with python but I feel I have made (mostly) sane, if not idiomatic, choices.&lt;/p&gt;
+&lt;a name='the-program'&gt;&lt;/a&gt;&lt;h2&gt;The Program&lt;/h2&gt;
+&lt;a name='making-the-population'&gt;&lt;/a&gt;&lt;h3&gt;Making the population&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;individuals&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;&lt;span class="nx"&gt;Individual&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;256&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;individuals&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;individuals&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;makeIndividual&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;MAX_POLYGONS&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;I start off by making the population of Individuals.
+In this case I make 256 individuals with each individual consisting of 100 polygons.&lt;/p&gt;
+&lt;p&gt;Our Polygon and Point structs looks like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;type&lt;/span&gt; &lt;span class="nx"&gt;Polygon&lt;/span&gt; &lt;span class="kd"&gt;struct&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;color&lt;/span&gt;    &lt;span class="nx"&gt;rgba&lt;/span&gt;
+    &lt;span class="nx"&gt;vertices&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;&lt;span class="nx"&gt;Point&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="kd"&gt;type&lt;/span&gt; &lt;span class="nx"&gt;Point&lt;/span&gt; &lt;span class="kd"&gt;struct&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;x&lt;/span&gt; &lt;span class="kt"&gt;float64&lt;/span&gt;
+    &lt;span class="nx"&gt;y&lt;/span&gt; &lt;span class="kt"&gt;float64&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;To make a polygon I simply create instances of these classes with various random starting values in order to provide a diverse population from which a solution can emerge.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;func&lt;/span&gt; &lt;span class="nx"&gt;makePolygon&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="nx"&gt;Polygon&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="c1"&gt;// Create colour&lt;/span&gt;
+    &lt;span class="nx"&gt;polygon&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="nx"&gt;Polygon&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;rgba&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nx"&gt;r&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;uint8&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Intn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+        &lt;span class="nx"&gt;g&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;uint8&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Intn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+        &lt;span class="nx"&gt;b&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;uint8&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Intn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+        &lt;span class="nx"&gt;a&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;uint8&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Intn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;75&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;75&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;}}&lt;/span&gt;
+
+    &lt;span class="nx"&gt;sides&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;
+    &lt;span class="c1"&gt;// Create vertices&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt; &lt;span class="nx"&gt;sides&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nx"&gt;x&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="nx"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Intn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="nx"&gt;y&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="nx"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Intn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="nx"&gt;polygon&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;vertices&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;polygon&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;vertices&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;Point&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;float64&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;x&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="nx"&gt;y&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;float64&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)})&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="c1"&gt;// Arrange vertices such that they don&amp;#39;t create a shape that self intersects if a polygon has more than 3 initial sides&lt;/span&gt;
+    &lt;span class="nx"&gt;polygon&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;removeSelfIntersect&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;polygon&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;See &lt;a href="javascript:;" onclick="document.location.hash='non-self-intersecting-polygons';"&gt;This section&lt;/a&gt; for more details on how I made sure polygons didn't self-intersect.&lt;/p&gt;
+&lt;p&gt;The polygons then go on to form an individual:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;func&lt;/span&gt; &lt;span class="nx"&gt;makeIndividual&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;n&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nx"&gt;Individual&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;polygons&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;&lt;span class="nx"&gt;Polygon&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt; &lt;span class="nx"&gt;n&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nx"&gt;polygons&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;polygons&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;makePolygon&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="nx"&gt;ind&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="nx"&gt;Individual&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nx"&gt;elements&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;polygons&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nx"&gt;fitness&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;  &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;ind&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Individuals are initialised with a fitness of -1, which means that fitness is invalid and needs to be re-calculated.
+In order to prevent doing more processing than necessary, I will reset the fitness back to -1 whenever a change is made to that individuals polygons.
+Doing this means that I can guarantee that if a fitness is not -1, the polygons haven't change and I can skip that individual's evaluation.&lt;/p&gt;
+&lt;a name='generating-offspring'&gt;&lt;/a&gt;&lt;h3&gt;Generating offspring&lt;/h3&gt;
+&lt;p&gt;Every generation, new offspring are created from our current population.
+The strategy I went with (varOr) leads to each child being either a copy of a parent, a mutation of a parent, or a mating between two parents.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt; &lt;span class="nx"&gt;generations&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;offspring&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="nx"&gt;varOr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;population&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;120&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.25&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="c1"&gt;// ...&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Mating involves getting a taking a random point in the list of polygons as a pivot point, then swapping everything after the pivot point with the same set of points from the other parent.
+Leaving a child where the first half(ish) of the polygons are from one parent, and the other half(ish) are from the second parent.
+Any children from this process are also given an initial fitness of -1, as the parent fitness is no longer valid due to half the polygons being different.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;// Get pivot&lt;/span&gt;
+&lt;span class="nx"&gt;cxpoint&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="nx"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Intn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;size&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="c1"&gt;// Swap ends&lt;/span&gt;
+&lt;span class="nx"&gt;temp&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="nx"&gt;ind1&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;cxpoint&lt;/span&gt;&lt;span class="p"&gt;:]&lt;/span&gt;
+&lt;span class="nx"&gt;ind1&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;ind1&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="nx"&gt;cxpoint&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="nx"&gt;ind2&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;cxpoint&lt;/span&gt;&lt;span class="p"&gt;:]&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nx"&gt;ind2&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;ind2&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="nx"&gt;cxpoint&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="nx"&gt;temp&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c1"&gt;// return children&lt;/span&gt;
+&lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;ind1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;ind2&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Reproduction involves a simple copying of one individual across generations, as such the fitness does not have to be invalidated to -1 because it is a perfect copy of an Individual with valid fitness.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;// Choose individual&lt;/span&gt;
+&lt;span class="nx"&gt;idx&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="nx"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Intn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;population&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="c1"&gt;// Clone individual&amp;#39;s polygons&lt;/span&gt;
+&lt;span class="nx"&gt;ind&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="nx"&gt;clonePolygonSlice&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nx"&gt;population&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;elements&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c1"&gt;// Add new individual with same polygons to offspring&lt;/span&gt;
+&lt;span class="nx"&gt;offspring&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;offspring&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;Individual&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;elements&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;ind&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;fitness&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;population&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;fitness&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Mutation is where a large amount of the uniqueness of this implementation comes in, and where a lot of the improvement was made during development.
+The following mutations can occur to an individual:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Change colour of polygon&lt;/li&gt;
+&lt;li&gt;Change transparency of polygon&lt;/li&gt;
+&lt;li&gt;Add a polygon to an individual (within 100 limits)&lt;/li&gt;
+&lt;li&gt;Remove polygon from an individual (within 20-100 limits)&lt;/li&gt;
+&lt;li&gt;Add a point to a polygon (requires removing self intersect)&lt;/li&gt;
+&lt;li&gt;Re-order how polygons are stacked&lt;/li&gt;
+&lt;li&gt;Change position of a single point&lt;/li&gt;
+&lt;li&gt;Change position of all points at once&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The mutations were picked through a process of 1% inspiration, 99% calculation.
+With many trial and error runs of various mutations and algorithm choices before settling on the current set with their current probabilities of occurrence.&lt;/p&gt;
+&lt;a name='offspring-evaluation'&gt;&lt;/a&gt;&lt;h3&gt;Offspring evaluation&lt;/h3&gt;
+&lt;p&gt;Once we've got our children, we need to see how good they are.
+It is at this point that Go slightly comes into its own.
+Evolutionary algorithms, particularly the evaluation, are incredibly well suited to multithreading.
+Each evaluation is entirely independent and, as such, each one can run in its own thread, speeding up things significantly on multi-core systems.&lt;/p&gt;
+&lt;p&gt;It is also in this aspect where Go also comes into its own, as Go has first-class support for multithreading.
+If you have a thread-safe function, then spinning it up in a new thread is as easy as putting the keyword &lt;code&gt;go&lt;/code&gt; before it.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;waitGroup&lt;/span&gt; &lt;span class="nx"&gt;sync&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;WaitGroup&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nx"&gt;offIdx&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;offIdx&lt;/span&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;offspring&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="nx"&gt;offIdx&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nx"&gt;offspring&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;offIdx&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;fitness&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nx"&gt;waitGroup&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;go&lt;/span&gt; &lt;span class="kd"&gt;func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;offIdx&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="k"&gt;defer&lt;/span&gt; &lt;span class="nx"&gt;waitGroup&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Done&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+            &lt;span class="nx"&gt;offspring&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;offIdx&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;fitness&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;evaluate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;offspring&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;offIdx&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;elements&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="p"&gt;}(&lt;/span&gt;&lt;span class="nx"&gt;offIdx&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="nx"&gt;waitGroup&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Wait&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;In this instance, we loop through all the offspring, and if the fitness is invalid (like it is the result of a mutation or mating) we evaluate the fitness of the Individuals polygons.
+All the &lt;code&gt;WaitGroup&lt;/code&gt; stuff around it just holds a counter of how many routines are left to finish until we can carry on with the program.
+This allows us to utilise all the physical cores on our machine during the evaluation stage.&lt;/p&gt;
+&lt;p&gt;The evaluation itself is quite straightforward.
+We draw the individual out onto a canvas, convert it and the target image into greyscale, and then go pixel by pixel to calculate how different the image is.
+The individual with the smallest difference between its greyscale and the target greyscale is determined to have the highest fitness.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;func&lt;/span&gt; &lt;span class="nx"&gt;evaluate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;solution&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;&lt;span class="nx"&gt;Polygon&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="kt"&gt;float64&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;img&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="nx"&gt;drawSolution&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;solution&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="nx"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="nx"&gt;ImageDifference&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;img&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Image&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="nx"&gt;TARGET&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="nx"&gt;MAX&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="nb"&gt;float64&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;math&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;MaxUint16&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="nx"&gt;img&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Height&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="nx"&gt;img&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Width&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;MAX&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nx"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="nx"&gt;MAX&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;a name='offspring-selection'&gt;&lt;/a&gt;&lt;h3&gt;Offspring selection&lt;/h3&gt;
+&lt;p&gt;After we have our children, we must pit them against each other to the death.
+The selection method I chose was tournament selection, this works be getting a random sample from the population and carrying the best from that sample into the future generation.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;func&lt;/span&gt; &lt;span class="nx"&gt;TournSel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;individuals&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;&lt;span class="nx"&gt;Individual&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;k&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;tournsize&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;&lt;span class="nx"&gt;Individual&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;chosen&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;&lt;span class="nx"&gt;Individual&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt; &lt;span class="nx"&gt;k&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;aspirant&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;&lt;span class="nx"&gt;Individual&lt;/span&gt;
+        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nx"&gt;j&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;j&lt;/span&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt; &lt;span class="nx"&gt;tournsize&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;j&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="nx"&gt;aspirant&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aspirant&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;individuals&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Intn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;individuals&lt;/span&gt;&lt;span class="p"&gt;))])&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+        &lt;span class="nx"&gt;chosen&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;chosen&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;BestSel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aspirant&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;chosen&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;I then draw out the best child each generation just so I can see the progress as it goes on.
+Apart from that, our generation is over and the cycle starts over again.&lt;/p&gt;
+&lt;a name='the-results'&gt;&lt;/a&gt;&lt;h2&gt;The results&lt;/h2&gt;
+&lt;iframe width="424" height="424" src="https://www.youtube.com/embed/-eObA3jZh7g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;p&gt;Even though we never do anything other than random, indiscriminate changes, after about 250,000 generations we can get pretty good images made up of very few polygons.&lt;/p&gt;
+&lt;span style="margin-left: auto; margin-right:auto"&gt;
+&lt;img alt="Darwin reference" src="/static/postimages/painting-by-the-numbers/darwin.png"&gt;
+&lt;img alt="Darwin 96.87% fitness" src="/static/postimages/painting-by-the-numbers/darwin96.87.png"&gt;
+&lt;/span&gt;
+&lt;span style="margin-left: auto; margin-right:auto"&gt;
+&lt;img alt="Mona Lisa reference" src="/static/postimages/painting-by-the-numbers/monalisa.png"&gt;
+&lt;img alt="Mona Lisa 96.65% fitness" src="/static/postimages/painting-by-the-numbers/monalisa96.65.png"&gt;
+&lt;/span&gt;
+&lt;a name='appendix'&gt;&lt;/a&gt;&lt;h2&gt;Appendix&lt;/h2&gt;
+&lt;a name='non-self-intersecting-polygons'&gt;&lt;/a&gt;&lt;h3&gt;Non self-intersecting polygons&lt;/h3&gt;
+&lt;p&gt;When it comes to the vertices of a polygon, you can't just start drawing lines between them and hope for the best.&lt;/p&gt;
+&lt;p&gt;If I have 4 points that are going to make up my square:&lt;/p&gt;
+&lt;p&gt;&lt;img src="/static/postimages/painting-by-the-numbers/self-intersect-1.svg" alt="4 points plotted in a square" /&gt;&lt;/p&gt;
+&lt;p&gt;And then I start drawing lines between the points in any order:&lt;/p&gt;
+&lt;p&gt;&lt;img src="/static/postimages/painting-by-the-numbers/self-intersect-2.svg" alt="A self-intersecting square" /&gt;&lt;/p&gt;
+&lt;p&gt;That ain't no square chief.
+So, how can we tell which order we should connect the points?
+One way to do it is with the power of vectors and angles.
+First we start out with a base vector, which we just use to be the vector between the center of the polygon and the first point:&lt;/p&gt;
+&lt;p&gt;&lt;img src="/static/postimages/painting-by-the-numbers/self-intersect-3.svg" alt="Vector between first and center point" /&gt;&lt;/p&gt;
+&lt;p&gt;We then get vectors between the center and each point in the shape:&lt;/p&gt;
+&lt;p&gt;&lt;img src="/static/postimages/painting-by-the-numbers/self-intersect-4.svg" alt="All vectors between points and the center" /&gt;&lt;/p&gt;
+&lt;p&gt;If we then get the angle between the base vector and all of those vectors, we notice a pattern:&lt;/p&gt;
+&lt;p&gt;&lt;img src="/static/postimages/painting-by-the-numbers/self-intersect-5.svg" alt="All angles between vectors and base vector" /&gt;&lt;/p&gt;
+&lt;p&gt;The order in which we wan't to connect the dots in, also make increasingly large angles with the base vector.
+Therefore, if we get our points and sort them by the angle their vector makes with the base vector, they will be in the order in which we can draw them.&lt;/p&gt;
+&lt;p&gt;The code for the mathematics itself can be found in &lt;a href="https://github.com/LukeBriggsDev/EARP/blob/715bd60cab714bcadee6e1d27525ad7cfa070bef/polygon.go#L49"&gt;&lt;code&gt;polygon.go&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+</content:encoded>
+      <pubDate>Sat, 28 May 2022 17:05:11 +0000</pubDate>
     </item>
   </channel>
 </rss>
