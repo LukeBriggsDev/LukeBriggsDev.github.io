@@ -12,7 +12,7 @@
       <link>https://www.lukebriggs.dev/</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Sun, 29 May 2022 18:28:07 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 29 May 2022 18:47:46 +0000</lastBuildDate>
     <item>
       <title>The First Line of Code
 </title>
@@ -3524,7 +3524,7 @@ The selection method I chose was tournament selection, this works be getting a r
 &lt;p&gt;I then draw out the best child each generation just so I can see the progress as it goes on.
 Apart from that, our generation is over and the cycle starts over again.&lt;/p&gt;
 &lt;a name='the-results'&gt;&lt;/a&gt;&lt;h2&gt;The results&lt;/h2&gt;
-&lt;iframe width="424" height="424" src="https://www.youtube.com/embed/-eObA3jZh7g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;iframe width="300" height="300" src="https://www.youtube.com/embed/-eObA3jZh7g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
 &lt;p&gt;Even though we never do anything other than random, indiscriminate changes, after about 250,000 generations we can get pretty good images made up of very few polygons.&lt;/p&gt;
 &lt;span style="margin-left: auto; margin-right:auto"&gt;
 &lt;img alt="Darwin reference" src="/static/postimages/painting-by-the-numbers/darwin.png"&gt;
@@ -3721,7 +3721,7 @@ The selection method I chose was tournament selection, this works be getting a r
 &lt;p&gt;I then draw out the best child each generation just so I can see the progress as it goes on.
 Apart from that, our generation is over and the cycle starts over again.&lt;/p&gt;
 &lt;a name='the-results'&gt;&lt;/a&gt;&lt;h2&gt;The results&lt;/h2&gt;
-&lt;iframe width="424" height="424" src="https://www.youtube.com/embed/-eObA3jZh7g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;iframe width="300" height="300" src="https://www.youtube.com/embed/-eObA3jZh7g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
 &lt;p&gt;Even though we never do anything other than random, indiscriminate changes, after about 250,000 generations we can get pretty good images made up of very few polygons.&lt;/p&gt;
 &lt;span style="margin-left: auto; margin-right:auto"&gt;
 &lt;img alt="Darwin reference" src="/static/postimages/painting-by-the-numbers/darwin.png"&gt;

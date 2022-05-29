@@ -223,7 +223,7 @@ Apart from that, our generation is over and the cycle starts over again.
 
 ## The results
 
-<iframe width="424" height="424" src="https://www.youtube.com/embed/-eObA3jZh7g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="300" height="300" src="https://www.youtube.com/embed/-eObA3jZh7g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Even though we never do anything other than random, indiscriminate changes, after about 250,000 generations we can get pretty good images made up of very few polygons.
 
