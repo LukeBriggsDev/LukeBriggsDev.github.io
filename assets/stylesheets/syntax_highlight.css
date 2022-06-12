@@ -2,7 +2,7 @@
     padding: 1rem 1rem 1rem 1rem;
     margin-bottom: 1rem;
     width: 100%;
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 .highlight .hll { background-color: #ffffcc }
 .highlight .c { color: #408080; font-style: italic } /* Comment */
