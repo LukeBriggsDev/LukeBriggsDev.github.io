@@ -12,7 +12,7 @@
       <link>https://www.lukebriggs.dev/</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Sun, 12 Jun 2022 19:32:10 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 13 Jun 2022 15:43:35 +0000</lastBuildDate>
     <item>
       <title>The First Line of Code
 </title>
@@ -2937,7 +2937,7 @@ This is iteration ⅠⅠⅠ of my site.&lt;/p&gt;
 &lt;li&gt;The second was a &lt;a href="/posts/where-hugo-i-go/"&gt;static site generated through Hugo&lt;/a&gt;,&lt;/li&gt;
 &lt;li&gt;This iteration is a &lt;a href="https://github.com/LukeBriggsDev/VictorSSG"&gt;static site generator of my own devising&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;I made the change because my last site looked pretty cluttered, and I felt that my design skills have improved since my first attempt).
+&lt;p&gt;I made the change because my last site looked pretty cluttered (and I felt that my design skills have improved since my first attempt).
 I also wanted a nicer way to list my projects.&lt;/p&gt;
 &lt;p&gt;The process of developing a static site generator in python was much more straightforward than I thought.
 It only took around 4 days to get to a point where everything looked nice on the outside.
@@ -3016,7 +3016,7 @@ This is iteration ⅠⅠⅠ of my site.&lt;/p&gt;
 &lt;li&gt;The second was a &lt;a href="/posts/where-hugo-i-go/"&gt;static site generated through Hugo&lt;/a&gt;,&lt;/li&gt;
 &lt;li&gt;This iteration is a &lt;a href="https://github.com/LukeBriggsDev/VictorSSG"&gt;static site generator of my own devising&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;I made the change because my last site looked pretty cluttered, and I felt that my design skills have improved since my first attempt).
+&lt;p&gt;I made the change because my last site looked pretty cluttered (and I felt that my design skills have improved since my first attempt).
 I also wanted a nicer way to list my projects.&lt;/p&gt;
 &lt;p&gt;The process of developing a static site generator in python was much more straightforward than I thought.
 It only took around 4 days to get to a point where everything looked nice on the outside.

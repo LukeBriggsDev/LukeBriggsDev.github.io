@@ -96,7 +96,7 @@ This is iteration ⅠⅠⅠ of my site.
 - This iteration is a [static site generator of my own devising](https://github.com/LukeBriggsDev/VictorSSG)
 
 
-I made the change because my last site looked pretty cluttered, and I felt that my design skills have improved since my first attempt).
+I made the change because my last site looked pretty cluttered (and I felt that my design skills have improved since my first attempt).
 I also wanted a nicer way to list my projects.
 
 
