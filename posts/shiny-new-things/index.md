@@ -81,7 +81,7 @@ A whole new instruction set platform in the desktop space is not something that 
 Speed *and* battery life, graphics *and* little fan noise, to mention nothing of the fact that Apple devices have the most high-quality feel of any laptop.
 
 
-The software enthusiast inside of me also loves the idea of being one of the first on a new platform.
+The software enthusiast inside me also loves the idea of being one of the first on a new platform.
 Not all the open source apps I use have been compiled for ARM yet, I could be the one to do it!
 Heck, I have my own apps to port!
 
@@ -102,18 +102,18 @@ I also wanted a nicer way to list my projects.
 
 The process of developing a static site generator in python was much more straightforward than I thought.
 It only took around 4 days to get to a point where everything looked nice on the outside.
-The codebase needs some cleanup and it isn't entirely ready for anyone other than me to use it but it works.
+The codebase needs some cleanup, and it isn't entirely ready for anyone other than me to use it, but it works.
 
 
 The program on initialisation creates a few directories to place stuff (`content`, `projects`, `static`, etc) as well as a config file for certain things like the navigation bar.
 The built website gets put into a `public` directory.
 The building process itself starts by copying the static directory tree into the public directory.
 A python library called [mistune](https://pypi.org/project/mistune/) converts the markdown files in `content` (along with YAML metadata headers) to HTML, [pygments](https://pypi.org/project/Pygments/) is also used for syntax highlighting. 
-The converted html posts are then passed to myy custom [jinja2](https://pypi.org/project/Jinja2/) templates that have all the styling and base markup.
+The converted html posts are then passed to my custom [jinja2](https://pypi.org/project/Jinja2/) templates that have all the styling and base markup.
 There are a couple of other things like auto-generated social links on the homepage and a so-basic-its-almost-broken built-in HTTP server for viewing webpages locally.
 
 
-I will probably tweak a few things over time but I think I've settled on the principle design, at least for a while.
+I will probably tweak a few things over time, but I think I've settled on the principle design, at least for a while.
 
 
 The SSG is named Victor as a tongue-in-cheek nod to Hugo, I also quite like that it is also the name of Mr. Freeze which kind of makes sense for a static site generator.

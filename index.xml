@@ -12,7 +12,7 @@
       <link>https://www.lukebriggs.dev/</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Mon, 13 Jun 2022 15:43:35 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 13 Jun 2022 15:45:52 +0000</lastBuildDate>
     <item>
       <title>The First Line of Code
 </title>
@@ -2926,7 +2926,7 @@ Last year's MacBooks did not meet my requirements for the case however. A 13&amp
 The true reason why I went slightly over-budget is due to the fact that these computers are the first in a while to be truly exciting to me.
 A whole new instruction set platform in the desktop space is not something that has happened in my computing lifetime and it just awakens the computer nerd inside of me.
 Speed &lt;em&gt;and&lt;/em&gt; battery life, graphics &lt;em&gt;and&lt;/em&gt; little fan noise, to mention nothing of the fact that Apple devices have the most high-quality feel of any laptop.&lt;/p&gt;
-&lt;p&gt;The software enthusiast inside of me also loves the idea of being one of the first on a new platform.
+&lt;p&gt;The software enthusiast inside me also loves the idea of being one of the first on a new platform.
 Not all the open source apps I use have been compiled for ARM yet, I could be the one to do it!
 Heck, I have my own apps to port!&lt;/p&gt;
 &lt;a name='new-site'&gt;&lt;/a&gt;&lt;h2&gt;New Site&lt;/h2&gt;
@@ -2941,14 +2941,14 @@ This is iteration ⅠⅠⅠ of my site.&lt;/p&gt;
 I also wanted a nicer way to list my projects.&lt;/p&gt;
 &lt;p&gt;The process of developing a static site generator in python was much more straightforward than I thought.
 It only took around 4 days to get to a point where everything looked nice on the outside.
-The codebase needs some cleanup and it isn't entirely ready for anyone other than me to use it but it works.&lt;/p&gt;
+The codebase needs some cleanup, and it isn't entirely ready for anyone other than me to use it, but it works.&lt;/p&gt;
 &lt;p&gt;The program on initialisation creates a few directories to place stuff (&lt;code&gt;content&lt;/code&gt;, &lt;code&gt;projects&lt;/code&gt;, &lt;code&gt;static&lt;/code&gt;, etc) as well as a config file for certain things like the navigation bar.
 The built website gets put into a &lt;code&gt;public&lt;/code&gt; directory.
 The building process itself starts by copying the static directory tree into the public directory.
 A python library called &lt;a href="https://pypi.org/project/mistune/"&gt;mistune&lt;/a&gt; converts the markdown files in &lt;code&gt;content&lt;/code&gt; (along with YAML metadata headers) to HTML, &lt;a href="https://pypi.org/project/Pygments/"&gt;pygments&lt;/a&gt; is also used for syntax highlighting. 
-The converted html posts are then passed to myy custom &lt;a href="https://pypi.org/project/Jinja2/"&gt;jinja2&lt;/a&gt; templates that have all the styling and base markup.
+The converted html posts are then passed to my custom &lt;a href="https://pypi.org/project/Jinja2/"&gt;jinja2&lt;/a&gt; templates that have all the styling and base markup.
 There are a couple of other things like auto-generated social links on the homepage and a so-basic-its-almost-broken built-in HTTP server for viewing webpages locally.&lt;/p&gt;
-&lt;p&gt;I will probably tweak a few things over time but I think I've settled on the principle design, at least for a while.&lt;/p&gt;
+&lt;p&gt;I will probably tweak a few things over time, but I think I've settled on the principle design, at least for a while.&lt;/p&gt;
 &lt;p&gt;The SSG is named Victor as a tongue-in-cheek nod to Hugo, I also quite like that it is also the name of Mr. Freeze which kind of makes sense for a static site generator.&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.com/LukeBriggsDev/VictorSSG"&gt;The source code is available on GitHub&lt;/a&gt;&lt;/p&gt;
 </description>
@@ -3005,7 +3005,7 @@ Last year's MacBooks did not meet my requirements for the case however. A 13&amp
 The true reason why I went slightly over-budget is due to the fact that these computers are the first in a while to be truly exciting to me.
 A whole new instruction set platform in the desktop space is not something that has happened in my computing lifetime and it just awakens the computer nerd inside of me.
 Speed &lt;em&gt;and&lt;/em&gt; battery life, graphics &lt;em&gt;and&lt;/em&gt; little fan noise, to mention nothing of the fact that Apple devices have the most high-quality feel of any laptop.&lt;/p&gt;
-&lt;p&gt;The software enthusiast inside of me also loves the idea of being one of the first on a new platform.
+&lt;p&gt;The software enthusiast inside me also loves the idea of being one of the first on a new platform.
 Not all the open source apps I use have been compiled for ARM yet, I could be the one to do it!
 Heck, I have my own apps to port!&lt;/p&gt;
 &lt;a name='new-site'&gt;&lt;/a&gt;&lt;h2&gt;New Site&lt;/h2&gt;
@@ -3020,14 +3020,14 @@ This is iteration ⅠⅠⅠ of my site.&lt;/p&gt;
 I also wanted a nicer way to list my projects.&lt;/p&gt;
 &lt;p&gt;The process of developing a static site generator in python was much more straightforward than I thought.
 It only took around 4 days to get to a point where everything looked nice on the outside.
-The codebase needs some cleanup and it isn't entirely ready for anyone other than me to use it but it works.&lt;/p&gt;
+The codebase needs some cleanup, and it isn't entirely ready for anyone other than me to use it, but it works.&lt;/p&gt;
 &lt;p&gt;The program on initialisation creates a few directories to place stuff (&lt;code&gt;content&lt;/code&gt;, &lt;code&gt;projects&lt;/code&gt;, &lt;code&gt;static&lt;/code&gt;, etc) as well as a config file for certain things like the navigation bar.
 The built website gets put into a &lt;code&gt;public&lt;/code&gt; directory.
 The building process itself starts by copying the static directory tree into the public directory.
 A python library called &lt;a href="https://pypi.org/project/mistune/"&gt;mistune&lt;/a&gt; converts the markdown files in &lt;code&gt;content&lt;/code&gt; (along with YAML metadata headers) to HTML, &lt;a href="https://pypi.org/project/Pygments/"&gt;pygments&lt;/a&gt; is also used for syntax highlighting. 
-The converted html posts are then passed to myy custom &lt;a href="https://pypi.org/project/Jinja2/"&gt;jinja2&lt;/a&gt; templates that have all the styling and base markup.
+The converted html posts are then passed to my custom &lt;a href="https://pypi.org/project/Jinja2/"&gt;jinja2&lt;/a&gt; templates that have all the styling and base markup.
 There are a couple of other things like auto-generated social links on the homepage and a so-basic-its-almost-broken built-in HTTP server for viewing webpages locally.&lt;/p&gt;
-&lt;p&gt;I will probably tweak a few things over time but I think I've settled on the principle design, at least for a while.&lt;/p&gt;
+&lt;p&gt;I will probably tweak a few things over time, but I think I've settled on the principle design, at least for a while.&lt;/p&gt;
 &lt;p&gt;The SSG is named Victor as a tongue-in-cheek nod to Hugo, I also quite like that it is also the name of Mr. Freeze which kind of makes sense for a static site generator.&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.com/LukeBriggsDev/VictorSSG"&gt;The source code is available on GitHub&lt;/a&gt;&lt;/p&gt;
 </content:encoded>
