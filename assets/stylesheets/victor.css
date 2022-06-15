@@ -322,6 +322,7 @@ figcaption {
 
     .site-title {
         width: 70vw;
+        line-height: 3rem;
     }
 
     .nav-menu.active {
