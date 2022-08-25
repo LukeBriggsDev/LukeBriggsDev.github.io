@@ -149,7 +149,7 @@ article {
 }
 
 article img {
-    max-width: 100%;
+    max-width: 50%;
     box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.1);
     display: block;
     margin-left: auto;
