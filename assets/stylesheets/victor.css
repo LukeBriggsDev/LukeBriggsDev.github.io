@@ -140,6 +140,11 @@ a:hover{
     margin: 0;
 }
 
+.post-hero {
+    margin-bottom: 2rem;
+    min-width: 100%;
+}
+
 article {
     display: flex;
     justify-content: center;
@@ -149,7 +154,7 @@ article {
 }
 
 article img {
-    max-width: 50%;
+    max-width: 75%;
     box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.1);
     display: block;
     margin-left: auto;
@@ -239,10 +244,6 @@ article li li{
     object-fit: cover;
     border-radius: 16px;
     box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.1);
-}
-
-.post-hero {
-    margin-bottom: 2rem;
 }
 
 article .post-title {
