@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+<meta name="description" content="A Go implementation of Enigma and Lorenz machines">
+
+    <link rel="manifest" href="manifest.json" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0;">
+
+    <meta property="og:description" content="I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.lukebriggs.dev/" />
+    <meta property="og:image" content="https://www.lukebriggs.dev/banner.png"/>
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image" content="https://www.lukebriggs.dev/banner.png"/>
+    <meta name="twitter:title" content="Luke Briggs"/>
+    <meta name="twitter:description" content="I&#39;m Luke Briggs: a Computer Science student from the UK studying at Newcastle University"/>
+    <meta name="application-name" content="Luke Briggs">
+
+    <title> Enigma Lorenz  - Luke Briggs</title>
+    <base href="https://www.lukebriggs.dev/">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="feed" type="application/rss+xml" href="index.xml" title="Luke Briggs">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="assets/stylesheets/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/stylesheets/victor.css">
+    <link rel="stylesheet" href="assets/stylesheets/syntax_highlight.css">
+    <link rel="stylesheet" href="assets/stylesheets/projects.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <ul class="nav-menu">
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="">Home</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="posts">Posts</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="projects">Projects</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="about">About</a>
+                </li>
+            
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+</header>
+
+    <article>
+        <h4 class="description">Mon 29 Aug 2022</h4>
+        <img class='post-hero' src='static/postimages/playing-soldiers-enigma-and-lorenz/Encrypt.svg' alt='<div>Enigma Lorenz</div>
+'/><h1 class='post-title'><div>Enigma Lorenz</div>
+</h1><blockquote>
+<p>Available on <a href="https://github.com/LukeBriggsDev/EnigmaLorenz">GitHub</a></p>
+</blockquote>
+<a name='enigma-and-lorenz'></a><h1>Enigma and Lorenz</h1>
+<p>This is a collection of utilities for encrypting messages using virtual Enigma and Lorenz machines.</p>
+<a name='binaries'></a><h2>Binaries</h2>
+<p>Pre-built binaries for Windows, Linux, and MacOS (ARM) are available in the Releases (64 bit only).
+They are standalone, compiled binaries and so do not need Go installed to run.</p>
+<a name='building-from-source'></a><h2>Building From Source</h2>
+<p>Binary files can also be built from source if you have <a href="https://go.dev/doc/install">Go installed</a>.
+To compile them, navigate to the directory this README is in and run the commands:</p>
+<p><code>go build -o enigma EnigmaLorenz/cmd/enigma</code>
+<code>go build -o lorenz EnigmaLorenz/cmd/lorenz</code></p>
+<a name='enigma'></a><h2>Enigma</h2>
+<p>To get a list of possible commands run <code>enigma</code> with a <code>-h</code> flag:</p>
+<pre><code>Usage of enigma:
+-c string
+    Center rotor number (I-VIII), position (1-26), and ring setting (0-25) (default &quot;II 1 0&quot;)
+-f string
+    Fourth rotor (beta|gamma), position (1-26), and ring setting (0-25) [optional]
+-l string
+    Left rotor number (I-VIII), position (1-26), and ring setting (0-25) (default &quot;I 1 0&quot;)
+-m string
+    The message to be encrypted/decrypted
+-plugs string
+    Plug mappings in the form of 'A:B C:D'[optional], position, and ring setting
+-r string
+    Right rotor number (I-VIII), position (1-26), and ring setting (0-25) (default &quot;III 1 0&quot;)
+-ukw string
+    Reflector to use (A|B|C|a|b) (default &quot;B&quot;)
+</code></pre><a name='example-input'></a><h3>Example Input</h3>
+<a name='using-default-rotor-settings'></a><h4>Using default rotor settings</h4>
+<div class="highlight"><pre><span></span>$ enigma -m <span class="s2">&quot;hello world&quot;</span>
+ILBDAAMTAZ
+$ enigma -m <span class="s2">&quot;ILBDAAMTAZ&quot;</span>
+HELLOWORLD
+</pre></div>
+<a name='using-custom-rotor-settings'></a><h4>Using custom rotor settings</h4>
+<div class="highlight"><pre><span></span>$ enigma -m <span class="s2">&quot;hello world&quot;</span> -l <span class="s2">&quot;I 4 13&quot;</span> -c <span class="s2">&quot;IV 13 24&quot;</span> -r <span class="s2">&quot;II 12 23&quot;</span> -ukw <span class="s2">&quot;C&quot;</span>
+JBVTUFTEYI
+$ enigma -m <span class="s2">&quot;JBVTUFTEYI&quot;</span> -l <span class="s2">&quot;I 4 13&quot;</span> -c <span class="s2">&quot;IV 13 24&quot;</span> -r <span class="s2">&quot;II 12 23&quot;</span> -ukw <span class="s2">&quot;C&quot;</span>
+HELLOWORLD
+</pre></div>
+<a name='lorenz'></a><h2>Lorenz</h2>
+<p>To get a list of possible commands run <code>enigma</code> with a <code>-h</code> flag:</p>
+<pre><code>Usage of lorenz:
+  -psi string
+        The rotor setting for the Psi wheels (default &quot;0 0 0 0 0&quot;)
+  -chi string
+        The rotor setting for the Chi wheels (0-max) (default &quot;0 0 0 0 0&quot;)
+  -d    Whether you are seeking to decrypt a message (0-max)
+  -m string
+        The message to be encrypted/decrypted
+  -mot string
+        The rotor setting for the Motor wheels (0-max) (default &quot;0 0&quot;)
+
+</code></pre><a name='example-input'></a><h3>Example Input</h3>
+<a name='using-default-rotor-settings'></a><h4>Using default rotor settings</h4>
+<div class="highlight"><pre><span></span>$ lorenz -m <span class="s2">&quot;hello world&quot;</span>
+K_BB<span class="p">|</span>DWTTP^
+$ lorenz -d -m <span class="s2">&quot;K_BB|DWTTP^&quot;</span> <span class="c1"># Note the -d for decrypt</span>
+HELLO WORLD
+</pre></div>
+<a name='using-custom-rotor-settings'></a><h4>Using custom rotor settings</h4>
+<div class="highlight"><pre><span></span>$ lorenz -m <span class="s2">&quot;hello world&quot;</span> -psi <span class="s2">&quot;1 3 14 5 6&quot;</span> -chi <span class="s2">&quot;23 14 5 6&quot;</span> -mot <span class="s2">&quot;30 17&quot;</span>
+B RLIGMLLUN
+$ lorenz -d -m <span class="s2">&quot;B RLIGMLLUN&quot;</span> -psi <span class="s2">&quot;1 3 14 5 6&quot;</span> -chi <span class="s2">&quot;23 14 5 6&quot;</span> -mot <span class="s2">&quot;30 17&quot;</span>
+HELLO WORLD
+</pre></div>
+
+    </article>
+
+<footer>
+    &copy; Luke Briggs
+</footer>
+<script>
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+
+    hamburger.addEventListener("click", mobileMenu);
+
+    function mobileMenu() {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+
+    }
+
+    const navLink = document.querySelectorAll(".nav-link");
+
+    navLink.forEach(n => n.addEventListener("click", closeMenu));
+
+    function closeMenu() {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+    }
+
+    if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+    // Registration was successful
+    console.log('Registered!');
+    }, function(err) {
+    // registration failed :(
+    console.log('ServiceWorker registration failed: ', err);
+    }).catch(function(err) {
+    console.log(err);
+    });
+    });
+    } else {
+    console.log('service worker is not supported');
+    }
+
+</script>
+</body>
+</html>
