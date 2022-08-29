@@ -12,7 +12,7 @@
       <link>https://www.lukebriggs.dev/</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Mon, 29 Aug 2022 22:39:29 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 29 Aug 2022 22:46:11 +0000</lastBuildDate>
     <item>
       <title>The First Line of Code
 </title>
@@ -3760,7 +3760,7 @@ Therefore, if we get our points and sort them by the angle their vector makes wi
       <description>&lt;img class='post-hero' src='static/postimages/playing-soldiers-enigma-and-lorenz/Encrypt.svg' alt='&lt;div&gt;Playing Soldiers: An Exploration into Wartime Ciphers - Enigma and Lorenz&lt;/div&gt;
 '/&gt;&lt;h1 class='post-title'&gt;&lt;div&gt;Playing Soldiers: An Exploration into Wartime Ciphers - Enigma and Lorenz&lt;/div&gt;
 &lt;/h1&gt;&lt;p&gt;I had a bit of time over the Summer, and thought I would do something that I have been meaning to do for a long time.
-Create a software implementation of an Enigma machine. 
+Create a software implementation of an Enigma and a Lorenz machine. 
 While I was at it, I thought that I might as well take a look at how the machines could be broken.&lt;/p&gt;
 &lt;p&gt;For the programs themselves, head over to the &lt;a href="/projects/enigma-lorenz"&gt;project page&lt;/a&gt;.
 The rest of this post is an explanation of how the machines work and the low-hanging fruit when it comes to vulnerabilities.&lt;/p&gt;
@@ -4134,7 +4134,7 @@ F XOR Crib:     REGIMENT NO ^5* WILL ATK W POINT AT DAWN
       <content:encoded>&lt;img class='post-hero' src='static/postimages/playing-soldiers-enigma-and-lorenz/Encrypt.svg' alt='&lt;div&gt;Playing Soldiers: An Exploration into Wartime Ciphers - Enigma and Lorenz&lt;/div&gt;
 '/&gt;&lt;h1 class='post-title'&gt;&lt;div&gt;Playing Soldiers: An Exploration into Wartime Ciphers - Enigma and Lorenz&lt;/div&gt;
 &lt;/h1&gt;&lt;p&gt;I had a bit of time over the Summer, and thought I would do something that I have been meaning to do for a long time.
-Create a software implementation of an Enigma machine. 
+Create a software implementation of an Enigma and a Lorenz machine. 
 While I was at it, I thought that I might as well take a look at how the machines could be broken.&lt;/p&gt;
 &lt;p&gt;For the programs themselves, head over to the &lt;a href="/projects/enigma-lorenz"&gt;project page&lt;/a&gt;.
 The rest of this post is an explanation of how the machines work and the low-hanging fruit when it comes to vulnerabilities.&lt;/p&gt;

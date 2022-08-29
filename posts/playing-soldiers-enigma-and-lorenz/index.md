@@ -10,7 +10,7 @@ description: Rotors, Motors, and 5-hole paper tape
 ---
 
 I had a bit of time over the Summer, and thought I would do something that I have been meaning to do for a long time.
-Create a software implementation of an Enigma machine. 
+Create a software implementation of an Enigma and a Lorenz machine. 
 While I was at it, I thought that I might as well take a look at how the machines could be broken.
 
 For the programs themselves, head over to the [project page](/projects/enigma-lorenz).
