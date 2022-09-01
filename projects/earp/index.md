@@ -9,7 +9,7 @@ categories: [Software Development, Project Release]
 description: Evolutionary Algorithm for Reproducing Pictures, written in Golang
 ---
 
-> Available on [GitHub](https://github.com/LukeBriggsDev/EnigmaLorenz)
+> Available on [GitHub](https://github.com/LukeBriggsDev/EARP)
 
 ![Darwin normal](https://github.com/LukeBriggsDev/EARP/raw/main/images/darwin.png)
 ![Darwin earp](https://github.com/LukeBriggsDev/EARP/raw/main/README/96.87.png)
