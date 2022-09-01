@@ -17,7 +17,7 @@ description: Evolutionary Algorithm for Reproducing Pictures, written in Golang
 ![Mona Lisa normal](https://github.com/LukeBriggsDev/EARP/raw/main/images/monalisa.png)
 ![Mona Lisa earp](https://github.com/LukeBriggsDev/EARP/raw/main/README/monalisa96.65.png)
 
-EARP is a program that uses evolutionary algorithm techniques to recreate an image using a limites number of semi-transparent polygons.
+EARP is a program that uses evolutionary algorithm techniques to recreate an image using a limited number of semi-transparent polygons.
 The recreation images you see above has just 100 polygons in it!.
 
 # Backstory
