@@ -1,9 +1,41 @@
+@font-face {
+font-family: charter;
+font-style: normal;
+font-weight: normal;
+font-stretch: normal;
+src: url('charter/charter_regular.woff2') format('woff2');
+}
+
+@font-face {
+font-family: charter;
+font-style: italic;
+font-weight: normal;
+font-stretch: normal;
+src: url('charter/charter_italic.woff2') format('woff2');
+}
+
+@font-face {
+font-family: charter;
+font-style: normal;
+font-weight: bold;
+font-stretch: normal;
+src: url('charter/charter_bold.woff2') format('woff2');
+}
+
+@font-face {
+font-family: charter;
+font-style: italic;
+font-weight: bold;
+font-stretch: normal;
+src: url('charter/charter_bold_italic.woff2') format('woff2');
+}
+
 html, body {
     height: 100vh;
     width: 100%;
     color: black;
-    line-height: 2rem;
-    font-family: Lora, serif;
+    line-height: 1.8rem;
+    font-family: Charter, serif;
 }
 body {
     display: flex;
@@ -33,28 +65,30 @@ p a{
 }
 
 h1 {
-    line-height: 4rem;
-    font-family: "Libre Baskerville", serif;
+    margin-top: 2rem;
+    font-size: 2rem;
+    font-family: "IBM Plex Sans", sans-serif;
 }
 
 h2 {
-    margin-top: 2rem;
-    line-height: 3.5rem;
-    font-family: "Libre Baskerville", serif;
+    margin-top: 1.25rem;
+    font-family: "IBM Plex Sans", sans-serif;
 }
 h3 {
-    font-family: "Libre Baskerville", serif;
+    margin-top: 1rem;
+    font-family: "IBM Plex Sans", sans-serif;
 }
 h4 {
-    font-family: "Libre Baskerville", serif;
+    margin-top: 0.75rem;
+    font-family: "IBM Plex Sans", sans-serif;
 }
 h5 {
-    font-family: "Libre Baskerville", serif;
+    font-family: "IBM Plex Sans", sans-serif;
 }
 p {
     margin-bottom: 0.5rem;
     margin-top: 0.5rem;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     width: 100%;
 }
 
@@ -117,6 +151,7 @@ footer {
 .nav-link{
     font-size: 1rem;
     font-weight: 400;
+    font-family: "IBM Plex Sans", sans-serif;
     color: #475569;
 }
 
@@ -175,6 +210,7 @@ article li li{
 }
 
 .site-title{
+    margin-top: 0;
     font-size: 3rem;
 }
 
@@ -225,12 +261,14 @@ article li li{
 
 .post-title {
     line-height: 2.5rem;
+    margin-top: 0;
 }
 
 .post-date {
     color: rgba(71, 85, 105, 0.5);
     font-weight: bold;
     margin-bottom: -0.5rem;
+    font-family: "IBM Plex Sans", sans-serif;
 }
 
 .description {
@@ -316,6 +354,7 @@ figcaption {
     .site-title {
         width: 70vw;
         line-height: 3rem;
+        margin-top: 0rem;
     }
 
     .nav-menu.active {
