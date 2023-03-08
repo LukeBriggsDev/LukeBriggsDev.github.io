@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+<head><meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
     
 <meta name="description" content="A Go implementation of Enigma and Lorenz machines">
 
@@ -101,15 +100,15 @@ To compile them, navigate to the directory this README is in and run the command
     Reflector to use (A|B|C|a|b) (default &quot;B&quot;)
 </code></pre><a name='example-input'></a><h3>Example Input</h3>
 <a name='using-default-rotor-settings'></a><h4>Using default rotor settings</h4>
-<div class="highlight"><pre><span></span>$ enigma -m <span class="s2">&quot;hello world&quot;</span>
+<div class="highlight"><pre><span></span>$<span class="w"> </span>enigma<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;hello world&quot;</span>
 ILBDAAMTAZ
-$ enigma -m <span class="s2">&quot;ILBDAAMTAZ&quot;</span>
+$<span class="w"> </span>enigma<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;ILBDAAMTAZ&quot;</span>
 HELLOWORLD
 </pre></div>
 <a name='using-custom-rotor-settings'></a><h4>Using custom rotor settings</h4>
-<div class="highlight"><pre><span></span>$ enigma -m <span class="s2">&quot;hello world&quot;</span> -l <span class="s2">&quot;I 4 13&quot;</span> -c <span class="s2">&quot;IV 13 24&quot;</span> -r <span class="s2">&quot;II 12 23&quot;</span> -ukw <span class="s2">&quot;C&quot;</span>
+<div class="highlight"><pre><span></span>$<span class="w"> </span>enigma<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;hello world&quot;</span><span class="w"> </span>-l<span class="w"> </span><span class="s2">&quot;I 4 13&quot;</span><span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;IV 13 24&quot;</span><span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;II 12 23&quot;</span><span class="w"> </span>-ukw<span class="w"> </span><span class="s2">&quot;C&quot;</span>
 JBVTUFTEYI
-$ enigma -m <span class="s2">&quot;JBVTUFTEYI&quot;</span> -l <span class="s2">&quot;I 4 13&quot;</span> -c <span class="s2">&quot;IV 13 24&quot;</span> -r <span class="s2">&quot;II 12 23&quot;</span> -ukw <span class="s2">&quot;C&quot;</span>
+$<span class="w"> </span>enigma<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;JBVTUFTEYI&quot;</span><span class="w"> </span>-l<span class="w"> </span><span class="s2">&quot;I 4 13&quot;</span><span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;IV 13 24&quot;</span><span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;II 12 23&quot;</span><span class="w"> </span>-ukw<span class="w"> </span><span class="s2">&quot;C&quot;</span>
 HELLOWORLD
 </pre></div>
 <a name='lorenz'></a><h2>Lorenz</h2>
@@ -127,16 +126,16 @@ HELLOWORLD
 
 </code></pre><a name='example-input'></a><h3>Example Input</h3>
 <a name='using-default-rotor-settings'></a><h4>Using default rotor settings</h4>
-<div class="highlight"><pre><span></span>$ lorenz -m <span class="s2">&quot;hello world&quot;</span>
+<div class="highlight"><pre><span></span>$<span class="w"> </span>lorenz<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;hello world&quot;</span>
 K_BB<span class="p">|</span>DWTTP^
-$ lorenz -d -m <span class="s2">&quot;K_BB|DWTTP^&quot;</span> <span class="c1"># Note the -d for decrypt</span>
-HELLO WORLD
+$<span class="w"> </span>lorenz<span class="w"> </span>-d<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;K_BB|DWTTP^&quot;</span><span class="w"> </span><span class="c1"># Note the -d for decrypt</span>
+HELLO<span class="w"> </span>WORLD
 </pre></div>
 <a name='using-custom-rotor-settings'></a><h4>Using custom rotor settings</h4>
-<div class="highlight"><pre><span></span>$ lorenz -m <span class="s2">&quot;hello world&quot;</span> -psi <span class="s2">&quot;1 3 14 5 6&quot;</span> -chi <span class="s2">&quot;23 14 5 6&quot;</span> -mot <span class="s2">&quot;30 17&quot;</span>
-B RLIGMLLUN
-$ lorenz -d -m <span class="s2">&quot;B RLIGMLLUN&quot;</span> -psi <span class="s2">&quot;1 3 14 5 6&quot;</span> -chi <span class="s2">&quot;23 14 5 6&quot;</span> -mot <span class="s2">&quot;30 17&quot;</span>
-HELLO WORLD
+<div class="highlight"><pre><span></span>$<span class="w"> </span>lorenz<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;hello world&quot;</span><span class="w"> </span>-psi<span class="w"> </span><span class="s2">&quot;1 3 14 5 6&quot;</span><span class="w"> </span>-chi<span class="w"> </span><span class="s2">&quot;23 14 5 6&quot;</span><span class="w"> </span>-mot<span class="w"> </span><span class="s2">&quot;30 17&quot;</span>
+B<span class="w"> </span>RLIGMLLUN
+$<span class="w"> </span>lorenz<span class="w"> </span>-d<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;B RLIGMLLUN&quot;</span><span class="w"> </span>-psi<span class="w"> </span><span class="s2">&quot;1 3 14 5 6&quot;</span><span class="w"> </span>-chi<span class="w"> </span><span class="s2">&quot;23 14 5 6&quot;</span><span class="w"> </span>-mot<span class="w"> </span><span class="s2">&quot;30 17&quot;</span>
+HELLO<span class="w"> </span>WORLD
 </pre></div>
 
     </article>

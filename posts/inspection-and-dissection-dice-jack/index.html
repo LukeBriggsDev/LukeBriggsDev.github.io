@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+<head><meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
     
 <meta name="description" content="
 As part of a course we had to make a game in 2 days that involved random dice and be made as a Windows forms application with Visual Basic. So we had to make a game in something that was the furthest you could get from a game engine with a language I had never used before. But h...">
@@ -75,54 +74,54 @@ As part of a course we had to make a game in 2 days that involved random dice an
 <p><img src="static/postimages/10/dicejack2.png" alt="dicejack 2" /></p>
 <p>As you can see, its rather simple. Theres 4 picture boxes, 4 labels, 2 buttons and a listbox. Dice are rolled, the dots are added up and the score is added to the listbox. After 5 rolls the game ends and the player is given their total score. But to know how I added further features we need to look at how this prototype was made.</p>
 <a name='behind-the-prototype'></a><h1>Behind the prototype</h1>
-<div class="highlight"><pre><span></span><span class="k">Dim</span><span class="w"> </span><span class="n">Die1</span><span class="p">,</span><span class="w"> </span><span class="n">Die2</span><span class="p">,</span><span class="w"> </span><span class="n">Die3</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="w"></span>
-<span class="k">Dim</span><span class="w"> </span><span class="n">DicePoints</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="w"></span>
-<span class="k">Dim</span><span class="w"> </span><span class="n">random</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">Random</span><span class="w"></span>
-<span class="k">Dim</span><span class="w"> </span><span class="n">RollCount</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="k">Dim</span><span class="w"> </span><span class="n">Die1</span><span class="p">,</span><span class="w"> </span><span class="n">Die2</span><span class="p">,</span><span class="w"> </span><span class="n">Die3</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span>
+<span class="k">Dim</span><span class="w"> </span><span class="n">DicePoints</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span>
+<span class="k">Dim</span><span class="w"> </span><span class="n">random</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">Random</span>
+<span class="k">Dim</span><span class="w"> </span><span class="n">RollCount</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </pre></div>
 <p>So we have our variables declared in the convoluted VB way. Die1, Die2, and Die3 and the scores for the corresponding dice. DicePoints is the total of those 3 scores and rollcount keeps track of how many times the dice were rolled. Random is just an object we use to generate random numbers</p>
-<div class="highlight"><pre><span></span><span class="k">Private</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">tmrTimer_Tick</span><span class="p">(</span><span class="n">sender</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Object</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">EventArgs</span><span class="p">)</span><span class="w"> </span><span class="k">Handles</span><span class="w"> </span><span class="n">tmrTimer</span><span class="p">.</span><span class="n">Tick</span><span class="w"></span>
-<span class="w">        </span><span class="c">&#39;Increments the load bar every tick</span><span class="w"></span>
-<span class="w">        </span><span class="n">random</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">New</span><span class="w"> </span><span class="n">Random</span><span class="w"></span>
-<span class="w">        </span><span class="n">prbLoad</span><span class="p">.</span><span class="n">Increment</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="k">If</span><span class="w"> </span><span class="n">prbLoad</span><span class="p">.</span><span class="n">Value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">Then</span><span class="w"></span>
-<span class="w">        </span><span class="p">...</span><span class="w"></span>
-<span class="w">        </span><span class="k">Else</span><span class="w"></span>
-<span class="w">            </span><span class="c">&#39;Sets dice to random number when the timer ticks before the load is full</span><span class="w"></span>
-<span class="w">            </span><span class="n">Die1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">random</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span><span class="w"></span>
-<span class="w">            </span><span class="n">Die2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">random</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span><span class="w"></span>
-<span class="w">            </span><span class="n">Die3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">random</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="k">Private</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">tmrTimer_Tick</span><span class="p">(</span><span class="n">sender</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Object</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">EventArgs</span><span class="p">)</span><span class="w"> </span><span class="k">Handles</span><span class="w"> </span><span class="n">tmrTimer</span><span class="p">.</span><span class="n">Tick</span>
+<span class="w">        </span><span class="c">&#39;Increments the load bar every tick</span>
+<span class="w">        </span><span class="n">random</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">New</span><span class="w"> </span><span class="n">Random</span>
+<span class="w">        </span><span class="n">prbLoad</span><span class="p">.</span><span class="n">Increment</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="w">        </span><span class="k">If</span><span class="w"> </span><span class="n">prbLoad</span><span class="p">.</span><span class="n">Value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">Then</span>
+<span class="w">        </span><span class="p">...</span>
+<span class="w">        </span><span class="k">Else</span>
+<span class="w">            </span><span class="c">&#39;Sets dice to random number when the timer ticks before the load is full</span>
+<span class="w">            </span><span class="n">Die1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">random</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span>
+<span class="w">            </span><span class="n">Die2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">random</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span>
+<span class="w">            </span><span class="n">Die3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">random</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span>
 
-<span class="w">            </span><span class="n">MatchImage</span><span class="p">(</span><span class="n">Die1</span><span class="p">,</span><span class="w"> </span><span class="n">pbxDie1</span><span class="p">)</span><span class="w"></span>
-<span class="w">            </span><span class="n">MatchImage</span><span class="p">(</span><span class="n">Die2</span><span class="p">,</span><span class="w"> </span><span class="n">pbxDie2</span><span class="p">)</span><span class="w"></span>
-<span class="w">            </span><span class="n">MatchImage</span><span class="p">(</span><span class="n">Die3</span><span class="p">,</span><span class="w"> </span><span class="n">pbxDie3</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="n">MatchImage</span><span class="p">(</span><span class="n">Die1</span><span class="p">,</span><span class="w"> </span><span class="n">pbxDie1</span><span class="p">)</span>
+<span class="w">            </span><span class="n">MatchImage</span><span class="p">(</span><span class="n">Die2</span><span class="p">,</span><span class="w"> </span><span class="n">pbxDie2</span><span class="p">)</span>
+<span class="w">            </span><span class="n">MatchImage</span><span class="p">(</span><span class="n">Die3</span><span class="p">,</span><span class="w"> </span><span class="n">pbxDie3</span><span class="p">)</span>
 
-<span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">If</span><span class="w"></span>
+<span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">If</span>
 </pre></div>
 <p>On the board is a timer (inventfully called tmrTimer), it tick every 0.1s. Each tick it adds a bit onto the load bar at the bottom and randomizes the images on the dice. MatchImage is my own subroutine but all it does is take an integer and applies the correct face for it to whichever picture box I pass it.</p>
 <p>Once the bar gets to 100, the fun begins.</p>
-<div class="highlight"><pre><span></span><span class="k">If</span><span class="w"> </span><span class="n">prbLoad</span><span class="p">.</span><span class="n">Value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">Then</span><span class="w"></span>
-<span class="w">            </span><span class="c">&#39;Adds the necessary points on the random dice when the load bar </span><span class="w"></span>
-<span class="w">            </span><span class="c">&#39;reaches 100</span><span class="w"></span>
-<span class="w">            </span><span class="n">tmrTimer</span><span class="p">.</span><span class="n">Stop</span><span class="p">()</span><span class="w"></span>
-<span class="w">            </span><span class="n">prbLoad</span><span class="p">.</span><span class="n">Value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
-<span class="w">            </span><span class="n">RollCount</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
-<span class="w">            </span><span class="n">DicePoints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Die1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Die2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Die3</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="k">If</span><span class="w"> </span><span class="n">prbLoad</span><span class="p">.</span><span class="n">Value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">Then</span>
+<span class="w">            </span><span class="c">&#39;Adds the necessary points on the random dice when the load bar </span>
+<span class="w">            </span><span class="c">&#39;reaches 100</span>
+<span class="w">            </span><span class="n">tmrTimer</span><span class="p">.</span><span class="n">Stop</span><span class="p">()</span>
+<span class="w">            </span><span class="n">prbLoad</span><span class="p">.</span><span class="n">Value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">            </span><span class="n">RollCount</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">            </span><span class="n">DicePoints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Die1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Die2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Die3</span>
 </pre></div>
 <p>We stop the timer ticking, we empty the load bar and we increment our roll counter before adding up all the spots on the dice, pretty simple.</p>
-<div class="highlight"><pre><span></span><span class="c">&#39;Adds Score to list</span><span class="w"></span>
-<span class="n">lstScore</span><span class="p">.</span><span class="n">Items</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;Roll &quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">RollCount</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="s">&quot;: &quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">DicePoints</span><span class="p">)</span><span class="w"></span>
-<span class="n">GameScore</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">DicePoints</span><span class="w"></span>
-<span class="n">DicePoints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="c">&#39;Adds Score to list</span>
+<span class="n">lstScore</span><span class="p">.</span><span class="n">Items</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;Roll &quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">RollCount</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="s">&quot;: &quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">DicePoints</span><span class="p">)</span>
+<span class="n">GameScore</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">DicePoints</span>
+<span class="n">DicePoints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </pre></div>
 <p>Almost done, we add our points to the listbox with some formatting. Add the points to the total score for the game and then set it back to 0.</p>
-<div class="highlight"><pre><span></span><span class="k">If</span><span class="w"> </span><span class="n">RollCount</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="k">Then</span><span class="w"></span>
-<span class="w">    </span><span class="n">MsgBox</span><span class="p">(</span><span class="s">&quot;Your game score was &quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">GameScore</span><span class="p">,,</span><span class="w"> </span><span class="s">&quot;Game Over&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="n">tmrTimer</span><span class="p">.</span><span class="n">Stop</span><span class="p">()</span><span class="w"></span>
-<span class="w">    </span><span class="n">btnStart</span><span class="p">.</span><span class="n">Enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">False</span><span class="w"></span>
-<span class="w">    </span><span class="n">btnReset</span><span class="p">.</span><span class="n">Enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">True</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="k">If</span><span class="w"> </span><span class="n">RollCount</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="k">Then</span>
+<span class="w">    </span><span class="n">MsgBox</span><span class="p">(</span><span class="s">&quot;Your game score was &quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">GameScore</span><span class="p">,,</span><span class="w"> </span><span class="s">&quot;Game Over&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">tmrTimer</span><span class="p">.</span><span class="n">Stop</span><span class="p">()</span>
+<span class="w">    </span><span class="n">btnStart</span><span class="p">.</span><span class="n">Enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">False</span>
+<span class="w">    </span><span class="n">btnReset</span><span class="p">.</span><span class="n">Enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">True</span>
 
-<span class="k">End</span><span class="w"> </span><span class="k">If</span><span class="w"></span>
+<span class="k">End</span><span class="w"> </span><span class="k">If</span>
 </pre></div>
 <p>Then we check whether they have reached the magic 5 rolls, if so we tell them their score and let them reset the game</p>
 <p>There is also some initialisation code that assigns images and there are event handlers that make the buttons work but this is the main logic. If you would like to see how that stuff works, you can find it at the <a href="https://github.com/LukeBriggsDev/Dice-Alpha">github repo</a></p>
@@ -151,39 +150,39 @@ As part of a course we had to make a game in 2 days that involved random dice an
 <p><img src="static/postimages/10/flowchart.png" alt="flowchart" /></p>
 <p>There you go, who needs a hundred lines of bolognese when you can have pastel shapes?</p>
 <p>Those who played the game may also notice this is the first time I’ve included a computer-controlled opponent, ‘The Dealer’. The dealer is like the player but has the advantages of being able to go second and win in the result of a draw. The dealer’s choice code is as follows:</p>
-<div class="highlight"><pre><span></span><span class="k">If</span><span class="w"> </span><span class="n">DealerCanChoose1</span><span class="w"> </span><span class="ow">And</span><span class="w"> </span><span class="k">Not</span><span class="w"> </span><span class="p">(</span><span class="n">DealerCanChoose2</span><span class="w"> </span><span class="ow">Or</span><span class="w"> </span><span class="n">DealerCanChooseBoth</span><span class="p">)</span><span class="w"> </span><span class="k">Then</span><span class="w"></span>
-<span class="w">    </span><span class="n">DealerScore</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">Die1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="k">If</span><span class="w"> </span><span class="n">DealerCanChoose1</span><span class="w"> </span><span class="ow">And</span><span class="w"> </span><span class="k">Not</span><span class="w"> </span><span class="p">(</span><span class="n">DealerCanChoose2</span><span class="w"> </span><span class="ow">Or</span><span class="w"> </span><span class="n">DealerCanChooseBoth</span><span class="p">)</span><span class="w"> </span><span class="k">Then</span>
+<span class="w">    </span><span class="n">DealerScore</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">Die1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span>
 
-<span class="k">ElseIf</span><span class="w"> </span><span class="n">DealerCanChoose2</span><span class="w"> </span><span class="ow">And</span><span class="w"> </span><span class="k">Not</span><span class="w"> </span><span class="p">(</span><span class="n">DealerCanChoose1</span><span class="w"> </span><span class="ow">Or</span><span class="w"> </span><span class="n">DealerCanChooseBoth</span><span class="p">)</span><span class="w"> </span><span class="k">Then</span><span class="w"></span>
-<span class="w">    </span><span class="n">DealerScore</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">Die2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
+<span class="k">ElseIf</span><span class="w"> </span><span class="n">DealerCanChoose2</span><span class="w"> </span><span class="ow">And</span><span class="w"> </span><span class="k">Not</span><span class="w"> </span><span class="p">(</span><span class="n">DealerCanChoose1</span><span class="w"> </span><span class="ow">Or</span><span class="w"> </span><span class="n">DealerCanChooseBoth</span><span class="p">)</span><span class="w"> </span><span class="k">Then</span>
+<span class="w">    </span><span class="n">DealerScore</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">Die2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span>
 
-<span class="k">ElseIf</span><span class="w"> </span><span class="n">DealerCanChooseBoth</span><span class="w"> </span><span class="k">Then</span><span class="w"></span>
-<span class="w">    </span><span class="n">DealerScore</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">(</span><span class="n">Die1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Die2</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
+<span class="k">ElseIf</span><span class="w"> </span><span class="n">DealerCanChooseBoth</span><span class="w"> </span><span class="k">Then</span>
+<span class="w">    </span><span class="n">DealerScore</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">(</span><span class="n">Die1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Die2</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span>
 
-<span class="k">ElseIf</span><span class="w"> </span><span class="n">DealerCanChoose1</span><span class="w"> </span><span class="ow">And</span><span class="w"> </span><span class="n">DealerCanChoose2</span><span class="w"> </span><span class="k">Then</span><span class="w"></span>
-<span class="w">    </span><span class="k">If</span><span class="w"> </span><span class="n">Die1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">Die2</span><span class="w"> </span><span class="k">Then</span><span class="w"></span>
-<span class="w">        </span><span class="n">DealerScore</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">Die1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
-<span class="w">    </span><span class="k">Else</span><span class="w"></span>
-<span class="w">        </span><span class="n">DealerScore</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">Die2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
-<span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">If</span><span class="w"></span>
-<span class="k">End</span><span class="w"> </span><span class="k">If</span><span class="w"></span>
+<span class="k">ElseIf</span><span class="w"> </span><span class="n">DealerCanChoose1</span><span class="w"> </span><span class="ow">And</span><span class="w"> </span><span class="n">DealerCanChoose2</span><span class="w"> </span><span class="k">Then</span>
+<span class="w">    </span><span class="k">If</span><span class="w"> </span><span class="n">Die1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">Die2</span><span class="w"> </span><span class="k">Then</span>
+<span class="w">        </span><span class="n">DealerScore</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">Die1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">    </span><span class="k">Else</span>
+<span class="w">        </span><span class="n">DealerScore</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">Die2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">If</span>
+<span class="k">End</span><span class="w"> </span><span class="k">If</span>
 
-<span class="k">If</span><span class="w"> </span><span class="k">Not</span><span class="w"> </span><span class="p">(</span><span class="n">DealerCanChoose1</span><span class="w"> </span><span class="ow">Or</span><span class="w"> </span><span class="n">DealerCanChoose2</span><span class="w"> </span><span class="ow">Or</span><span class="w"> </span><span class="n">DealerCanChooseBoth</span><span class="p">)</span><span class="w"> </span><span class="k">Then</span><span class="w"></span>
-<span class="w">    </span><span class="c">&#39;Dealer goes bust if no options are available</span><span class="w"></span>
-<span class="w">    </span><span class="k">If</span><span class="w"> </span><span class="n">Die1</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Die2</span><span class="w"> </span><span class="k">Then</span><span class="w"></span>
-<span class="w">        </span><span class="n">DealerScore</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">Die1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
-<span class="w">    </span><span class="k">Else</span><span class="w"></span>
-<span class="w">        </span><span class="n">DealerScore</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">Die2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
-<span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">If</span><span class="w"></span>
-<span class="w">    </span><span class="n">DealerStand</span><span class="p">()</span><span class="w"></span>
-<span class="w">    </span><span class="n">tmrDealer</span><span class="p">.</span><span class="n">Stop</span><span class="p">()</span><span class="w"></span>
+<span class="k">If</span><span class="w"> </span><span class="k">Not</span><span class="w"> </span><span class="p">(</span><span class="n">DealerCanChoose1</span><span class="w"> </span><span class="ow">Or</span><span class="w"> </span><span class="n">DealerCanChoose2</span><span class="w"> </span><span class="ow">Or</span><span class="w"> </span><span class="n">DealerCanChooseBoth</span><span class="p">)</span><span class="w"> </span><span class="k">Then</span>
+<span class="w">    </span><span class="c">&#39;Dealer goes bust if no options are available</span>
+<span class="w">    </span><span class="k">If</span><span class="w"> </span><span class="n">Die1</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Die2</span><span class="w"> </span><span class="k">Then</span>
+<span class="w">        </span><span class="n">DealerScore</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">Die1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">    </span><span class="k">Else</span>
+<span class="w">        </span><span class="n">DealerScore</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">Die2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">If</span>
+<span class="w">    </span><span class="n">DealerStand</span><span class="p">()</span>
+<span class="w">    </span><span class="n">tmrDealer</span><span class="p">.</span><span class="n">Stop</span><span class="p">()</span>
 
-<span class="k">ElseIf</span><span class="w"> </span><span class="n">DealerScore</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">GameScore</span><span class="w"> </span><span class="k">Then</span><span class="w"></span>
-<span class="w">    </span><span class="c">&#39;Dealer stands if their score is more than the player&#39;s</span><span class="w"></span>
-<span class="w">    </span><span class="n">DealerStand</span><span class="p">()</span><span class="w"></span>
-<span class="k">Else</span><span class="w"></span>
-<span class="w">    </span><span class="n">DealerRoll</span><span class="p">()</span><span class="w"></span>
-<span class="k">End</span><span class="w"> </span><span class="k">If</span><span class="w"></span>
+<span class="k">ElseIf</span><span class="w"> </span><span class="n">DealerScore</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">GameScore</span><span class="w"> </span><span class="k">Then</span>
+<span class="w">    </span><span class="c">&#39;Dealer stands if their score is more than the player&#39;s</span>
+<span class="w">    </span><span class="n">DealerStand</span><span class="p">()</span>
+<span class="k">Else</span>
+<span class="w">    </span><span class="n">DealerRoll</span><span class="p">()</span>
+<span class="k">End</span><span class="w"> </span><span class="k">If</span>
 </pre></div>
 <p>Before this code I run checks that see which options are available after a dealer rolls (these are the DealerCanChoose variables). Here there is a series of conditionals that look at the options and picks the best one for the dealer.</p>
 <p>If there is only one option available, then the dealer will pick that one. If there is more than one option available then the dealer will pick whichever will get them the highest score that turn. If there are no options available then the dealer is bust and they will stand. The dealer will also stand if they have a score higher than that of the player. The dealer will continue to roll as long as they are lower than the player and their current score is under 17.</p>

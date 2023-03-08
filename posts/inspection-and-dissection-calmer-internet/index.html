@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+<head><meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
     
 <meta name="description" content="A web extension that hides the elements of web pages that are best off hidden">
 
@@ -98,51 +97,51 @@ It then got to a point where I wanted to do more like remove the recommended sid
 Most of what my extension does takes place in a 'content script'.
 This is a javascript file that just loaded alongside the current page at load time.
 The file then looks at the current URL and checks the page for any elements I've told it to remove.</p>
-<div class="highlight"><pre><span></span><span class="c1">// Adding Twitter elements to a list of elements to remove</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">hostname</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;twitter.com&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">hostname</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;mobile.twitter.com&quot;</span><span class="p">){</span><span class="w"></span>
-<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">settings</span><span class="p">[</span><span class="s2">&quot;TwitterTrendingBar&quot;</span><span class="p">]){</span><span class="w"></span>
-<span class="w">            </span><span class="nx">elementsToRemove</span><span class="p">[</span><span class="s2">&quot;trendingBar&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">&quot;div[aria-label=&#39;Timeline: Trending now&#39;]&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">settings</span><span class="p">[</span><span class="s2">&quot;TwitterExploreLinks&quot;</span><span class="p">]){</span><span class="w"></span>
-<span class="w">            </span><span class="nx">elementsToRemove</span><span class="p">[</span><span class="s2">&quot;exploreLinks&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">&quot;a[href=&#39;/explore&#39;]&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">settings</span><span class="p">[</span><span class="s2">&quot;TwitterWhoToFollow&quot;</span><span class="p">]){</span><span class="w"></span>
-<span class="w">            </span><span class="nx">elementsToRemove</span><span class="p">[</span><span class="s2">&quot;miscStyling&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="s2">&quot;css-1dbjc4n r-1867qdf r-1phboty r-rs99b7 r-1ifxtd0 r-1bro5k0 r-1udh08x&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">            </span><span class="nx">elementsToRemove</span><span class="p">[</span><span class="s2">&quot;whoToFollow&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">&quot;aside[aria-label=&#39;Who to follow&#39;]&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">settings</span><span class="p">[</span><span class="s2">&quot;TwitterTopics&quot;</span><span class="p">]){</span><span class="w"></span>
-<span class="w">            </span><span class="nx">elementsToRemove</span><span class="p">[</span><span class="s2">&quot;topics&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">&quot;div[aria-label=&#39;Timeline: &#39;]&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="c1">// Adding Twitter elements to a list of elements to remove</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">hostname</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;twitter.com&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">hostname</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;mobile.twitter.com&quot;</span><span class="p">){</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">settings</span><span class="p">[</span><span class="s2">&quot;TwitterTrendingBar&quot;</span><span class="p">]){</span>
+<span class="w">            </span><span class="nx">elementsToRemove</span><span class="p">[</span><span class="s2">&quot;trendingBar&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">&quot;div[aria-label=&#39;Timeline: Trending now&#39;]&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">settings</span><span class="p">[</span><span class="s2">&quot;TwitterExploreLinks&quot;</span><span class="p">]){</span>
+<span class="w">            </span><span class="nx">elementsToRemove</span><span class="p">[</span><span class="s2">&quot;exploreLinks&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">&quot;a[href=&#39;/explore&#39;]&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">settings</span><span class="p">[</span><span class="s2">&quot;TwitterWhoToFollow&quot;</span><span class="p">]){</span>
+<span class="w">            </span><span class="nx">elementsToRemove</span><span class="p">[</span><span class="s2">&quot;miscStyling&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="s2">&quot;css-1dbjc4n r-1867qdf r-1phboty r-rs99b7 r-1ifxtd0 r-1bro5k0 r-1udh08x&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="nx">elementsToRemove</span><span class="p">[</span><span class="s2">&quot;whoToFollow&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">&quot;aside[aria-label=&#39;Who to follow&#39;]&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">settings</span><span class="p">[</span><span class="s2">&quot;TwitterTopics&quot;</span><span class="p">]){</span>
+<span class="w">            </span><span class="nx">elementsToRemove</span><span class="p">[</span><span class="s2">&quot;topics&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">&quot;div[aria-label=&#39;Timeline: &#39;]&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
 </pre></div>
 <p>The script then attaches a listener that causes new checks every time the webpage is updated</p>
-<div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">observeBodyRemove</span><span class="p">(){</span><span class="w"></span>
-<span class="w">        </span><span class="c1">// Select the node that will be observed for mutations</span><span class="w"></span>
-<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">targetNode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">observeBodyRemove</span><span class="p">(){</span>
+<span class="w">        </span><span class="c1">// Select the node that will be observed for mutations</span>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">targetNode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">);</span>
 
-<span class="w">        </span><span class="c1">// Options for the observer (which mutations to observe)</span><span class="w"></span>
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">attributes</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nx">childList</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nx">subtree</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// Options for the observer (which mutations to observe)</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">attributes</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nx">childList</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nx">subtree</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">};</span>
 
-<span class="w">        </span><span class="c1">// Callback function to execute when mutations are observed</span><span class="w"></span>
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">callback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">mutationsList</span><span class="p">,</span><span class="w"> </span><span class="nx">observer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nx">elementsToRemove</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getElementsToRemove</span><span class="p">();</span><span class="w"></span>
-<span class="w">            </span><span class="k">for</span><span class="p">(</span><span class="nx">key</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">elementsToRemove</span><span class="p">){</span><span class="w"></span>
-<span class="w">                </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="nx">element</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">elementsToRemove</span><span class="p">[</span><span class="nx">key</span><span class="p">]){</span><span class="w"></span>
-<span class="w">                    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="nx">element</span><span class="p">.</span><span class="nx">remove</span><span class="p">();</span><span class="w"></span>
-<span class="w">                    </span><span class="p">}</span><span class="w"></span>
-<span class="w">                    </span><span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span><span class="w"></span>
-<span class="w">                    </span><span class="p">}</span><span class="w"></span>
-<span class="w">                </span><span class="p">}</span><span class="w"></span>
-<span class="w">            </span><span class="p">}</span><span class="w"></span>
-<span class="w">        </span><span class="p">};</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// Callback function to execute when mutations are observed</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">callback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">mutationsList</span><span class="p">,</span><span class="w"> </span><span class="nx">observer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">elementsToRemove</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getElementsToRemove</span><span class="p">();</span>
+<span class="w">            </span><span class="k">for</span><span class="p">(</span><span class="nx">key</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">elementsToRemove</span><span class="p">){</span>
+<span class="w">                </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="nx">element</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">elementsToRemove</span><span class="p">[</span><span class="nx">key</span><span class="p">]){</span>
+<span class="w">                    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nx">element</span><span class="p">.</span><span class="nx">remove</span><span class="p">();</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">};</span>
 
-<span class="w">        </span><span class="c1">// Create an observer instance linked to the callback function</span><span class="w"></span>
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">observer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MutationObserver</span><span class="p">(</span><span class="nx">callback</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// Create an observer instance linked to the callback function</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">observer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MutationObserver</span><span class="p">(</span><span class="nx">callback</span><span class="p">);</span>
 
-<span class="w">        </span><span class="c1">// Start observing the target node for configured mutations</span><span class="w"></span>
-<span class="w">        </span><span class="nx">observer</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="nx">targetNode</span><span class="p">,</span><span class="w"> </span><span class="nx">config</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// Start observing the target node for configured mutations</span>
+<span class="w">        </span><span class="nx">observer</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="nx">targetNode</span><span class="p">,</span><span class="w"> </span><span class="nx">config</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
 </pre></div>
 <p>The only other JavaScript in the extension is in a 'background script'.
 Whereas 'content scripts' are loaded alongside a webpage, background scripts are persistent and always run whenever the extension is loaded.
@@ -151,71 +150,71 @@ One feature of the extension is you can redirect any links to YouTube.com to you
 I initially had the redirect in a content script but that required the whole page to be loaded before redirecting away from it.</p>
 <p>My current solution uses the WebRequest API to intercept a page request and load a new one instead.
 This is also done be setting up a listener, such as this one:</p>
-<div class="highlight"><pre><span></span><span class="c1">// YouTube</span><span class="w"></span>
-<span class="w">    </span><span class="nx">chrome</span><span class="p">.</span><span class="nx">webRequest</span><span class="p">.</span><span class="nx">onBeforeRequest</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">details</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">settings</span><span class="p">[</span><span class="s2">&quot;YTHomeRedirect&quot;</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="nx">redirectUrl</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://youtube.com/feed/subscriptions&quot;</span><span class="p">};</span><span class="w"></span>
-<span class="w">            </span><span class="p">}</span><span class="w"></span>
-<span class="w">        </span><span class="p">},</span><span class="w"></span>
-<span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nx">urls</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;*://*.youtube.com/&quot;</span><span class="w"></span>
-<span class="w">            </span><span class="p">],</span><span class="w"></span>
-<span class="w">            </span><span class="nx">types</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;main_frame&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;sub_frame&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;stylesheet&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;script&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;image&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;xmlhttprequest&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;other&quot;</span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="p">},</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="s2">&quot;blocking&quot;</span><span class="p">]</span><span class="w"></span>
-<span class="w">    </span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="c1">// YouTube</span>
+<span class="w">    </span><span class="nx">chrome</span><span class="p">.</span><span class="nx">webRequest</span><span class="p">.</span><span class="nx">onBeforeRequest</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span>
+<span class="w">        </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">details</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">settings</span><span class="p">[</span><span class="s2">&quot;YTHomeRedirect&quot;</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="nx">redirectUrl</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://youtube.com/feed/subscriptions&quot;</span><span class="p">};</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">urls</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;*://*.youtube.com/&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nx">types</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;main_frame&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;sub_frame&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;stylesheet&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;script&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;image&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;xmlhttprequest&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;other&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">[</span><span class="s2">&quot;blocking&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="p">);</span>
 </pre></div>
 <p>Finally, all that was left was to create a manifest.
 I have great experience with manifests since <a href="https://github.com/LukeBriggsDev/Pepys">Pepys recently received builds for rpm, .deb, and PKGBUILD</a>.</p>
-<div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;manifest_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Calmer Internet&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.1.0&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;browser_specific_settings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;gecko&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;calmerinternet@lukebriggs.dev&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;browser_action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;default_icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;16&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;icons/16.png&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;24&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;icons/24.png&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;32&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;icons/32.png&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;default_title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Calmer Internet&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;icons&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;48&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;icons/48.png&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;96&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;icons/96.png&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;content_scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;matches&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;*://*.youtube.com/*&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;*://*.twitter.com/*&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;*://twitter.com/*&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;*://*.instagram.com/*&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">],</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;js&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;calmer.js&quot;</span><span class="p">]</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="p">],</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;background&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;scripts&quot;</span><span class="p">:[</span><span class="s2">&quot;background.js&quot;</span><span class="p">]</span><span class="w"></span>
-<span class="w">  </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;permissions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;*://*.youtube.com/*&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;*://*.twitter.com/*&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;*://twitter.com/*&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;*://*.instagram.com/*&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;storage&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;webRequest&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;webRequestBlocking&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="p">],</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Provides a calmer internet experience. Removes comments and various recommendation elements from Twitter, YouTube, Instagram.&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;options_ui&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;page&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;options.html&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;manifest_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Calmer Internet&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.1.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;browser_specific_settings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;gecko&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;calmerinternet@lukebriggs.dev&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;browser_action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;default_icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;16&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;icons/16.png&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;24&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;icons/24.png&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;32&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;icons/32.png&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;default_title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Calmer Internet&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;icons&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;48&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;icons/48.png&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;96&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;icons/96.png&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;content_scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;matches&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;*://*.youtube.com/*&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;*://*.twitter.com/*&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;*://twitter.com/*&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;*://*.instagram.com/*&quot;</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;js&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;calmer.js&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;background&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;scripts&quot;</span><span class="p">:[</span><span class="s2">&quot;background.js&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;permissions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;*://*.youtube.com/*&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;*://*.twitter.com/*&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;*://twitter.com/*&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;*://*.instagram.com/*&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;storage&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;webRequest&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;webRequestBlocking&quot;</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Provides a calmer internet experience. Removes comments and various recommendation elements from Twitter, YouTube, Instagram.&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;options_ui&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;page&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;options.html&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 <a name='deployment'></a><h1>Deployment</h1>
 <p>The extension is available on the Chrome Web Store, the Firefox Add-on Store, and the Microsoft Store.

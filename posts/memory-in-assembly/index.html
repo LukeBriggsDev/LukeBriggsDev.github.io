@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+<head><meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
     
 <meta name="description" content="A little dive into the world of stacks, heaps, and data">
 
@@ -72,17 +71,17 @@
 </h1><p>I thought it might make for an interesting learning exercise to see how memory in different areas is treated at the assembly level.
 The program itself is simple, but I hope it will provide some insight.</p>
 <a name='c-program'></a><h2>C Program</h2>
-<div class="highlight"><pre><span></span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">constant_int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0xc07</span><span class="p">;</span><span class="w"></span>
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">static_int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x57a71c</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">stack_int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x57ac3</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">malloc_int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">malloc_int</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0xa1</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">func_int</span><span class="p">(</span><span class="n">stack_int</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">func_int</span><span class="p">(</span><span class="o">*</span><span class="n">malloc_int</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">func_int</span><span class="p">(</span><span class="n">static_int</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">func_const</span><span class="p">(</span><span class="n">constant_int</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">constant_int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0xc07</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">static_int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x57a71c</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">stack_int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x57ac3</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">malloc_int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">malloc_int</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0xa1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">func_int</span><span class="p">(</span><span class="n">stack_int</span><span class="p">);</span>
+<span class="w">    </span><span class="n">func_int</span><span class="p">(</span><span class="o">*</span><span class="n">malloc_int</span><span class="p">);</span>
+<span class="w">    </span><span class="n">func_int</span><span class="p">(</span><span class="n">static_int</span><span class="p">);</span>
+<span class="w">    </span><span class="n">func_const</span><span class="p">(</span><span class="n">constant_int</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 <a name='armv8-assembly'></a><h2>ARMv8 Assembly</h2>
 <div class="highlight"><pre><span></span><span class="x">stp         x29,x30,[sp, #local_20]!                </span>
@@ -137,7 +136,7 @@ We also have a label to this static variable that somewhat matches our C code.</
 The stack pointer is a special register that the CPU uses to tell us where our stack is. 
 Because everything we store on the stack is a known size, the compiler works out the offsets and knows where things should be stored in relation to each other.</p>
 <a name='c'></a><h3>C</h3>
-<div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">stack_int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x57ac3</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">stack_int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x57ac3</span><span class="p">;</span>
 </pre></div>
 <a name='assembly'></a><h3>Assembly</h3>
 <div class="highlight"><pre><span></span><span class="x">mov         w0,#0x7ac3               ; move integer into register 0                             </span>
@@ -150,9 +149,9 @@ Because everything we store on the stack is a known size, the compiler works out
 <p>This works by asking for a given amount of memory to be allocated, the kernel allocates the new memory in our address space then hands us back a pointer to it. 
 The address we get back is stored on the stack, and we can load values into this address to store on the heap.</p>
 <a name='c'></a><h3>C</h3>
-<div class="highlight"><pre><span></span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">malloc_int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">malloc_int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span>
 
-<span class="n">malloc_int</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0xa1</span><span class="p">;</span><span class="w"></span>
+<span class="n">malloc_int</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0xa1</span><span class="p">;</span>
 </pre></div>
 <a name='assembly'></a><h3>Assembly</h3>
 <div class="highlight"><pre><span></span><span class="x">mov         x0,#0x1                     ; Set first parameter of malloc to 1 (number of </span>
@@ -175,7 +174,7 @@ The address we get back is stored on the stack, and we can load values into this
 </blockquote>
 <a name='calling-a-function-with-a-stack-variable'></a><h2>Calling a function with a stack variable</h2>
 <a name='c'></a><h3>C</h3>
-<div class="highlight"><pre><span></span><span class="n">func_int</span><span class="p">(</span><span class="n">stack_int</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="n">func_int</span><span class="p">(</span><span class="n">stack_int</span><span class="p">);</span>
 </pre></div>
 <a name='assembly'></a><h3>Assembly</h3>
 <div class="highlight"><pre><span></span><span class="x">ldr         w0,[sp, #stack_int+0x20] ; Set parameter 0 to value stored in the </span>
@@ -184,7 +183,7 @@ The address we get back is stored on the stack, and we can load values into this
 </pre></div>
 <a name='calling-a-function-with-a-heap-variable'></a><h2>Calling a function with a heap variable</h2>
 <a name='c'></a><h3>C</h3>
-<div class="highlight"><pre><span></span><span class="n">func_int</span><span class="p">(</span><span class="o">*</span><span class="n">malloc_int</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="n">func_int</span><span class="p">(</span><span class="o">*</span><span class="n">malloc_int</span><span class="p">);</span>
 </pre></div>
 <a name='assembly'></a><h3>Assembly</h3>
 <div class="highlight"><pre><span></span><span class="x">ldr         x0,[sp, #malloc_int+0x20] ; load the value stored at the malloc_int variable (our</span>
@@ -195,7 +194,7 @@ The address we get back is stored on the stack, and we can load values into this
 </pre></div>
 <a name='calling-a-function-with-a-static-variable'></a><h2>Calling a function with a static variable</h2>
 <a name='c'></a><h3>C</h3>
-<div class="highlight"><pre><span></span><span class="n">func_int</span><span class="p">(</span><span class="n">static_int</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="n">func_int</span><span class="p">(</span><span class="n">static_int</span><span class="p">);</span>
 </pre></div>
 <a name='assembly'></a><h3>Assembly</h3>
 <div class="highlight"><pre><span></span><span class="x">adrp        x0,0x100008000   ; Since static variables are in the data section,</span>
@@ -209,7 +208,7 @@ The address we get back is stored on the stack, and we can load values into this
 <span class="x">bl          func_int         ; call function</span>
 </pre></div>
 <a name='calling-a-function-with-a-constant-variable'></a><h2>Calling a function with a constant variable</h2>
-<div class="highlight"><pre><span></span><span class="n">func_const</span><span class="p">(</span><span class="n">constant_int</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="n">func_const</span><span class="p">(</span><span class="n">constant_int</span><span class="p">);</span>
 </pre></div>
 <div class="highlight"><pre><span></span><span class="x">mov         w0,#0xc07   ; A constant variable never changes so we don&#39;t need to </span>
 <span class="x">                        ; use addresses, the constant is here in the text section </span>

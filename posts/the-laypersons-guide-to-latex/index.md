@@ -25,7 +25,7 @@ It depends on your personality. If you are happy with documents that are only ad
 
 # How Good Does it Look?
 
-In the days when people weren’t made of pixels I spent the time making my own word template. It had wonderful serif headings; all the styles used Word’s tools so it did as much of the heavy lifting as possible; and all the font sizes were made just right.
+In the days when people weren’t made of pixels, I spent the time making my own word template. It had wonderful serif headings, all the styles used Word’s tools so it did as much of the heavy lifting as possible, and all the font sizes were made just right.
 
 The results from Word are as follows:
 ![full word document](static/postimages/11/full.png)
@@ -75,7 +75,7 @@ The title, date, and author of your document all have dedicated tags in LaTeX. T
 \end{document}
 ```
 Output:
-![title page](static/postimages/11/empty.png)
+![title page](static/postimages/11/title.png)
 
 You can hear groups of your preferred gender(s) running to throw themselves at you as we speak.
 
