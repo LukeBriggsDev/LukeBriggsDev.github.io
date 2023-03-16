@@ -185,6 +185,7 @@ article {
     justify-content: center;
     flex-direction: column;
     margin: auto;
+    margin-bottom: 5rem;
     width: 60%;
 }
 
