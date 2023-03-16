@@ -12,7 +12,7 @@
       <link>https://lukebriggs.dev/</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Wed, 08 Mar 2023 21:46:37 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 16 Mar 2023 01:09:51 +0000</lastBuildDate>
     <item>
       <title>The First Line of Code
 </title>
@@ -4506,6 +4506,324 @@ F XOR Crib:     REGIMENT NO ^5* WILL ATK W POINT AT DAWN
 &lt;p&gt;Thaophialuang, L. (2019, January 24). Enigma Simulator. Retrieved from Enigma Cipher: &lt;a href="https://piotte13.github.io/enigma-cipher/"&gt;https://piotte13.github.io/enigma-cipher/&lt;/a&gt;&lt;/p&gt;
 </content:encoded>
       <pubDate>Mon, 29 Aug 2022 15:27:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>For Fonts in My Life
+</title>
+      <link>https://lukebriggs.dev/posts/for-fonts-in-my-life</link>
+      <description>&lt;img class='post-hero' src='/static/postimages/for-fonts-in-my-life/header.png' alt='&lt;div&gt;For Fonts in My Life&lt;/div&gt;
+'/&gt;&lt;h1 class='post-title'&gt;&lt;div&gt;For Fonts in My Life&lt;/div&gt;
+&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;Header image by &lt;a href="https://awright.dev"&gt;Andrew Wright&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;It is dissertation writing season at University, and this means one thing, document creation.
+There are a few schools of thought when it comes to document creation.&lt;/p&gt;
+&lt;a name='&lt;em&gt;the-office-clerk&lt;/em&gt;'&gt;&lt;/a&gt;&lt;h4&gt;&lt;em&gt;The Office Clerk&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;A person who will use 12pt &lt;a href="https://en.wikipedia.org/wiki/Calibri"&gt;Calibri&lt;/a&gt;, have headings in 'Blue, Accent 1', and submit it as a &lt;code&gt;.docx&lt;/code&gt; file if they can.
+Likely records videos in portrait.&lt;/p&gt;
+&lt;a name='&lt;em&gt;the-wysiwyg-wizards&lt;/em&gt;'&gt;&lt;/a&gt;&lt;h4&gt;&lt;em&gt;The WYSIWYG Wizards&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;Someone who still uses Microsoft Office but will change font, margins, bullet styles, and may even go as far as designing a custom template.&lt;/p&gt;
+&lt;a name='&lt;em&gt;the-typesetters&lt;/em&gt;'&gt;&lt;/a&gt;&lt;h4&gt;&lt;em&gt;The Typesetters&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;Someone who uses dedicated document preparation software.
+Will spend hours searching for the correct typeface.
+They spend more time on formatting than on writing.
+Do not mention Arial in the company of this person.&lt;/p&gt;
+&lt;p&gt;You will fall somewhere along this spectrum.
+Most likely somewhere between the first and second.
+I am here as a counterbalance.
+To show you why you should care about your documents.
+But mainly I'm here to gush about typefaces.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Warning, unqualified pretentious font talk ahead!&lt;/strong&gt;&lt;/p&gt;
+&lt;a name='words-count'&gt;&lt;/a&gt;&lt;h1&gt;Words Count&lt;/h1&gt;
+&lt;p&gt;A good typeface can elevate a document to something more than the sum of its parts.
+A typeface has one purpose, to present text on a page for it to be read.
+But it is the way in which it achieves this purpose where there is space.
+Space for creativity, for expression, for sentiment.
+When I make a document that I want to present, I want that document to say something about me.&lt;/p&gt;
+&lt;p&gt;The written word is a decidedly constrictive medium for visual creativity.
+Especially when those words are part of a dull report, or distinctly verbose thesis.
+The writing itself is the star of the show of course, but that show should be presented in as grand a theatre as possible.&lt;/p&gt;
+&lt;p&gt;&lt;img src="/static/postimages/for-fonts-in-my-life/calibri-times-orwell.svg" alt="Calibri against Times New Roman" /&gt;&lt;/p&gt;
+&lt;p&gt;Here I have the same line in the two stalwarts of Microsoft Office, &lt;a href="https://en.wikipedia.org/wiki/Times_New_Roman"&gt;Times New Roman&lt;/a&gt; and &lt;a href="https://en.wikipedia.org/wiki/Calibri"&gt;Calibri&lt;/a&gt;.
+These typefaces lay at opposite ends of design language. One is a traditional Roman style serif designed for a newspaper in the '30s, but inspired by the likes of &lt;a href="https://en.wikipedia.org/wiki/Baskerville"&gt;Baskerville&lt;/a&gt; from the 18th century.
+The other is a humanist sans-serif, designed for digital displays, with edges smooth enough to leave near small children.
+Each of these have their place (probably), but it is inarguable that Times gives a more powerful presentation of the words of &lt;a href="https://en.wikipedia.org/wiki/Nineteen_Eighty-Four"&gt;INGSOC&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This is a rather extreme example.
+Typefaces, like any art, mostly boil down to taste and personal preference.
+As much as I dislike Calibri, I respect someone's choice to use it.
+The problem is, people very rarely &lt;em&gt;choose&lt;/em&gt; it.
+They use it because they didn't make a choice, and apathy is the fashion of the meek.
+If there is one thing I want you to get from this article, it is to make a choice.
+Let every part of your document's aesthetic be a conscious decision, own your typography.&lt;/p&gt;
+&lt;a name='ibm-plex-sans'&gt;&lt;/a&gt;&lt;h1&gt;IBM Plex Sans&lt;/h1&gt;
+&lt;p&gt;As an example of a conscious font choice, I present my use of &lt;a href="https://fonts.google.com/specimen/IBM+Plex+Sans"&gt;IBM Plex Sans&lt;/a&gt; in bold as something I commonly use as a heading font.&lt;/p&gt;
+&lt;p&gt;&lt;img src="/static/postimages/for-fonts-in-my-life/ibm-plex.svg" alt="IBM Plex Sans" /&gt;&lt;/p&gt;
+&lt;p&gt;I adore the era of computing when teletypes reigned supreme and graphics were optional.
+I wouldn't like to live then, you understand.
+Much in the same way that people idolise the wild west, when in reality it was organised crime mixed with dysentery.
+I just like the smell I get in my ears when I look at the photographs.&lt;/p&gt;
+&lt;p&gt;Four of the biggest players in computing during this era were &lt;a href="https://en.wikipedia.org/wiki/IBM"&gt;IBM&lt;/a&gt;, &lt;a href="https://en.wikipedia.org/wiki/Digital_Equipment_Corporation"&gt;DEC&lt;/a&gt;, &lt;a href="https://en.wikipedia.org/wiki/Bell_Labs"&gt;Bell Labs&lt;/a&gt; (owned by &lt;a href="https://en.wikipedia.org/wiki/AT%26T"&gt;AT&amp;amp;T&lt;/a&gt;), and &lt;a href="https://en.wikipedia.org/wiki/General_Electric"&gt;General Electric&lt;/a&gt;. 
+IBM were the largest, they developed the first mainframe computers that could be sold in large (for the time) numbers.&lt;/p&gt;
+&lt;p&gt;Bell Labs were the research powerhouse of the industry. 
+The shear importance of Bell Labs in the history of science and computing cannot be overstated. 
+The transistor, the cosmic microwave background radiation, the laser, the CCD, the concept of bits, C, C++, Unix, nine Nobel Prizes, five turing awards...
+The list of achievements is astounding and is worthy of several documentaries.&lt;/p&gt;
+&lt;p&gt;The GE computing division (later sold to &lt;a href="https://en.wikipedia.org/wiki/Honeywell"&gt;Honeywell&lt;/a&gt;) and DEC were not as large as IBM but still formed two of &lt;a href="https://en.wikipedia.org/wiki/BUNCH"&gt;DeBUNCH&lt;/a&gt; of IBM competitors.&lt;/p&gt;
+&lt;p&gt;By &lt;a href="https://money.cnn.com/magazines/fortune/fortune500_archive/full/1988/index.html"&gt;1988&lt;/a&gt;, the 5 of them would represent the 4th, 6th, 8th, 28th, and 38th largest companies in America.
+They were by far the largest technology companies of their day and represented the dawn of the information age.&lt;/p&gt;
+&lt;p&gt;&lt;img src="/static/postimages/for-fonts-in-my-life/ibm-bell-labs.png" alt="IBM System/360 manual and the Bell System Technical Journal" /&gt;&lt;/p&gt;
+&lt;p&gt;This duality of being the cutting edge modernity and being multinational corporations came through in their typography.
+Above are excerpts from the &lt;a href="https://ieeexplore.ieee.org/document/6770689"&gt;Bell System Technical Journal of December 1979&lt;/a&gt;, the &lt;a href="http://bitsavers.trailing-edge.com/pdf/ibm/360/princOps/A22-6821-0_360PrincOps.pdf"&gt;IBM System/360 user manual&lt;/a&gt;, the &lt;a href="http://bitsavers.org/pdf/ge/GE-645/LSB0468_GE-645_System_Manual_Jan1968.pdf"&gt;GE-645 system manual&lt;/a&gt;, and the &lt;a href="http://www.bitsavers.org/pdf/dec/pdp11/handbooks/PDP-11_Processor_Handbook_1981.pdf"&gt;PDP-11 Processor handbook&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Bell and DEC are using the &lt;a href="https://fonts.google.com/knowledge/glossary/grotesque_neo_grotesque"&gt;Neo-Grotesque&lt;/a&gt; &lt;a href="https://en.wikipedia.org/wiki/Helvetica"&gt;Helvetica&lt;/a&gt;, with IBM and G.E using the &lt;a href="https://fonts.google.com/knowledge/glossary/geometric"&gt;Geometric&lt;/a&gt; &lt;a href="https://en.wikipedia.org/wiki/Futura_(typeface)"&gt;Futura&lt;/a&gt;.&lt;/p&gt;
+&lt;a name='helvetica'&gt;&lt;/a&gt;&lt;h2&gt;Helvetica&lt;/h2&gt;
+&lt;p&gt;Helvetica is a typeface that is both lauded and besmirched.
+Its design is heralded, but it's use as the symbol of modern corporate America meant it hit a level of saturation that has left a sour taste in the mouth of those from a prior generation.&lt;/p&gt;
+&lt;p&gt;&lt;img src="/static/postimages/for-fonts-in-my-life/helvetica.svg" alt="Uses of Helvetica" /&gt;&lt;/p&gt;
+&lt;p&gt;And they are perfectly correct of course.
+Helvetica found an audience in the large companies of the 80s and 90s.
+It is non-confrontational, it has no outlandish flair.
+And the absence of serifs along with its Swiss modernism moves it away from the archaic &lt;a href="https://en.wikipedia.org/wiki/Garamond"&gt;Garamonds&lt;/a&gt; and &lt;a href="https://en.wikipedia.org/wiki/Caslon"&gt;Caslons&lt;/a&gt; of the world.
+But I think that its use amongst the billion-dollar conglomerates of yesteryear should not be a reason to dismiss this typeface.&lt;/p&gt;
+&lt;p&gt;For a start, the saturation of Helvetica means that brands have began to move away from it.
+&lt;a href="https://www.dezeen.com/2013/01/21/american-airlines-debuts-new-logo-and-livery/"&gt;American Airlines&lt;/a&gt; changed its font in 2013.
+And today's major companies (Google, Tesla, Microsoft) no longer see it as representing modernity.
+So perhaps it's reasonable to look at why Helvetica was used in the first place.&lt;/p&gt;
+&lt;img src="/static/postimages/for-fonts-in-my-life/porsche.jpg" alt="Porsche poster" height="400px"&gt;
+&lt;p&gt;The strength of helvetica is in the way it can hold its own on a page.&lt;/p&gt;
+&lt;p&gt;&lt;img src="/static/postimages/for-fonts-in-my-life/helvetica-gill-porsche.svg" alt="Helvetica against Gill Sans" /&gt;&lt;/p&gt;
+&lt;p&gt;If we compare it against the &lt;a href="https://fonts.google.com/knowledge/glossary/humanist_old_style"&gt;Humanist&lt;/a&gt; &lt;a href="https://en.wikipedia.org/wiki/Gill_Sans"&gt;Gill Sans&lt;/a&gt;, I just feel it sits so much better.
+It brings an air of German functionalist efficiency that Gill Sans doesn't.&lt;/p&gt;
+&lt;p&gt;The stand-out character in Helvetica is the capital R.
+Helvetica feels placed, in position, structurally sound.
+One of the reasons for this is the way all of its terminals are either perfectly vertical or horizontal.
+Look at the way the C opposes itself, the tail of the y facing left, and the s finishing straight up and straight down.
+Helvetica locks itself into place with these, it grabs the page.&lt;/p&gt;
+&lt;p&gt;On the other hand, Gill Sans, and a lot of humanist typefaces, feel like they're ever so slightly about to fall over.
+They seem to me like they always need one more letter next to it just to support the previous one.
+Of course, this run-on nature makes them wonderful for &lt;a href="https://en.wikipedia.org/wiki/Body_text"&gt;body text&lt;/a&gt;.
+They allow text to flow easily, whereas the rigid nature of helvetica is slightly too uniform to make it nice to read in large chunks.
+For header text though, Helvetica can reign supreme.&lt;/p&gt;
+&lt;a name='futura'&gt;&lt;/a&gt;&lt;h2&gt;Futura&lt;/h2&gt;
+&lt;p&gt;Speaking of &lt;a href="https://en.wikipedia.org/wiki/Supreme_(brand)"&gt;Supreme&lt;/a&gt;, Futura.
+It is what is known as a geometric typeface, it's characters are formed from circles and straight lines.
+It's foundations in geometry make it a perennial staple in anything wanting to convey as modern or futuristic.
+&lt;a href="https://www.pixartprinting.co.uk/blog/wes-andersons-fonts/"&gt;Wes Anderson&lt;/a&gt;, &lt;a href="https://typographica.org/on-typography/stanley-kubrick-fan-of-futura/"&gt;Stanley Kubrick&lt;/a&gt;, and &lt;a href="https://www.wired.co.uk/gallery/futura-font-on-the-moon-christopher-burke-book"&gt;NASA&lt;/a&gt; have all made extensive use of its sharp angles and perfect curves.&lt;/p&gt;
+&lt;p&gt;&lt;img src="/static/postimages/for-fonts-in-my-life/futura.svg" alt="Futura" /&gt;&lt;/p&gt;
+&lt;p&gt;It's easy to see why it is so popular.
+It just screams technology.
+It's abstract characters redefine type in terms of mathematics and the result is something notably artificial.&lt;/p&gt;
+&lt;a name='man-and-machine'&gt;&lt;/a&gt;&lt;h2&gt;Man and Machine&lt;/h2&gt;
+&lt;p&gt;&lt;img src="/static/postimages/for-fonts-in-my-life/font-comparison.svg" alt="IBM Plex Sans" /&gt;
+IBM Plex falls into the category of &lt;a href="https://fonts.google.com/knowledge/glossary/grotesque_neo_grotesque"&gt;Grotesque&lt;/a&gt; fonts.
+It shares quite a few similarities with Helvetica and its predecessor &lt;a href="https://en.wikipedia.org/wiki/Akzidenz-Grotesk"&gt;Akzidenz-Grotesque&lt;/a&gt;.
+The main similarity it has with Akzidenz and Futura over Helvetica is its more gothic R with a diagonal leg.&lt;/p&gt;
+&lt;p&gt;Although it does not share any letter forms with Futura, IBM plex still has a distinct geometric machined quality.
+Its &lt;a href="https://fonts.google.com/knowledge/glossary/counter"&gt;counters&lt;/a&gt; are not perfect circles, but they're not the ovals of more Humanist or Grotesque typefaces either.
+Characters like C, G, O, and Q all have a stadium shaped counter. 
+Not an elemental shape but still with foundations in geometry.
+The central &amp;quot;pipe&amp;quot; like leg also has an artificial quality but once again has its roots in machinery rather than formal design.
+The only real Humanist design choice is the &lt;a href="https://en.wikipedia.org/wiki/G#/media/File:LowercaseG.svg"&gt;double-storey&lt;/a&gt; g.
+A strange decision thematically, but I think it's little pipe ear is quite charming.&lt;/p&gt;
+&lt;p&gt;IBM have created a typeface that harks back to the pre-digital age.
+Just like IBM, the grotesque typeface was born out of the Industrial era and found its greatest success between the 50s and 90s (with Helvetica).
+It's machined nature doesn't distract either.
+It manages to be contemporary without being sleek.&lt;/p&gt;
+&lt;p&gt;&lt;img src="/static/postimages/for-fonts-in-my-life/porsche-plex.svg" alt="IBM Plex Sans Nobody's Perfect" /&gt;&lt;/p&gt;
+&lt;a name='charter'&gt;&lt;/a&gt;&lt;h1&gt;Charter&lt;/h1&gt;
+&lt;p&gt;Into the realm of &lt;a href="https://fonts.google.com/knowledge/glossary/serif"&gt;serifs&lt;/a&gt;, more specifically serif body typefaces.
+I'm more of a fan of using a serif for the main text of a document.
+Some people say it is more readable, I just feel it fits with my more classic, timeless aesthetic.&lt;/p&gt;
+&lt;p&gt;&lt;img src="/static/postimages/for-fonts-in-my-life/serif-comparison.svg" alt="IBM Plex Sans Nobody's Perfect" /&gt;
+Serifs can get a bit tricky to get right because it depends on the context.
+Something like &lt;a href="https://en.wikipedia.org/wiki/Baskerville"&gt;Baskerville&lt;/a&gt; looks quite beautiful in print.
+Its serifs taper thin, and it has a very high &lt;a href="https://fonts.google.com/knowledge/glossary/contrast"&gt;stroke contrast&lt;/a&gt; that shines on the page of a book.
+To see what I mean, look at the capital A.
+The left hand side is much thinner than the right.&lt;/p&gt;
+&lt;p&gt;The problem with these older typefaces, designed to look great on paper, is they don't transfer to the digital screen very well.
+At the lower detail densities of screens, these thin strokes can become hard to read and harm legibility.
+You will notice that modern serif typefaces designed for screens or home laser printers will have much lower stroke contrast.
+They also tend to have a slightly higher &lt;a href="https://en.wikipedia.org/wiki/X-height"&gt;x-height&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The obvious pairing for IBM Plex Sans should be &lt;a href="https://fonts.google.com/specimen/IBM+Plex+Serif"&gt;IBM Plex Serif&lt;/a&gt;, right?
+Well it left me feeling a bit cold.
+I can imagine using it for UI, but overall I can't gel with its modernism.
+Its &lt;a href="https://en.wikipedia.org/wiki/Bodoni"&gt;Bodoni-style&lt;/a&gt; sharp, rectangle serifs feel a bit too geometric for me.
+It also has a reasonably tall x-height, moving away from the traditional look that I want.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Bitstream_Charter"&gt;Charter&lt;/a&gt; strikes a good middle-ground.
+Its x-height is a bit shorter, it's serifs tapered (but not excessively), and a slightly thinner average stroke width from something like &lt;a href="https://en.wikipedia.org/wiki/Georgia_(typeface)"&gt;Georgia&lt;/a&gt; (Also by Matthew Carter).&lt;/p&gt;
+&lt;p&gt;Of course, I'll chop and change things depending on what a document should look like, but I hope I've given you enough of an introduction into typefaces that you may dip your toe into something other than the default.
+If you want more guidance on things other than typography then I can't recommend &lt;a href="https://practicaltypography.com"&gt;Butterick's Practical Typography&lt;/a&gt; enough.&lt;/p&gt;
+&lt;p&gt;And just for the sake of it, here are some more honorable font mentions.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Serif&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://fonts.google.com/specimen/Source+Serif+Pro"&gt;Adobe Source Serif Pro&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://fonts.google.com/specimen/Lora?category=Serif"&gt;Lora&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Century_type_family"&gt;Century Schoolbook&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.fontsquirrel.com/fonts/latin-modern-roman"&gt;Latin Modern&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Sans-serif&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://fonts.google.com/specimen/Source+Sans+Pro"&gt;Source Sans Pro&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://fonts.google.com/specimen/Inter"&gt;Inter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://fonts.google.com/specimen/Josefin+Sans"&gt;Josefin Sans&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      <content:encoded>&lt;img class='post-hero' src='/static/postimages/for-fonts-in-my-life/header.png' alt='&lt;div&gt;For Fonts in My Life&lt;/div&gt;
+'/&gt;&lt;h1 class='post-title'&gt;&lt;div&gt;For Fonts in My Life&lt;/div&gt;
+&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;Header image by &lt;a href="https://awright.dev"&gt;Andrew Wright&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;It is dissertation writing season at University, and this means one thing, document creation.
+There are a few schools of thought when it comes to document creation.&lt;/p&gt;
+&lt;a name='&lt;em&gt;the-office-clerk&lt;/em&gt;'&gt;&lt;/a&gt;&lt;h4&gt;&lt;em&gt;The Office Clerk&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;A person who will use 12pt &lt;a href="https://en.wikipedia.org/wiki/Calibri"&gt;Calibri&lt;/a&gt;, have headings in 'Blue, Accent 1', and submit it as a &lt;code&gt;.docx&lt;/code&gt; file if they can.
+Likely records videos in portrait.&lt;/p&gt;
+&lt;a name='&lt;em&gt;the-wysiwyg-wizards&lt;/em&gt;'&gt;&lt;/a&gt;&lt;h4&gt;&lt;em&gt;The WYSIWYG Wizards&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;Someone who still uses Microsoft Office but will change font, margins, bullet styles, and may even go as far as designing a custom template.&lt;/p&gt;
+&lt;a name='&lt;em&gt;the-typesetters&lt;/em&gt;'&gt;&lt;/a&gt;&lt;h4&gt;&lt;em&gt;The Typesetters&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;Someone who uses dedicated document preparation software.
+Will spend hours searching for the correct typeface.
+They spend more time on formatting than on writing.
+Do not mention Arial in the company of this person.&lt;/p&gt;
+&lt;p&gt;You will fall somewhere along this spectrum.
+Most likely somewhere between the first and second.
+I am here as a counterbalance.
+To show you why you should care about your documents.
+But mainly I'm here to gush about typefaces.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Warning, unqualified pretentious font talk ahead!&lt;/strong&gt;&lt;/p&gt;
+&lt;a name='words-count'&gt;&lt;/a&gt;&lt;h1&gt;Words Count&lt;/h1&gt;
+&lt;p&gt;A good typeface can elevate a document to something more than the sum of its parts.
+A typeface has one purpose, to present text on a page for it to be read.
+But it is the way in which it achieves this purpose where there is space.
+Space for creativity, for expression, for sentiment.
+When I make a document that I want to present, I want that document to say something about me.&lt;/p&gt;
+&lt;p&gt;The written word is a decidedly constrictive medium for visual creativity.
+Especially when those words are part of a dull report, or distinctly verbose thesis.
+The writing itself is the star of the show of course, but that show should be presented in as grand a theatre as possible.&lt;/p&gt;
+&lt;p&gt;&lt;img src="/static/postimages/for-fonts-in-my-life/calibri-times-orwell.svg" alt="Calibri against Times New Roman" /&gt;&lt;/p&gt;
+&lt;p&gt;Here I have the same line in the two stalwarts of Microsoft Office, &lt;a href="https://en.wikipedia.org/wiki/Times_New_Roman"&gt;Times New Roman&lt;/a&gt; and &lt;a href="https://en.wikipedia.org/wiki/Calibri"&gt;Calibri&lt;/a&gt;.
+These typefaces lay at opposite ends of design language. One is a traditional Roman style serif designed for a newspaper in the '30s, but inspired by the likes of &lt;a href="https://en.wikipedia.org/wiki/Baskerville"&gt;Baskerville&lt;/a&gt; from the 18th century.
+The other is a humanist sans-serif, designed for digital displays, with edges smooth enough to leave near small children.
+Each of these have their place (probably), but it is inarguable that Times gives a more powerful presentation of the words of &lt;a href="https://en.wikipedia.org/wiki/Nineteen_Eighty-Four"&gt;INGSOC&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This is a rather extreme example.
+Typefaces, like any art, mostly boil down to taste and personal preference.
+As much as I dislike Calibri, I respect someone's choice to use it.
+The problem is, people very rarely &lt;em&gt;choose&lt;/em&gt; it.
+They use it because they didn't make a choice, and apathy is the fashion of the meek.
+If there is one thing I want you to get from this article, it is to make a choice.
+Let every part of your document's aesthetic be a conscious decision, own your typography.&lt;/p&gt;
+&lt;a name='ibm-plex-sans'&gt;&lt;/a&gt;&lt;h1&gt;IBM Plex Sans&lt;/h1&gt;
+&lt;p&gt;As an example of a conscious font choice, I present my use of &lt;a href="https://fonts.google.com/specimen/IBM+Plex+Sans"&gt;IBM Plex Sans&lt;/a&gt; in bold as something I commonly use as a heading font.&lt;/p&gt;
+&lt;p&gt;&lt;img src="/static/postimages/for-fonts-in-my-life/ibm-plex.svg" alt="IBM Plex Sans" /&gt;&lt;/p&gt;
+&lt;p&gt;I adore the era of computing when teletypes reigned supreme and graphics were optional.
+I wouldn't like to live then, you understand.
+Much in the same way that people idolise the wild west, when in reality it was organised crime mixed with dysentery.
+I just like the smell I get in my ears when I look at the photographs.&lt;/p&gt;
+&lt;p&gt;Four of the biggest players in computing during this era were &lt;a href="https://en.wikipedia.org/wiki/IBM"&gt;IBM&lt;/a&gt;, &lt;a href="https://en.wikipedia.org/wiki/Digital_Equipment_Corporation"&gt;DEC&lt;/a&gt;, &lt;a href="https://en.wikipedia.org/wiki/Bell_Labs"&gt;Bell Labs&lt;/a&gt; (owned by &lt;a href="https://en.wikipedia.org/wiki/AT%26T"&gt;AT&amp;amp;T&lt;/a&gt;), and &lt;a href="https://en.wikipedia.org/wiki/General_Electric"&gt;General Electric&lt;/a&gt;. 
+IBM were the largest, they developed the first mainframe computers that could be sold in large (for the time) numbers.&lt;/p&gt;
+&lt;p&gt;Bell Labs were the research powerhouse of the industry. 
+The shear importance of Bell Labs in the history of science and computing cannot be overstated. 
+The transistor, the cosmic microwave background radiation, the laser, the CCD, the concept of bits, C, C++, Unix, nine Nobel Prizes, five turing awards...
+The list of achievements is astounding and is worthy of several documentaries.&lt;/p&gt;
+&lt;p&gt;The GE computing division (later sold to &lt;a href="https://en.wikipedia.org/wiki/Honeywell"&gt;Honeywell&lt;/a&gt;) and DEC were not as large as IBM but still formed two of &lt;a href="https://en.wikipedia.org/wiki/BUNCH"&gt;DeBUNCH&lt;/a&gt; of IBM competitors.&lt;/p&gt;
+&lt;p&gt;By &lt;a href="https://money.cnn.com/magazines/fortune/fortune500_archive/full/1988/index.html"&gt;1988&lt;/a&gt;, the 5 of them would represent the 4th, 6th, 8th, 28th, and 38th largest companies in America.
+They were by far the largest technology companies of their day and represented the dawn of the information age.&lt;/p&gt;
+&lt;p&gt;&lt;img src="/static/postimages/for-fonts-in-my-life/ibm-bell-labs.png" alt="IBM System/360 manual and the Bell System Technical Journal" /&gt;&lt;/p&gt;
+&lt;p&gt;This duality of being the cutting edge modernity and being multinational corporations came through in their typography.
+Above are excerpts from the &lt;a href="https://ieeexplore.ieee.org/document/6770689"&gt;Bell System Technical Journal of December 1979&lt;/a&gt;, the &lt;a href="http://bitsavers.trailing-edge.com/pdf/ibm/360/princOps/A22-6821-0_360PrincOps.pdf"&gt;IBM System/360 user manual&lt;/a&gt;, the &lt;a href="http://bitsavers.org/pdf/ge/GE-645/LSB0468_GE-645_System_Manual_Jan1968.pdf"&gt;GE-645 system manual&lt;/a&gt;, and the &lt;a href="http://www.bitsavers.org/pdf/dec/pdp11/handbooks/PDP-11_Processor_Handbook_1981.pdf"&gt;PDP-11 Processor handbook&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Bell and DEC are using the &lt;a href="https://fonts.google.com/knowledge/glossary/grotesque_neo_grotesque"&gt;Neo-Grotesque&lt;/a&gt; &lt;a href="https://en.wikipedia.org/wiki/Helvetica"&gt;Helvetica&lt;/a&gt;, with IBM and G.E using the &lt;a href="https://fonts.google.com/knowledge/glossary/geometric"&gt;Geometric&lt;/a&gt; &lt;a href="https://en.wikipedia.org/wiki/Futura_(typeface)"&gt;Futura&lt;/a&gt;.&lt;/p&gt;
+&lt;a name='helvetica'&gt;&lt;/a&gt;&lt;h2&gt;Helvetica&lt;/h2&gt;
+&lt;p&gt;Helvetica is a typeface that is both lauded and besmirched.
+Its design is heralded, but it's use as the symbol of modern corporate America meant it hit a level of saturation that has left a sour taste in the mouth of those from a prior generation.&lt;/p&gt;
+&lt;p&gt;&lt;img src="/static/postimages/for-fonts-in-my-life/helvetica.svg" alt="Uses of Helvetica" /&gt;&lt;/p&gt;
+&lt;p&gt;And they are perfectly correct of course.
+Helvetica found an audience in the large companies of the 80s and 90s.
+It is non-confrontational, it has no outlandish flair.
+And the absence of serifs along with its Swiss modernism moves it away from the archaic &lt;a href="https://en.wikipedia.org/wiki/Garamond"&gt;Garamonds&lt;/a&gt; and &lt;a href="https://en.wikipedia.org/wiki/Caslon"&gt;Caslons&lt;/a&gt; of the world.
+But I think that its use amongst the billion-dollar conglomerates of yesteryear should not be a reason to dismiss this typeface.&lt;/p&gt;
+&lt;p&gt;For a start, the saturation of Helvetica means that brands have began to move away from it.
+&lt;a href="https://www.dezeen.com/2013/01/21/american-airlines-debuts-new-logo-and-livery/"&gt;American Airlines&lt;/a&gt; changed its font in 2013.
+And today's major companies (Google, Tesla, Microsoft) no longer see it as representing modernity.
+So perhaps it's reasonable to look at why Helvetica was used in the first place.&lt;/p&gt;
+&lt;img src="/static/postimages/for-fonts-in-my-life/porsche.jpg" alt="Porsche poster" height="400px"&gt;
+&lt;p&gt;The strength of helvetica is in the way it can hold its own on a page.&lt;/p&gt;
+&lt;p&gt;&lt;img src="/static/postimages/for-fonts-in-my-life/helvetica-gill-porsche.svg" alt="Helvetica against Gill Sans" /&gt;&lt;/p&gt;
+&lt;p&gt;If we compare it against the &lt;a href="https://fonts.google.com/knowledge/glossary/humanist_old_style"&gt;Humanist&lt;/a&gt; &lt;a href="https://en.wikipedia.org/wiki/Gill_Sans"&gt;Gill Sans&lt;/a&gt;, I just feel it sits so much better.
+It brings an air of German functionalist efficiency that Gill Sans doesn't.&lt;/p&gt;
+&lt;p&gt;The stand-out character in Helvetica is the capital R.
+Helvetica feels placed, in position, structurally sound.
+One of the reasons for this is the way all of its terminals are either perfectly vertical or horizontal.
+Look at the way the C opposes itself, the tail of the y facing left, and the s finishing straight up and straight down.
+Helvetica locks itself into place with these, it grabs the page.&lt;/p&gt;
+&lt;p&gt;On the other hand, Gill Sans, and a lot of humanist typefaces, feel like they're ever so slightly about to fall over.
+They seem to me like they always need one more letter next to it just to support the previous one.
+Of course, this run-on nature makes them wonderful for &lt;a href="https://en.wikipedia.org/wiki/Body_text"&gt;body text&lt;/a&gt;.
+They allow text to flow easily, whereas the rigid nature of helvetica is slightly too uniform to make it nice to read in large chunks.
+For header text though, Helvetica can reign supreme.&lt;/p&gt;
+&lt;a name='futura'&gt;&lt;/a&gt;&lt;h2&gt;Futura&lt;/h2&gt;
+&lt;p&gt;Speaking of &lt;a href="https://en.wikipedia.org/wiki/Supreme_(brand)"&gt;Supreme&lt;/a&gt;, Futura.
+It is what is known as a geometric typeface, it's characters are formed from circles and straight lines.
+It's foundations in geometry make it a perennial staple in anything wanting to convey as modern or futuristic.
+&lt;a href="https://www.pixartprinting.co.uk/blog/wes-andersons-fonts/"&gt;Wes Anderson&lt;/a&gt;, &lt;a href="https://typographica.org/on-typography/stanley-kubrick-fan-of-futura/"&gt;Stanley Kubrick&lt;/a&gt;, and &lt;a href="https://www.wired.co.uk/gallery/futura-font-on-the-moon-christopher-burke-book"&gt;NASA&lt;/a&gt; have all made extensive use of its sharp angles and perfect curves.&lt;/p&gt;
+&lt;p&gt;&lt;img src="/static/postimages/for-fonts-in-my-life/futura.svg" alt="Futura" /&gt;&lt;/p&gt;
+&lt;p&gt;It's easy to see why it is so popular.
+It just screams technology.
+It's abstract characters redefine type in terms of mathematics and the result is something notably artificial.&lt;/p&gt;
+&lt;a name='man-and-machine'&gt;&lt;/a&gt;&lt;h2&gt;Man and Machine&lt;/h2&gt;
+&lt;p&gt;&lt;img src="/static/postimages/for-fonts-in-my-life/font-comparison.svg" alt="IBM Plex Sans" /&gt;
+IBM Plex falls into the category of &lt;a href="https://fonts.google.com/knowledge/glossary/grotesque_neo_grotesque"&gt;Grotesque&lt;/a&gt; fonts.
+It shares quite a few similarities with Helvetica and its predecessor &lt;a href="https://en.wikipedia.org/wiki/Akzidenz-Grotesk"&gt;Akzidenz-Grotesque&lt;/a&gt;.
+The main similarity it has with Akzidenz and Futura over Helvetica is its more gothic R with a diagonal leg.&lt;/p&gt;
+&lt;p&gt;Although it does not share any letter forms with Futura, IBM plex still has a distinct geometric machined quality.
+Its &lt;a href="https://fonts.google.com/knowledge/glossary/counter"&gt;counters&lt;/a&gt; are not perfect circles, but they're not the ovals of more Humanist or Grotesque typefaces either.
+Characters like C, G, O, and Q all have a stadium shaped counter. 
+Not an elemental shape but still with foundations in geometry.
+The central &amp;quot;pipe&amp;quot; like leg also has an artificial quality but once again has its roots in machinery rather than formal design.
+The only real Humanist design choice is the &lt;a href="https://en.wikipedia.org/wiki/G#/media/File:LowercaseG.svg"&gt;double-storey&lt;/a&gt; g.
+A strange decision thematically, but I think it's little pipe ear is quite charming.&lt;/p&gt;
+&lt;p&gt;IBM have created a typeface that harks back to the pre-digital age.
+Just like IBM, the grotesque typeface was born out of the Industrial era and found its greatest success between the 50s and 90s (with Helvetica).
+It's machined nature doesn't distract either.
+It manages to be contemporary without being sleek.&lt;/p&gt;
+&lt;p&gt;&lt;img src="/static/postimages/for-fonts-in-my-life/porsche-plex.svg" alt="IBM Plex Sans Nobody's Perfect" /&gt;&lt;/p&gt;
+&lt;a name='charter'&gt;&lt;/a&gt;&lt;h1&gt;Charter&lt;/h1&gt;
+&lt;p&gt;Into the realm of &lt;a href="https://fonts.google.com/knowledge/glossary/serif"&gt;serifs&lt;/a&gt;, more specifically serif body typefaces.
+I'm more of a fan of using a serif for the main text of a document.
+Some people say it is more readable, I just feel it fits with my more classic, timeless aesthetic.&lt;/p&gt;
+&lt;p&gt;&lt;img src="/static/postimages/for-fonts-in-my-life/serif-comparison.svg" alt="IBM Plex Sans Nobody's Perfect" /&gt;
+Serifs can get a bit tricky to get right because it depends on the context.
+Something like &lt;a href="https://en.wikipedia.org/wiki/Baskerville"&gt;Baskerville&lt;/a&gt; looks quite beautiful in print.
+Its serifs taper thin, and it has a very high &lt;a href="https://fonts.google.com/knowledge/glossary/contrast"&gt;stroke contrast&lt;/a&gt; that shines on the page of a book.
+To see what I mean, look at the capital A.
+The left hand side is much thinner than the right.&lt;/p&gt;
+&lt;p&gt;The problem with these older typefaces, designed to look great on paper, is they don't transfer to the digital screen very well.
+At the lower detail densities of screens, these thin strokes can become hard to read and harm legibility.
+You will notice that modern serif typefaces designed for screens or home laser printers will have much lower stroke contrast.
+They also tend to have a slightly higher &lt;a href="https://en.wikipedia.org/wiki/X-height"&gt;x-height&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The obvious pairing for IBM Plex Sans should be &lt;a href="https://fonts.google.com/specimen/IBM+Plex+Serif"&gt;IBM Plex Serif&lt;/a&gt;, right?
+Well it left me feeling a bit cold.
+I can imagine using it for UI, but overall I can't gel with its modernism.
+Its &lt;a href="https://en.wikipedia.org/wiki/Bodoni"&gt;Bodoni-style&lt;/a&gt; sharp, rectangle serifs feel a bit too geometric for me.
+It also has a reasonably tall x-height, moving away from the traditional look that I want.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Bitstream_Charter"&gt;Charter&lt;/a&gt; strikes a good middle-ground.
+Its x-height is a bit shorter, it's serifs tapered (but not excessively), and a slightly thinner average stroke width from something like &lt;a href="https://en.wikipedia.org/wiki/Georgia_(typeface)"&gt;Georgia&lt;/a&gt; (Also by Matthew Carter).&lt;/p&gt;
+&lt;p&gt;Of course, I'll chop and change things depending on what a document should look like, but I hope I've given you enough of an introduction into typefaces that you may dip your toe into something other than the default.
+If you want more guidance on things other than typography then I can't recommend &lt;a href="https://practicaltypography.com"&gt;Butterick's Practical Typography&lt;/a&gt; enough.&lt;/p&gt;
+&lt;p&gt;And just for the sake of it, here are some more honorable font mentions.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Serif&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://fonts.google.com/specimen/Source+Serif+Pro"&gt;Adobe Source Serif Pro&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://fonts.google.com/specimen/Lora?category=Serif"&gt;Lora&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Century_type_family"&gt;Century Schoolbook&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.fontsquirrel.com/fonts/latin-modern-roman"&gt;Latin Modern&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Sans-serif&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://fonts.google.com/specimen/Source+Sans+Pro"&gt;Source Sans Pro&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://fonts.google.com/specimen/Inter"&gt;Inter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://fonts.google.com/specimen/Josefin+Sans"&gt;Josefin Sans&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+      <pubDate>Sat, 11 Mar 2023 16:39:17 +0000</pubDate>
     </item>
   </channel>
 </rss>
