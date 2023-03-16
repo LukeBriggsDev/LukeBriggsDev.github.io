@@ -64,7 +64,7 @@ Let every part of your document's aesthetic be a conscious decision, own your ty
 # IBM Plex Sans
 As an example of a conscious font choice, I present my use of [IBM Plex Sans](https://fonts.google.com/specimen/IBM+Plex+Sans) in bold as something I commonly use as a heading font.
 
-![IBM Plex Sans](/static/postimages/for-fonts-in-my-life/ibm-plex.svg)
+![IBM Plex Sans](/static/postimages/for-fonts-in-my-life/IBM-Plex.svg)
 
 I adore the era of computing when teletypes reigned supreme and graphics were optional.
 I wouldn't like to live then, you understand.
