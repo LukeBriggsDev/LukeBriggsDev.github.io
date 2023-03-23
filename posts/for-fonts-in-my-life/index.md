@@ -6,7 +6,7 @@ featuredImage: /static/postimages/for-fonts-in-my-life/header.png
 author: Luke Briggs
 rssFullText: true
 categories: []
-description:
+description: It is dissertation writing season at University, and this means one thing, document creation.
 ---
 
 > Header image by [Andrew Wright](https://awright.dev)
